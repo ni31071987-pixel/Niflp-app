@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>فنانشل لٹریسی پاکستان | Financial Literacy Pakistan Digital Library & Tools</title>
+  <title>فنانشل لٹریسی پاکستان | Financial Literacy Pakistan Mobile App</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -11,13 +11,12 @@
       --navy: #0A192F;
       --emerald: #064E3B;
       --gold: #D4AF37;
-      --gold-light: #F3E5AB;
     }
     body {
       font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif;
       background-color: #F4F6F9;
       color: #0F172A;
-      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
     .urdu-text {
       font-family: 'Noto Nastaliq Urdu', serif;
@@ -33,176 +32,381 @@
     .hero-gradient {
       background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%);
     }
-    .card-shadow {
-      box-shadow: 0 10px 25px -5px rgba(10, 25, 47, 0.08), 0 8px 10px -6px rgba(10, 25, 47, 0.04);
-    }
-    @media print {
-      .no-print { display: none !important; }
-      .print-only { display: block !important; }
-      body { background: white; }
+    /* Mobile Touch Optimization */
+    button, input, select, textarea {
+      touch-action: manipulation;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col pb-12">
 
-  <!-- Top Navigation & Language Switcher -->
-  <header class="hero-gradient text-white sticky top-0 z-40 shadow-xl border-b-2 border-[#D4AF37] no-print">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-xl gold-gradient flex items-center justify-center text-[#0A192F] font-extrabold text-xl shadow-md">
+  <!-- Mobile Top Header -->
+  <header class="hero-gradient text-white sticky top-0 z-50 shadow-md border-b border-[#D4AF37]">
+    <div class="px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-[#0A192F] font-extrabold text-lg shadow">
           FLP
         </div>
         <div>
-          <h1 class="text-lg md:text-xl font-bold tracking-wide text-[#F3E5AB] urdu-text">
-            فنانشل لٹریسی پاکستان
-          </h1>
-          <p class="text-xs text-emerald-200">
-            Financial Literacy Pakistan • By Nadeem Iqbal (13 Guides + 3 Live Tools)
-          </p>
+          <h1 class="text-base font-bold text-[#F3E5AB] urdu-text">فنانشل لٹریسی پاکستان</h1>
+          <p class="text-[10px] text-emerald-200">By Nadeem Iqbal • Mobile Library</p>
         </div>
       </div>
-
-      <!-- Language Portal Switcher -->
-      <div class="flex items-center bg-[#0A192F]/80 p-1 rounded-xl border border-[#D4AF37]/40">
-        <button onclick="setPortal('ur')" id="btn-ur" class="px-4 py-1.5 rounded-lg text-sm font-bold transition-all bg-[#D4AF37] text-[#0A192F] urdu-text">
-          اردو پورشن
-        </button>
-        <button onclick="setPortal('en')" id="btn-en" class="px-4 py-1.5 rounded-lg text-sm font-bold transition-all text-gray-300 hover:text-white eng-text">
-          English Portal
-        </button>
-        <button onclick="setPortal('both')" id="btn-both" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-gray-300 hover:text-white">
-          دو لسانی (Both)
-        </button>
+      <!-- Language Switcher -->
+      <div class="flex bg-[#0A192F] p-1 rounded-lg border border-[#D4AF37]/40">
+        <button onclick="setPortal('ur')" id="btn-ur" class="px-3 py-1 rounded-md text-xs font-bold bg-[#D4AF37] text-[#0A192F]">اردو</button>
+        <button onclick="setPortal('en')" id="btn-en" class="px-3 py-1 rounded-md text-xs font-semibold text-gray-300">Eng</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Banner & Search Bar -->
-  <section class="hero-gradient text-white pt-6 pb-8 px-4 border-b border-emerald-800 no-print">
-    <div class="max-w-5xl mx-auto text-center">
-      <span class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-xs font-semibold mb-3">
-        پاکستان کی جامع دو لسانی مالیاتی لائبریری اور عملی کھاتہ سسٹم
-      </span>
-      <h2 id="hero-heading" class="text-2xl md:text-4xl font-bold mb-4 text-white urdu-text">
-        اپنی مالیاتی تعلیم مکمل کریں اور معاشی خود مختاری حاصل کریں
-      </h2>
-      <p id="hero-desc" class="text-sm md:text-base text-gray-200 max-w-2xl mx-auto mb-6 urdu-text">
-        13 مستند اردو اور انگلش پی ڈی ایف کتابچوں کے ساتھ اب اپنا ماہانہ بجٹ، 12 ماہ کی کمیٹی کا ریکارڈ اور کاروباری کھاتہ بھی اسی ایپ میں منظم کریں۔
-      </p>
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white pt-5 pb-8 px-4 text-center border-b border-emerald-900">
+    <span class="inline-block px-3 py-0.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-semibold mb-2">
+      13 مکمل کتابچے + 3 عملی مالیاتی ٹولز
+    </span>
+    <h2 id="hero-heading" class="text-xl md:text-3xl font-bold mb-2 text-white urdu-text">
+      اپنی مالیاتی تعلیم اور بجٹ کو موبائل پر منظم کریں
+    </h2>
+    <p id="hero-desc" class="text-xs md:text-sm text-gray-200 max-w-xl mx-auto mb-4 urdu-text">
+      بچت، سونا، کمیٹی شیڈول اور دکان کا کھاتہ اب ایک ہی ایپ میں۔
+    </p>
 
-      <!-- Search & Add PDF Bar -->
-      <div class="max-w-3xl mx-auto flex flex-col sm:flex-row gap-3">
-        <div class="relative flex-1">
-          <input
-            type="text"
-            id="searchInput"
-            oninput="renderLibrary()"
-            placeholder="عنوان یا موضوع تلاش کریں (مثلاً: سونا، کمیٹی، گاڑی، ٹیکس، کاروبار)..."
-            class="w-full px-4 py-3.5 rounded-xl bg-white text-gray-900 placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37] shadow-lg"
-          />
-        </div>
-        <button
-          onclick="openAddModal()"
-          class="gold-gradient text-[#0A192F] font-bold px-5 py-3.5 rounded-xl shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2 text-sm whitespace-nowrap"
-        >
-          <span>+ نئی PDF / مضمون شامل کریں</span>
-        </button>
-      </div>
+    <div class="max-w-md mx-auto flex gap-2">
+      <input type="text" id="searchInput" oninput="renderLibrary()" placeholder="موضوع تلاش کریں (سونا، بجٹ، ٹیکس)..." class="w-full px-3.5 py-3 rounded-xl bg-white text-gray-900 text-xs shadow focus:outline-none" />
+      <button onclick="openAddModal()" class="gold-gradient text-[#0A192F] font-bold px-4 py-3 rounded-xl text-xs whitespace-nowrap shadow">+ PDF</button>
     </div>
   </section>
 
-  <!-- Main App Body -->
-  <main class="max-w-6xl mx-auto w-full px-4 py-6 flex-1 no-print">
+  <!-- Main Content Area -->
+  <main class="max-w-4xl mx-auto w-full px-3 py-4 flex-1">
 
-    <!-- Interactive Financial Tools Bar (3 Tools) -->
-    <div class="bg-[#0A192F] p-4 rounded-2xl border-2 border-[#D4AF37] mb-6 shadow-lg">
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-2">
-          <span class="text-[#D4AF37] text-lg">🛠️</span>
-          <span class="text-white font-bold text-sm md:text-base urdu-text">عملی مالیاتی ٹولز اور کھاتہ سسٹم (Interactive Tools):</span>
+    <!-- Interactive Tools Bar -->
+    <div class="bg-[#0A192F] p-3.5 rounded-2xl border border-[#D4AF37] mb-5 shadow-md">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[#F3E5AB] text-xs font-bold urdu-text">🛠️ موبائل فرینڈلی عملی ٹولز:</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <button onclick="openTool('budget')" class="py-2.5 px-3 rounded-xl text-xs font-bold bg-[#064E3B] text-white border border-emerald-500 shadow">
+          🧮 50/30/20 بجٹ کیلکولیٹر
+        </button>
+        <button onclick="openTool('committee')" class="py-2.5 px-3 rounded-xl text-xs font-bold gold-gradient text-[#0A192F] shadow">
+          🗓️ 12 ماہ کا کمیٹی شیڈول
+        </button>
+        <button onclick="openTool('business')" class="py-2.5 px-3 rounded-xl text-xs font-bold bg-white text-[#0A192F] shadow">
+          📒 دکان اور کاروبار کا کھاتہ
+        </button>
+      </div>
+
+      <!-- Tool 1: Budget -->
+      <div id="tool-panel-budget" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-4 border">
+        <div class="flex justify-between items-center mb-3 border-b pb-2">
+          <h3 class="font-bold text-xs text-[#0A192F]">50/30/20 ماہانہ بجٹ کیلکولیٹر</h3>
+          <button onclick="closeAllTools()" class="text-red-600 font-bold text-xs">✕ بند</button>
         </div>
-        <div class="flex flex-wrap gap-2">
-          <button onclick="openTool('budget')" id="tool-btn-budget" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#064E3B] text-white border border-emerald-400 hover:opacity-90 transition">
-            🧮 1. 50/30/20 بجٹ کیلکولیٹر
-          </button>
-          <button onclick="openTool('committee')" id="tool-btn-committee" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#D4AF37] text-[#0A192F] hover:opacity-90 transition">
-            🗓️ 2. کمیٹی (BC) شیڈول و ریکارڈ ٹول
-          </button>
-          <button onclick="openTool('business')" id="tool-btn-business" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-white text-[#0A192F] hover:bg-gray-100 transition">
-            📒 3. چھوٹے کاروبار اور دکان کا کھاتہ
-          </button>
+        <label class="block text-[11px] font-bold text-gray-600 mb-1">ماہانہ آمدنی (PKR):</label>
+        <input type="number" id="incomeInput" value="100000" oninput="calculateBudget()" class="w-full px-3 py-2 border rounded-lg font-bold text-sm text-[#064E3B] mb-3" />
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="p-2 bg-emerald-50 rounded-lg border"><span class="text-[10px] block font-bold text-emerald-800">50% ضروریات</span><p id="calc-needs" class="text-xs font-extrabold text-emerald-950 mt-1">Rs. 50k</p></div>
+          <div class="p-2 bg-blue-50 rounded-lg border"><span class="text-[10px] block font-bold text-blue-800">30% خواہشات</span><p id="calc-wants" class="text-xs font-extrabold text-blue-950 mt-1">Rs. 30k</p></div>
+          <div class="p-2 bg-amber-50 rounded-lg border"><span class="text-[10px] block font-bold text-amber-900">20% بچت</span><p id="calc-savings" class="text-xs font-extrabold text-amber-950 mt-1">Rs. 20k</p></div>
         </div>
       </div>
 
-      <!-- TOOL 1: 50/30/20 Budget Calculator -->
-      <div id="tool-panel-budget" class="hidden mt-4 bg-white text-gray-900 rounded-xl p-5 border border-gray-200">
-        <div class="flex justify-between items-center mb-4 border-b pb-2">
-          <h3 class="font-bold text-base md:text-lg text-[#0A192F] urdu-text">
-            🧮 50/30/20 ماہانہ بجٹ کیلکولیٹر (Smart Income Split)
-          </h3>
-          <button onclick="closeAllTools()" class="text-xs font-bold text-red-600 hover:underline">✕ بند کریں</button>
+      <!-- Tool 2: Committee -->
+      <div id="tool-panel-committee" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-4 border">
+        <div class="flex justify-between items-center mb-3 border-b pb-2">
+          <h3 class="font-bold text-xs text-[#0A192F]">12 ماہ کا کمیٹی (BC) شیڈول</h3>
+          <button onclick="closeAllTools()" class="text-red-600 font-bold text-xs">✕ بند</button>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-          <div>
-            <label class="block text-xs font-bold text-gray-600 mb-1">آپ کی ماہانہ آمدنی (PKR):</label>
-            <input type="number" id="incomeInput" value="100000" oninput="calculateBudget()" class="w-full px-3 py-2.5 border-2 border-[#064E3B] rounded-xl font-bold text-lg text-[#064E3B]" />
-          </div>
-          <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200">
-            <span class="text-xs font-bold text-emerald-800">50% بنیادی ضروریات (Needs)</span>
-            <p id="calc-needs" class="text-xl font-extrabold text-emerald-950 mt-1">Rs. 50,000</p>
-            <p class="text-[11px] text-gray-600 mt-0.5">راشن، کرایہ، بل، اسکول فیس</p>
-          </div>
-          <div class="p-3.5 rounded-xl bg-blue-50 border border-blue-200">
-            <span class="text-xs font-bold text-blue-800">30% ذاتی خواہشات (Wants)</span>
-            <p id="calc-wants" class="text-xl font-extrabold text-blue-950 mt-1">Rs. 30,000</p>
-            <p class="text-[11px] text-gray-600 mt-0.5">لائف اسٹائل، کپڑے، سیر و تفریح</p>
-          </div>
-          <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300">
-            <span class="text-xs font-bold text-amber-900">20% بچت اور سرمایہ کاری (Savings)</span>
-            <p id="calc-savings" class="text-xl font-extrabold text-amber-950 mt-1">Rs. 20,000</p>
-            <p class="text-[11px] text-gray-600 mt-0.5">ایمرجنسی فنڈ، سونا، کمیٹی</p>
-          </div>
+        <div class="mb-3">
+          <label class="block text-[11px] font-bold text-gray-600 mb-1">ماہانہ قسط (PKR):</label>
+          <input type="number" id="commInstallment" value="10000" oninput="updateCommitteeSettings()" class="w-full px-3 py-2 border rounded-lg font-bold text-sm text-[#0A192F]" />
         </div>
+        <div id="committee-mobile-list" class="space-y-2 max-h-56 overflow-y-auto text-xs"></div>
       </div>
 
-      <!-- TOOL 2: 12-Month Committee (ROSCA) Tracker -->
-      <div id="tool-panel-committee" class="hidden mt-4 bg-white text-gray-900 rounded-xl p-5 border border-gray-200">
-        <div class="flex flex-wrap justify-between items-center gap-2 mb-4 border-b pb-3">
-          <div>
-            <h3 class="font-bold text-base md:text-lg text-[#0A192F] urdu-text">
-              🗓️ 12 ماہ کا کمیٹی (BC) شیڈول اور ریکارڈ ٹول
-            </h3>
-            <p class="text-xs text-gray-500">ہر مہینے کی باری، ممبر کا نام اور ادائیگی کا مکمل حساب (خودکار محفوظ ہوتا ہے)</p>
-          </div>
+      <!-- Tool 3: Business Ledger -->
+      <div id="tool-panel-business" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-4 border">
+        <div class="flex justify-between items-center mb-3 border-b pb-2">
+          <h3 class="font-bold text-xs text-[#0A192F]">کاروبار اور دکان کا روزانہ کھاتہ</h3>
+          <button onclick="closeAllTools()" class="text-red-600 font-bold text-xs">✕ بند</button>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mb-3 text-center text-xs">
+          <div class="p-2 bg-emerald-50 rounded border"><b>آمدن:</b> <span id="biz-total-in">0</span></div>
+          <div class="p-2 bg-amber-50 rounded border"><b>گلے میں کیش:</b> <span id="biz-net-cash">0</span></div>
+        </div>
+        <form onsubmit="addBusinessEntry(event)" class="space-y-2 mb-3">
+          <input type="text" id="bizDesc" required placeholder="تفصیل (سیل / خرچ)..." class="w-full px-3 py-2 border rounded text-xs" />
+          <input type="number" id="bizAmount" required placeholder="رقم (PKR)" class="w-full px-3 py-2 border rounded text-xs font-bold" />
+          <select id="bizType" class="w-full px-3 py-2 border rounded text-xs font-semibold">
+            <option value="in">➕ کاروباری آمدن / سیل</option>
+            <option value="exp">➖ دکان کا خرچ</option>
+            <option value="draw">🏠 ذاتی / گھر کا خرچ</option>
+          </select>
+          <button type="submit" class="w-full py-2 bg-[#064E3B] text-white font-bold rounded text-xs">+ درج کریں</button>
+        </form>
+        <div id="biz-entries-list" class="space-y-1.5 max-h-40 overflow-y-auto text-xs"></div>
+      </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-4 scrollbar-none">
+      <button onclick="setCategory('all')" data-cat="all" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-[#064E3B] text-white shadow whitespace-nowrap">تمام (13)</button>
+      <button onclick="setCategory('budget')" data-cat="budget" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">بجٹ</button>
+      <button onclick="setCategory('invest')" data-cat="invest" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">سونا</button>
+      <button onclick="setCategory('family')" data-cat="family" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">خاندان</button>
+      <button onclick="setCategory('business')" data-cat="business" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">کاروبار</button>
+      <button onclick="setCategory('assets')" data-cat="assets" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">پراپرٹی</button>
+    </div>
+
+    <!-- Library Grid -->
+    <div id="library-grid" class="grid grid-cols-1 gap-3.5"></div>
+
+  </main>
+
+  <!-- Reader Modal -->
+  <div id="reader-modal" class="fixed inset-0 bg-black/80 z-50 hidden overflow-y-auto p-2">
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden my-6 border border-[#D4AF37]">
+      <div class="hero-gradient text-white px-4 py-3 flex items-center justify-between sticky top-0 z-10">
+        <h3 id="reader-title" class="text-sm font-bold text-[#F3E5AB]"></h3>
+        <button onclick="closeReader()" class="w-8 h-8 rounded-lg bg-white/20 text-white font-bold text-sm">✕</button>
+      </div>
+      <div id="reader-body" class="p-4 space-y-4 text-xs md:text-sm"></div>
+    </div>
+  </div>
+
+  <!-- Add PDF Modal -->
+  <div id="add-modal" class="fixed inset-0 bg-black/80 z-50 hidden overflow-y-auto p-3">
+    <div class="max-w-lg mx-auto bg-white rounded-2xl shadow-xl overflow-hidden my-8 p-4">
+      <div class="flex justify-between items-center mb-3 border-b pb-2">
+        <h3 class="font-bold text-sm">نئی پی ڈی ایف / مضمون شامل کریں</h3>
+        <button onclick="closeAddModal()" class="font-bold text-sm text-red-600">✕</button>
+      </div>
+      <form onsubmit="saveNewDocument(event)" class="space-y-3 text-xs">
+        <input type="text" id="newTitleUr" required placeholder="اردو عنوان" class="w-full px-3 py-2 border rounded-lg urdu-text" />
+        <input type="text" id="newTitleEn" required placeholder="English Title" class="w-full px-3 py-2 border rounded-lg" />
+        <select id="newCategory" class="w-full px-3 py-2 border rounded-lg">
+          <option value="budget">بجٹ اور کمیٹی</option>
+          <option value="invest">سونا اور سرمایہ کاری</option>
+          <option value="family">خاندان و ریٹائرمنٹ</option>
+          <option value="business">کاروبار اور ٹیکس</option>
+          <option value="assets">پراپرٹی اور گاڑی</option>
+        </select>
+        <textarea id="newContentUr" rows="3" required placeholder="اردو مضمون (نئی لائن پر نکات لکھیں)" class="w-full px-3 py-2 border rounded-lg urdu-text"></textarea>
+        <textarea id="newContentEn" rows="3" required placeholder="English Content" class="w-full px-3 py-2 border rounded-lg"></textarea>
+        <button type="submit" class="w-full py-2.5 gold-gradient text-[#0A192F] font-bold rounded-lg shadow">محفوظ کریں</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-[#0A192F] text-gray-400 text-[11px] py-4 px-3 text-center border-t mt-auto">
+    <p class="text-[#F3E5AB] font-bold">فنانشل لٹریسی پاکستان • ندیم اقبال</p>
+  </footer>
+
+  <script>
+    const defaultDocuments = [
+      { id: '1', category: 'budget', categoryLabelUr: 'بجٹ اور بچت', categoryLabelEn: 'Budgeting', titleUr: '1. 50/30/20 بجٹ گائیڈ: آمدنی منظم کرنے کا اصول', titleEn: '1. The 50/30/20 Budgeting Rule', summaryUr: 'آمدنی کو تین حصوں میں تقسیم کر کے قرض سے بچیں اور بچت کریں۔', summaryEn: 'Divide income into Needs (50%), Wants (30%), and Savings (20%).', toolLink: 'budget', toolLabelUr: '🧮 بجٹ کیلکولیٹر', contentUr: ['50% بنیادی ضروریات پر خرچ کریں۔', '30% ذاتی خواہشات پر۔', '20% فوری طور پر بچت کریں۔'], contentEn: ['50% for Needs.', '30% for Wants.', '20% for Savings.'] },
+      { id: '2', category: 'assets', categoryLabelUr: 'ریئل اسٹیٹ', categoryLabelEn: 'Real Estate', titleUr: '2. گھر یا پلاٹ خریدنے کے 5 سنہری مالیاتی اصول', titleEn: '2. 5 Golden Rules Before Buying Real Estate', summaryUr: 'پراپرٹی خریدتے وقت قانونی تصدیق اور بجٹ کا حساب۔', summaryEn: 'Legal verification and budget ratios before buying property.', contentUr: ['تمام پونجی ایک پلاٹ میں نہ پھنسائیں۔', 'NOC کی تصدیق لازمی کریں۔'], contentEn: ['Never lock 100% net worth in a single plot.', 'Verify NOC status.'] },
+      { id: '3', category: 'budget', categoryLabelUr: 'ایکشن پلان', categoryLabelEn: 'Action Plan', titleUr: '3. 30 دن کا فنانشل ایکشن پلان اور ورک بک', titleEn: '3. 30-Day Financial Reset Plan', summaryUr: 'اخراجات کو ٹریک کرنے اور فالتو خرچ روکنے کا شیڈول۔', summaryEn: 'A 4-week practical roadmap to audit expenses.', contentUr: ['ہفتہ 1: اخراجات کا آڈٹ کریں۔', 'ہفتہ 2: غیر ضروری خرچ کم کریں۔'], contentEn: ['Week 1: Audit expenses.', 'Week 2: Cut lifestyle inflation.'] },
+      { id: '4', category: 'invest', categoryLabelUr: 'سونا اور انویسٹمنٹ', categoryLabelEn: 'Gold & Investing', titleUr: '4. مہنگائی کا توڑ: سونا اور حلال سرمایہ کاری', titleEn: '4. Beating Inflation: Gold & Halal Investing', summaryUr: 'خالص سونا اور اسلامک فنڈز میں سرمایہ کاری کے اصول۔', summaryEn: 'Protect purchasing power using gold and Islamic funds.', contentUr: ['24K سونا بسکٹ یا سکے خریدیں۔', 'منی مارکیٹ فنڈز استعمال کریں۔'], contentEn: ['Buy 24K certified gold coins.', 'Use Islamic money market funds.'] },
+      { id: '5', category: 'budget', categoryLabelUr: 'کمیٹی پلان', categoryLabelEn: 'Committee Plan', titleUr: '5. 12 ماہ کا کمیٹی (BC) شیڈول اور ریکارڈ', titleEn: '5. 12-Month Committee Schedule', summaryUr: 'کمیٹی ڈالنے کے فوائد اور یکمشت رقم کا استعمال۔', summaryEn: 'Organize a secure monthly savings committee.', toolLink: 'committee', toolLabelUr: '🗓️ کمیٹی ٹول', contentUr: ['قابلِ اعتماد ممبران کا انتخاب کریں۔', 'مقصد طے کر کے رقم لگائیں۔'], contentEn: ['Vetting reliable members.', 'Purpose-driven payouts.'] },
+      { id: '6', category: 'family', categoryLabelUr: 'ایمرجنسی فنڈ', categoryLabelEn: 'Emergency Shield', titleUr: '6. 6 ماہ کا ایمرجنسی فنڈ بنانے کی گائیڈ', titleEn: '6. Building a 6-Month Emergency Fund', summaryUr: 'ناگہانی بحران سے بچنے کے لیے حفاظتی فنڈ۔', summaryEn: 'Store living expenses for unexpected emergencies.', contentUr: ['3 سے 6 ماہ کا خرچ الگ رکھیں۔', 'اسے روزمرہ خرچ میں نہ لائیں۔'], contentEn: ['Save 3-6 months of expenses.', 'Keep it in a separate account.'] },
+      { id: '7', category: 'budget', categoryLabelUr: 'قرض سے نجات', categoryLabelEn: 'Debt Freedom', titleUr: '7. قرض اور قسطوں کے جال سے نکلنے کا طریقہ', titleEn: '7. Debt Freedom Roadmap', summaryUr: 'سنو بال طریقے سے قرض ختم کرنے کی حکمتِ عملی۔', summaryEn: 'Pay off personal loans using the Debt Snowball.', contentUr: ['سب سے چھوٹے قرض کو پہلے ختم کریں۔', 'نیا سودی قرض ہرگز نہ لیں۔'], contentEn: ['Attack the smallest debt first.', 'Avoid new high-markup loans.'] },
+      { id: '8', category: 'business', categoryLabelUr: 'اضافی آمدنی', categoryLabelEn: 'Income Skills', titleUr: '8. ڈیجیٹل اسکلز اور سائیڈ بزنس گائیڈ', titleEn: '8. Multiple Income Streams', summaryUr: 'موبائل اور اے آئی ٹولز سے حلال سائیڈ انکم۔', summaryEn: 'Build secondary revenue streams.', contentUr: ['ہائی انکم اسکلز سیکھیں۔', 'آن لائن سروسز دیں۔'], contentEn: ['Master high-demand skills.', 'Offer micro-services.'] },
+      { id: '9', category: 'family', categoryLabelUr: 'بچوں کا مستقبل', categoryLabelEn: 'Children Fund', titleUr: '9. بچوں کی اعلیٰ تعلیم اور شادی فنڈ', titleEn: '9. Children Education & Marriage Fund', summaryUr: 'طویل مدتی کمپاؤنڈنگ سے فنڈ تیار کریں۔', summaryEn: 'Prepare for future family milestones.', contentUr: ['شروعات جلد کریں۔', 'تعلیم کو ترجیح دیں۔'], contentEn: ['Start early with compounding.', 'Prioritize education.'] },
+      { id: '10', category: 'assets', categoryLabelUr: 'گاڑی کے اصول', categoryLabelEn: 'Vehicle Rules', titleUr: '10. گاڑی کی خریداری اور مینٹیننس فارمولا', titleEn: '10. Smart Vehicle Purchase Rules', summaryUr: 'استطاعت کے مطابق گاڑی اور فیول بجٹ۔', summaryEn: 'Budgeting for fuel and maintenance.', contentUr: ['سٹیٹس کے بجائے سہولت دیکھیں۔', 'ماہانہ مینٹیننس فنڈ رکھیں۔'], contentEn: ['Utility over status.', 'Keep a maintenance fund.'] },
+      { id: '11', category: 'business', categoryLabelUr: 'ٹیکس فائلر', categoryLabelEn: 'Tax Filer', titleUr: '11. پاکستان میں ٹیکس فائلر بننے کے فوائد', titleEn: '11. Active Taxpayer Benefits', summaryUr: 'ودہولڈنگ ٹیکس سے بچنے کی رہنمائی۔', summaryEn: 'Save heavy withholding taxes.', contentUr: ['سالانہ گوشوارے جمع کروائیں۔', 'اثاثے ڈیکلیئر کریں۔'], contentEn: ['File annual returns.', 'Document wealth.'] },
+      { id: '12', category: 'family', categoryLabelUr: 'ریٹائرمنٹ', categoryLabelEn: 'Retirement', titleUr: '12. بڑھاپے کی معاشی خود مختاری اور پنشن', titleEn: '12. Retirement Independence Plan', summaryUr: 'ذاتی پنشن فنڈ اور رینٹل انویسٹمنٹ۔', summaryEn: 'Build your own retirement corpus.', contentUr: ['آمدنی کا 10% الگ رکھیں۔', 'کرایہ دینے والے اثاثے بنائیں۔'], contentEn: ['Dedicate 10% for retirement.', 'Acquire rental assets.'] },
+      { id: '13', category: 'business', categoryLabelUr: 'دکان کا کھاتہ', categoryLabelEn: 'Small Business', titleUr: '13. چھوٹے کاروبار اور دکان کا روزانہ کھاتہ', titleEn: '13. Small Business Bookkeeping', summaryUr: 'ذاتی اور کاروباری کیش کو الگ رکھنا۔', summaryEn: 'Separating personal and business cash.', toolLink: 'business', toolLabelUr: '📒 کاروباری کھاتہ', contentUr: ['گلے سے گھر کا خرچ نہ نکالیں۔', 'اپنی تنخواہ طے کریں۔'], contentEn: ['Never mix pockets.', 'Pay yourself a fixed salary.'] }
+    ];
+
+    let currentPortal = 'ur';
+    let currentCategory = 'all';
+    let savedIds = JSON.parse(localStorage.getItem('flp_saved') || '[]');
+    let customDocs = JSON.parse(localStorage.getItem('flp_custom_docs') || '[]');
+    let committeeData = JSON.parse(localStorage.getItem('flp_committee_mob') || JSON.stringify([
+      { month: 'اگست 2026', member: 'والدہ محترمہ', paid: true },
+      { month: 'ستمبر 2026', member: 'ایمرجنسی فنڈ', paid: true },
+      { month: 'اکتوبر 2026', member: 'گھر کا خرچ', paid: false },
+      { month: 'نومبر 2026', member: 'کاروبار', paid: false },
+      { month: 'دسمبر 2026', member: 'سونا', paid: false },
+      { month: 'جنوری 2027', member: 'فیس', paid: false },
+      { month: 'فروری 2027', member: 'عید بجٹ', paid: false },
+      { month: 'مارچ 2027', member: 'سیونگ', paid: false },
+      { month: 'اپریل 2027', member: 'قربانی', paid: false },
+      { month: 'مئی 2027', member: 'گاڑی', paid: false },
+      { month: 'جون 2027', member: 'انویسٹمنٹ', paid: false },
+      { month: 'جولائی 2027', member: 'سالانہ بچت', paid: false }
+    ]));
+    let commInstallmentVal = parseInt(localStorage.getItem('flp_comm_amt') || '10000', 10);
+    let bizEntries = JSON.parse(localStorage.getItem('flp_biz_mob') || '[{"id":1,"desc":"آج کی دکان سیل","amount":25000,"type":"in"},{"id":2,"desc":"مال کی خریداری","amount":10000,"type":"exp"}]');
+
+    function getAllDocs() { return [...customDocs, ...defaultDocuments]; }
+
+    function openTool(toolName) {
+      ['budget', 'committee', 'business'].forEach(t => {
+        document.getElementById('tool-panel-' + t).classList.toggle('hidden', t !== toolName);
+      });
+      if (toolName === 'committee') renderCommitteeList();
+      if (toolName === 'business') renderBusinessLedger();
+    }
+    function closeAllTools() {
+      ['budget', 'committee', 'business'].forEach(t => document.getElementById('tool-panel-' + t).classList.add('hidden'));
+    }
+
+    function calculateBudget() {
+      const income = parseFloat(document.getElementById('incomeInput').value) || 0;
+      document.getElementById('calc-needs').textContent = 'Rs. ' + Math.round(income * 0.5).toLocaleString();
+      document.getElementById('calc-wants').textContent = 'Rs. ' + Math.round(income * 0.3).toLocaleString();
+      document.getElementById('calc-savings').textContent = 'Rs. ' + Math.round(income * 0.2).toLocaleString();
+    }
+
+    function updateCommitteeSettings() {
+      commInstallmentVal = parseInt(document.getElementById('commInstallment').value, 10) || 0;
+      localStorage.setItem('flp_comm_amt', commInstallmentVal);
+      renderCommitteeList();
+    }
+    function updateCommitteeMember(idx, val) {
+      committeeData[idx].member = val;
+      localStorage.setItem('flp_committee_mob', JSON.stringify(committeeData));
+    }
+    function toggleCommitteePaid(idx) {
+      committeeData[idx].paid = !committeeData[idx].paid;
+      localStorage.setItem('flp_committee_mob', JSON.stringify(committeeData));
+      renderCommitteeList();
+    }
+    function renderCommitteeList() {
+      document.getElementById('commInstallment').value = commInstallmentVal;
+      const listEl = document.getElementById('committee-mobile-list');
+      listEl.innerHTML = committeeData.map((slot, idx) => `
+        <div class="flex items-center justify-between p-2 bg-slate-50 border rounded-lg gap-2">
+          <span class="font-bold text-[11px] w-20 text-gray-700">${slot.month}</span>
+          <input type="text" value="${slot.member}" onchange="updateCommitteeMember(${idx}, this.value)" class="flex-1 px-2 py-1 border rounded text-xs bg-white" />
+          <button onclick="toggleCommitteePaid(${idx})" class="px-2 py-1 rounded text-[10px] font-bold ${slot.paid ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">
+            ${slot.paid ? '✓ ادا' : '⏳ باقی'}
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function addBusinessEntry(e) {
+      e.preventDefault();
+      const desc = document.getElementById('bizDesc').value.trim();
+      const amount = parseFloat(document.getElementById('bizAmount').value) || 0;
+      const type = document.getElementById('bizType').value;
+      if (!desc || amount <= 0) return;
+      bizEntries.unshift({ id: Date.now(), desc, amount, type });
+      localStorage.setItem('flp_biz_mob', JSON.stringify(bizEntries));
+      document.getElementById('bizDesc').value = '';
+      document.getElementById('bizAmount').value = '';
+      renderBusinessLedger();
+    }
+    function deleteBizEntry(id) {
+      bizEntries = bizEntries.filter(i => i.id !== id);
+      localStorage.setItem('flp_biz_mob', JSON.stringify(bizEntries));
+      renderBusinessLedger();
+    }
+    function renderBusinessLedger() {
+      let totalIn = 0, totalExp = 0, totalDraw = 0;
+      bizEntries.forEach(item => {
+        if (item.type === 'in') totalIn += item.amount;
+        if (item.type === 'exp') totalExp += item.amount;
+        if (item.type === 'draw') totalDraw += item.amount;
+      });
+      document.getElementById('biz-total-in').textContent = 'Rs. ' + totalIn.toLocaleString();
+      document.getElementById('biz-net-cash').textContent = 'Rs. ' + (totalIn - totalExp - totalDraw).toLocaleString();
+
+      const listEl = document.getElementById('biz-entries-list');
+      if (bizEntries.length === 0) { listEl.innerHTML = '<p class="text-center text-gray-400 py-2">کوئی ریکارڈ نہیں</p>'; return; }
+      listEl.innerHTML = bizEntries.map(item => `
+        <div class="flex items-center justify-between p-1.5 bg-slate-50 border rounded text-[11px]">
+          <span><b>${item.desc}</b> (${item.type === 'in' ? '+' : '-'})</span>
           <div class="flex items-center gap-2">
-            <button onclick="printToolSection('tool-panel-committee')" class="px-3 py-1.5 rounded-lg bg-[#064E3B] text-white text-xs font-bold">
-              🖨️ شیڈول پرنٹ / PDF کریں
-            </button>
-            <button onclick="closeAllTools()" class="text-xs font-bold text-red-600 hover:underline px-2">✕ بند کریں</button>
+            <span class="font-bold">Rs. ${item.amount.toLocaleString()}</span>
+            <button onclick="deleteBizEntry(${item.id})" class="text-red-500 font-bold">✕</button>
           </div>
         </div>
+      `).join('');
+    }
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 bg-slate-50 p-3.5 rounded-xl border">
-          <div>
-            <label class="block text-xs font-bold text-gray-700 mb-1">فی ممبر ماہانہ قسط (PKR):</label>
-            <input type="number" id="commInstallment" value="10000" oninput="updateCommitteeSettings()" class="w-full px-3 py-2 border rounded-lg font-bold text-[#0A192F]" />
+    function setPortal(lang) {
+      currentPortal = lang;
+      document.getElementById('btn-ur').className = lang === 'ur' ? 'px-3 py-1 rounded-md text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded-md text-xs font-semibold text-gray-300';
+      document.getElementById('btn-en').className = lang === 'en' ? 'px-3 py-1 rounded-md text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded-md text-xs font-semibold text-gray-300';
+      renderLibrary();
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.className = btn.dataset.cat === cat ? 'cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-[#064E3B] text-white shadow whitespace-nowrap' : 'cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap';
+      });
+      renderLibrary();
+    }
+
+    function renderLibrary() {
+      const grid = document.getElementById('library-grid');
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const docs = getAllDocs().filter(d => {
+        if (currentCategory !== 'all' && d.category !== currentCategory) return false;
+        if (query && !`${d.titleUr} ${d.titleEn} ${d.summaryUr}`.toLowerCase().includes(query)) return false;
+        return true;
+      });
+
+      grid.innerHTML = docs.map(doc => `
+        <div onclick="openReader('${doc.id}')" class="bg-white rounded-2xl border border-gray-200 p-4 shadow-sm active:scale-[0.99] transition cursor-pointer">
+          <div class="flex items-center justify-between mb-2">
+            <span class="px-2 py-0.5 rounded bg-emerald-900 text-emerald-100 text-[10px] font-bold">${doc.categoryLabelUr || 'موضوع'}</span>
+            <span class="text-[10px] text-gray-400">PDF Guide</span>
           </div>
-          <div class="p-2.5 bg-emerald-50 rounded-lg border border-emerald-200">
-            <span class="text-xs text-emerald-800 font-bold">کل ممبران / مہینے:</span>
-            <p class="text-lg font-extrabold text-emerald-950">12 ماہ (12 Slots)</p>
-          </div>
-          <div class="p-2.5 bg-amber-50 rounded-lg border border-amber-300">
-            <span class="text-xs text-amber-900 font-bold">ہر ماہ کھلنے والی کل کمیٹی (Total Payout):</span>
-            <p id="commTotalPayout" class="text-lg font-extrabold text-amber-950">Rs. 120,000</p>
+          <h3 class="text-sm font-bold text-[#0A192F] urdu-text mb-1">${doc.titleUr}</h3>
+          <p class="text-[11px] text-gray-600 urdu-text mb-3">${doc.summaryUr}</p>
+          <div class="flex items-center justify-between pt-2 border-t text-xs">
+            <span class="text-[#064E3B] font-bold">مکمل گائیڈ پڑھیں ←</span>
+            ${doc.toolLink ? `<button onclick="event.stopPropagation(); openTool('${doc.toolLink}')" class="px-2 py-1 rounded bg-amber-100 text-amber-950 font-bold text-[10px]">${doc.toolLabelUr}</button>` : ''}
           </div>
         </div>
+      `).join('');
+    }
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-right border-collapse text-xs md:text-sm">
-            <thead>
-              <tr class="bg-[#0A192F] text-[#F3E5AB]">
-                <th class="p-2.5 border">نمبر</th>
-                <th class="p-2.5 border">مہینہ (Month)</th>
-                <th class="p-2.5 border">وصول کنندہ ممبر / مقصد (Member / Goal)</th>
-                <th class="p-2.5 border">کل رقم (PKR)</th>
-                <th class="p-2.5 border text-center
+    function openReader(id) {
+      const doc = getAllDocs().find(d => d.id === id);
+      if (!doc) return;
+      document.getElementById('reader-title').textContent = doc.titleUr;
+      document.getElementById('reader-body').innerHTML = `
+        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+          <p class="font-bold text-[#0A192F] mb-2 urdu-text">${doc.summaryUr}</p>
+          <div class="space-y-2">
+            ${doc.contentUr.map(p => `<p class="bg-white p-2.5 rounded-lg border text-gray-800 urdu-text">${p}</p>`).join('')}
+          </div>
+        </div>
+        ${doc.toolLink ? `<button onclick="closeReader(); openTool('${doc.toolLink}')" class="w-full py-2.5 rounded-xl gold-gradient text-[#0A192F] font-bold text-xs shadow">اس گائیڈ کا عملی ٹول کھولیں</button>` : ''}
+      `;
+      document.getElementById('reader-modal').classList.remove('hidden');
+    }
+    function closeReader() { document.getElementById('reader-modal').classList.add('hidden'); }
+    function openAddModal() { document.getElementById('add-modal').classList.remove('hidden'); }
+    function closeAddModal() { document.getElementById('add-modal').classList.add('hidden'); }
+    function saveNewDocument(e) {
+      e.preventDefault();
+      const newDoc = {
+        id: 'c-' + Date.now(),
+        category: document.getElementById('newCategory').value,
+        titleUr: document.getElementById('newTitleUr').value,
+        titleEn: document.getElementById('newTitleEn').value,
+        summaryUr: document.getElementById('newContentUr').value.split('\n')[0],
+        summaryEn: document.getElementById('newContentEn').value.split('\n')[0],
+        contentUr: document.getElementById('newContentUr').value.split('\n').filter(Boolean),
+        contentEn: document.getElementById('newContentEn').value.split('\n').filter(Boolean)
+      };
+      customDocs.unshift(newDoc);
+      localStorage.setItem('flp_custom', JSON.stringify(customDocs));
+      closeAddModal();
+      renderLibrary();
+    }
+
+    renderLibrary();
+  </script>
+</body>
+</html>
