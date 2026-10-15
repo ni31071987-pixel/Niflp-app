@@ -47,17 +47,18 @@
     </div>
   </header>
 
-  <!-- Hero Section with Live Multi-Calendar Date Bar -->
+  <!-- Hero Section with Live Date & Search -->
   <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b border-emerald-900">
     <span class="inline-block px-3 py-0.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-semibold mb-2">
-      13 تفصیلی کتابچے + 3 عملی مالیاتی ٹولز + کمیونٹی چیٹ
+      13 تفصیلی کتابچے + عملی ٹولز + لائیو کمیونٹی چیٹ
     </span>
 
     <!-- Live Date Box -->
-    <div id="liveDateBox" class="max-w-md mx-auto my-3 p-2.5 bg-white/10 backdrop-blur border border-[#D4AF37]/40 rounded-xl text-xs text-[#F3E5AB] urdu-font shadow-inner">
-      <div class="font-bold text-sm mb-0.5" id="dateEng">جائزہ تاریخ...</div>
-      <div class="text-[11px] text-emerald-100 flex flex-wrap justify-center gap-2" id="dateExtra">
-        <span>اسلامی: لوڈ ہو رہا ہے...</span> | <span>دیسی: لوڈ ہو رہا ہے...</span>
+    <div class="max-w-md mx-auto my-2 p-2.5 bg-white/10 backdrop-blur border border-[#D4AF37]/40 rounded-xl text-xs text-[#F3E5AB] urdu-font shadow-inner">
+      <div class="font-bold text-xs mb-0.5" id="dateEng">جمعہ، 16 اکتوبر 2026</div>
+      <div class="text-[10px] text-emerald-100 flex flex-wrap justify-center gap-2">
+        <span>🌙 اسلامی: 4 ربیع الثانی 1448ھ</span> | 
+        <span>🌾 دیسی ماہ: اسوج (29)</span>
       </div>
     </div>
 
@@ -65,7 +66,7 @@
       اپنی مالیاتی تعلیم اور بجٹ کو موبائل پر منظم کریں
     </h2>
     <div class="max-w-md mx-auto flex gap-2">
-      <input type="text" id="searchBox" oninput="filterGuides()" placeholder="موضوع تلاش کریں (سونا، بجٹ، ٹیکس)..." class="w-full px-3 py-2.5 rounded-xl bg-white text-gray-900 text-xs shadow focus:outline-none" />
+      <input type="text" id="searchBox" oninput="renderGuides()" placeholder="موضوع تلاش کریں (سونا، بجٹ، ٹیکس)..." class="w-full px-3 py-2.5 rounded-xl bg-white text-gray-900 text-xs shadow focus:outline-none" />
     </div>
   </section>
 
@@ -85,7 +86,7 @@
       <div id="tool-budget" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-3 border text-xs">
         <div class="flex justify-between items-center mb-2 border-b pb-1 font-bold">
           <span>50/30/20 بجٹ کیلکولیٹر</span>
-          <button onclick="closeTools()" class="text-red-600">✕ بند</button>
+          <button onclick="closeTools()" class="text-red-600 font-bold">✕ بند</button>
         </div>
         <label class="block font-bold mb-1">آمدنی (PKR):</label>
         <input type="number" id="incVal" value="100000" oninput="calcBudget()" class="w-full p-2 border rounded mb-2 font-bold text-[#064E3B]" />
@@ -100,7 +101,7 @@
       <div id="tool-committee" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-3 border text-xs">
         <div class="flex justify-between items-center mb-2 border-b pb-1 font-bold">
           <span>12 ماہ کا کمیٹی شیڈول</span>
-          <button onclick="closeTools()" class="text-red-600">✕ بند</button>
+          <button onclick="closeTools()" class="text-red-600 font-bold">✕ بند</button>
         </div>
         <div id="commList" class="space-y-1.5 max-h-48 overflow-y-auto"></div>
       </div>
@@ -109,7 +110,7 @@
       <div id="tool-business" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-3 border text-xs">
         <div class="flex justify-between items-center mb-2 border-b pb-1 font-bold">
           <span>دکان اور کاروبار کا کھاتہ</span>
-          <button onclick="closeTools()" class="text-red-600">✕ بند</button>
+          <button onclick="closeTools()" class="text-red-600 font-bold">✕ بند</button>
         </div>
         <div class="mb-2 p-2 bg-emerald-50 rounded border text-center">
           <b>گلے میں خالص کیش:</b> <span id="bizNet" class="font-extrabold text-emerald-950">Rs. 0</span>
@@ -122,13 +123,13 @@
             <option value="exp">➖ کاروباری خرچ</option>
             <option value="draw">🏠 ذاتی / گھر کا خرچ</option>
           </select>
-          <button onclick="addBiz()" class="w-full py-2 bg-[#064E3B] text-white font-bold rounded">درج کریں</button>
+          <button onclick="addBiz()" class="w-full py-2 bg-[#064E3B] text-white font-bold rounded font-bold">درج کریں</button>
         </div>
         <div id="bizList" class="space-y-1 max-h-36 overflow-y-auto"></div>
       </div>
     </div>
 
-    <!-- Community Chat & Feedback Box (New Feature) -->
+    <!-- Community Chat & Feedback Box -->
     <div class="bg-white p-3.5 rounded-2xl border border-gray-200 shadow-sm mb-4">
       <div class="flex items-center justify-between mb-2 border-b pb-1.5">
         <h3 class="text-xs font-bold text-[#0A192F] urdu-font">💬 کمیونٹی چیٹ اور ڈویلپر کمنٹ باکس</h3>
@@ -168,74 +169,6 @@
 
   <script>
     let lang = 'ur';
-
-    // Live Multi-Calendar Date Generator
-    function loadLiveDates() {
-      const now = new Date();
-      
-      // Urdu Days & Months
-      const daysUr = ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'];
-      const monthsUr = ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'ستمبر', 'اکتوبر', 'نومبر', 'دسمبر'];
-      
-      let dayName = daysUr[now.getDay()];
-      let dNum = now.getDate();
-      let mName = monthsUr[now.getMonth()];
-      let yNum = now.getFullYear();
-
-      // Islamic Hijri Approximate Calculation (Based on standard offset)
-      // Current year 2026 corresponds roughly to Hijri 1447/1448
-      let optionsHijri = { calendar: 'islamic-umalqura', day: 'numeric', month: 'long', year: 'numeric' };
-      let hijriStr = '';
-      try {
-        hijriStr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', optionsHijri).format(now);
-      } catch(e) {
-        hijriStr = '1447ھ';
-      }
-
-      // Desi Months (Desi / Nanakshahi / Solar Bikrami local mapping approximation)
-      const desiMonths = ['ویساکھ', 'جیٹھ',هار', 'ساون', 'بھادوں', 'اسوج', 'کتک', 'مگھر', 'پوہ', 'ماگھ', 'پھاگن', 'چیت'];
-      // Mapping roughly based on month
-      let mIdx = now.getMonth();
-      let desiMonthName = desiMonths[(mIdx + 2) % 12];
-      let desiDay = (dNum + 15) % 30 || 1;
-
-      // Display in UI
-      document.getElementById('dateEng').textContent = `${dayName}، ${dNum} ${mName} ${yNum}`;
-      document.getElementById('dateExtra').innerHTML = `
-        <span>🌙 اسلامی: ${hijriStr}</span> | 
-        <span>🌾 دیسی ماہ: ${desiMonthName} (${desiDay})</span>
-      `;
-    }
-
-    // Community Chat / Comment Box Logic
-    let chatData = JSON.parse(localStorage.getItem('flp_community_chat') || '[{"name":"ندیم اقبال (ڈویلپر)","text":"خوش آمدید! آپ اس باکس کے ذریعے اپنے خیالات اور مشورے یہاں لکھ سکتے ہیں۔","time":"آج"}]');
-
-    function postChatMessage(e) {
-      e.preventDefault();
-      let name = document.getElementById('chatName').value.trim();
-      let text = document.getElementById('chatText').value.trim();
-      if (!name || !text) return;
-
-      let timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      chatData.unshift({ name, text, time: timeNow });
-      localStorage.setItem('flp_community_chat', JSON.stringify(chatData));
-
-      document.getElementById('chatText').value = '';
-      renderChat();
-    }
-
-    function renderChat() {
-      let box = document.getElementById('chatMessagesList');
-      box.innerHTML = chatData.map((c, i) => `
-        <div class="p-2 bg-slate-50 border rounded-xl shadow-2xs">
-          <div class="flex justify-between items-center mb-0.5">
-            <span class="font-bold text-[#064E3B] text-[11px]">${c.name}</span>
-            <span class="text-[9px] text-gray-400">${c.time}</span>
-          </div>
-          <p class="text-gray-800 urdu-font text-xs">${c.text}</p>
-        </div>
-      `).join('');
-    }
 
     // Guides Library Data
     const guides = [
@@ -483,6 +416,7 @@
     ];
 
     let bizData = JSON.parse(localStorage.getItem('flp_biz') || '[{"desc":"آج کی سیل","amt":20000,"type":"in"},{"desc":"مال خرچ","amt":5000,"type":"exp"}]');
+    let chatData = JSON.parse(localStorage.getItem('flp_community_chat') || '[{"name":"ندیم اقبال (ڈویلپر)","text":"خوش آمدید! آپ اس باکس کے ذریعے اپنے خیالات اور مشورے یہاں لکھ سکتے ہیں۔","time":"آج"}]');
 
     function switchLang(l) {
       lang = l;
@@ -493,14 +427,18 @@
 
     function openTool(name) {
       ['budget', 'committee', 'business'].forEach(t => {
-        document.getElementById('tool-' + t).classList.toggle('hidden', t !== name);
+        let el = document.getElementById('tool-' + t);
+        if (el) el.classList.toggle('hidden', t !== name);
       });
       if (name === 'committee') renderComm();
       if (name === 'business') renderBiz();
     }
 
     function closeTools() {
-      ['budget', 'committee', 'business'].forEach(t => document.getElementById('tool-' + t).classList.add('hidden'));
+      ['budget', 'committee', 'business'].forEach(t => {
+        let el = document.getElementById('tool-' + t);
+        if (el) el.classList.add('hidden');
+      });
     }
 
     function calcBudget() {
@@ -512,6 +450,7 @@
 
     function renderComm() {
       let box = document.getElementById('commList');
+      if (!box) return;
       box.innerHTML = commSlots.map((s, i) => `
         <div class="flex items-center justify-between p-1.5 bg-slate-50 border rounded text-[11px]">
           <span class="w-16 font-bold">${s.m}</span>
@@ -544,6 +483,7 @@
       });
       document.getElementById('bizNet').textContent = 'Rs. ' + (totIn - totExp - totDraw).toLocaleString();
       let list = document.getElementById('bizList');
+      if (!list) return;
       list.innerHTML = bizData.map((b, i) => `
         <div class="flex justify-between items-center p-1 bg-slate-50 border rounded text-[11px]">
           <span><b>${b.desc}</b> (${b.type})</span>
@@ -552,9 +492,40 @@
       `).join('');
     }
 
+    function postChatMessage(e) {
+      e.preventDefault();
+      let name = document.getElementById('chatName').value.trim();
+      let text = document.getElementById('chatText').value.trim();
+      if (!name || !text) return;
+
+      let timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      chatData.unshift({ name, text, time: timeNow });
+      localStorage.setItem('flp_community_chat', JSON.stringify(chatData));
+
+      document.getElementById('chatText').value = '';
+      renderChat();
+    }
+
+    function renderChat() {
+      let box = document.getElementById('chatMessagesList');
+      if (!box) return;
+      box.innerHTML = chatData.map((c) => `
+        <div class="p-2 bg-slate-50 border rounded-xl shadow-2xs">
+          <div class="flex justify-between items-center mb-0.5">
+            <span class="font-bold text-[#064E3B] text-[11px]">${c.name}</span>
+            <span class="text-[9px] text-gray-400">${c.time}</span>
+          </div>
+          <p class="text-gray-800 urdu-font text-xs">${c.text}</p>
+        </div>
+      `).join('');
+    }
+
     function renderGuides() {
-      let q = document.getElementById('searchBox').value.toLowerCase();
+      let searchInput = document.getElementById('searchBox');
+      let q = searchInput ? searchInput.value.toLowerCase() : '';
       let box = document.getElementById('guidesList');
+      if (!box) return;
+
       let filtered = guides.filter(g => (lang === 'ur' ? g.tUr + g.sUr : g.tEn + g.sEn).toLowerCase().includes(q));
 
       box.innerHTML = filtered.map(g => `
@@ -587,21 +558,24 @@
         </div>
         ${g.tool ? `<button onclick="closeModal(); openTool('${g.tool}')" class="w-full py-2.5 gold-gradient text-[#0A192F] font-bold text-xs rounded-xl shadow mt-2">اس گائیڈ کا عملی ٹول کھولیں</button>` : ''}
       `;
-      document.getElementById('guideModal').classList.remove('hidden');
+      let modal = document.getElementById('guideModal');
+      if (modal) modal.classList.remove('hidden');
     }
 
     function closeModal() {
-      document.getElementById('guideModal').classList.add('hidden');
+      let modal = document.getElementById('guideModal');
+      if (modal) modal.classList.add('hidden');
     }
 
     function filterGuides() {
       renderGuides();
     }
 
-    // Initial Load
-    loadLiveDates();
-    renderChat();
-    renderGuides();
+    // Safe Initialization on Window Load
+    window.onload = function() {
+      renderChat();
+      renderGuides();
+    };
   </script>
 </body>
 </html>
