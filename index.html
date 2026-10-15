@@ -32,13 +32,12 @@
     .hero-gradient {
       background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%);
     }
-    /* Mobile Touch Optimization */
     button, input, select, textarea {
       touch-action: manipulation;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col pb-12">
+<body class="min-h-screen flex flex-col pb-16">
 
   <!-- Mobile Top Header -->
   <header class="hero-gradient text-white sticky top-0 z-50 shadow-md border-b border-[#D4AF37]">
@@ -63,13 +62,13 @@
   <!-- Hero Section -->
   <section class="hero-gradient text-white pt-5 pb-8 px-4 text-center border-b border-emerald-900">
     <span class="inline-block px-3 py-0.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-semibold mb-2">
-      13 مکمل کتابچے + 3 عملی مالیاتی ٹولز
+      13 مکمل تفصیلی کتابچے + 3 عملی مالیاتی ٹولز
     </span>
     <h2 id="hero-heading" class="text-xl md:text-3xl font-bold mb-2 text-white urdu-text">
       اپنی مالیاتی تعلیم اور بجٹ کو موبائل پر منظم کریں
     </h2>
     <p id="hero-desc" class="text-xs md:text-sm text-gray-200 max-w-xl mx-auto mb-4 urdu-text">
-      بچت، سونا، کمیٹی شیڈول اور دکان کا کھاتہ اب ایک ہی ایپ میں۔
+      بچت، سونا، کمیٹی شیڈول اور دکان کا کھاتہ اب مکمل تفصیلات کے ساتھ ایک ہی ایپ میں۔
     </p>
 
     <div class="max-w-md mx-auto flex gap-2">
@@ -153,11 +152,11 @@
     <!-- Category Filters -->
     <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-4 scrollbar-none">
       <button onclick="setCategory('all')" data-cat="all" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-[#064E3B] text-white shadow whitespace-nowrap">تمام (13)</button>
-      <button onclick="setCategory('budget')" data-cat="budget" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">بجٹ</button>
-      <button onclick="setCategory('invest')" data-cat="invest" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">سونا</button>
-      <button onclick="setCategory('family')" data-cat="family" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">خاندان</button>
-      <button onclick="setCategory('business')" data-cat="business" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">کاروبار</button>
-      <button onclick="setCategory('assets')" data-cat="assets" class="cat-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">پراپرٹی</button>
+      <button onclick="setCategory('budget')" data-cat="budget" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">بجٹ</button>
+      <button onclick="setCategory('invest')" data-cat="invest" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">سونا</button>
+      <button onclick="setCategory('family')" data-cat="family" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">خاندان</button>
+      <button onclick="setCategory('business')" data-cat="business" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">کاروبار</button>
+      <button onclick="setCategory('assets')" data-cat="assets" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap">پراپرٹی</button>
     </div>
 
     <!-- Library Grid -->
@@ -165,14 +164,14 @@
 
   </main>
 
-  <!-- Reader Modal -->
+  <!-- Reader Modal (Full Detailed View) -->
   <div id="reader-modal" class="fixed inset-0 bg-black/80 z-50 hidden overflow-y-auto p-2">
     <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden my-6 border border-[#D4AF37]">
       <div class="hero-gradient text-white px-4 py-3 flex items-center justify-between sticky top-0 z-10">
         <h3 id="reader-title" class="text-sm font-bold text-[#F3E5AB]"></h3>
         <button onclick="closeReader()" class="w-8 h-8 rounded-lg bg-white/20 text-white font-bold text-sm">✕</button>
       </div>
-      <div id="reader-body" class="p-4 space-y-4 text-xs md:text-sm"></div>
+      <div id="reader-body" class="p-5 space-y-4 text-xs md:text-sm"></div>
     </div>
   </div>
 
@@ -205,20 +204,234 @@
   </footer>
 
   <script>
+    // 13 Full Detailed Bilingual Guides Library
     const defaultDocuments = [
-      { id: '1', category: 'budget', categoryLabelUr: 'بجٹ اور بچت', categoryLabelEn: 'Budgeting', titleUr: '1. 50/30/20 بجٹ گائیڈ: آمدنی منظم کرنے کا اصول', titleEn: '1. The 50/30/20 Budgeting Rule', summaryUr: 'آمدنی کو تین حصوں میں تقسیم کر کے قرض سے بچیں اور بچت کریں۔', summaryEn: 'Divide income into Needs (50%), Wants (30%), and Savings (20%).', toolLink: 'budget', toolLabelUr: '🧮 بجٹ کیلکولیٹر', contentUr: ['50% بنیادی ضروریات پر خرچ کریں۔', '30% ذاتی خواہشات پر۔', '20% فوری طور پر بچت کریں۔'], contentEn: ['50% for Needs.', '30% for Wants.', '20% for Savings.'] },
-      { id: '2', category: 'assets', categoryLabelUr: 'ریئل اسٹیٹ', categoryLabelEn: 'Real Estate', titleUr: '2. گھر یا پلاٹ خریدنے کے 5 سنہری مالیاتی اصول', titleEn: '2. 5 Golden Rules Before Buying Real Estate', summaryUr: 'پراپرٹی خریدتے وقت قانونی تصدیق اور بجٹ کا حساب۔', summaryEn: 'Legal verification and budget ratios before buying property.', contentUr: ['تمام پونجی ایک پلاٹ میں نہ پھنسائیں۔', 'NOC کی تصدیق لازمی کریں۔'], contentEn: ['Never lock 100% net worth in a single plot.', 'Verify NOC status.'] },
-      { id: '3', category: 'budget', categoryLabelUr: 'ایکشن پلان', categoryLabelEn: 'Action Plan', titleUr: '3. 30 دن کا فنانشل ایکشن پلان اور ورک بک', titleEn: '3. 30-Day Financial Reset Plan', summaryUr: 'اخراجات کو ٹریک کرنے اور فالتو خرچ روکنے کا شیڈول۔', summaryEn: 'A 4-week practical roadmap to audit expenses.', contentUr: ['ہفتہ 1: اخراجات کا آڈٹ کریں۔', 'ہفتہ 2: غیر ضروری خرچ کم کریں۔'], contentEn: ['Week 1: Audit expenses.', 'Week 2: Cut lifestyle inflation.'] },
-      { id: '4', category: 'invest', categoryLabelUr: 'سونا اور انویسٹمنٹ', categoryLabelEn: 'Gold & Investing', titleUr: '4. مہنگائی کا توڑ: سونا اور حلال سرمایہ کاری', titleEn: '4. Beating Inflation: Gold & Halal Investing', summaryUr: 'خالص سونا اور اسلامک فنڈز میں سرمایہ کاری کے اصول۔', summaryEn: 'Protect purchasing power using gold and Islamic funds.', contentUr: ['24K سونا بسکٹ یا سکے خریدیں۔', 'منی مارکیٹ فنڈز استعمال کریں۔'], contentEn: ['Buy 24K certified gold coins.', 'Use Islamic money market funds.'] },
-      { id: '5', category: 'budget', categoryLabelUr: 'کمیٹی پلان', categoryLabelEn: 'Committee Plan', titleUr: '5. 12 ماہ کا کمیٹی (BC) شیڈول اور ریکارڈ', titleEn: '5. 12-Month Committee Schedule', summaryUr: 'کمیٹی ڈالنے کے فوائد اور یکمشت رقم کا استعمال۔', summaryEn: 'Organize a secure monthly savings committee.', toolLink: 'committee', toolLabelUr: '🗓️ کمیٹی ٹول', contentUr: ['قابلِ اعتماد ممبران کا انتخاب کریں۔', 'مقصد طے کر کے رقم لگائیں۔'], contentEn: ['Vetting reliable members.', 'Purpose-driven payouts.'] },
-      { id: '6', category: 'family', categoryLabelUr: 'ایمرجنسی فنڈ', categoryLabelEn: 'Emergency Shield', titleUr: '6. 6 ماہ کا ایمرجنسی فنڈ بنانے کی گائیڈ', titleEn: '6. Building a 6-Month Emergency Fund', summaryUr: 'ناگہانی بحران سے بچنے کے لیے حفاظتی فنڈ۔', summaryEn: 'Store living expenses for unexpected emergencies.', contentUr: ['3 سے 6 ماہ کا خرچ الگ رکھیں۔', 'اسے روزمرہ خرچ میں نہ لائیں۔'], contentEn: ['Save 3-6 months of expenses.', 'Keep it in a separate account.'] },
-      { id: '7', category: 'budget', categoryLabelUr: 'قرض سے نجات', categoryLabelEn: 'Debt Freedom', titleUr: '7. قرض اور قسطوں کے جال سے نکلنے کا طریقہ', titleEn: '7. Debt Freedom Roadmap', summaryUr: 'سنو بال طریقے سے قرض ختم کرنے کی حکمتِ عملی۔', summaryEn: 'Pay off personal loans using the Debt Snowball.', contentUr: ['سب سے چھوٹے قرض کو پہلے ختم کریں۔', 'نیا سودی قرض ہرگز نہ لیں۔'], contentEn: ['Attack the smallest debt first.', 'Avoid new high-markup loans.'] },
-      { id: '8', category: 'business', categoryLabelUr: 'اضافی آمدنی', categoryLabelEn: 'Income Skills', titleUr: '8. ڈیجیٹل اسکلز اور سائیڈ بزنس گائیڈ', titleEn: '8. Multiple Income Streams', summaryUr: 'موبائل اور اے آئی ٹولز سے حلال سائیڈ انکم۔', summaryEn: 'Build secondary revenue streams.', contentUr: ['ہائی انکم اسکلز سیکھیں۔', 'آن لائن سروسز دیں۔'], contentEn: ['Master high-demand skills.', 'Offer micro-services.'] },
-      { id: '9', category: 'family', categoryLabelUr: 'بچوں کا مستقبل', categoryLabelEn: 'Children Fund', titleUr: '9. بچوں کی اعلیٰ تعلیم اور شادی فنڈ', titleEn: '9. Children Education & Marriage Fund', summaryUr: 'طویل مدتی کمپاؤنڈنگ سے فنڈ تیار کریں۔', summaryEn: 'Prepare for future family milestones.', contentUr: ['شروعات جلد کریں۔', 'تعلیم کو ترجیح دیں۔'], contentEn: ['Start early with compounding.', 'Prioritize education.'] },
-      { id: '10', category: 'assets', categoryLabelUr: 'گاڑی کے اصول', categoryLabelEn: 'Vehicle Rules', titleUr: '10. گاڑی کی خریداری اور مینٹیننس فارمولا', titleEn: '10. Smart Vehicle Purchase Rules', summaryUr: 'استطاعت کے مطابق گاڑی اور فیول بجٹ۔', summaryEn: 'Budgeting for fuel and maintenance.', contentUr: ['سٹیٹس کے بجائے سہولت دیکھیں۔', 'ماہانہ مینٹیننس فنڈ رکھیں۔'], contentEn: ['Utility over status.', 'Keep a maintenance fund.'] },
-      { id: '11', category: 'business', categoryLabelUr: 'ٹیکس فائلر', categoryLabelEn: 'Tax Filer', titleUr: '11. پاکستان میں ٹیکس فائلر بننے کے فوائد', titleEn: '11. Active Taxpayer Benefits', summaryUr: 'ودہولڈنگ ٹیکس سے بچنے کی رہنمائی۔', summaryEn: 'Save heavy withholding taxes.', contentUr: ['سالانہ گوشوارے جمع کروائیں۔', 'اثاثے ڈیکلیئر کریں۔'], contentEn: ['File annual returns.', 'Document wealth.'] },
-      { id: '12', category: 'family', categoryLabelUr: 'ریٹائرمنٹ', categoryLabelEn: 'Retirement', titleUr: '12. بڑھاپے کی معاشی خود مختاری اور پنشن', titleEn: '12. Retirement Independence Plan', summaryUr: 'ذاتی پنشن فنڈ اور رینٹل انویسٹمنٹ۔', summaryEn: 'Build your own retirement corpus.', contentUr: ['آمدنی کا 10% الگ رکھیں۔', 'کرایہ دینے والے اثاثے بنائیں۔'], contentEn: ['Dedicate 10% for retirement.', 'Acquire rental assets.'] },
-      { id: '13', category: 'business', categoryLabelUr: 'دکان کا کھاتہ', categoryLabelEn: 'Small Business', titleUr: '13. چھوٹے کاروبار اور دکان کا روزانہ کھاتہ', titleEn: '13. Small Business Bookkeeping', summaryUr: 'ذاتی اور کاروباری کیش کو الگ رکھنا۔', summaryEn: 'Separating personal and business cash.', toolLink: 'business', toolLabelUr: '📒 کاروباری کھاتہ', contentUr: ['گلے سے گھر کا خرچ نہ نکالیں۔', 'اپنی تنخواہ طے کریں۔'], contentEn: ['Never mix pockets.', 'Pay yourself a fixed salary.'] }
+      {
+        id: '1', category: 'budget', categoryLabelUr: 'بجٹ اور بچت', categoryLabelEn: 'Budgeting',
+        titleUr: '1. 50/30/20 بجٹ گائیڈ: ماہانہ آمدنی کو منظم کرنے کا سنہری اصول',
+        titleEn: '1. The 50/30/20 Budget Rule: Master Your Monthly Income',
+        summaryUr: 'اپنی ماہانہ آمدنی کو تین حصوں میں تقسیم کر کے قرض سے نجات پائیں اور ہر ماہ باقاعدگی سے بچت کریں۔',
+        summaryEn: 'Divide your monthly income into Needs (50%), Wants (30%), and Savings (20%) for financial stability.',
+        toolLink: 'budget', toolLabelUr: '🧮 بجٹ کیلکولیٹر',
+        contentUr: [
+          '• 50 فیصد بنیادی ضروریات (Needs): آپ کی کل ماہانہ آمدنی کا آدھا حصہ ان ناگزیر اخراجات پر لگنا چاہیے جن کے بغیر گزارا ممکن نہیں، جیسے گھر کا کرایہ، راشن، بجلی، گیس اور پانی کے بل، بچوں کی اسکول فیس اور ضروری ادویات۔',
+          '• 30 فیصد ذاتی خواہشات (Wants): آمدنی کا تیس فیصد حصہ آپ کے لائف اسٹائل، باہر کھانا کھانے، نئے کپڑے خریدنے، تفریح اور شوق کے لیے مختص ہونا چاہیے۔ مہنگائی کے دور میں اس حصے کو کنٹرول کر کے بچت میں اضافہ کیا جا سکتا ہے۔',
+          '• 20 فیصد بچت اور سرمایہ کاری (Savings): تنخواہ ملتے ہی سب سے پہلے 20 فیصد رقم الگ کر لیں۔ اس سے 3 سے 6 ماہ کا ایمرجنسی فنڈ بنائیں اور پھر حلال ذرائع جیسے سونا یا اسلامک فنڈز میں سرمایہ کاری کریں۔'
+        ],
+        contentEn: [
+          '• 50% Essential Needs: Allocate half of your net monthly income to housing, groceries, utilities, school fees, and basic healthcare.',
+          '• 30% Flexible Wants: Limit discretionary lifestyle spending—dining out, shopping, and entertainment—to no more than 30%.',
+          '• 20% Savings & Wealth Building: Pay yourself first by transferring 20% immediately into an emergency fund and halal investments.'
+        ]
+      },
+      {
+        id: '2', category: 'assets', categoryLabelUr: 'ریئل اسٹیٹ', categoryLabelEn: 'Real Estate Rules',
+        titleUr: '2. گھر یا پلاٹ خریدنے کے 5 سنہری مالیاتی اصول',
+        titleEn: '2. 5 Golden Financial Rules Before Buying Real Estate',
+        summaryUr: 'پاکستان میں پراپرٹی خریدتے وقت قانونی تصدیق، NOC اور اپنی استطاعت کا درست حساب لگانے کا مکمل کتابچہ۔',
+        summaryEn: 'Essential legal verification, liquidity ratios, and cost evaluation rules before buying property.',
+        contentUr: [
+          '• لیکویڈیٹی کا توازن: اپنی زندگی کی تمام جمع پونجی ایک ہی غیر آباد پلاٹ میں مت پھنسائیں جہاں سے کوئی ماہانہ آمدنی (کرایہ) نہ آتی ہو۔ ہمیشہ ایمرجنسی کیش ہاتھ میں رکھیں۔',
+          '• قانونی تصدیق (NOC اور کاغذات): کسی بھی فائل یا پلاٹ کی خریداری سے پہلے متعلقہ ترقیاتی ادارے (CDA, LDA, RDA وغیرہ) سے NOC اور ملکیت کے اصل کاغذات کی تصدیق کریں۔',
+          '• اضافی کلوزنگ اخراجات: پراپرٹی کی قیمت کے علاوہ ٹرانسفر فیس، اسٹامپ ڈیوٹی، ٹیکس اور مرمت کے لیے ہمیشہ 8% سے 10% اضافی رقم کا بندوبست رکھیں۔'
+        ],
+        contentEn: [
+          '• Liquidity Balance: Never lock 100% of your net worth into a single non-cash-flowing plot; maintain a cash buffer.',
+          '• Legal Due Diligence: Verify NOC approval from local development authorities and inspect original title deeds.',
+          '• Hidden Closing Costs: Factor in 8% to 10% above the property price for stamp duty, taxes, and transfer fees.'
+        ]
+      },
+      {
+        id: '3', category: 'budget', categoryLabelUr: 'ایکشن پلان', categoryLabelEn: 'Action Plan',
+        titleUr: '3. 30 دن کا فنانشل ایکشن پلان: مالی پریشانی سے معاشی استحکام تک',
+        titleEn: '3. 30-Day Financial Reset & Action Plan Workbook',
+        summaryUr: 'صرف 30 دنوں میں اپنے اخراجات کو ٹریک کرنے، فالتو خرچ روکنے اور بچت کا نظام بنانے کا عملی شیڈول۔',
+        summaryEn: 'A structured 4-week roadmap to audit expenses, eliminate debt leaks, and automate monthly savings.',
+        contentUr: [
+          '• ہفتہ 1 (آمدنی اور اخراجات کا آڈٹ): ڈائری یا موبائل ایپ میں روزانہ کا ایک ایک روپیہ لکھیں تاکہ معلوم ہو سکے کہ پیسہ کہاں اور کیسے ضائع ہو رہا ہے۔',
+          '• ہفتہ 2 (غیر ضروری اخراجات کی کٹوتی): ایسے تمام اخراجات کی فہرست بنائیں جو محض دکھاوے یا عادت کے طور پر ہو رہے ہیں اور انہیں کم از کم 25 فیصد تک کم کریں۔',
+          '• ہفتہ 3 (کمیٹی اور ایمرجنسی فنڈ): ماہانہ کمیٹی یا الگ بینک اکاؤنٹ کے ذریعے ہر مہینے کی پہلی تاریخ کو بچت کی رقم مختص کریں۔',
+          '• ہفتہ 4 (مہنگائی سے بچاؤ): اپنی بچت کو محض کیش رکھنے کے بجائے محفوظ حلال اثاثوں میں منتقل کریں۔'
+        ],
+        contentEn: [
+          '• Week 1 (Expense Audit): Track every single rupee spent for 7 days to identify invisible money leaks.',
+          '• Week 2 (Cutting Lifestyle Inflation): Eliminate impulse purchases and reduce non-essential spending by 25%.',
+          '• Week 3 (Automating Savings): Set up a dedicated savings bucket or structured monthly committee.',
+          '• Week 4 (Asset Protection): Convert idle cash into inflation-resistant halal assets.'
+        ]
+      },
+      {
+        id: '4', category: 'invest', categoryLabelUr: 'سونا اور انویسٹمنٹ', categoryLabelEn: 'Gold & Investing',
+        titleUr: '4. مہنگائی کا مقابلہ: سونا اور حلال سرمایہ کاری کی بنیادی گائیڈ',
+        titleEn: '4. Beating Inflation: Gold & Halal Investment Guide',
+        summaryUr: 'نقد رقم کی گرتی ہوئی قدر کو بچانے کے لیے خالص سونے (24K) اور شریعہ کمپلائنٹ فنڈز میں سرمایہ کاری کے اصول۔',
+        summaryEn: 'Protect your purchasing power from currency depreciation using physical 24K gold and Islamic mutual funds.',
+        contentUr: [
+          '• کیش کی گرتی ہوئی قدر: گھر میں یا عام کرنٹ اکاؤنٹ میں پڑا ہوا کیش ہر سال مہنگائی کی وجہ سے اپنی قوتِ خرید کھو دیتا ہے۔',
+          '• خالص سونا (24K Gold Bars/Coins): طویل مدتی بچت کے لیے زیورات (جن پر بنائی کی کٹوتی ہوتی ہے) کے بجائے ہمیشہ 24 قیراط سونے کے تصدیق شدہ بسکٹ یا سکے خریدیں۔',
+          '• اسلامک میوچل فنڈز: شریعہ کمپلائنٹ منی مارکیٹ یا انکم فنڈز کے ذریعے حلال منافع کمایا جا سکتا ہے جہاں روزانہ کی بنیاد پر رقم نکلوانے کی سہولت بھی ہوتی ہے۔'
+        ],
+        contentEn: [
+          '• Cash Erosion: Idle cash loses purchasing power every year due to inflation.',
+          '• Smart Gold Accumulation: Buy 24K certified gold bars or coins rather than jewelry to avoid making charges.',
+          '• Shariah-Compliant Mutual Funds: Low-risk Islamic money market funds offer halal returns with high liquidity.'
+        ]
+      },
+      {
+        id: '5', category: 'budget', categoryLabelUr: 'کمیٹی پلان', categoryLabelEn: 'Committee Plan',
+        titleUr: '5. کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ کا مکمل پلان',
+        titleEn: '5. Structured Family Committee (ROSCA) & 12-Month Savings Plan',
+        summaryUr: 'پاکستان میں کمیٹی ڈالنے کے فوائد، ریکارڈ رکھنے اور کمیٹی کی یکمشت رقم سے اثاثہ بنانے کا طریقہ۔',
+        summaryEn: 'How to organize a secure 12-member monthly savings committee, maintain records, and convert payouts into assets.',
+        toolLink: 'committee', toolLabelUr: '🗓️ کمیٹی ٹول',
+        contentUr: [
+          '• قابلِ اعتماد ممبران کا انتخاب: کمیٹی ہمیشہ ایسے 10 یا 12 ذمہ دار افراد یا خاندان کے ممبران کے ساتھ ڈالیں جن کا لین دین اور وقت کی پابندی آزمودہ ہو۔',
+          '• تحریری شیڈول اور ریکارڈ: پہلے دن ہی تمام 12 مہینوں کی باری طے کر کے تحریری چارٹ بنائیں اور ہر ماہ کی وصولی کا ریکارڈ رکھیں۔',
+          '• مقصد کا تعین: کمیٹی کھلنے سے پہلے طے کریں کہ یہ رقم کہاں لگے گی (مثلاً والدہ کی ضرورت، سونا خریدنا، یا قرض اتارنا) تاکہ رقم ضائع نہ ہو۔'
+        ],
+        contentEn: [
+          '• Vetting Members: Only join or manage a 12-month committee with disciplined family members or colleagues.',
+          '• Written Payout Ledger: Document the entire 12-month schedule upfront with clear payout months.',
+          '• Purpose-Driven Payouts: Assign a clear goal to your payout slot before the money arrives.'
+        ]
+      },
+      {
+        id: '6', category: 'family', categoryLabelUr: 'ایمرجنسی فنڈ', categoryLabelEn: 'Emergency Shield',
+        titleUr: '6. ایمرجنسی فنڈ: اچانک مالی بحران سے بچاؤ کی ناقابلِ تسخیر ڈھال',
+        titleEn: '6. Building a 6-Month Emergency Fund: Your Financial Shield',
+        summaryUr: 'ناگہانی بیماری، نوکری چھوٹنے یا کاروباری نقصان کے وقت قرض مانگنے سے بچنے کے لیے حفاظتی فنڈ بنانے کا فارمولا۔',
+        summaryEn: 'Step-by-step formula to calculate, build, and store 3 to 6 months of living expenses for unexpected emergencies.',
+        contentUr: [
+          '• ایمرجنسی فنڈ کیا ہے؟ یہ وہ مخصوص رقم ہے جو صرف اچانک آنے والی بڑی پریشانی (ہسپتال کا خرچ، روزگار کا رکنا یا فوری مرمت) کے لیے رکھی جاتی ہے۔',
+          '• 3 سے 6 ماہ کا فارمولا: اپنے گھر کے 1 ماہ کے لازمی اخراجات کا حساب لگائیں اور کم از کم 3 سے 6 ماہ کے اخراجات کے برابر رقم جمع کریں۔',
+          '• الگ اکاؤنٹ میں محفوظ ذخیرہ: اس رقم کو روزمرہ کے اے ٹی ایم کارڈ والے اکاؤنٹ سے الگ رکھیں تاکہ شاپنگ میں خرچ نہ ہو۔'
+        ],
+        contentEn: [
+          '• True Emergencies Only: Reserved strictly for medical crises, sudden job loss, or urgent repairs.',
+          '• The 3-to-6 Month Formula: Multiply core monthly survival expenses by 3 to 6.',
+          '• Separate Storage: Keep this fund in a separate account without a daily shopping debit card.'
+        ]
+      },
+      {
+        id: '7', category: 'budget', categoryLabelUr: 'قرض سے نجات', categoryLabelEn: 'Debt Freedom',
+        titleUr: '7. قرض سے نجات کا عملی منصوبہ: ادھار اور قسطوں کے جال سے نکلیں',
+        titleEn: '7. Debt Freedom Roadmap: Eliminate Loans & Installment Traps',
+        summaryUr: 'کریڈٹ کارڈز، مہنگی قسطوں اور ذاتی قرضوں کو مرحلہ وار ختم کر کے ذہنی سکون حاصل کرنے کی حکمتِ عملی۔',
+        summaryEn: 'A proven mathematical system (Debt Snowball) to pay off personal loans and avoid high-markup installment traps.',
+        contentUr: [
+          '• قرضوں کی تحریری فہرست: اپنے تمام چھوٹے بڑے قرضے کاغذ پر لکھیں اور سب سے چھوٹے قرض سے سب سے بڑے قرض تک ترتیب دیں۔',
+          '• سنو بال طریقہ کار (Debt Snowball): سب سے پہلے سب سے چھوٹے قرض کو اضافی بچت ڈال کر ختم کریں، پھر اس کی قسط اگلے قرض میں شامل کریں۔',
+          '• نیا سودی قرض بند: مہنگی قسطوں پر الیکٹرانکس یا لائف اسٹائل کی چیزیں خریدنا بند کریں۔'
+        ],
+        contentEn: [
+          '• Complete Debt Inventory: List every outstanding loan from smallest balance to largest balance.',
+          '• The Debt Snowball Strategy: Attack the smallest debt first; once cleared, roll that payment into the next debt.',
+          '• Stop Borrowing: Freeze credit card usage and avoid buying lifestyle items on high-markup installments.'
+        ]
+      },
+      {
+        id: '8', category: 'business', categoryLabelUr: 'اضافی آمدنی', categoryLabelEn: 'Income & Digital Skills',
+        titleUr: '8. آمدنی بڑھانے کے طریقے: ڈیجیٹل اسکلز اور سائیڈ بزنس گائیڈ',
+        titleEn: '8. Multiple Income Streams: Digital Skills & Side Hustles',
+        summaryUr: 'صرف بچت کافی نہیں! اپنی ماہانہ آمدنی بڑھانے کے لیے موبائل، اے آئی (AI) ٹولز اور فری لانسنگ سے حلال کمائی کے راستے۔',
+        summaryEn: 'How to increase your active and passive earning power through digital skills, AI workflows, and micro-services.',
+        contentUr: [
+          '• بچت کی حد بمقابلہ آمدنی کی وسعت: اخراجات ایک حد تک ہی کم ہو سکتے ہیں، لیکن ہنر (Skills) بڑھا کر آمدنی کئی گنا بڑھائی جا سکتی ہے۔',
+          '• ہائی انکم ڈیجیٹل اسکلز: گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ، Flutter ایپ ڈویلپمنٹ اور AI ٹولز سیکھ کر مقامی و آن لائن کلائنٹس کو سروسز دیں۔',
+          '• تعلیمی کنٹینٹ کریئشن: اپنے علم کو یوٹیوب، سوشل میڈیا اور ڈیجیٹل بکس کے ذریعے لوگوں تک پہنچا کر مستقل باعزت ذریعہ آمدن بنائیں۔'
+        ],
+        contentEn: [
+          '• Earning Ceiling vs. Saving Floor: Skill-based income has no upper limit compared to cutting expenses.',
+          '• High-Demand Skills: Master Graphic Design, AI Workflow Automation, or App Development.',
+          '• Educational Content Creation: Share structured knowledge across platforms to build digital revenue.'
+        ]
+      },
+      {
+        id: '9', category: 'family', categoryLabelUr: 'بچوں کا مستقبل', categoryLabelEn: 'Children Education Fund',
+        titleUr: '9. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی',
+        titleEn: '9. Children’s Higher Education & Marriage Fund Blueprint',
+        summaryUr: '10 سے 15 سال بعد آنے والے بڑے اخراجات کے لیے آج سے ماہانہ تھوڑی بچت کر کے بغیر قرض لیے فنڈ تیار کرنے کا طریقہ۔',
+        summaryEn: 'How to prepare for major future family milestones over 10–15 years without falling into debt.',
+        contentUr: [
+          '• وقت کی طاقت (Start Early): بچے کی پیدائش یا اسکول کے آغاز سے ہی ہر ماہ ایک مقررہ رقم اس کے مستقبل کے نام پر الگ کرنا شروع کریں۔',
+          '• کیش کے بجائے بڑھتے ہوئے اثاثے: 10 یا 15 سال کی طویل مدت کے لیے پیسہ کیش رکھنے کے بجائے سونے کے سکے یا اسلامک فنڈز میں رکھیں۔',
+          '• تعلیم کو اولیت دیں: مہنگے جہیز پر قرض لینے کے بجائے بچوں کی معیاری تعلیم اور ہنر مندی پر سرمایہ کاری کریں۔'
+        ],
+        contentEn: [
+          '• Start Early with Small Amounts: Leverage 10–15 years of compounding.',
+          '• Inflation-Protected Growth: Store long-term child funds in 24K gold coins or Shariah-compliant funds.',
+          '• Prioritize Skills Over Lavish Weddings: Invest in education rather than borrowing for ceremonies.'
+        ]
+      },
+      {
+        id: '10', category: 'assets', categoryLabelUr: 'گاڑی کے اصول', categoryLabelEn: 'Vehicle Financial Rules',
+        titleUr: '10. گاڑی یا موٹرسائیکل کی خریداری، فیول اور مرمت کا مالیاتی فارمولا',
+        titleEn: '10. Smart Vehicle Purchase, Fuel & Maintenance Financial Rules',
+        summaryUr: 'اپنی استطاعت کے مطابق گاڑی خریدنے، مہنگی بینک لیزنگ سے بچنے اور ماہانہ پیٹرول و سپیئر پارٹس کا بجٹ بنانے کے اصول۔',
+        summaryEn: 'Financial ratios for buying a vehicle in Pakistan, avoiding lease traps, and budgeting for fuel and auto parts.',
+        contentUr: [
+          '• گاڑی سہولت ہے: ذاتی گاڑی ہر ماہ پیٹرول، آئل اور مرمت مانگتی ہے، اس لیے دکھاوے کے لیے استطاعت سے بڑی گاڑی قرض لے کر مت خریدیں۔',
+          '• مقامی پارٹس اور ری سیل: ہمیشہ ایسی گاڑی منتخب کریں جس کے سپیئر پارٹس مقامی مارکیٹ میں مناسب قیمت پر مل سکیں اور ری سیل آسان ہو۔',
+          '• ماہانہ مینٹیننس فنڈ: پیٹرول کے علاوہ ہر ماہ 3,000 سے 5,000 روپے گاڑی کے مینٹیننس فنڈ میں الگ رکھیں۔'
+        ],
+        contentEn: [
+          '• Utility Over Status: A vehicle consumes monthly cash; never take high-interest loans for a status car.',
+          '• Parts Availability & Liquidity: Choose models with affordable spare parts and strong resale value.',
+          '• Maintenance Sinking Fund: Set aside PKR 3,000–5,000 monthly specifically for tires, oil, and repairs.'
+        ]
+      },
+      {
+        id: '11', category: 'business', categoryLabelUr: 'ٹیکس فائلر', categoryLabelEn: 'Tax Filing Basics',
+        titleUr: '11. پاکستان میں ٹیکس فائلر (Active Taxpayer) بننے کے مالی فوائد',
+        titleEn: '11. Financial Benefits of Becoming an Active Tax Filer in Pakistan',
+        summaryUr: 'نان فائلر پر لگنے والے دگنے ودہولڈنگ ٹیکس سے بچنے، بینک ٹرانزیکشنز اور پراپرٹی کی خریداری میں قانونی بچت کا طریقہ۔',
+        summaryEn: 'Understand how Active Taxpayer List (ATL) status saves you heavy withholding taxes on banking and property.',
+        contentUr: [
+          '• فائلر بمقابلہ نان فائلر: نان فائلر ہونے کی صورت میں بینک منافع، گاڑی کی رجسٹریشن اور پراپرٹی پر دگنا یا تگنا ودہولڈنگ ٹیکس کاٹا جاتا ہے۔',
+          '• ویلتھ اسٹیٹمنٹ (اثاثوں کا ریکارڈ): سالانہ گوشوارے جمع کروانے سے آپ کی حلال کمائی، سونا اور بچت قانونی طور پر ڈیکلیئر ہو جاتی ہے۔',
+          '• زیرو ٹیکس ریٹرن: اگر آپ کی آمدنی ٹیکس کی حد سے کم ہے تب بھی ریٹرن فائل کر کے فائلر (ATL) بنیں اور کٹوتی سے بچیں۔'
+        ],
+        contentEn: [
+          '• Avoiding Withholding Taxes: Non-filers pay 100% to 200% higher tax on property and banking.',
+          '• Documented Wealth Trail: Filing an annual Wealth Statement legally documents your savings and capital.',
+          '• Nil-Tax Filing Advantage: Even if your income is below the taxable limit, filing places you on the ATL.'
+        ]
+      },
+      {
+        id: '12', category: 'family', categoryLabelUr: 'ریٹائرمنٹ', categoryLabelEn: 'Retirement & Pension',
+        titleUr: '12. ریٹائرمنٹ اور بڑھاپے کی معاشی خود مختاری: پنشن فنڈ کیسے بنائیں؟',
+        titleEn: '12. Retirement & Golden Years Financial Independence Plan',
+        summaryUr: 'پرائیویٹ ملازمین، فری لانسرز اور کاروباری افراد کے لیے اپنی جوانی میں ہی بڑھاپے کا ذاتی پنشن فنڈ تیار کرنے کا لائحہ عمل۔',
+        summaryEn: 'How private employees, freelancers, and self-employed individuals can build their own halal retirement corpus.',
+        contentUr: [
+          '• اپنی پنشن خود بنائیں: پرائیویٹ نوکری یا کاروبار کرنے والے اپنی ماہانہ کمائی کا کم از کم 10 فیصد حصہ ریٹائرمنٹ فنڈ کے لیے الگ کریں۔',
+          '• کرایہ دینے والے اثاثے: ریٹائرمنٹ کی عمر تک کم از کم ایک ایسا چھوٹا کمرشل یونٹ یا دکان بنائیں جس کا ماہانہ کرایہ بڑھاپے کا سہارا بنے۔',
+          '• اسلامک پنشن اسکیم (VPS): منظور شدہ شریعہ کمپلائنٹ پنشن فنڈز میں طویل مدتی سرمایہ کاری سے حلال منافع حاصل کریں۔'
+        ],
+        contentEn: [
+          '• Self-Funded Pension: Dedicate at least 10% of monthly income toward a personal retirement fund.',
+          '• Cash-Flowing Assets: Build or acquire rental assets that generate passive cashflow in old age.',
+          '• Islamic Voluntary Pension Schemes (VPS): Use Shariah-compliant VPS accounts for long-term compounding.'
+        ]
+      },
+      {
+        id: '13', category: 'business', categoryLabelUr: 'دکان کا کھاتہ', categoryLabelEn: 'Small Business Cashflow',
+        titleUr: '13. چھوٹے کاروبار اور دکان کے مالیاتی اصول: ذاتی اور کاروباری پیسہ الگ رکھیں',
+        titleEn: '13. Small Business Bookkeeping: Separating Personal & Business Cash',
+        summaryUr: 'جنرل آرڈر سپلائی، فوڈ پوائنٹ یا کسی بھی چھوٹے کاروبار کو نقصان سے بچانے اور روزانہ کا کھاتہ رکھنے کے سنہری اصول۔',
+        summaryEn: 'Essential cashflow rules for small businesses, shops, and order suppliers to prevent capital erosion and track true profit.',
+        toolLink: 'business', toolLabelUr: '📒 کاروباری کھاتہ',
+        contentUr: [
+          '• ذاتی اور کاروباری گلہ الگ رکھیں: دکان کے گلے سے براہِ راست گھر کا خرچ نکالنے سے اصل منافع اور سرمائے کا فرق ختم ہو جاتا ہے۔',
+          '• اپنی مقررہ تنخواہ لیں: اپنے کاروبار سے اپنے گھر کے خرچ کے لیے ماہانہ ایک مقررہ رقم لیں اور باقی منافع کاروبار بڑھانے میں لگائیں۔',
+          '• ادھار پر کنٹرول: آرڈر سپلائی یا دکانداری میں غیر دستاویزی ادھار سے بچیں اور ہمیشہ تحریری بل اور وصولی کی تاریخ متعین کریں۔'
+        ],
+        contentEn: [
+          '• Never Mix Pockets: Drawing casual household expenses directly from the shop register destroys working capital.',
+          '• Pay Yourself a Fixed Salary: Take a fixed monthly drawings amount and reinvest surplus business profits.',
+          '• Strict Credit Control: Avoid unrecorded customer credit; always issue written invoices with clear dates.'
+        ]
+      }
     ];
 
     let currentPortal = 'ur';
@@ -226,7 +439,7 @@
     let savedIds = JSON.parse(localStorage.getItem('flp_saved') || '[]');
     let customDocs = JSON.parse(localStorage.getItem('flp_custom_docs') || '[]');
     let committeeData = JSON.parse(localStorage.getItem('flp_committee_mob') || JSON.stringify([
-      { month: 'اگست 2026', member: 'والدہ محترمہ', paid: true },
+      { month: 'اگست 2026', member: ،ایڈمن', paid: true },
       { month: 'ستمبر 2026', member: 'ایمرجنسی فنڈ', paid: true },
       { month: 'اکتوبر 2026', member: 'گھر کا خرچ', paid: false },
       { month: 'نومبر 2026', member: 'کاروبار', paid: false },
@@ -340,7 +553,7 @@
     function setCategory(cat) {
       currentCategory = cat;
       document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.className = btn.dataset.cat === cat ? 'cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-[#064E3B] text-white shadow whitespace-nowrap' : 'cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap';
+        btn.className = btn.dataset.cat === cat ? 'cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#064E3B] text-white shadow whitespace-nowrap' : 'cat-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white text-gray-700 border whitespace-nowrap';
       });
       renderLibrary();
     }
@@ -357,13 +570,13 @@
       grid.innerHTML = docs.map(doc => `
         <div onclick="openReader('${doc.id}')" class="bg-white rounded-2xl border border-gray-200 p-4 shadow-sm active:scale-[0.99] transition cursor-pointer">
           <div class="flex items-center justify-between mb-2">
-            <span class="px-2 py-0.5 rounded bg-emerald-900 text-emerald-100 text-[10px] font-bold">${doc.categoryLabelUr || 'موضوع'}</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-900 text-emerald-100 text-[10px] font-bold">${currentPortal === 'en' ? doc.categoryLabelEn : doc.categoryLabelUr}</span>
             <span class="text-[10px] text-gray-400">PDF Guide</span>
           </div>
-          <h3 class="text-sm font-bold text-[#0A192F] urdu-text mb-1">${doc.titleUr}</h3>
-          <p class="text-[11px] text-gray-600 urdu-text mb-3">${doc.summaryUr}</p>
+          <h3 class="text-sm font-bold text-[#0A192F] ${currentPortal === 'en' ? 'eng-text' : 'urdu-text'} mb-1">${currentPortal === 'en' ? doc.titleEn : doc.titleUr}</h3>
+          <p class="text-[11px] text-gray-600 ${currentPortal === 'en' ? 'eng-text' : 'urdu-text'} mb-3">${currentPortal === 'en' ? doc.summaryEn : doc.summaryUr}</p>
           <div class="flex items-center justify-between pt-2 border-t text-xs">
-            <span class="text-[#064E3B] font-bold">مکمل گائیڈ پڑھیں ←</span>
+            <span class="text-[#064E3B] font-bold">${currentPortal === 'en' ? 'Read Full Guide →' : 'مکمل گائیڈ پڑھیں ←'}</span>
             ${doc.toolLink ? `<button onclick="event.stopPropagation(); openTool('${doc.toolLink}')" class="px-2 py-1 rounded bg-amber-100 text-amber-950 font-bold text-[10px]">${doc.toolLabelUr}</button>` : ''}
           </div>
         </div>
@@ -373,15 +586,19 @@
     function openReader(id) {
       const doc = getAllDocs().find(d => d.id === id);
       if (!doc) return;
-      document.getElementById('reader-title').textContent = doc.titleUr;
+      const isEn = currentPortal === 'en';
+      document.getElementById('reader-title').textContent = isEn ? doc.titleEn : doc.titleUr;
+      
+      const paragraphs = isEn ? doc.contentEn : doc.contentUr;
+
       document.getElementById('reader-body').innerHTML = `
-        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-          <p class="font-bold text-[#0A192F] mb-2 urdu-text">${doc.summaryUr}</p>
-          <div class="space-y-2">
-            ${doc.contentUr.map(p => `<p class="bg-white p-2.5 rounded-lg border text-gray-800 urdu-text">${p}</p>`).join('')}
+        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 space-y-3">
+          <p class="font-bold text-[#0A192F] text-sm ${isEn ? 'eng-text' : 'urdu-text'} mb-2">${isEn ? doc.summaryEn : doc.summaryUr}</p>
+          <div class="space-y-2.5">
+            ${paragraphs.map(p => `<p class="bg-white p-3 rounded-lg border border-emerald-100 text-gray-800 text-xs md:text-sm ${isEn ? 'eng-text' : 'urdu-text'} shadow-sm">${p}</p>`).join('')}
           </div>
         </div>
-        ${doc.toolLink ? `<button onclick="closeReader(); openTool('${doc.toolLink}')" class="w-full py-2.5 rounded-xl gold-gradient text-[#0A192F] font-bold text-xs shadow">اس گائیڈ کا عملی ٹول کھولیں</button>` : ''}
+        ${doc.toolLink ? `<button onclick="closeReader(); openTool('${doc.toolLink}')" class="w-full py-3 rounded-xl gold-gradient text-[#0A192F] font-bold text-xs shadow mt-2">اس گائیڈ کا عملی ٹول کھولیں</button>` : ''}
       `;
       document.getElementById('reader-modal').classList.remove('hidden');
     }
@@ -390,19 +607,23 @@
     function closeAddModal() { document.getElementById('add-modal').classList.add('hidden'); }
     function saveNewDocument(e) {
       e.preventDefault();
+      const urText = document.getElementById('newContentUr').value;
+      const enText = document.getElementById('newContentEn').value;
       const newDoc = {
         id: 'c-' + Date.now(),
         category: document.getElementById('newCategory').value,
+        categoryLabelUr: 'کسٹم مضمون', categoryLabelEn: 'Custom Guide',
         titleUr: document.getElementById('newTitleUr').value,
         titleEn: document.getElementById('newTitleEn').value,
-        summaryUr: document.getElementById('newContentUr').value.split('\n')[0],
-        summaryEn: document.getElementById('newContentEn').value.split('\n')[0],
-        contentUr: document.getElementById('newContentUr').value.split('\n').filter(Boolean),
-        contentEn: document.getElementById('newContentEn').value.split('\n').filter(Boolean)
+        summaryUr: urText.split('\n')[0],
+        summaryEn: enText.split('\n')[0],
+        contentUr: urText.split('\n').filter(Boolean),
+        contentEn: enText.split('\n').filter(Boolean)
       };
       customDocs.unshift(newDoc);
-      localStorage.setItem('flp_custom', JSON.stringify(customDocs));
+      localStorage.setItem('flp_custom_docs', JSON.stringify(customDocs));
       closeAddModal();
+      e.target.reset();
       renderLibrary();
     }
 
