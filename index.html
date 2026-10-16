@@ -3,174 +3,207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>فنانشل لٹریسی پاکستان | Financial Literacy Pakistan</title>
+  <title>فنانشل لٹریسی پاکستان | Financial Literacy Pakistan Pro</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif;
-      background-color: #F4F6F9;
+      background-color: #F8FAFC;
       color: #0F172A;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
     .urdu-font {
       font-family: 'Noto Nastaliq Urdu', serif;
-      line-height: 2.3 !important;
+      line-height: 2.4 !important;
     }
-    .hero-bg {
+    .hero-gradient {
       background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%);
     }
-    .gold-bg {
+    .gold-gradient {
       background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col pb-20">
+<body class="min-h-screen flex flex-col pb-24">
 
-  <!-- Header -->
-  <header class="hero-bg text-white sticky top-0 z-50 shadow-md border-b border-[#D4AF37]">
+  <!-- International Header -->
+  <header class="hero-gradient text-white sticky top-0 z-50 shadow-lg border-b border-[#D4AF37]/50">
     <div class="px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <div class="w-10 h-10 rounded-xl gold-bg flex items-center justify-center text-[#0A192F] font-extrabold text-lg">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl gold-gradient flex items-center justify-center text-[#0A192F] font-black text-lg shadow-md">
           FLP
         </div>
         <div>
-          <h1 class="text-sm font-bold text-[#F3E5AB] urdu-font">فنانشل لٹریسی پاکستان</h1>
-          <p class="text-[10px] text-emerald-200">By Nadeem Iqbal</p>
+          <h1 class="text-xs md:text-sm font-extrabold text-[#F3E5AB] urdu-font">فنانشل لٹریسی پاکستان</h1>
+          <p class="text-[9px] text-emerald-200 font-semibold tracking-wider">PRO DIGITAL LIBRARY & TOOLS</p>
         </div>
       </div>
-      <div class="flex bg-[#0A192F] p-1 rounded-lg border border-[#D4AF37]/40">
-        <button onclick="switchLang('ur')" id="lang-ur" class="px-3 py-1 rounded text-xs font-bold bg-[#D4AF37] text-[#0A192F]">اردو</button>
-        <button onclick="switchLang('en')" id="lang-en" class="px-3 py-1 rounded text-xs font-semibold text-gray-300">Eng</button>
+      <div class="flex bg-[#0A192F]/80 p-1 rounded-xl border border-[#D4AF37]/40 shadow-inner">
+        <button onclick="switchLang('ur')" id="lang-ur" class="px-3 py-1 rounded-lg text-xs font-bold transition-all bg-[#D4AF37] text-[#0A192F] shadow">اردو</button>
+        <button onclick="switchLang('en')" id="lang-en" class="px-3 py-1 rounded-lg text-xs font-semibold transition-all text-gray-300 hover:text-white">Eng</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section with Live Date & Search -->
-  <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b border-emerald-900">
-    <span class="inline-block px-3 py-0.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-semibold mb-2">
-      13 تفصیلی کتابچے + عملی ٹولز + لائیو کمیونٹی چیٹ
+  <!-- Hero & Multi-Calendar Date Bar -->
+  <section class="hero-gradient text-white pt-5 pb-7 px-4 text-center border-b-4 border-[#D4AF37]">
+    <span class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5 shadow-sm">
+      🌟 13 انٹرنیشنل گائیڈز + لائیو مالیاتی ٹولز + کمیونٹی نیٹ ورک
     </span>
 
     <!-- Live Date Box -->
-    <div class="max-w-md mx-auto my-2 p-2.5 bg-white/10 backdrop-blur border border-[#D4AF37]/40 rounded-xl text-xs text-[#F3E5AB] urdu-font shadow-inner">
-      <div class="font-bold text-xs mb-0.5" id="dateEng">جمعہ، 16 اکتوبر 2026</div>
-      <div class="text-[10px] text-emerald-100 flex flex-wrap justify-center gap-2">
+    <div class="max-w-md mx-auto my-2.5 p-2.5 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB] urdu-font shadow-inner">
+      <div class="font-bold text-xs mb-1" id="dateEng">جمعہ، 16 اکتوبر 2026</div>
+      <div class="text-[10px] text-emerald-100 flex flex-wrap justify-center gap-2 font-medium">
         <span>🌙 اسلامی: 4 ربیع الثانی 1448ھ</span> | 
         <span>🌾 دیسی ماہ: اسوج (29)</span>
       </div>
     </div>
 
-    <h2 class="text-base md:text-xl font-bold mb-3 urdu-font">
-      اپنی مالیاتی تعلیم اور بجٹ کو موبائل پر منظم کریں
+    <h2 class="text-base md:text-2xl font-black mb-3 urdu-font tracking-wide">
+      موبایل پر معاشی خود مختاری اور ڈیجیٹل کھاتہ سسٹم
     </h2>
-    <div class="max-w-md mx-auto flex gap-2">
-      <input type="text" id="searchBox" oninput="renderGuides()" placeholder="موضوع تلاش کریں (سونا، بجٹ، ٹیکس)..." class="w-full px-3 py-2.5 rounded-xl bg-white text-gray-900 text-xs shadow focus:outline-none" />
+    <div class="max-w-md mx-auto">
+      <input type="text" id="searchBox" oninput="renderGuides()" placeholder="موضوع تلاش کریں (سونا، بجٹ، ٹیکس، کمیٹی)..." class="w-full px-4 py-3 rounded-2xl bg-white text-gray-900 text-xs shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" />
     </div>
   </section>
 
-  <!-- Main Container -->
+  <!-- Main App Container -->
   <main class="max-w-3xl mx-auto w-full px-3 py-4 flex-1">
 
-    <!-- Interactive Tools Bar -->
-    <div class="bg-[#0A192F] p-3 rounded-2xl border border-[#D4AF37] mb-4 shadow">
-      <p class="text-[#F3E5AB] text-xs font-bold urdu-font mb-2">🛠️ عملی مالیاتی ٹولز:</p>
-      <div class="grid grid-cols-3 gap-1.5">
-        <button onclick="openTool('budget')" class="py-2 px-1 text-[11px] font-bold bg-[#064E3B] text-white rounded-lg border border-emerald-500">🧮 بجٹ</button>
-        <button onclick="openTool('committee')" class="py-2 px-1 text-[11px] font-bold gold-bg text-[#0A192F] rounded-lg">🗓️ کمیٹی</button>
-        <button onclick="openTool('business')" class="py-2 px-1 text-[11px] font-bold bg-white text-[#0A192F] rounded-lg">📒 کھاتہ</button>
+    <!-- Interactive Tools Quick Bar -->
+    <div class="bg-[#0A192F] p-3.5 rounded-2xl border-2 border-[#D4AF37] mb-5 shadow-xl">
+      <div class="flex items-center justify-between mb-2.5">
+        <span class="text-[#F3E5AB] text-xs font-extrabold urdu-font">🛠️ ایڈوانسڈ مالیاتی ٹولز (Interactive Tools):</span>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <button onclick="openTool('budget')" class="py-2.5 px-1 text-xs font-bold bg-[#064E3B] text-white rounded-xl border border-emerald-400 shadow-md active:scale-95 transition">🧮 بجٹ کیلکولیشن</button>
+        <button onclick="openTool('committee')" class="py-2.5 px-1 text-xs font-bold gold-bg text-[#0A192F] rounded-xl shadow-md active:scale-95 transition">🗓️ کمیٹی شیڈول</button>
+        <button onclick="openTool('business')" class="py-2.5 px-1 text-xs font-bold bg-white text-[#0A192F] rounded-xl shadow-md active:scale-95 transition">📒 کاروباری کھاتہ</button>
       </div>
 
-      <!-- Tool 1: Budget Calculator -->
-      <div id="tool-budget" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-3 border text-xs">
-        <div class="flex justify-between items-center mb-2 border-b pb-1 font-bold">
-          <span>50/30/20 بجٹ کیلکولیٹر</span>
-          <button onclick="closeTools()" class="text-red-600 font-bold">✕ بند</button>
+      <!-- Tool 1: Budget -->
+      <div id="tool-budget" class="hidden mt-3 bg-white text-gray-900 rounded-2xl p-4 border shadow-lg text-xs">
+        <div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]">
+          <span>🧮 50/30/20 ماہانہ بجٹ کیلکولیٹر</span>
+          <button onclick="closeTools()" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">✕ بند کریں</button>
         </div>
-        <label class="block font-bold mb-1">آمدنی (PKR):</label>
-        <input type="number" id="incVal" value="100000" oninput="calcBudget()" class="w-full p-2 border rounded mb-2 font-bold text-[#064E3B]" />
-        <div class="grid grid-cols-3 gap-1 text-center">
-          <div class="p-1.5 bg-emerald-50 rounded border"><b>50% ضروریات</b><p id="b-needs" class="font-extrabold text-emerald-900">50k</p></div>
-          <div class="p-1.5 bg-blue-50 rounded border"><b>30% خواہشات</b><p id="b-wants" class="font-extrabold text-blue-900">30k</p></div>
-          <div class="p-1.5 bg-amber-50 rounded border"><b>20% بچت</b><p id="b-save" class="font-extrabold text-amber-900">20k</p></div>
+        <label class="block font-bold mb-1 text-gray-700">اپنی ماہانہ آمدنی درج کریں (PKR):</label>
+        <input type="number" id="incVal" value="100000" oninput="calcBudget()" class="w-full p-2.5 border-2 border-[#064E3B] rounded-xl mb-3 font-extrabold text-sm text-[#064E3B] bg-emerald-50/50" />
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>50% ضروریات</b><p id="b-needs" class="font-black text-emerald-950 mt-1 text-sm">50k</p></div>
+          <div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>30% خواہشات</b><p id="b-wants" class="font-black text-blue-950 mt-1 text-sm">30k</p></div>
+          <div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>20% بچت</b><p id="b-save" class="font-black text-amber-950 mt-1 text-sm">20k</p></div>
         </div>
       </div>
 
       <!-- Tool 2: Committee -->
-      <div id="tool-committee" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-3 border text-xs">
-        <div class="flex justify-between items-center mb-2 border-b pb-1 font-bold">
-          <span>12 ماہ کا کمیٹی شیڈول</span>
-          <button onclick="closeTools()" class="text-red-600 font-bold">✕ بند</button>
+      <div id="tool-committee" class="hidden mt-3 bg-white text-gray-900 rounded-2xl p-4 border shadow-lg text-xs">
+        <div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]">
+          <span>🗓️ 12 ماہ کا کمیٹی (ROSCA) ریکارڈ</span>
+          <button onclick="closeTools()" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">✕ بند کریں</button>
         </div>
-        <div id="commList" class="space-y-1.5 max-h-48 overflow-y-auto"></div>
+        <div id="commList" class="space-y-2 max-h-56 overflow-y-auto"></div>
       </div>
 
       <!-- Tool 3: Business Ledger -->
-      <div id="tool-business" class="hidden mt-3 bg-white text-gray-900 rounded-xl p-3 border text-xs">
-        <div class="flex justify-between items-center mb-2 border-b pb-1 font-bold">
-          <span>دکان اور کاروبار کا کھاتہ</span>
-          <button onclick="closeTools()" class="text-red-600 font-bold">✕ بند</button>
+      <div id="tool-business" class="hidden mt-3 bg-white text-gray-900 rounded-2xl p-4 border shadow-lg text-xs">
+        <div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]">
+          <span>📒 چھوٹے کاروبار اور دکان کا کیش بک</span>
+          <button onclick="closeTools()" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">✕ بند کریں</button>
         </div>
-        <div class="mb-2 p-2 bg-emerald-50 rounded border text-center">
-          <b>گلے میں خالص کیش:</b> <span id="bizNet" class="font-extrabold text-emerald-950">Rs. 0</span>
+        <div class="mb-3 p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-center">
+          <span class="text-[11px] text-emerald-800 font-bold block">گلے میں خالص کاروباری کیش (Net Cash):</span>
+          <span id="bizNet" class="font-black text-emerald-950 text-base">Rs. 0</span>
         </div>
-        <div class="space-y-1.5 mb-2">
-          <input type="text" id="bDesc" placeholder="تفصیل (سیل/خرچ)" class="w-full p-1.5 border rounded text-xs" />
-          <input type="number" id="bAmt" placeholder="رقم" class="w-full p-1.5 border rounded text-xs font-bold" />
-          <select id="bType" class="w-full p-1.5 border rounded text-xs">
-            <option value="in">➕ کاروباری آمدن</option>
-            <option value="exp">➖ کاروباری خرچ</option>
-            <option value="draw">🏠 ذاتی / گھر کا خرچ</option>
+        <div class="space-y-2 mb-3 bg-slate-50 p-3 rounded-xl border">
+          <input type="text" id="bDesc" placeholder="تفصیل (مثلاً: آج کی سیل، مال کی خریداری)..." class="w-full p-2 border rounded-xl text-xs bg-white" />
+          <input type="number" id="bAmt" placeholder="رقم (PKR)" class="w-full p-2 border rounded-xl text-xs font-bold bg-white" />
+          <select id="bType" class="w-full p-2 border rounded-xl text-xs font-semibold bg-white">
+            <option value="in">➕ کاروباری آمدن / سیل</option>
+            <option value="exp">➖ کاروباری خرچ / دکان</option>
+            <option value="draw">🏠 ذاتی / گھر کا خرچ (Drawings)</option>
           </select>
-          <button onclick="addBiz()" class="w-full py-2 bg-[#064E3B] text-white font-bold rounded font-bold">درج کریں</button>
+          <button onclick="addBiz()" class="w-full py-2.5 gold-gradient text-[#0A192F] font-extrabold rounded-xl text-xs shadow-md">خاتمے میں درج کریں</button>
         </div>
-        <div id="bizList" class="space-y-1 max-h-36 overflow-y-auto"></div>
+        <div id="bizList" class="space-y-1.5 max-h-40 overflow-y-auto"></div>
       </div>
     </div>
 
-    <!-- Community Chat & Feedback Box -->
-    <div class="bg-white p-3.5 rounded-2xl border border-gray-200 shadow-sm mb-4">
-      <div class="flex items-center justify-between mb-2 border-b pb-1.5">
-        <h3 class="text-xs font-bold text-[#0A192F] urdu-font">💬 کمیونٹی چیٹ اور ڈویلپر کمنٹ باکس</h3>
-        <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">لائیو چیٹ</span>
+    <!-- Community Chat & Developer Feedback Box -->
+    <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md mb-5">
+      <div class="flex items-center justify-between mb-2.5 border-b pb-2">
+        <h3 class="text-xs font-extrabold text-[#0A192F] urdu-font flex items-center gap-1.5">
+          <span>💬</span> کمیونٹی نیٹ ورک اور ڈویلپر چیٹ باکس
+        </h3>
+        <span class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full font-bold">لائیو سیشن</span>
       </div>
-      <p class="text-[11px] text-gray-500 urdu-font mb-2">اپنا خیال، مشورہ یا سوال یہاں لکھیں تاکہ دوسرے صارفین اور ڈویلپر دیکھ سکیں:</p>
+      <p class="text-[11px] text-gray-500 urdu-font mb-3">یہاں اپنے خیالات، تجاویز اور مالیاتی سوالات درج کریں تاکہ دوسرے صارفین اور ڈویلپر دیکھ سکیں:</p>
       
-      <form onsubmit="postChatMessage(event)" class="space-y-2 mb-3">
-        <input type="text" id="chatName" required placeholder="آپ کا نام (Name)" class="w-full p-2 border rounded-xl text-xs bg-gray-50 font-semibold" />
-        <textarea id="chatText" required rows="2" placeholder="اپنا میسج یا ایڈوائس یہاں ٹائپ کریں..." class="w-full p-2 border rounded-xl text-xs bg-gray-50 urdu-font"></textarea>
-        <button type="submit" class="w-full py-2 gold-gradient text-[#0A192F] font-bold rounded-xl text-xs shadow">میسج بھیجیں (Send)</button>
+      <form onsubmit="postChatMessage(event)" class="space-y-2.5 mb-3">
+        <input type="text" id="chatName" required placeholder="آپ کا نام (Name)" class="w-full p-2.5 border rounded-xl text-xs bg-gray-50 font-semibold focus:ring-2 focus:ring-[#064E3B] focus:outline-none" />
+        <textarea id="chatText" required rows="2" placeholder="اپنا میسج یا ایڈوائس یہاں ٹائپ کریں..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50 urdu-font focus:ring-2 focus:ring-[#064E3B] focus:outline-none"></textarea>
+        <button type="submit" class="w-full py-2.5 hero-gradient text-white font-extrabold rounded-xl text-xs shadow-md active:scale-95 transition">میسج شیئر کریں (Post Message)</button>
       </form>
 
       <!-- Chat Messages Container -->
-      <div id="chatMessagesList" class="space-y-2 max-h-44 overflow-y-auto border-t pt-2 text-xs"></div>
+      <div id="chatMessagesList" class="space-y-2 max-h-48 overflow-y-auto border-t pt-2.5 text-xs"></div>
     </div>
 
-    <!-- Guides List Container -->
-    <div id="guidesList" class="space-y-3"></div>
+    <!-- Guides Library List Container -->
+    <div class="mb-3 px-1">
+      <h3 class="text-xs font-extrabold text-gray-700 urdu-font">📚 مصدقہ تعلیمی لائبریری (13 Guides):</h3>
+    </div>
+    <div id="guidesList" class="space-y-3.5"></div>
 
   </main>
 
-  <!-- Detailed Guide Modal -->
-  <div id="guideModal" class="fixed inset-0 bg-black/80 z-50 hidden overflow-y-auto p-3">
-    <div class="max-w-lg mx-auto bg-white rounded-2xl shadow-xl overflow-hidden my-6 border border-[#D4AF37]">
-      <div class="hero-bg text-white px-4 py-3 flex items-center justify-between sticky top-0">
-        <h3 id="mTitle" class="text-xs font-bold text-[#F3E5AB]"></h3>
-        <button onclick="closeModal()" class="w-7 h-7 rounded bg-white/20 font-bold text-xs">✕</button>
+  <!-- Immersive Full-Screen Reader Modal (Fixed & Enhanced) -->
+  <div id="guideModal" class="fixed inset-0 bg-black/85 z-50 hidden overflow-y-auto p-2 md:p-6 backdrop-blur-sm">
+    <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-4 border-2 border-[#D4AF37] animate-in fade-in zoom-in duration-200">
+      <div class="hero-gradient text-white px-5 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 shadow-md">
+        <h3 id="mTitle" class="text-xs md:text-sm font-bold text-[#F3E5AB] pr-2"></h3>
+        <button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-white/15 hover:bg-white/25 text-white font-black text-sm flex items-center justify-center shadow transition">✕</button>
       </div>
-      <div id="mBody" class="p-4 space-y-3 text-xs md:text-sm text-gray-800"></div>
+      <div id="mBody" class="p-5 md:p-6 space-y-4 text-xs md:text-sm text-gray-800 bg-slate-50/50"></div>
     </div>
   </div>
 
-  <footer class="bg-[#0A192F] text-gray-400 text-[11px] py-3 text-center border-t mt-auto">
-    <p class="text-[#F3E5AB] font-bold">فنانشل لٹریسی پاکستان • ندیم اقبال</p>
+  <footer class="bg-[#0A192F] text-gray-400 text-[11px] py-4 text-center border-t border-[#D4AF37]/30 mt-auto">
+    <p class="text-[#F3E5AB] font-bold mb-1">فنانشل لٹریسی پاکستان (Financial Literacy Pakistan)</p>
+    <p>ماسٹر ڈویلپر: ندیم اقبال • معاشی خود مختاری کا سفر</p>
   </footer>
 
   <script>
     let lang = 'ur';
 
-    // Guides Library Data
+    // Live Multi-Calendar Date Generator
+    function loadLiveDates() {
+      const now = new Date();
+      const daysUr = ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'];
+      const monthsUr = ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'ستمبر', 'اکتوبر', 'نومبر', 'دسمبر'];
+      
+      let dayName = daysUr[now.getDay()];
+      let dNum = now.getDate();
+      let mName = monthsUr[now.getMonth()];
+      let yNum = now.getFullYear();
+
+      let hijriStr = '4 ربیع الثانی 1448ھ';
+      try {
+        hijriStr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
+      } catch(e) {}
+
+      document.getElementById('dateEng').textContent = `${dayName}، ${dNum} ${mName} ${yNum}`;
+    }
+
+    // Guides Library Data (Full Detailed)
     const guides = [
       {
         id: 1, cat: 'budget',
@@ -416,12 +449,12 @@
     ];
 
     let bizData = JSON.parse(localStorage.getItem('flp_biz') || '[{"desc":"آج کی سیل","amt":20000,"type":"in"},{"desc":"مال خرچ","amt":5000,"type":"exp"}]');
-    let chatData = JSON.parse(localStorage.getItem('flp_community_chat') || '[{"name":"ندیم اقبال (ڈویلپر)","text":"خوش آمدید! آپ اس باکس کے ذریعے اپنے خیالات اور مشورے یہاں لکھ سکتے ہیں۔","time":"آج"}]');
+    let chatData = JSON.parse(localStorage.getItem('flp_community_chat') || '[{"name":"ندیم اقبال (ڈویلپر)","text":"خوش آمدید! آپ اس فنانشل لائبریری ایپ میں اپنے مالیاتی مشورے اور سوالات بلاجھجھک شیئر کر سکتے ہیں۔","time":"لائیو"}]');
 
     function switchLang(l) {
       lang = l;
-      document.getElementById('lang-ur').className = l === 'ur' ? 'px-3 py-1 rounded text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded text-xs font-semibold text-gray-300';
-      document.getElementById('lang-en').className = l === 'en' ? 'px-3 py-1 rounded text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded text-xs font-semibold text-gray-300';
+      document.getElementById('lang-ur').className = l === 'ur' ? 'px-3 py-1 rounded-lg text-xs font-bold transition-all bg-[#D4AF37] text-[#0A192F] shadow' : 'px-3 py-1 rounded-lg text-xs font-semibold transition-all text-gray-300 hover:text-white';
+      document.getElementById('lang-en').className = l === 'en' ? 'px-3 py-1 rounded-lg text-xs font-bold transition-all bg-[#D4AF37] text-[#0A192F] shadow' : 'px-3 py-1 rounded-lg text-xs font-semibold transition-all text-gray-300 hover:text-white';
       renderGuides();
     }
 
@@ -452,11 +485,11 @@
       let box = document.getElementById('commList');
       if (!box) return;
       box.innerHTML = commSlots.map((s, i) => `
-        <div class="flex items-center justify-between p-1.5 bg-slate-50 border rounded text-[11px]">
-          <span class="w-16 font-bold">${s.m}</span>
-          <input type="text" value="${s.n}" onchange="commSlots[${i}].n=this.value" class="flex-1 mx-2 p-1 border rounded bg-white text-xs" />
-          <button onclick="commSlots[${i}].paid=!commSlots[${i}].paid; renderComm()" class="px-2 py-1 rounded font-bold ${s.paid ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">
-            ${s.paid ? '✓ ادا' : '⏳ باقی'}
+        <div class="flex items-center justify-between p-2 bg-slate-50 border rounded-xl text-xs">
+          <span class="w-20 font-bold text-[#0A192F]">${s.m}</span>
+          <input type="text" value="${s.n}" onchange="commSlots[${i}].n=this.value" class="flex-1 mx-2 p-1.5 border rounded-lg bg-white text-xs font-semibold" />
+          <button onclick="commSlots[${i}].paid=!commSlots[${i}].paid; renderComm()" class="px-2.5 py-1 rounded-lg font-bold ${s.paid ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : 'bg-amber-100 text-amber-900 border border-amber-300'}">
+            ${s.paid ? '✓ ادا شدہ' : '⏳ باقی'}
           </button>
         </div>
       `).join('');
@@ -485,9 +518,9 @@
       let list = document.getElementById('bizList');
       if (!list) return;
       list.innerHTML = bizData.map((b, i) => `
-        <div class="flex justify-between items-center p-1 bg-slate-50 border rounded text-[11px]">
+        <div class="flex justify-between items-center p-2 bg-slate-50 border rounded-xl text-xs">
           <span><b>${b.desc}</b> (${b.type})</span>
-          <span>Rs. ${b.amt.toLocaleString()} <button onclick="bizData.splice(${i},1); localStorage.setItem('flp_biz', JSON.stringify(bizData)); renderBiz()" class="text-red-500 font-bold ml-1">✕</button></span>
+          <span class="font-bold">Rs. ${b.amt.toLocaleString()} <button onclick="bizData.splice(${i},1); localStorage.setItem('flp_biz', JSON.stringify(bizData)); renderBiz()" class="text-red-500 font-black ml-1 px-1">✕</button></span>
         </div>
       `).join('');
     }
@@ -510,10 +543,10 @@
       let box = document.getElementById('chatMessagesList');
       if (!box) return;
       box.innerHTML = chatData.map((c) => `
-        <div class="p-2 bg-slate-50 border rounded-xl shadow-2xs">
-          <div class="flex justify-between items-center mb-0.5">
-            <span class="font-bold text-[#064E3B] text-[11px]">${c.name}</span>
-            <span class="text-[9px] text-gray-400">${c.time}</span>
+        <div class="p-2.5 bg-slate-50 border border-gray-200 rounded-2xl shadow-2xs">
+          <div class="flex justify-between items-center mb-1">
+            <span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span>
+            <span class="text-[10px] text-gray-400 font-semibold">${c.time}</span>
           </div>
           <p class="text-gray-800 urdu-font text-xs">${c.text}</p>
         </div>
@@ -529,50 +562,66 @@
       let filtered = guides.filter(g => (lang === 'ur' ? g.tUr + g.sUr : g.tEn + g.sEn).toLowerCase().includes(q));
 
       box.innerHTML = filtered.map(g => `
-        <div onclick="openGuide(${g.id})" class="bg-white p-3.5 rounded-2xl border border-gray-200 shadow-sm cursor-pointer">
-          <div class="flex justify-between items-center mb-1">
-            <span class="px-2 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded">${g.cat}</span>
-            <span class="text-[10px] text-gray-400">PDF Guide</span>
+        <div onclick="openGuide(${g.id})" class="glass-card p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] active:scale-[0.99] transition cursor-pointer">
+          <div class="flex justify-between items-center mb-1.5">
+            <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${g.cat}</span>
+            <span class="text-[10px] text-gray-400 font-bold">PDF Guide</span>
           </div>
           <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${lang==='ur'?'urdu-font':''} mb-1">${lang === 'ur' ? g.tUr : g.tEn}</h3>
-          <p class="text-[11px] text-gray-600 ${lang==='ur'?'urdu-font':''} mb-2">${lang === 'ur' ? g.sUr : g.sEn}</p>
-          <div class="flex justify-between items-center pt-2 border-t text-[11px]">
-            <span class="text-[#064E3B] font-bold">${lang === 'ur' ? 'مکمل گائیڈ پڑھیں ←' : 'Read Full Guide →'}</span>
-            ${g.tool ? `<button onclick="event.stopPropagation(); openTool('${g.tool}')" class="px-2 py-1 bg-amber-100 text-amber-950 font-bold text-[10px] rounded">${g.toolLbl}</button>` : ''}
+          <p class="text-[11px] text-gray-600 ${lang==='ur'?'urdu-font':''} mb-3">${lang === 'ur' ? g.sUr : g.sEn}</p>
+          <div class="flex justify-between items-center pt-2.5 border-t text-xs">
+            <span class="text-[#064E3B] font-extrabold">${lang === 'ur' ? 'مکمل گائیڈ تفصیل سے پڑھیں ←' : 'Read Full Guide & Details →'}</span>
+            ${g.tool ? `<button onclick="event.stopPropagation(); openTool('${g.tool}')" class="px-2.5 py-1 bg-amber-100 text-amber-950 font-extrabold text-[10px] rounded-lg border border-amber-300 shadow-xs">${g.toolLbl}</button>` : ''}
           </div>
         </div>
       `).join('');
     }
 
+    // Fixed & Robust Guide Opener
     function openGuide(id) {
       let g = guides.find(x => x.id === id);
       if (!g) return;
-      document.getElementById('mTitle').textContent = lang === 'ur' ? g.tUr : g.tEn;
-      let ps = lang === 'ur' ? g.pUr : g.pEn;
+      
+      let title = lang === 'ur' ? g.tUr : g.tEn;
+      let summary = lang === 'ur' ? g.sUr : g.sEn;
+      let paragraphs = lang === 'ur' ? g.pUr : g.pEn;
+
+      document.getElementById('mTitle').textContent = title;
       document.getElementById('mBody').innerHTML = `
-        <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-200 space-y-2">
-          <p class="font-bold text-[#0A192F] text-xs ${lang==='ur'?'urdu-font':''}">${lang === 'ur' ? g.sUr : g.sEn}</p>
-          <div class="space-y-2 pt-1">
-            ${ps.map(p => `<p class="bg-white p-2.5 rounded border text-gray-800 text-xs ${lang==='ur'?'urdu-font':''} shadow-sm">${p}</p>`).join('')}
+        <div class="bg-white p-4 md:p-5 rounded-2xl border-2 border-emerald-200 shadow-sm space-y-3">
+          <div class="border-b pb-2">
+            <span class="text-[10px] uppercase px-2 py-0.5 rounded bg-emerald-900 text-white font-bold">Verified PDF Chapter</span>
+            <p class="font-extrabold text-[#0A192F] text-sm ${lang==='ur'?'urdu-font':''} mt-1.5">${summary}</p>
+          </div>
+          <div class="space-y-2.5 pt-1">
+            ${paragraphs.map(p => `<div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-100 text-gray-900 text-xs md:text-sm ${lang==='ur'?'urdu-font':''} shadow-2xs">${p}</div>`).join('')}
           </div>
         </div>
-        ${g.tool ? `<button onclick="closeModal(); openTool('${g.tool}')" class="w-full py-2.5 gold-gradient text-[#0A192F] font-bold text-xs rounded-xl shadow mt-2">اس گائیڈ کا عملی ٹول کھولیں</button>` : ''}
+        ${g.tool ? `<button onclick="closeModal(); openTool('${g.tool}')" class="w-full py-3 rounded-2xl gold-gradient text-[#0A192F] font-black text-xs shadow-lg mt-3 active:scale-95 transition">اس گائیڈ سے متعلقہ عملی ٹول کھولیں (Open Tool)</button>` : ''}
       `;
+      
       let modal = document.getElementById('guideModal');
-      if (modal) modal.classList.remove('hidden');
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
     }
 
     function closeModal() {
       let modal = document.getElementById('guideModal');
-      if (modal) modal.classList.add('hidden');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
     }
 
     function filterGuides() {
       renderGuides();
     }
 
-    // Safe Initialization on Window Load
+    // Initial Safe Load
     window.onload = function() {
+      loadLiveDates();
       renderChat();
       renderGuides();
     };
