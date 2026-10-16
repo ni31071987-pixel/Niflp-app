@@ -46,15 +46,15 @@
     </div>
   </header>
 
-  <!-- Hero, Live Visitors Counter & Date/Clock -->
+  <!-- Hero, Real Visitors Counter & Date/Clock -->
   <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
     <div class="max-w-2xl mx-auto">
       <div class="flex flex-wrap items-center justify-center gap-2 mb-2.5">
         <span id="heroBadgeText" class="px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold"></span>
         <button onclick="showVisitorInfo()" class="px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center gap-1.5 shadow">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span data-ur="کل وزٹرز:" data-en="Total Visitors:"></span>
-          <span id="totalVisitorsCount" class="font-mono font-extrabold text-[#F3E5AB]">0</span>
+          <span data-ur="حقیقی وزٹرز:" data-en="Real Visitors:"></span>
+          <span id="totalVisitorsCount" class="font-mono font-extrabold text-[#F3E5AB]">1</span>
         </button>
       </div>
 
@@ -112,33 +112,33 @@
     <div id="guidesList" class="space-y-3.5 mb-8"></div>
   </main>
 
-  <!-- Bottom Developer Contact, Hidden Admin Trigger & Feedback Section -->
+  <!-- Bottom Developer Contact & Feedback Section -->
   <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto">
     <div class="max-w-3xl mx-auto space-y-6">
       <div class="bg-white/10 p-5 rounded-3xl border border-[#D4AF37]/50 text-center space-y-3">
-        <!-- Secret Developer Access: Tap NI Logo -->
-        <div onclick="triggerAdminSecret()" class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base cursor-pointer select-none shadow" title="Developer Admin">NI</div>
+        <!-- 5-Tap Secret Trigger on NI Logo -->
+        <div onclick="triggerAdminSecret()" class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base select-none shadow">NI</div>
         <h3 data-ur="فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال" data-en="Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal" class="text-sm font-extrabold text-[#F3E5AB]"></h3>
         <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
           <a href="tel:03105379765" class="px-3 py-1.5 rounded-xl bg-[#064E3B] border border-emerald-400 font-bold">📞 0310-5379765</a>
           <a href="mailto:ni31071987@gmail.com" class="px-3 py-1.5 rounded-xl bg-white/15 border border-[#D4AF37]/40 font-bold">✉️ ni31071987@gmail.com</a>
         </div>
 
-        <!-- Hidden Admin Panel (Only visible after Developer Login/Password Setup) -->
-        <div id="adminPanel" class="hidden bg-black/40 p-4 rounded-2xl border-2 border-emerald-500 text-right text-xs space-y-3 mt-3">
-          <div class="flex justify-between items-center border-b border-emerald-500/30 pb-2">
+        <!-- Strictly Locked Admin Panel (Hidden for all normal users) -->
+        <div id="adminPanel" style="display:none;" class="bg-black/40 p-4 rounded-2xl border-2 border-emerald-500 text-right text-xs space-y-3 mt-3">
+          <div class="flex flex-wrap justify-between items-center gap-2 border-b border-emerald-500/30 pb-2.5">
             <span class="font-extrabold text-emerald-300">🔓 ڈویلپر ایڈمن موڈ (Admin Active)</span>
             <div class="flex gap-2">
-              <button onclick="changeAdminPassword()" class="text-amber-300 font-bold px-2 py-0.5 bg-amber-950/60 rounded border border-amber-500/50">پاسورڈ تبدیل کریں</button>
-              <button onclick="adminLogout()" class="text-red-400 font-bold px-2 py-0.5 bg-red-950/60 rounded border border-red-500/50">لاگ آؤٹ</button>
+              <button onclick="changeAdminPassword()" class="text-amber-300 font-bold px-3 py-1 bg-amber-950/70 rounded-xl border border-amber-500/50">پاسورڈ تبدیل کریں</button>
+              <button onclick="adminLogout()" class="text-red-300 font-bold px-3 py-1 bg-red-950/70 rounded-xl border border-red-500/50">لاگ آؤٹ</button>
             </div>
           </div>
           <div>
-            <span data-ur="🔒 نئی پی ڈی ایف گائیڈ اپلوڈ کریں:" data-en="🔒 Upload New PDF Guide:" class="font-bold text-[#F3E5AB] block mb-1"></span>
-            <input type="text" id="devPdfTitle" data-ph-ur="گائیڈ کا عنوان درج کریں..." data-ph-en="Enter Guide Title..." class="w-full p-2 border rounded-xl text-xs bg-white text-gray-900 font-semibold mb-2" />
+            <span data-ur="🔒 نئی پی ڈی ایف گائیڈ اپلوڈ کریں:" data-en="🔒 Upload New PDF Guide:" class="font-bold text-[#F3E5AB] block mb-1.5"></span>
+            <input type="text" id="devPdfTitle" data-ph-ur="گائیڈ کا عنوان درج کریں..." data-ph-en="Enter Guide Title..." class="w-full p-2.5 border rounded-xl text-xs bg-white text-gray-900 font-semibold mb-2" />
             <div class="flex flex-col sm:flex-row gap-2">
-              <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#D4AF37] file:text-[#0A192F] cursor-pointer" />
-              <button onclick="handleDevUpload()" data-ur="اپلوڈ کریں" data-en="Upload PDF" class="px-4 py-1.5 rounded-xl bg-emerald-600 font-bold text-white shrink-0"></button>
+              <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#D4AF37] file:text-[#0A192F] cursor-pointer" />
+              <button onclick="handleDevUpload()" data-ur="اپلوڈ کریں" data-en="Upload PDF" class="px-5 py-2 rounded-xl bg-emerald-600 font-bold text-white shrink-0"></button>
             </div>
             <p id="uploadMsg" class="text-[10px] text-emerald-300 mt-1.5"></p>
           </div>
@@ -177,11 +177,13 @@
   </div>
 
   <script>
-    let lang = 'ur', activeTopTool = null, currentModalId = 1, isAdminLoggedIn = false;
+    let lang = 'ur', activeTopTool = null, currentModalId = 1, isAdminLoggedIn = false, secretTaps = 0, tapTimer = null;
     const tr = (ur, en) => lang === 'ur' ? ur : en;
     const fCls = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
 
-    // 15 Sorted Guides (Without hardcoded number prefix so auto-numbering stays clean)
+    // Standard Social Media Share SVG Icon (3 connected nodes)
+    const shareSvgIcon = `<svg class="w-3.5 h-3.5 inline-block fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>`;
+
     let baseGuides = [
       [1, 'بجٹ اور بچت', 'Budgeting', '50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', 'The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', [
         ['1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)', '1. Pay Yourself First (20% Immediate Savings)', '• تنخواہ یا مزدوری ملتے ہی خرچ سے پہلے 10% سے 20% رقم الگ رکھیں۔ مہینے کے آخر کا انتظار نہ کریں۔', '• Immediately transfer 10%–20% into savings the day you get paid before spending a rupee.'],
@@ -236,19 +238,18 @@
     let deletedBaseIds = JSON.parse(localStorage.getItem('flp_deleted_base') || '[]');
     baseGuides = baseGuides.filter(g => !deletedBaseIds.includes(g[0]));
 
-    // Social Stats (Views, Likes, Shares, Comments per Guide) + Total App Visitors
-    let totalVisitors = parseInt(localStorage.getItem('flp_total_visitors') || '1480', 10) + 1;
-    localStorage.setItem('flp_total_visitors', totalVisitors);
+    // 100% Real Counters (Starting strictly from 0 — No fake/seed numbers)
+    let totalVisitors = parseInt(localStorage.getItem('flp_real_visitors') || '0', 10) + 1;
+    localStorage.setItem('flp_real_visitors', totalVisitors);
 
-    let socialStats = JSON.parse(localStorage.getItem('flp_social_stats') || '{}');
+    let socialStats = JSON.parse(localStorage.getItem('flp_real_stats_v1') || '{}');
     function getStat(id) {
       if (!socialStats[id]) {
-        const seed = (Number(id) % 15) + 1;
-        socialStats[id] = { views: 110 + seed * 19, likes: 32 + seed * 5, shares: 11 + seed * 2, liked: false, comments: [] };
+        socialStats[id] = { views: 0, likes: 0, shares: 0, liked: false, comments: [] };
       }
       return socialStats[id];
     }
-    function saveStats() { localStorage.setItem('flp_social_stats', JSON.stringify(socialStats)); }
+    function saveStats() { localStorage.setItem('flp_real_stats_v1', JSON.stringify(socialStats)); }
 
     let commSlots = [
       { mUr: 'اگست 2026', mEn: 'Aug 2026', nUr: 'والدہ محترمہ', nEn: 'Mother', paid: true },
@@ -262,7 +263,7 @@
     let chatData = JSON.parse(localStorage.getItem('flp_chat_pro') || '[]');
 
     function showVisitorInfo() {
-      showToast(tr(`👁️ اب تک ${totalVisitors.toLocaleString()} افراد اس ایپ کا وزٹ کر چکے ہیں!`, `👁️ ${totalVisitors.toLocaleString()} total visitors have accessed this app!`), true);
+      showToast(tr(`👁️ حقیقی وزٹس کی تعداد: ${totalVisitors.toLocaleString()}`, `👁️ Real Visits Count: ${totalVisitors.toLocaleString()}`), true);
     }
 
     function loadLiveDates() {
@@ -302,40 +303,36 @@
       renderChat(); renderGuides();
     }
 
-    // Secret Developer Password Setup & Login (Triggered by clicking NI Logo)
+    // 5-Tap + Master Password Lock
     function triggerAdminSecret() {
       if (isAdminLoggedIn) return;
-      let savedPwd = localStorage.getItem('flp_admin_pwd');
-      if (!savedPwd) {
-        const newPwd = prompt(tr('🔐 پہلی بار ڈویلپر سیٹ اپ: اپنا نیا ایڈمن پاسورڈ بنائیں (Create Password):', '🔐 First-Time Developer Setup: Create your new Admin Password:'));
-        if (newPwd && newPwd.trim().length >= 3) {
-          localStorage.setItem('flp_admin_pwd', newPwd.trim());
-          isAdminLoggedIn = true;
-          document.getElementById('adminPanel').classList.remove('hidden');
-          renderGuides();
-          showToast(tr('✅ آپ کا ڈویلپر پاسورڈ بن گیا اور ایڈمن موڈ آن ہو گیا!', '✅ Password created & Admin Mode activated!'), true);
-        }
-        return;
-      }
-      const pwd = prompt(tr('🔐 ڈویلپر پاسورڈ درج کریں:', '🔐 Enter Developer Password:'));
-      if (pwd === savedPwd) {
+      secretTaps++;
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(() => { secretTaps = 0; }, 2200);
+      if (secretTaps < 5) return;
+      secretTaps = 0;
+
+      const masterPwd = localStorage.getItem('flp_master_admin_pwd') || 'Nadeem@786';
+      const pwd = prompt(tr('🔐 ڈویلپر ماسٹر پاسورڈ درج کریں (صرف ندیم اقبال کے لیے):', '🔐 Enter Developer Master Password:'));
+      if (pwd === masterPwd) {
         isAdminLoggedIn = true;
-        document.getElementById('adminPanel').classList.remove('hidden');
+        document.getElementById('adminPanel').style.display = 'block';
         renderGuides();
-        showToast(tr('🔓 ایڈمن موڈ فعال ہو گیا', '🔓 Admin Mode Activated'), true);
+        showToast(tr('🔓 ڈویلپر ایڈمن موڈ آن ہو گیا', '🔓 Developer Admin Mode Activated'), true);
       } else if (pwd !== null) {
-        alert(tr('❌ غلط پاسورڈ!', '❌ Incorrect Password!'));
+        alert(tr('❌ غلط پاسورڈ!', '❌ Access Denied!'));
       }
     }
 
     function changeAdminPassword() {
-      let currentPwd = localStorage.getItem('flp_admin_pwd');
-      let oldInput = prompt(tr('موجودہ پاسورڈ درج کریں:', 'Enter current password:'));
+      if (!isAdminLoggedIn) return;
+      const currentPwd = localStorage.getItem('flp_master_admin_pwd') || 'Nadeem@786';
+      const oldInput = prompt(tr('موجودہ ماسٹر پاسورڈ درج کریں:', 'Enter current Master Password:'));
       if (oldInput === currentPwd) {
-        let newInput = prompt(tr('نیا پاسورڈ درج کریں:', 'Enter new password:'));
-        if (newInput && newInput.trim().length >= 3) {
-          localStorage.setItem('flp_admin_pwd', newInput.trim());
-          alert(tr('✅ پاسورڈ کامیابی سے تبدیل ہو گیا!', '✅ Password successfully updated!'));
+        const newInput = prompt(tr('اپنا نیا ڈویلپر پاسورڈ درج کریں (کم از کم 4 حروف):', 'Enter new Developer Password (min 4 chars):'));
+        if (newInput && newInput.trim().length >= 4) {
+          localStorage.setItem('flp_master_admin_pwd', newInput.trim());
+          alert(tr('✅ آپ کا نیا ڈویلپر پاسورڈ محفوظ ہو گیا ہے!', '✅ Your new Developer Password is saved!'));
         }
       } else if (oldInput !== null) {
         alert(tr('❌ موجودہ پاسورڈ غلط ہے!', '❌ Incorrect current password!'));
@@ -344,17 +341,17 @@
 
     function adminLogout() {
       isAdminLoggedIn = false;
-      document.getElementById('adminPanel').classList.add('hidden');
+      document.getElementById('adminPanel').style.display = 'none';
       renderGuides();
-      showToast(tr('🔒 ایڈمن لاگ آؤٹ ہو گیا', '🔒 Admin Logged Out'), false);
+      showToast(tr('🔒 ایڈمن موڈ بند ہو گیا', '🔒 Admin Mode Locked'), false);
     }
 
-    // Social Engagement Actions (Like, Share, Comment)
+    // Real Social Engagement Actions
     function toggleLike(e, id) {
       e.stopPropagation();
       const st = getStat(id);
       st.liked = !st.liked;
-      st.likes += st.liked ? 1 : -1;
+      st.likes = Math.max(0, st.likes + (st.liked ? 1 : -1));
       saveStats(); renderGuides();
     }
 
@@ -471,6 +468,7 @@
     }
 
     function handleDevUpload() {
+      if (!isAdminLoggedIn) return;
       const titleInput = document.getElementById('devPdfTitle');
       const fileInput = document.getElementById('devPdfFile');
       const msg = document.getElementById('uploadMsg');
@@ -508,6 +506,7 @@
 
     function editGuide(event, id) {
       event.stopPropagation();
+      if (!isAdminLoggedIn) return;
       let allGuides = [...baseGuides, ...uploadedPdfs];
       const g = allGuides.find(x => x[0] === id); if (!g) return;
       const newTitle = prompt(tr('گائیڈ کا نیا نام درج کریں:', 'Enter new title for guide:'), tr(g[3], g[4]));
@@ -521,6 +520,7 @@
 
     function deleteGuide(event, id) {
       event.stopPropagation();
+      if (!isAdminLoggedIn) return;
       if (confirm(tr('کیا آپ واقعی اس گائیڈ کو حذف کرنا چاہتے ہیں؟ باقی نمبرز خودکار اپڈیٹ ہو جائیں گے۔', 'Delete this guide? Remaining numbers will auto-update.'))) {
         const upIdx = uploadedPdfs.findIndex(x => x[0] === id);
         if (upIdx !== -1) {
@@ -577,9 +577,9 @@
             ${g[7] ? `<button onclick="toggleCardTool(event, ${g[0]}, '${g[7]}')" class="px-3 py-1 gold-bg text-[#0A192F] font-extrabold text-[11px] rounded-xl shadow-sm">${tr(g[8], g[9])}</button>` : ''}
           </div>
 
-          <!-- Social Engagement Bar: Views, Likes, Comments, Share -->
+          <!-- Social Engagement Bar with Authentic Social Share SVG Icon -->
           <div onclick="event.stopPropagation()" class="flex items-center justify-between gap-1 mt-3 pt-2.5 border-t border-dashed border-gray-200 text-[11px] text-gray-600 font-bold">
-            <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-100" title="Views">
+            <span class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100">
               👁️ <span>${st.views}</span> <span class="hidden sm:inline">${tr('ویوز','Views')}</span>
             </span>
             <button onclick="toggleLike(event, ${g[0]})" class="flex items-center gap-1 px-2.5 py-1 rounded-lg ${st.liked ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-slate-100 hover:bg-red-50'} transition">
@@ -588,12 +588,12 @@
             <button onclick="toggleCommentBox(event, ${g[0]})" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-[#0A192F] transition">
               💬 <span>${st.comments.length}</span> <span>${tr('کمنٹ','Comment')}</span>
             </button>
-            <button onclick="shareGuide(event, ${g[0]}, '${titleTxt}')" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-50 text-emerald-900 transition">
-              📤 <span>${st.shares}</span> <span>${tr('شیئر','Share')}</span>
+            <button onclick="shareGuide(event, ${g[0]}, '${titleTxt}')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-[#064E3B] border border-emerald-200 transition">
+              ${shareSvgIcon} <span>${st.shares}</span> <span>${tr('شیئر','Share')}</span>
             </button>
           </div>
 
-          <!-- Inline Comment Section per Guide -->
+          <!-- Inline Comment Section -->
           <div id="commBox-${g[0]}" onclick="event.stopPropagation()" class="hidden mt-3 p-3 bg-slate-50 rounded-xl border border-gray-200 text-xs space-y-2">
             <form onsubmit="addGuideComment(event, ${g[0]})" class="flex flex-col sm:flex-row gap-1.5">
               <input type="text" id="cName-${g[0]}" required placeholder="${tr('آپ کا نام','Your Name')}" class="sm:w-1/3 p-1.5 border rounded-lg bg-white text-xs font-semibold" />
@@ -620,7 +620,6 @@
       const allGuides = [...baseGuides, ...uploadedPdfs];
       const g = allGuides.find(x => x[0] === id); if (!g) return;
 
-      // Increment Guide View Counter Automatically
       const st = getStat(id);
       st.views += 1;
       saveStats();
