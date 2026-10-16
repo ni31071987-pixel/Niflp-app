@@ -38,7 +38,7 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col pb-24">
+<body class="min-h-screen flex flex-col">
 
   <!-- Top Header -->
   <header class="hero-gradient text-white sticky top-0 z-50 shadow-lg border-b border-[#D4AF37]/50">
@@ -118,31 +118,74 @@
       <div id="topToolPanel" class="hidden mt-3.5"></div>
     </div>
 
-    <!-- Community Chat & Developer Feedback Box -->
-    <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md mb-5">
-      <div class="flex items-center justify-between mb-2 border-b pb-2">
-        <h3 id="ui-chatHeading" class="text-xs font-extrabold text-[#0A192F] urdu-font">💬 کمیونٹی نیٹ ورک اور ڈویلپر چیٹ باکس</h3>
-        <span id="ui-chatBadge" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full font-bold">لائیو چیٹ</span>
-      </div>
-      <p id="ui-chatDesc" class="text-[11px] text-gray-600 urdu-font mb-3">یہاں اپنے خیالات، تجاویز اور مالیاتی سوالات درج کریں تاکہ دوسرے صارفین اور ڈویلپر دیکھ سکیں:</p>
-      
-      <form onsubmit="postChatMessage(event)" class="space-y-2.5 mb-3">
-        <input type="text" id="chatName" required placeholder="آپ کا نام..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50 font-semibold focus:ring-2 focus:ring-[#064E3B] focus:outline-none" />
-        <textarea id="chatText" required rows="2" placeholder="اپنا پیغام، مشورہ یا سوال یہاں لکھیں..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50 focus:ring-2 focus:ring-[#064E3B] focus:outline-none"></textarea>
-        <button type="submit" id="ui-chatSubmit" class="w-full py-2.5 hero-gradient text-white font-extrabold rounded-xl text-xs shadow-md active:scale-95 transition">پیغام بھیجیں</button>
-      </form>
-
-      <!-- Chat Messages Container -->
-      <div id="chatMessagesList" class="space-y-2 max-h-48 overflow-y-auto border-t pt-2.5 text-xs"></div>
-    </div>
-
     <!-- Guides Library List Container -->
     <div class="mb-3 px-1 flex items-center justify-between">
       <h3 id="ui-libraryHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] urdu-font">📚 اثاثہ سازی، قانونی رہنمائی اور غربت سے آزادی (15 مکمل کتابچے):</h3>
     </div>
-    <div id="guidesList" class="space-y-3.5"></div>
+    <div id="guidesList" class="space-y-3.5 mb-8"></div>
 
   </main>
+
+  <!-- International Bottom Portal: Developer Contact & User Suggestions / Feedback Box -->
+  <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto">
+    <div class="max-w-3xl mx-auto space-y-6">
+
+      <!-- Developer Profile & Direct Contact Card -->
+      <div class="bg-white/10 backdrop-blur-md p-5 rounded-3xl border border-[#D4AF37]/50 shadow-xl text-center">
+        <div class="w-12 h-12 rounded-2xl gold-gradient mx-auto flex items-center justify-center text-[#0A192F] font-black text-lg shadow-md mb-2">
+          NI
+        </div>
+        <h3 id="ui-footerTitle" class="text-sm md:text-base font-extrabold text-[#F3E5AB] urdu-font mb-1">
+          فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال
+        </h3>
+        <p id="ui-footerSub" class="text-xs text-emerald-200 urdu-font mb-4">
+          عام آدمی کی معاشی خود مختاری اور حلال اثاثہ سازی کا ڈیجیٹل سفر
+        </p>
+
+        <!-- Contact Badges (Phone & Gmail) -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 text-xs">
+          <a href="tel:03105379765" class="px-3.5 py-2 rounded-xl bg-[#064E3B] hover:bg-emerald-800 border border-emerald-400 text-white font-bold flex items-center gap-1.5 shadow transition">
+            <span>📞</span>
+            <span id="ui-devPhoneLbl">رابطہ نمبر:</span>
+            <span dir="ltr" class="font-mono text-[#F3E5AB]">0310-5379765</span>
+          </a>
+          <a href="mailto:ni31071987@gmail.com" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-[#D4AF37]/40 text-white font-bold flex items-center gap-1.5 shadow transition">
+            <span>✉️</span>
+            <span id="ui-devEmailLbl">جی میل:</span>
+            <span dir="ltr" class="font-mono text-[#F3E5AB]">ni31071987@gmail.com</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom Feedback, Suggestions & Community Box -->
+      <div class="bg-white text-gray-900 p-5 rounded-3xl border-2 border-[#D4AF37] shadow-2xl">
+        <div class="flex items-center justify-between mb-2 border-b pb-2.5 gap-2">
+          <h3 id="ui-chatHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] urdu-font">
+            💬 ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء سے مستفید فرمائیں
+          </h3>
+          <span id="ui-chatBadge" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full font-bold shrink-0">آراء و تجاویز</span>
+        </div>
+        <p id="ui-chatDesc" class="text-[11px] text-gray-600 urdu-font mb-3.5">
+          اس ایپ میں مزید کون سے فیچرز یا معلومات شامل کی جائیں؟ اپنے خیالات، مشورے اور سوالات نیچے درج کریں:
+        </p>
+        
+        <form onsubmit="postChatMessage(event)" class="space-y-2.5 mb-4">
+          <input type="text" id="chatName" required placeholder="آپ کا نام..." class="w-full p-2.5 border border-gray-300 rounded-xl text-xs bg-gray-50 font-semibold focus:ring-2 focus:ring-[#064E3B] focus:outline-none" />
+          <textarea id="chatText" required rows="3" placeholder="ایپ کی بہتری کے لیے اپنی تجویز، رائے یا پیغام یہاں لکھیں..." class="w-full p-2.5 border border-gray-300 rounded-xl text-xs bg-gray-50 focus:ring-2 focus:ring-[#064E3B] focus:outline-none"></textarea>
+          <button type="submit" id="ui-chatSubmit" class="w-full py-3 gold-gradient text-[#0A192F] font-extrabold rounded-xl text-xs shadow-md active:scale-95 transition">
+            تجویز اور رائے ارسال کریں
+          </button>
+        </form>
+
+        <!-- Chat & Suggestions Messages Container -->
+        <div id="chatMessagesList" class="space-y-2 max-h-56 overflow-y-auto border-t pt-3 text-xs"></div>
+      </div>
+
+      <p id="ui-copyright" class="text-center text-[11px] text-gray-400 pt-2">
+        © 2026 Financial Literacy Pakistan • Designed & Developed by Nadeem Iqbal
+      </p>
+    </div>
+  </section>
 
   <!-- Full-Screen Reader Modal with Interactive Step-by-Step Accordion -->
   <div id="guideModal" class="fixed inset-0 bg-black/85 z-50 hidden overflow-y-auto p-2 md:p-6 backdrop-blur-sm">
@@ -154,11 +197,6 @@
       <div id="mBody" class="p-4 md:p-6 space-y-4 text-xs md:text-sm text-gray-800 bg-slate-50"></div>
     </div>
   </div>
-
-  <footer class="bg-[#0A192F] text-gray-400 text-[11px] py-4 px-3 text-center border-t border-[#D4AF37]/30 mt-auto">
-    <p id="ui-footerTitle" class="text-[#F3E5AB] font-bold mb-1">فنانشل لٹریسی پاکستان</p>
-    <p id="ui-footerSub">ڈویلپر اور بانی: ندیم اقبال • معاشی خود مختاری اور حلال اثاثہ سازی کا سفر</p>
-  </footer>
 
   <script>
     let lang = 'ur';
@@ -181,15 +219,18 @@
         btnBizSub: 'روزانہ کیش بک',
         btnZakatTitle: '🪙 زکوٰۃ',
         btnZakatSub: '2.5% حساب',
-        chatHeading: '💬 کمیونٹی نیٹ ورک اور ڈویلپر چیٹ باکس',
-        chatBadge: 'لائیو چیٹ',
-        chatDesc: 'یہاں اپنے خیالات، تجاویز اور مالیاتی سوالات درج کریں تاکہ دوسرے صارفین اور ڈویلپر دیکھ سکیں:',
+        chatHeading: '💬 ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء سے مستفید فرمائیں',
+        chatBadge: 'آراء و تجاویز',
+        chatDesc: 'اس ایپ میں مزید کون سے فیچرز یا معلومات شامل کی جائیں؟ اپنے خیالات، مشورے اور سوالات نیچے درج کریں:',
         chatNamePlaceholder: 'آپ کا نام...',
-        chatTextPlaceholder: 'اپنا پیغام، مشورہ یا سوال یہاں لکھیں...',
-        chatSubmit: 'پیغام بھیجیں',
+        chatTextPlaceholder: 'ایپ کی بہتری کے لیے اپنی تجویز، رائے یا پیغام یہاں لکھیں...',
+        chatSubmit: 'تجویز اور رائے ارسال کریں',
         libraryHeading: '📚 اثاثہ سازی، قانونی رہنمائی اور غربت سے آزادی (15 مکمل کتابچے):',
-        footerTitle: 'فنانشل لٹریسی پاکستان',
-        footerSub: 'ڈویلپر اور بانی: ندیم اقبال • معاشی خود مختاری اور حلال اثاثہ سازی کا سفر',
+        footerTitle: 'فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال',
+        footerSub: 'عام آدمی کی معاشی خود مختاری اور حلال اثاثہ سازی کا ڈیجیٹل سفر',
+        devPhoneLbl: 'رابطہ نمبر:',
+        devEmailLbl: 'جی میل:',
+        copyright: '© 2026 فنانشل لٹریسی پاکستان • جملہ حقوق بحق ندیم اقبال محفوظ ہیں',
         readMoreBtn: 'مکمل گائیڈ اور قانونی سٹیپس پڑھیں ←',
         verifiedBadge: 'مصدقہ گائیڈ',
         modalBadge: 'پاکستانی قانونی و عملی گائیڈ',
@@ -233,15 +274,18 @@
         btnBizSub: 'Daily Ledger',
         btnZakatTitle: '🪙 Zakat',
         btnZakatSub: '2.5% Calculator',
-        chatHeading: '💬 Community Network & Developer Chat Box',
-        chatBadge: 'Live Chat',
-        chatDesc: 'Share your thoughts, feedback, or financial questions here with the community and developer:',
+        chatHeading: '💬 Share Your Valuable Suggestions & Feedback to Improve This App',
+        chatBadge: 'Feedback Portal',
+        chatDesc: 'What new features or financial topics would you like to see added? Share your thoughts, suggestions, and questions below:',
         chatNamePlaceholder: 'Your Name...',
-        chatTextPlaceholder: 'Type your message, advice, or question here...',
-        chatSubmit: 'Post Message',
+        chatTextPlaceholder: 'Write your suggestion, feedback, or message here...',
+        chatSubmit: 'Submit Suggestion & Feedback',
         libraryHeading: '📚 Asset Building, Legal Roadmaps & Poverty Alleviation (15 Master Guides):',
-        footerTitle: 'Financial Literacy Pakistan',
-        footerSub: 'Founder & Master Developer: Nadeem Iqbal • Empowering Financial Independence',
+        footerTitle: 'Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal',
+        footerSub: 'Digital Portal for Financial Independence & Halal Asset Building',
+        devPhoneLbl: 'Phone / WhatsApp:',
+        devEmailLbl: 'Email:',
+        copyright: '© 2026 Financial Literacy Pakistan • Designed & Developed by Nadeem Iqbal',
         readMoreBtn: 'Read Full Step-by-Step Guide →',
         verifiedBadge: 'Verified Guide',
         modalBadge: 'Pakistani Legal & Practical Roadmap',
@@ -288,12 +332,9 @@
       let mIdx = now.getMonth();
       let yNum = now.getFullYear();
 
-      // Calculate Desi Month & Day (Bikrami Solar Calendar approximation used in Pakistan)
-      // Mid-month transition around the 14th-16th of Gregorian month
       let desiIdx = (mIdx + (dNum >= 15 ? 9 : 8)) % 12;
       let desiDay = dNum >= 15 ? (dNum - 14) : (dNum + 16);
 
-      // Islamic Date via Intl API with fallback
       let hijriUr = '4 ربیع الثانی 1448ھ';
       let hijriEn = '4 Rabi al-Thani 1448 AH';
       try {
@@ -546,7 +587,7 @@
         sEn: 'Increase your earning power using smartphone skills, graphic design, AI workflows, and freelancing.',
         points: [
           {
-            titleUr: '1. مفت سرکاری و آن لائن کورسز (DigiSkills / NVTTI)',
+            titleUr: '1. مفت سرکاری و آن لائن کورسز (DigiSkills / NAVTTC)',
             titleEn: '1. Free Government & Online Skill Portals (DigiSkills / NAVTTC)',
             detailUr: '• پاکستانی مواقع اور سٹیپس:\n1. حکومتِ پاکستان کے مفت پورٹل DigiSkills.pk اور NAVTTC کے ٹیکنیکل کورسز میں داخلہ لیں۔\n2. موبائل پر Canva گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ، اور AI ٹولز سیکھ کر مقامی دکانداروں کے پوسٹرز اور سوشل میڈیا پوسٹس بنا کر دیں۔',
             detailEn: '• Pakistani Opportunities & Steps:\n1. Enroll in free government-backed training programs like DigiSkills.pk and NAVTTC.\n2. Learn graphic design, video editing, and AI workflows to offer social media design services to local businesses.'
@@ -695,8 +736,11 @@
       setTxt('ui-chatDesc', t.chatDesc);
       setTxt('ui-chatSubmit', t.chatSubmit, false);
       setTxt('ui-libraryHeading', t.libraryHeading);
-      setTxt('ui-footerTitle', t.footerTitle, false);
-      setTxt('ui-footerSub', t.footerSub, false);
+      setTxt('ui-footerTitle', t.footerTitle);
+      setTxt('ui-footerSub', t.footerSub);
+      setTxt('ui-devPhoneLbl', t.devPhoneLbl, false);
+      setTxt('ui-devEmailLbl', t.devEmailLbl, false);
+      setTxt('ui-copyright', t.copyright, false);
 
       document.getElementById('searchBox').placeholder = t.searchPlaceholder;
       document.getElementById('chatName').placeholder = t.chatNamePlaceholder;
@@ -886,7 +930,7 @@
       renderToolHTML(containerId, 'business', prefix);
     }
 
-    // Community Chat Functions
+    // Bottom Suggestions & Feedback Functions
     function postChatMessage(e) {
       e.preventDefault();
       let name = document.getElementById('chatName').value.trim();
@@ -903,12 +947,12 @@
       const box = document.getElementById('chatMessagesList');
       if (!box) return;
       const defaultMsg = lang === 'ur'
-        ? { name: 'ندیم اقبال (ڈویلپر)', text: 'خوش آمدید! آپ اس ایپ کے ذریعے اپنے مالیاتی سوالات اور مشورے یہاں شیئر کر سکتے ہیں۔', time: 'لائیو' }
-        : { name: 'Nadeem Iqbal (Developer)', text: 'Welcome! Feel free to share your financial questions, suggestions, and feedback here.', time: 'Live' };
+        ? { name: 'ندیم اقبال (ڈویلپر)', text: 'خوش آمدید! اس ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء یہاں ضرور شیئر کریں۔ آپ براہِ راست اوپر دیے گئے نمبر یا جی میل پر بھی رابطہ کر سکتے ہیں۔', time: 'لائیو' }
+        : { name: 'Nadeem Iqbal (Developer)', text: 'Welcome! Please share your valuable suggestions and feedback here to help us improve this app further. You can also reach out directly via phone or Gmail above.', time: 'Live' };
 
       const list = [defaultMsg, ...chatData];
       box.innerHTML = list.map(c => `
-        <div class="p-2.5 bg-slate-50 border border-gray-200 rounded-2xl">
+        <div class="p-3 bg-slate-50 border border-gray-200 rounded-2xl">
           <div class="flex justify-between items-center mb-1">
             <span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span>
             <span class="text-[10px] text-gray-400 font-semibold">${c.time}</span>
