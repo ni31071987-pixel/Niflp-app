@@ -107,24 +107,20 @@
   <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto">
     <div class="max-w-3xl mx-auto space-y-6">
 
-      <!-- Developer Info & Secure Admin Login / Panel -->
+      <!-- Developer Info & Secure Admin Login / Panel (Hidden trigger via subtle click on logo or text for ultimate security) -->
       <div class="bg-white/10 p-5 rounded-3xl border border-[#D4AF37]/50 text-center space-y-3">
-        <div class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base">NI</div>
+        <div onclick="triggerAdminSecret()" class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base cursor-pointer select-none" title="Admin Access">NI</div>
         <h3 data-ur="فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال" data-en="Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal" class="text-sm font-extrabold text-[#F3E5AB]"></h3>
         <p data-ur="موبایل رابطہ: 0310-5379765 | جی میل: ni31071987@gmail.com" data-en="Phone: 0310-5379765 | Email: ni31071987@gmail.com" class="text-xs text-emerald-200 font-mono"></p>
         
-        <!-- Admin Login Trigger / Panel -->
-        <div id="adminAuthBox" class="pt-2">
-          <button onclick="promptAdminLogin()" class="px-4 py-2 rounded-xl bg-[#D4AF37] text-[#0A192F] font-extrabold text-xs shadow hover:bg-amber-400 transition">
-            🔐 ڈویلپر / ایڈمن لاگ ان (Developer Login)
-          </button>
-        </div>
-
-        <!-- Secure Developer Uploader (Hidden by default, shown only after password) -->
-        <div id="adminPanel" class="hidden bg-black/40 p-4 rounded-2xl border-2 border-emerald-500 text-right text-xs space-y-3">
+        <!-- Secure Developer Uploader (Hidden until authenticated) -->
+        <div id="adminPanel" class="hidden bg-black/40 p-4 rounded-2xl border-2 border-emerald-500 text-right text-xs space-y-3 mt-3">
           <div class="flex justify-between items-center border-b border-emerald-500/30 pb-2">
-            <span class="font-extrabold text-emerald-300">🔓 ایڈمن موڈ فعال (Admin Mode Active)</span>
-            <button onclick="adminLogout()" class="text-red-400 font-bold px-2 py-0.5 bg-red-950/50 rounded border border-red-500/50">لاگ آؤٹ</button>
+            <span class="font-extrabold text-emerald-300">🔓 ایڈمن موڈ فعال (Admin Mode)</span>
+            <div class="flex gap-2">
+              <button onclick="changeAdminPassword()" class="text-amber-300 font-bold px-2 py-0.5 bg-amber-950/50 rounded border border-amber-500/50">پاسورڈ بدلیں</button>
+              <button onclick="adminLogout()" class="text-red-400 font-bold px-2 py-0.5 bg-red-950/50 rounded border border-red-500/50">لاگ آؤٹ</button>
+            </div>
           </div>
           <div>
             <span data-ur="🔒 نئی پی ڈی ایف گائیڈ اپلوڈ کریں:" data-en="🔒 Upload New PDF Guide:" class="font-bold text-[#F3E5AB] block mb-1"></span>
@@ -247,7 +243,7 @@
         hUr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
         hEn = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
       } catch(e) {}
-      document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}، ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
+      document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}؍ ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
       document.getElementById('dateCalendars').innerHTML = lang === 'ur'
         ? `<span>🌙 اسلامی: ${hUr}</span>|<span>🌾 دیسی: ${desiDay} ${dMUr[desiIdx]}</span>|<span>🇵🇰 پاکستان وقت</span>`
         : `<span>🌙 Islamic: ${hEn}</span>|<span>🌾 Desi: ${desiDay} ${dMEn[desiIdx]}</span>|<span>🇵🇰 PKT Time</span>`;
@@ -272,25 +268,41 @@
       renderChat(); renderGuides();
     }
 
-    function promptAdminLogin() {
+    // Secret Admin Login with password creation & changing support
+    function triggerAdminSecret() {
+      if (isAdminLoggedIn) return;
+      let savedPwd = localStorage.getItem('flp_admin_pwd') || '1234';
+      
       const pwd = prompt(tr('ڈویلپر پاسورڈ درج کریں:', 'Enter Developer Password:'));
-      if (pwd === '1234' || pwd === 'nadeem123') {
+      if (pwd === savedPwd) {
         isAdminLoggedIn = true;
-        document.getElementById('adminAuthBox').classList.add('hidden');
         document.getElementById('adminPanel').classList.remove('hidden');
         renderGuides();
-        alert(tr('✅ ایڈمن رسائی کامیاب!', '✅ Admin Access Granted!'));
+        showToast(tr('🔓 ایڈمن موڈ فعال ہو گیا', '🔓 Admin Mode Activated'), true);
       } else if (pwd !== null) {
         alert(tr('❌ غلط پاسورڈ!', '❌ Incorrect Password!'));
       }
     }
 
+    function changeAdminPassword() {
+      let currentPwd = localStorage.getItem('flp_admin_pwd') || '1234';
+      let oldInput = prompt(tr('پرانا پاسورڈ درج کریں:', 'Enter current password:'));
+      if (oldInput === currentPwd) {
+        let newInput = prompt(tr('نیا پاسورڈ درج کریں:', 'Enter new password:'));
+        if (newInput && newInput.trim() !== '') {
+          localStorage.setItem('flp_admin_pwd', newInput.trim());
+          alert(tr('✅ پاسورڈ کامیابی سے تبدیل ہو گیا!', '✅ Password successfully changed!'));
+        }
+      } else if (oldInput !== null) {
+        alert(tr('❌ پرانا پاسورڈ غلط ہے!', '❌ Incorrect old password!'));
+      }
+    }
+
     function adminLogout() {
       isAdminLoggedIn = false;
-      document.getElementById('adminAuthBox').classList.remove('hidden');
       document.getElementById('adminPanel').classList.add('hidden');
       renderGuides();
-      alert(tr('🔒 لاگ آؤٹ ہو گیا', '🔒 Logged Out'));
+      showToast(tr('🔒 لاگ آؤٹ ہو گیا', '🔒 Logged Out'), false);
     }
 
     function renderToolHTML(cId, type, p) {
