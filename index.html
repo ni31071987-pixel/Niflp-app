@@ -17,7 +17,7 @@
     }
     .urdu-font {
       font-family: 'Noto Nastaliq Urdu', serif;
-      line-height: 2.4 !important;
+      line-height: 2.5 !important;
     }
     .hero-gradient {
       background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%);
@@ -42,7 +42,7 @@
         </div>
         <div>
           <h1 class="text-xs md:text-sm font-extrabold text-[#F3E5AB] urdu-font">فنانشل لٹریسی پاکستان</h1>
-          <p class="text-[9px] text-emerald-200 font-semibold tracking-wider">PRO DIGITAL LIBRARY & TOOLS</p>
+          <p class="text-[9px] text-emerald-200 font-semibold tracking-wider">عام آدمی اور مزدور کے اثاثہ جات ایڈیشن</p>
         </div>
       </div>
       <div class="flex bg-[#0A192F]/80 p-1 rounded-xl border border-[#D4AF37]/40 shadow-inner">
@@ -52,26 +52,30 @@
     </div>
   </header>
 
-  <!-- Hero & Multi-Calendar Date Bar -->
+  <!-- Hero & Live Pakistani Time & Date Bar -->
   <section class="hero-gradient text-white pt-5 pb-7 px-4 text-center border-b-4 border-[#D4AF37]">
     <span class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5 shadow-sm">
-      🌟 13 انٹرنیشنل گائیڈز + لائیو مالیاتی ٹولز + کمیونٹی نیٹ ورک
+      💎 مزدور اور دہاڑی دار طبقے کے لیے چھوٹے چھوٹے اثاثے (Micro-Assets) بنانے کے عملی طریقے
     </span>
 
-    <!-- Live Date Box -->
-    <div class="max-w-md mx-auto my-2.5 p-2.5 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB] urdu-font shadow-inner">
-      <div class="font-bold text-xs mb-1" id="dateEng">جمعہ، 16 اکتوبر 2026</div>
+    <!-- Live Date & Pakistani Clock Box -->
+    <div class="max-w-md mx-auto my-2.5 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB] urdu-font shadow-inner">
+      <div class="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
+        <span id="dateEng" class="font-bold">جمعہ، 16 اکتوبر 2026</span>
+        <span id="liveClock" class="bg-[#0A192F] px-2.5 py-0.5 rounded-lg text-emerald-300 font-mono font-bold text-xs border border-[#D4AF37]/30">08:45:00 AM</span>
+      </div>
       <div class="text-[10px] text-emerald-100 flex flex-wrap justify-center gap-2 font-medium">
         <span>🌙 اسلامی: 4 ربیع الثانی 1448ھ</span> | 
-        <span>🌾 دیسی ماہ: اسوج (29)</span>
+        <span>🌾 دیسی ماہ: اسوج (29)</span> | 
+        <span>🇵🇰 پاکستان ٹائم (PKT)</span>
       </div>
     </div>
 
     <h2 class="text-base md:text-2xl font-black mb-3 urdu-font tracking-wide">
-      موبایل پر معاشی خود مختاری اور ڈیجیٹل کھاتہ سسٹم
+      غریب سے امیر کا سفر: چھوٹے چھوٹے سٹیپس سے مضبوط اثاثے (Assets) بنائیں
     </h2>
     <div class="max-w-md mx-auto">
-      <input type="text" id="searchBox" oninput="renderGuides()" placeholder="موضوع تلاش کریں (سونا، بجٹ، ٹیکس، کمیٹی)..." class="w-full px-4 py-3 rounded-2xl bg-white text-gray-900 text-xs shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" />
+      <input type="text" id="searchBox" oninput="renderGuides()" placeholder="تلاش کریں (اثاثے، کاروبار، بچت، سونا)..." class="w-full px-4 py-3 rounded-2xl bg-white text-gray-900 text-xs shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" />
     </div>
   </section>
 
@@ -81,12 +85,25 @@
     <!-- Interactive Tools Quick Bar -->
     <div class="bg-[#0A192F] p-3.5 rounded-2xl border-2 border-[#D4AF37] mb-5 shadow-xl">
       <div class="flex items-center justify-between mb-2.5">
-        <span class="text-[#F3E5AB] text-xs font-extrabold urdu-font">🛠️ ایڈوانسڈ مالیاتی ٹولز (Interactive Tools):</span>
+        <span class="text-[#F3E5AB] text-xs font-extrabold urdu-font">🛠️ عملی مالیاتی ٹولز (براہِ راست یہیں کھلیں گے):</span>
       </div>
-      <div class="grid grid-cols-3 gap-2">
-        <button onclick="openTool('budget')" class="py-2.5 px-1 text-xs font-bold bg-[#064E3B] text-white rounded-xl border border-emerald-400 shadow-md active:scale-95 transition">🧮 بجٹ کیلکولیشن</button>
-        <button onclick="openTool('committee')" class="py-2.5 px-1 text-xs font-bold gold-bg text-[#0A192F] rounded-xl shadow-md active:scale-95 transition">🗓️ کمیٹی شیڈول</button>
-        <button onclick="openTool('business')" class="py-2.5 px-1 text-xs font-bold bg-white text-[#0A192F] rounded-xl shadow-md active:scale-95 transition">📒 کاروباری کھاتہ</button>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <button onclick="openTool('budget')" class="py-3 px-1 text-xs font-extrabold bg-[#064E3B] text-white rounded-xl border border-emerald-400 shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-0.5">
+          <span>🧮 بجٹ</span>
+          <span class="text-[9px] text-emerald-200 font-normal">Calculator</span>
+        </button>
+        <button onclick="openTool('committee')" class="py-3 px-1 text-xs font-extrabold gold-bg text-[#0A192F] rounded-xl shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-0.5">
+          <span>🗓️ کمیٹی</span>
+          <span class="text-[9px] text-amber-950 font-normal">12 Months</span>
+        </button>
+        <button onclick="openTool('business')" class="py-3 px-1 text-xs font-extrabold bg-white text-[#0A192F] rounded-xl shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-0.5">
+          <span>📒 کھاتہ</span>
+          <span class="text-[9px] text-gray-600 font-normal">Cashbook</span>
+        </button>
+        <button onclick="openTool('zakat')" class="py-3 px-1 text-xs font-extrabold bg-emerald-800 text-white rounded-xl border border-emerald-300 shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-0.5">
+          <span>🪙 زکوٰۃ</span>
+          <span class="text-[9px] text-emerald-200 font-normal">Calculator</span>
+        </button>
       </div>
 
       <!-- Tool 1: Budget -->
@@ -96,11 +113,11 @@
           <button onclick="closeTools()" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">✕ بند کریں</button>
         </div>
         <label class="block font-bold mb-1 text-gray-700">اپنی ماہانہ آمدنی درج کریں (PKR):</label>
-        <input type="number" id="incVal" value="100000" oninput="calcBudget()" class="w-full p-2.5 border-2 border-[#064E3B] rounded-xl mb-3 font-extrabold text-sm text-[#064E3B] bg-emerald-50/50" />
+        <input type="number" id="incVal" value="30000" oninput="calcBudget()" class="w-full p-2.5 border-2 border-[#064E3B] rounded-xl mb-3 font-extrabold text-sm text-[#064E3B] bg-emerald-50/50" />
         <div class="grid grid-cols-3 gap-2 text-center">
-          <div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>50% ضروریات</b><p id="b-needs" class="font-black text-emerald-950 mt-1 text-sm">50k</p></div>
-          <div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>30% خواہشات</b><p id="b-wants" class="font-black text-blue-950 mt-1 text-sm">30k</p></div>
-          <div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>20% بچت</b><p id="b-save" class="font-black text-amber-950 mt-1 text-sm">20k</p></div>
+          <div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>50% ضروریات</b><p id="b-needs" class="font-black text-emerald-950 mt-1 text-sm">15k</p></div>
+          <div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>30% خواہشات</b><p id="b-wants" class="font-black text-blue-950 mt-1 text-sm">9k</p></div>
+          <div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>20% بچت</b><p id="b-save" class="font-black text-amber-950 mt-1 text-sm">6k</p></div>
         </div>
       </div>
 
@@ -135,6 +152,32 @@
         </div>
         <div id="bizList" class="space-y-1.5 max-h-40 overflow-y-auto"></div>
       </div>
+
+      <!-- Tool 4: Zakat Calculator -->
+      <div id="tool-zakat" class="hidden mt-3 bg-white text-gray-900 rounded-2xl p-4 border shadow-lg text-xs">
+        <div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]">
+          <span>🪙 زکوٰۃ اور سونا مالیت کیلکولیٹر</span>
+          <button onclick="closeTools()" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">✕ بند کریں</button>
+        </div>
+        <div class="space-y-2.5 mb-3">
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">نقدی کیش / بینک بیلنس (PKR):</label>
+            <input type="number" id="zCash" value="10000" oninput="calcZakat()" class="w-full p-2 border rounded-xl text-xs font-bold" />
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">سونے یا چاندی کی مالیت (PKR):</label>
+            <input type="number" id="zGold" value="0" oninput="calcZakat()" class="w-full p-2 border rounded-xl text-xs font-bold" />
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">کاروباری سامان / اسٹاک (PKR):</label>
+            <input type="number" id="zBiz" value="0" oninput="calcZakat()" class="w-full p-2 border rounded-xl text-xs font-bold" />
+          </div>
+        </div>
+        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-300 text-center">
+          <span class="text-[11px] text-emerald-900 font-bold block">ادا کرنے والی کل زکوٰۃ (2.5%):</span>
+          <span id="zakatTotal" class="font-black text-emerald-950 text-base">Rs. 250</span>
+        </div>
+      </div>
     </div>
 
     <!-- Community Chat & Developer Feedback Box -->
@@ -159,13 +202,13 @@
 
     <!-- Guides Library List Container -->
     <div class="mb-3 px-1">
-      <h3 class="text-xs font-extrabold text-gray-700 urdu-font">📚 مصدقہ تعلیمی لائبریری (13 Guides):</h3>
+      <h3 class="text-xs font-extrabold text-gray-700 urdu-font">📚 اثاثہ سازی اور غریبی سے آزادی (15 Master Guides):</h3>
     </div>
     <div id="guidesList" class="space-y-3.5"></div>
 
   </main>
 
-  <!-- Immersive Full-Screen Reader Modal (Fixed & Enhanced) -->
+  <!-- Immersive Full-Screen Reader Modal -->
   <div id="guideModal" class="fixed inset-0 bg-black/85 z-50 hidden overflow-y-auto p-2 md:p-6 backdrop-blur-sm">
     <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-4 border-2 border-[#D4AF37] animate-in fade-in zoom-in duration-200">
       <div class="hero-gradient text-white px-5 py-4 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 shadow-md">
@@ -178,13 +221,13 @@
 
   <footer class="bg-[#0A192F] text-gray-400 text-[11px] py-4 text-center border-t border-[#D4AF37]/30 mt-auto">
     <p class="text-[#F3E5AB] font-bold mb-1">فنانشل لٹریسی پاکستان (Financial Literacy Pakistan)</p>
-    <p>ماسٹر ڈویلپر: ندیم اقبال • معاشی خود مختاری کا سفر</p>
+    <p>ماسٹر ڈویلپر: ندیم اقبال • مزدور اور عام آدمی کا معاشی خود مختار سفر</p>
   </footer>
 
   <script>
     let lang = 'ur';
 
-    // Live Multi-Calendar Date Generator
+    // Live Pakistani Time & Date Generator
     function loadLiveDates() {
       const now = new Date();
       const daysUr = ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'];
@@ -195,246 +238,300 @@
       let mName = monthsUr[now.getMonth()];
       let yNum = now.getFullYear();
 
-      let hijriStr = '4 ربیع الثانی 1448ھ';
-      try {
-        hijriStr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
-      } catch(e) {}
-
       document.getElementById('dateEng').textContent = `${dayName}، ${dNum} ${mName} ${yNum}`;
     }
 
-    // Guides Library Data (Full Detailed)
+    function updateLiveClock() {
+      const now = new Date();
+      let timeStr = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+      let clockEl = document.getElementById('liveClock');
+      if (clockEl) clockEl.textContent = timeStr;
+    }
+    setInterval(updateLiveClock, 1000);
+
+    // Zakat Calculation Logic
+    function calcZakat() {
+      let cash = parseFloat(document.getElementById('zCash').value) || 0;
+      let gold = parseFloat(document.getElementById('zGold').value) || 0;
+      let biz = parseFloat(document.getElementById('zBiz').value) || 0;
+      let totalWealth = cash + gold + biz;
+      let zakat = totalWealth * 0.025;
+      document.getElementById('zakatTotal').textContent = 'Rs. ' + Math.round(zakat).toLocaleString();
+    }
+
+    // Guides Library Data (Includes Special Micro-Asset Building Guide)
     const guides = [
       {
-        id: 1, cat: 'budget',
-        tUr: '1. 50/30/20 بجٹ گائیڈ: ماہانہ آمدنی کو منظم کرنے کا سنہری اصول',
-        tEn: '1. The 50/30/20 Budget Rule: Master Your Monthly Income',
-        sUr: 'اپنی ماہانہ آمدنی کو تین حصوں میں تقسیم کر کے قرض سے نجات پائیں اور بچت کریں۔',
-        sEn: 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).',
-        tool: 'budget', toolLbl: '🧮 بجٹ کیلکولیٹر',
+        id: 15, cat: 'assets',
+        tUr: '15. مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets): روزانہ پرافٹ دینے والے چھوٹے ایسٹس',
+        tEn: '15. Micro-Asset Building for Common People: Generating Daily Profit',
+        sUr: 'کم آمدنی والا مزدور یا دہاڑی دار شخص اپنے لیے چھوٹے چھوٹے اثاثے (Assets) کیسے بنا سکتا ہے؟',
+        sEn: 'Practical steps for daily-wage workers and low-income earners to build income-generating assets.',
         pUr: [
-          '• 50 فیصد بنیادی ضروریات (Needs): آپ کی کل ماہانہ آمدنی کا آدھا حصہ ان ناگزیر اخراجات پر لگنا چاہیے جن کے بغیر گزارا ممکن نہیں، جیسے گھر کا کرایہ، راشن، بجلی، گیس کے بل، اسکول فیس اور ادویات۔',
-          '• 30 فیصد ذاتی خواہشات (Wants): آمدنی کا تیس فیصد حصہ آپ کے لائف اسٹائل، باہر کھانا کھانے، نئے کپڑے اور تفریح کے لیے ہونا چاہیے۔',
-          '• 20 فیصد بچت اور سرمایہ کاری (Savings): تنخواہ ملتے ہی سب سے پہلے 20 فیصد رقم الگ کر کے ایمرجنسی فنڈ اور حلال سرمایہ کاری میں لگائیں۔'
+          '• 1. مائکرو گولڈ (Micro-Gold Accumulation): عام آدمی یہ نہ سوچے کہ جب تولہ سونا آئے گا تب خریدوں گا؛ روزانہ یا ہفتہ وار صرف 100 یا 200 روپے بچا کر سنار سے سونے کی چھوٹی کنی (گراف) یا 0.1 گرام کا ٹکڑا لینا شروع کریں۔ یہ دنیا کا سب سے محفوظ اثاثہ ہے جو کبھی قیمت نہیں گراتا۔',
+          '• 2. ورکنگ ٹول اثاثہ (Tools as Assets): اگر آپ مستری، پینٹر، الیکٹرنشین یا کارپینٹر ہیں، تو اپنے اوزاروں (Tools) کو اپنا پہلا اثاثہ سمجھیں۔ اچھے اوزار زیادہ تیزی سے اور بہتر کام دلاتے ہیں، جو روزانہ کی کمائی بڑھا دیتے ہیں۔',
+          '• 3. گھریلو پروڈکشن ایسٹ (Poultry & Gardening): گھر کے احاطے میں 4 یا 5 دیسی مرغیاں پالنا روزانہ انڈے کی شکل میں کیش دیتا ہے، اور چھت پر سبزیاں اگانا سبزی کے ماہانہ خرچ کو اثاثے میں بدل دیتا ہے۔',
+          '• 4. اوزار یا سائیکل کرائے پر دینا: اگر آپ کے پاس فالتو سائیکل، ٹھیلا، یا کوئی ہینڈ ٹول ہے جسے آپ خود استعمال نہیں کر رہے، تو اسے محلے کے کسی ضرورت مند کو روزانہ کے کرائے پر دے کر پیسوں سے پیسے کمائیں۔',
+          '• 5. علم اور ہنر کا اثاثہ (Skill Asset): اپنے بچوں کو اچھے اسکول کے ساتھ ساتھ کوئی ہنر (موبائل ریپیرنگ، کمپیوٹر کورس) سکھانا سب سے بڑا طویل مدتی اثاثہ ہے جو آنے والے وقت میں پوری فیملی کی تقدیر بدل دیتا ہے۔'
         ],
         pEn: [
-          '• 50% Essential Needs: Housing, groceries, utilities, school fees, and basic healthcare.',
-          '• 30% Flexible Wants: Dining out, shopping, and entertainment.',
-          '• 20% Savings & Wealth Building: Pay yourself first by saving 20% immediately.'
+          '• 1. Micro-Gold Accumulation: Buy fractional 24K gold grams or small pieces weekly instead of waiting to afford a full tola.',
+          '• 2. Working Tools as Assets: Treat professional tools as your primary business capital; superior tools generate higher daily wages.',
+          '• 3. Home Production Assets: Backyard poultry or rooftop vegetable gardening convert everyday chores into cash and savings.',
+          '• 4. Renting Idle Equipment: Rent out unused bicycles, carts, or tools to neighbors for steady daily cash flow.',
+          '• 5. Skill & Education Investment: Equipping children with practical modern skills is the ultimate generational asset.'
+        ]
+      },
+      {
+        id: 14, cat: 'business',
+        tUr: '14. صفر سرمائے کے ساتھ چھوٹے حلال کاروبار: غربت سے نکلنے کے 5 عملی راستے',
+        tEn: '14. Zero-Capital Micro Businesses: 5 Ways to Escape Poverty',
+        sUr: 'اگر جیب میں پیسے نہ ہوں تو محنت، ہنر اور کم سرمائے سے گھر بیٹھے روزگار کیسے شروع کریں؟',
+        sEn: 'Practical micro-business ideas for low-income individuals with zero or minimal capital.',
+        pUr: [
+          '• 1. ہوم مینڈ فوڈ ٹفن سروس (Tiffin Service): محلے کے دفاتر، اسکولوں یا اکیڈمیز کے طالبعلموں کے لیے صاف ستھرا گھر کا کھانا تیار کر کے سپلائی کریں۔',
+          '• 2. سٹریشنری اور بچوں کی ضروریات کا چھوٹا کیبن: گھر کے باہر یا گلی کے کونے پر کاپیاں، پین اور پنسل کا چھوٹا سٹال لگائیں۔',
+          '• 3. ہوم ٹیوشن یا قرآن پاک کی تعلیم: بچوں کو گھر بلا کر پڑھانا جس میں ایک روپیہ سرمایہ نہیں لگتا۔',
+          '• 4. سلائی، کڑائی اور مرمت کا کام: پرانے کپڑے ٹھیک کرنا محلے کی سطح پر انتہائی نفع بخش ہنر ہے۔',
+          '• 5. کباڑ یا ری سائیکلنگ کا کام: گھروں سے پرانی اشیاء جمع کر کے ہول سیل مارکیٹ میں بیچنا۔'
+        ],
+        pEn: [
+          '• 1. Homemade Tiffin Service: Cook clean, affordable lunch boxes for local workers.',
+          '• 2. Neighborhood Stationery Stall: Set up a small counter for school essentials.',
+          '• 3. Home Tutoring & Quran Classes: Zero financial investment required.',
+          '• 4. Tailoring & Alterations: A timeless micro-skill generating daily cash flow.',
+          '• 5. Local Scrap Collection: Collect reusable items and supply wholesale markets.'
+        ]
+      },
+      {
+        id: 1, cat: 'budget',
+        tUr: '1. عام آدمی کا بجٹ: کم تنخواہ میں گھر چلانے اور بچت کا آسان طریقہ',
+        tEn: '1. Common Man Budget: Managing Household Expenses Simply',
+        sUr: 'مہنگائی کے دور میں بغیر پریشانی کے گھر کا خرچ چلانے اور تھوڑی سی بچت کرنے کا گھریلو فارمولا۔',
+        sEn: 'Simple household budgeting methods to survive inflation and save regularly.',
+        tool: 'budget', toolLbl: '🧮 بجٹ کیلکولیٹر',
+        pUr: [
+          '• بنیادی اصول (تنخواہ ملتے ہی خرچ نہیں، بچت کریں): تنخواہ ملتے ہی 10% یا 20% الگ کر لیں۔',
+          '• راشن اور کچن کی منصوبہ بندی: مہینے کے شروع میں ہول سیل مارکیٹ سے آٹا، گھی اور دالیں ایک بار خرید لیں۔',
+          '• فضول خرچی اور دکھاوے سے پرہیز: قرض لے کر شان و شوکت دکھانا مالی تباہی کی سب سے بڑی وجہ ہے۔'
+        ],
+        pEn: [
+          '• Pay Yourself First: Always set aside 10% to 20% before starting monthly expenses.',
+          '• Bulk Grocery Shopping: Buy core staples at the start of the month.',
+          '• Avoid Impressive Spending: Never take loans for lavish weddings.'
         ]
       },
       {
         id: 2, cat: 'assets',
-        tUr: '2. گھر یا پلاٹ خریدنے کے 5 سنہری مالیاتی اصول',
-        tEn: '2. 5 Golden Financial Rules Before Buying Real Estate',
-        sUr: 'پاکستان میں پراپرٹی خریدتے وقت قانونی تصدیق، NOC اور بجٹ کا حساب۔',
-        sEn: 'Essential legal verification and budget ratios before buying property.',
+        tUr: '2. پلاٹ یا گھر خریدنے کا سچا طریقہ: قرض کے جال سے بچیں',
+        tEn: '2. True Real Estate Rules: Avoiding Debt Traps',
+        sUr: 'پاکستان میں اپنا ذاتی گھر یا پلاٹ بناتے وقت دھوکہ دہی اور سودی بینک لون سے بچنے کی رہنمائی۔',
+        sEn: 'Safe real estate acquisition without falling into high-interest debt traps.',
         pUr: [
-          '• لیکویڈیٹی کا توازن: تمام پونجی ایک غیر آباد پلاٹ میں مت پھنسائیں جہاں سے کوئی ماہانہ کرایہ نہ آتا ہو۔',
-          '• قانونی تصدیق: خریداری سے پہلے متعلقہ ادارے (CDA, LDA وغیرہ) سے NOC اور اصل کاغذات کی تصدیق کریں۔',
-          '• اضافی اخراجات: پراپرٹی کی قیمت کے علاوہ ٹرانسفر فیس اور ٹیکس کے لیے 8% سے 10% اضافی رقم رکھیں۔'
+          '• سودی لون (Bank Financing) سے پرہیز: مارک اپ اور سود پر گھر خریدنے سے انسان عمر بھر بینک کا غلام بن جاتا ہے۔',
+          '• کاغذات کی سو فیصد تصدیق: پلاٹ خریدنے سے پہلے متعلقہ ترقیاتی ادارے سے تصدیق ضرور کروائیں۔',
+          '• تمام پونجی ایک جگہ نہ پھنسائیں: اپنی زندگی کی ساری پونجی ایک غیر آباد پلاٹ میں مت لگائیں۔'
         ],
         pEn: [
-          '• Liquidity Balance: Never lock 100% of your net worth into a single non-cash-flowing plot.',
-          '• Legal Due Diligence: Verify NOC approval and original title deeds.',
-          '• Hidden Closing Costs: Factor in 8% to 10% above the property price for taxes and fees.'
+          '• Avoid High-Interest Loans: Mortgage debt creates long-term financial slavery.',
+          '• Strict Legal Checks: Always verify title deeds before token payment.',
+          '• Maintain Cash Reserves: Never lock 100% of net worth into a single plot.'
         ]
       },
       {
         id: 3, cat: 'budget',
-        tUr: '3. 30 دن کا فنانشل ایکشن پلان: معاشی استحکام کا سفر',
-        tEn: '3. 30-Day Financial Reset & Action Plan',
-        sUr: 'صرف 30 دنوں میں اخراجات کو ٹریک کرنے اور فالتو خرچ روکنے کا شیڈول۔',
-        sEn: 'A structured 4-week roadmap to audit expenses and eliminate debt leaks.',
+        tUr: '3. 30 دن کا آسان فنانشل ایکشن پلان: معاشی سکون کی طرف قدم',
+        tEn: '3. 30-Day Simple Financial Action Plan',
+        sUr: 'صرف 30 دنوں میں اپنے چھوٹے چھوٹے مالی سوراخ بند کرنے اور چین کی نیند سونے کا روڈ میپ۔',
+        sEn: 'A practical 4-week roadmap to audit small expenses and secure peace of mind.',
         pUr: [
-          '• ہفتہ 1: روزانہ کا ایک ایک روپیہ لکھیں تاکہ معلوم ہو سکے پیسہ کہاں ضائع ہو رہا ہے۔',
-          '• ہفتہ 2: دکھاوے کے اخراجات میں کم از کم 25 فیصد کمی لائیں۔',
-          '• ہفتہ 3: ماہانہ کمیٹی یا الگ اکاؤنٹ کے ذریعے بچت کی رقم مختص کریں۔',
-          '• ہفتہ 4: بچت کو حلال اثاثوں (سونا وغیرہ) میں تبدیل کریں۔'
+          '• پہلا ہفتہ: ہر ایک روپیہ جو جیب سے نکلے اسے ڈائری میں نوٹ کریں۔',
+          '• دوسرا ہفتہ: ہوٹلنگ اور غیر ضروری شاپنگ میں 30 فیصد کمی لائیں۔',
+          '• تیسرا ہفتہ: خاندان یا محلے کے اچھے لوگوں کے ساتھ کمیٹی شروع کریں۔',
+          '• چوتھا ہفتہ: بچنے والی رقم سے ایک گرام کا سونے کا سکہ خرید لیں۔'
         ],
         pEn: [
-          '• Week 1: Track every single rupee spent for 7 days.',
-          '• Week 2: Cut non-essential spending by at least 25%.',
-          '• Week 3: Set up a dedicated savings bucket.',
-          '• Week 4: Protect savings against inflation.'
+          '• Week 1: Record every rupee spent in a pocket diary.',
+          '• Week 2: Cut non-essential spending by 30%.',
+          '• Week 3: Start a transparent family or trusted committee.',
+          '• Week 4: Convert savings into physical gold.'
         ]
       },
       {
         id: 4, cat: 'invest',
-        tUr: '4. مہنگائی کا مقابلہ: سونا اور حلال سرمایہ کاری کی گائیڈ',
-        tEn: '4. Beating Inflation: Gold & Halal Investment Guide',
-        sUr: 'نقد رقم کی گرتی ہوئی قدر کو بچانے کے لیے خالص سونے اور فنڈز کی رہنمائی۔',
-        sEn: 'Protect your purchasing power using physical 24K gold and Islamic funds.',
+        tUr: '4. مہنگائی کا تریاق: سونا اور حلال بچت کے آسان طریقے',
+        tEn: '4. Beating Inflation: Simple Gold & Halal Savings',
+        sUr: 'عام آدمی کے پاس پیسے بچانے کے کون سے حلال اور محفوظ راستے ہیں؟ جانیے اس گائیڈ میں۔',
+        sEn: 'Safe and halal avenues for common people to protect their hard-earned money.',
         pUr: [
-          '• کیش کی گرتی ہوئی قدر: گھر میں پڑا کیش ہر سال مہنگائی کی وجہ سے قوتِ خرید کھو دیتا ہے۔',
-          '• خالص سونا (24K): زیورات کے بجائے ہمیشہ 24 قیراط سونے کے تصدیق شدہ بسکٹ یا سکے خریدیں۔',
-          '• اسلامک میوچل فنڈز: شریعہ کمپلائنٹ منی مارکیٹ فنڈز سے حلال منافع کمائیں۔'
+          '• کیش کی بے قدری: گھر میں رکھی رقم ہر سال مہنگائی کی وجہ سے طاقت کھو دیتی ہے۔',
+          '• سونے کی طاقت: زیورات کے بجائے ہمیشہ 24 قیراط کے چھوٹے بسکٹ یا سکے خریدیں۔',
+          '• شریعہ کمپلائنٹ فنڈز: اسلامی کھاتوں یا حلال منی مارکیٹ فنڈز سے حلال منافع کمائیں۔'
         ],
         pEn: [
-          '• Cash Erosion: Idle cash loses purchasing power every year.',
-          '• Smart Gold Accumulation: Buy 24K certified gold bars or coins.',
-          '• Shariah-Compliant Mutual Funds: Earn halal returns with high liquidity.'
+          '• Cash Depreciation: Paper money loses purchasing power every year.',
+          '• Physical Gold: Buy 24K small bars or coins instead of jewelry.',
+          '• Islamic Saving Accounts: Utilize halal funds for steady returns.'
         ]
       },
       {
         id: 5, cat: 'budget',
-        tUr: '5. کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ کا پلان',
-        tEn: '5. Structured Family Committee (ROSCA) & 12-Month Plan',
-        sUr: 'پاکستان میں کمیٹی ڈالنے کے فوائد اور ریکارڈ رکھنے کا طریقہ۔',
-        sEn: 'Organize a secure 12-member monthly savings committee.',
+        tUr: '5. کمیٹی (BC) سسٹم: پاکستان میں فیملی بچت کا بہترین نظام',
+        tEn: '5. The Committee (ROSCA) System: Best Family Savings',
+        sUr: 'کمیٹی کیسے ڈالی جاتی ہے؟ اس کے کیا فائدے اور احتیاطیں ہیں؟ مکمل تفصیل۔',
+        sEn: 'How to organize and manage a secure family savings committee.',
         tool: 'committee', toolLbl: '🗓️ کمیٹی ٹول',
         pUr: [
-          '• قابلِ اعتماد ممبران: کمیٹی ہمیشہ ایسے 12 افراد کے ساتھ ڈالیں جن کا لین دین آزمودہ ہو۔',
-          '• تحریری شیڈول: تمام 12 مہینوں کی باری طے کر کے چارٹ بنائیں اور ریکارڈ رکھیں۔',
-          '• مقصد کا تعین: کمیٹی کھلنے سے پہلے طے کریں کہ یہ رقم کہاں لگانی ہے۔'
+          '• کمیٹی کیوں ضروری ہے؟ یہ لوگوں کو باقاعدگی سے بچت کرنے کی عادت ڈالتی ہے۔',
+          '• ایماندار ممبران: کمیٹی ہمیشہ ایسے لوگوں کے ساتھ ڈالیں جن کی نیت پر بھروسہ ہو۔',
+          '• باری کا درست استعمال: پہلی باری سے قرض اتاریں یا گھر کی بڑی ضرورت پوری کریں۔'
         ],
         pEn: [
-          '• Vetting Members: Join committees with trusted family or colleagues.',
-          '• Written Ledger: Document the 12-month schedule upfront.',
-          '• Purpose-Driven Payouts: Assign a clear goal to your payout slot.'
+          '• Why Committees Work: They force disciplined monthly savings.',
+          '• Trustworthy Members: Only join groups with reliable individuals.',
+          '• Strategic Payout Timing: Use early payouts to clear expensive debts.'
         ]
       },
       {
         id: 6, cat: 'family',
-        tUr: '6. ایمرجنسی فنڈ: اچانک مالی بحران سے بچاؤ کی ڈھال',
-        tEn: '6. Building a 6-Month Emergency Fund',
-        sUr: 'ناگہانی بیماری یا نوکری چھوٹنے کے وقت حفاظتی فنڈ بنانے کا فارمولا۔',
-        sEn: 'Store 3 to 6 months of living expenses for unexpected emergencies.',
+        tUr: '6. ایمرجنسی فنڈ: ہسپتال یا مصیبت کے وقت قرض نہ مانگنا پڑے',
+        tEn: '6. Emergency Fund: Never Ask for Loans in Crises',
+        sUr: 'ناگہانی بیماری یا نوکری جانے کے وقت کے لیے فنڈ جو آپ کی عزت بچائے گا۔',
+        sEn: 'Building a financial cushion to protect your self-respect during crises.',
         pUr: [
-          '• ایمرجنسی فنڈ کیا ہے؟ یہ صرف ہسپتال یا اچانک بڑی پریشانی کے لیے ہوتا ہے۔',
-          '• 3 سے 6 ماہ کا فارمولا: گھر کے ماہانہ اخراجات کے مطابق فنڈ جمع کریں۔',
-          '• الگ اکاؤنٹ: اس فنڈ کو روزمرہ شاپنگ کارڈ سے الگ رکھیں۔'
+          '• عزت نفس کی حفاظت: ہنگامی فنڈ ہونے پر کسی کے آگے ہاتھ نہیں پھیلانا پڑتا۔',
+          '• کتنا فنڈ ہونا چاہیے؟ کم از کم 3 مہینے کے کچن اور راشن کے برابر رقم۔',
+          '• الگ رکھنا ضروری ہے: یہ پیسے عام خریداری والے اے ٹی ایم کارڈ سے الگ ہوں۔'
         ],
         pEn: [
-          '• True Emergencies Only: Reserved strictly for medical crises or job loss.',
-          '• The 3-to-6 Month Formula: Multiply monthly survival expenses.',
-          '• Separate Storage: Keep this fund in a separate account.'
+          '• Preserving Self-Respect: Emergency funds prevent borrowing under stress.',
+          '• Target Amount: Save at least 3 months of survival expenses.',
+          '• Strict Isolation: Never attach a shopping debit card to this fund.'
         ]
       },
       {
         id: 7, cat: 'budget',
-        tUr: '7. قرض سے نجات کا عملی منصوبہ: ادھار اور قسطوں کے جال سے نکلیں',
-        tEn: '7. Debt Freedom Roadmap: Eliminate Loans & Installments',
-        sUr: 'قرضوں کو مرحلہ وار ختم کرنے کی حکمتِ عملی (Debt Snowball)۔',
-        sEn: 'Pay off personal loans and avoid high-markup installment traps.',
+        tUr: '7. ادھار اور سودی قسطوں کے دلدل سے باہر نکلنے کا طریقہ',
+        tEn: '7. Escaping the Trap of Debt and Interest Installments',
+        sUr: 'موبایل، بائیک یا گھر کی چیزیں قسطوں پر لینے کے نقصانات اور ان سے نجات۔',
+        sEn: 'Breaking free from the vicious cycle of consumer debt and high-markup installments.',
         pUr: [
-          '• تحریری فہرست: تمام چھوٹے بڑے قرضے کاغذ پر لکھ کر ترتیب دیں۔',
-          '• سنو بال طریقہ: سب سے پہلے سب سے چھوٹے قرض کو ختم کریں۔',
-          '• نیا قرض بند: قسطوں پر غیر ضروری چیزیں خریدنا بند کریں۔'
+          '• قسطوں کا فریب: چیزیں مہنگی قسطوں پر لینے سے انسان اصل قیمت سے دگنا پے کرتا ہے۔',
+          '• سنو بال طریقہ: سب سے پہلے چھوٹے ادھار ادا کر کے جان چھڑائیں۔',
+          '• نقد کی طاقت: ہمیشہ نقد خریدنے کی عادت ڈالیں، جو استطاعت میں نہ ہو صبر کریں۔'
         ],
         pEn: [
-          '• Complete Inventory: List every loan from smallest to largest.',
-          '• The Debt Snowball Strategy: Attack the smallest debt first.',
-          '• Stop Borrowing: Freeze credit card usage and avoid installments.'
+          '• The Installment Trap: Buying lifestyle goods on installments doubles the cost.',
+          '• Debt Snowball: Clear smallest balances first to build momentum.',
+          '• Power of Cash: Train yourself to wait and save before buying.'
         ]
       },
       {
         id: 8, cat: 'business',
-        tUr: '8. آمدنی بڑھانے کے طریقے: ڈیجیٹل اسکلز اور سائیڈ بزنس',
-        tEn: '8. Multiple Income Streams: Digital Skills & Side Hustles',
-        sUr: 'موبایل اور اے آئی ٹولز سے حلال سائیڈ انکم کمانے کے راستے۔',
-        sEn: 'Increase earning power through digital skills and micro-services.',
+        tUr: '8. موبائل اور ڈیجیٹل ہنر: گھر بیٹھے حلال روزگار کمانے کے راستے',
+        tEn: '8. Digital Skills: Earning Halal Income from Home',
+        sUr: 'صرف اسکول کی ڈگری کافی نہیں! موبائل سے حلال آن لائن کمائی کے آسان ہنر۔',
+        sEn: 'Practical digital skills for common people to generate online income.',
         pUr: [
-          '• آمدنی کی وسعت: ہنر بڑھا کر اپنی آمدنی کو کئی گنا بڑھایا جا سکتا ہے۔',
-          '• ہائی انکم اسکلز: گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور اے آئی ٹولز سیکھیں۔',
-          '• ڈیجیٹل کنٹینٹ: اپنا علم لوگوں تک پہنچا کر باعزت ذریعہ آمدن بنائیں۔'
+          '• ہنر کی طاقت: روایتی نوکریوں کے ساتھ ڈیجیٹل اسکلز سیکھنا بہت ضروری ہے۔',
+          '• فری لانسنگ: گھر بیٹھے انٹرنیٹ کے ذریعے دنیا بھر کے کلائنٹس کو سروسز دیں۔',
+          '• یوٹیوب اور ایجوکیشن: اپنے علاقے کا ہنر سوشل میڈیا پر پھیلا کر کمائی کریں۔'
         ],
         pEn: [
-          '• Earning Ceiling: Skill-based income has no upper limit.',
-          '• High-Demand Skills: Master graphic design, video editing, or AI.',
-          '• Digital Content: Share knowledge to build digital revenue.'
+          '• Power of Skills: Combining traditional work with digital skills is essential.',
+          '• Freelancing: Offer remote services to global clients via online portals.',
+          '• Content Creation: Share valuable knowledge across digital platforms.'
         ]
       },
       {
         id: 9, cat: 'family',
-        tUr: '9. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی',
-        tEn: '9. Children’s Education & Marriage Fund Blueprint',
-        sUr: '10 سے 15 سال بعد کے اخراجات کے لیے آج سے بچت کا طریقہ۔',
-        sEn: 'Prepare for future family milestones over 10–15 years.',
+        tUr: '9. بچوں کی شادی اور اعلیٰ تعلیم: آج کی چھوٹی بچت کل کا سکون',
+        tEn: '9. Children Marriage & Education: Planning Ahead',
+        sUr: 'بچوں کے مستقبل کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا جوڑنے کا طریقہ۔',
+        sEn: 'Long-term financial planning for children’s major milestones.',
         pUr: [
-          '• شروعات جلد کریں: بچے کی پیدائش سے ہی ہر ماہ مقررہ رقم الگ کریں۔',
-          '• بڑھتے ہوئے اثاثے: طویل مدت کے لیے پیسہ سونے یا فنڈز میں رکھیں۔',
-          '• تعلیم کو اولیت دیں: مہنگے جہیز پر قرض لینے کے بجائے تعلیم پر توجہ دیں۔'
+          '• وقت کی رفتار: بچے کی پیدائش سے ہی اسکول فیس کے ساتھ بچت شروع کریں۔',
+          '• جہیز کے نام پر قرض نہیں: بچوں کو اعلیٰ تعلیم دیں، قرض لے کر جہیز نہ بنائیں۔',
+          '• سونے کی شکل میں بچت: ہر سال بچنے والی رقم سے چھوٹا سونے کا سکہ لیں۔'
         ],
         pEn: [
-          '• Start Early: Leverage compounding over 10–15 years.',
-          '• Growth Assets: Store funds in gold or mutual funds.',
-          '• Prioritize Education: Invest in skills rather than ceremonies.'
+          '• Early Planning: Start a dedicated educational fund early.',
+          '• Focus on Education, Not Dowry: Invest heavily in skills.',
+          '• Gold Accumulation: Convert annual surplus into small gold coins.'
         ]
       },
       {
         id: 10, cat: 'assets',
-        tUr: '10. گاڑی یا موٹرسائیکل کی خریداری اور مینٹیننس فارمولا',
-        tEn: '10. Smart Vehicle Purchase & Maintenance Rules',
-        sUr: 'استطاعت کے مطابق گاڑی خریدنے اور فیول بجٹ بنانے کے اصول۔',
-        sEn: 'Financial ratios for buying a vehicle and budgeting for fuel.',
+        tUr: '10. بائیک یا گاڑی کی خریداری: ضرورت یا دکھاوا؟',
+        tEn: '10. Buying a Vehicle: Utility vs. Status Symbol',
+        sUr: 'گاڑی یا موٹرسائیکل خریدتے وقت پیٹرول، مرمت اور اصل بجٹ کا حساب کتاب۔',
+        sEn: 'Calculating the true cost of owning and maintaining a vehicle.',
         pUr: [
-          '• گاڑی سہولت ہے: دکھاوے کے لیے استطاعت سے بڑی گاڑی نہ لیں۔',
-          '• ری سیل اور پارٹس: ایسی گاڑی لیں جس کے پارٹس بآسانی مل سکیں۔',
-          '• مینٹیننس فنڈ: ہر ماہ 3 سے 5 ہزار روپے گاڑی کی مرمت کے لیے رکھیں۔'
+          '• گاڑی سہولت ہے، سٹیٹس سمبل نہیں: دکھاوے کے لیے بینک سے مہنگا لون نہ لیں۔',
+          '• مینٹیننس کا خرچ: گاڑی خریدتے وقت ماہانہ پیٹرول اور آئل کا خرچ بھی ذہن میں رکھیں۔',
+          '• سیکنڈ ہینڈ کی سمجھداری: استطاعت کم ہو تو اچھی حالت میں سیکنڈ ہینڈ سواری لیں۔'
         ],
         pEn: [
-          '• Utility Over Status: Never take high loans for a status car.',
-          '• Parts Availability: Choose models with affordable spare parts.',
-          '• Maintenance Fund: Set aside monthly money for repairs.'
+          '• Utility Over Status: Never take high-interest loans for luxury cars.',
+          '• Total Cost of Ownership: Factor in monthly fuel and maintenance.',
+          '• Used Vehicle Wisdom: Buy reliable pre-owned vehicles if budget is tight.'
         ]
       },
       {
         id: 11, cat: 'business',
-        tUr: '11. پاکستان میں ٹیکس فائلر (Active Taxpayer) بننے کے فوائد',
-        tEn: '11. Financial Benefits of Becoming an Active Tax Filer',
-        sUr: 'نان فائلر ٹیکس سے بچنے اور اثاثوں کا ریکارڈ رکھنے کی رہنمائی۔',
-        sEn: 'Save heavy withholding taxes on banking and property.',
+        tUr: '11. ٹیکس فائلر بننے کے فائدے: عام پاکستانی کے لیے رہنمائی',
+        tEn: '11. Benefits of Tax Filer Status for Common Citizens',
+        sUr: 'ایف بی آر (FBR) میں نام درج کروانے اور فائلر بننے کے مالی فوائد۔',
+        sEn: 'How becoming an active tax filer saves heavy withholding taxes.',
         pUr: [
-          '• فائلر بمقابلہ نان فائلر: نان فائلر پر بینک اور پراپرٹی پر دگنا ٹیکس ہوتا ہے۔',
-          '• ویلتھ اسٹیٹمنٹ: سالانہ گوشوارے سے آپ کی کمائی قانونی ہو جاتی ہے۔',
-          '• زیرو ٹیکس ریٹرن: کم آمدنی والے بھی ریٹرن فائل کر کے فائلر بن سکتے ہیں۔'
+          '• ودہولڈنگ ٹیکس سے بچت: نان فائلر کو بینک اور پراپرٹی پر دگنا ٹیکس دینا پڑتا ہے۔',
+          '• حلال کمائی کا ثبوت: ٹیکس ریٹرن فائل کرنے سے دولت قانونی طور پر محفوظ رہتی ہے۔',
+          '• آسان طریقہ: اب کوئی بھی عام شہری خود یا کسی کی مدد سے ریٹرن فائل کر سکتا ہے۔'
         ],
         pEn: [
-          '• Avoiding Taxes: Non-filers pay higher withholding tax.',
-          '• Documented Wealth: Filing legally documents your savings.',
-          '• Nil-Tax Advantage: File annual returns to stay on the ATL.'
+          '• Avoiding Double Taxes: Non-filers pay double withholding tax.',
+          '• Legal Wealth Trail: Filing annual returns officially protects assets.',
+          '• Simple Filing: Common citizens can easily file returns online.'
         ]
       },
       {
         id: 12, cat: 'family',
-        tUr: '12. ریٹائرمنٹ اور بڑھاپے کی معاشی خود مختاری: پنشن فنڈ',
-        tEn: '12. Retirement & Pension Independence Plan',
-        sUr: 'پرائیویٹ ملازمین کے لیے بڑھاپے کا ذاتی پنشن فنڈ تیار کرنے کا لائحہ عمل۔',
-        sEn: 'Build your own halal retirement corpus and passive cashflow.',
+        tUr: '12. بڑھاپے کا سہارا: پرائیویٹ ملازمین کے لیے پنشن کا بندوبست',
+        tEn: '12. Securing Old Age: Private Sector Pension Planning',
+        sUr: 'سرکاری نوکری نہ ہونے کے باوجود جوانی میں بڑھاپے کی تیاری کیسے کی جائے؟',
+        sEn: 'Building private retirement savings and passive cashflow.',
         pUr: [
-          '• اپنی پنشن خود بنائیں: ماہانہ کمائی کا 10% حصہ ریٹائرمنٹ کے لیے رکھیں۔',
-          '• کرایہ دینے والے اثاثے: ریٹائرمنٹ تک ایک دکان یا یونٹ بنا لیں۔',
-          '• اسلامک پنشن (VPS): منظور شدہ فنڈز میں طویل مدتی سرمایہ کاری کریں۔'
+          '• سرکاری پنشن کی عدم موجودگی: پرائیویٹ سیکٹر والوں کو ریٹائرمنٹ پر پیسے نہیں ملتے۔',
+          '• کرائے کی دکان: جوانی میں محنت کر کے ایک چھوٹا کمرشل یونٹ یا دکان بنا لیں۔',
+          '• حلال انویسٹمنٹ: اسلامی فنڈز میں طویل مدتی سرمایہ کاری کریں۔'
         ],
         pEn: [
-          '• Self-Funded Pension: Dedicate 10% of monthly income.',
-          '• Rental Assets: Acquire cash-flowing properties for old age.',
-          '• Islamic VPS: Utilize Shariah-compliant pension schemes.'
+          '• Self-Funded Pension: Private workers must create their own corpus.',
+          '• Rental Income: Acquire a small commercial shop for old-age rent.',
+          '• Long-term Halal Funds: Utilize registered Islamic pension schemes.'
         ]
       },
       {
         id: 13, cat: 'business',
-        tUr: '13. چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم',
-        tEn: '13. Small Business Bookkeeping: Cashflow Rules',
-        sUr: 'ذاتی اور کاروباری کیش کو الگ رکھنے اور منافع نکالنے کے اصول۔',
-        sEn: 'Separating personal and business cash to track true profit.',
-        tool: 'business', toolLbl: '📒 کاروباری کھاتہ',
+        tUr: '13. چھوٹا دکاندار اور کیش بک: دکان کو نقصان سے بچانے کا طریقہ',
+        tEn: '13. Small Shop Bookkeeping: Preventing Losses',
+        sUr: 'جنرل سٹور یا فوڈ پوائنٹ چلانے والے افراد کے لیے روزانہ کے کھاتے کے اصول۔',
+        sEn: 'Essential daily cashbook rules for small shopkeepers and merchants.',
         pUr: [
-          '• گلہ الگ رکھیں: دکان کے کیش سے گھر کا خرچ نہ نکالیں۔',
-          '• تنخواہ طے کریں: کاروبار سے اپنے لیے ماہانہ تنخواہ مقرر کریں۔',
-          '• ادھار کنٹرول: غیر دستاویزی ادھار سے بچیں اور تحریری بل رکھیں۔'
+          '• گلہ اور گھر کا کیش الگ رکھیں: دکان کے غلے سے گھر کا خرچ نکالنا تباہی ہے۔',
+          '• مقررہ تنخواہ لیں: دکاندار خود اپنے لیے ماہانہ تنخواہ طے کرے اور باقی دکان میں لگائے۔',
+          '• ادھار کا مکمل ریکارڈ: گاہکوں کا ادھار ہمیشہ باقاعدہ لکھیں اور وصولی کریں۔'
         ],
         pEn: [
-          '• Never Mix Pockets: Drawing expenses from the register destroys capital.',
-          '• Fixed Salary: Take a fixed monthly drawings amount.',
-          '• Strict Credit Control: Avoid unrecorded customer credit.'
+          '• Separate Pockets: Never draw household expenses from the shop register.',
+          '• Fixed Owner Salary: Assign yourself a fixed monthly salary.',
+          '• Strict Credit Logging: Always record customer credit formally.'
         ]
       }
     ];
 
     let commSlots = [
-      { m: 'اگست 2026', n: 'والدہ محترمہ', paid: true },
+      { m: 'اگست 2026', n: ' ایڈمن', paid: true },
       { m: 'ستمبر 2026', n: 'ایمرجنسی فنڈ', paid: true },
       { m: 'اکتوبر 2026', n: 'گھر کا خرچ', paid: false },
       { m: 'نومبر 2026', n: 'کاروبار', paid: false },
@@ -449,7 +546,7 @@
     ];
 
     let bizData = JSON.parse(localStorage.getItem('flp_biz') || '[{"desc":"آج کی سیل","amt":20000,"type":"in"},{"desc":"مال خرچ","amt":5000,"type":"exp"}]');
-    let chatData = JSON.parse(localStorage.getItem('flp_community_chat') || '[{"name":"ندیم اقبال (ڈویلپر)","text":"خوش آمدید! آپ اس فنانشل لائبریری ایپ میں اپنے مالیاتی مشورے اور سوالات بلاجھجھک شیئر کر سکتے ہیں۔","time":"لائیو"}]');
+    let chatData = JSON.parse(localStorage.getItem('flp_community_chat') || '[{"name":"ندیم اقبال (ڈویلپر)","text":"خوش آمدید! یہ ایپ کم آمدنی والے لوگوں کو اثاثے بنانے اور غربت سے نکلنے کا راستہ سکھاتی ہے۔","time":"لائیو"}]');
 
     function switchLang(l) {
       lang = l;
@@ -459,16 +556,17 @@
     }
 
     function openTool(name) {
-      ['budget', 'committee', 'business'].forEach(t => {
+      ['budget', 'committee', 'business', 'zakat'].forEach(t => {
         let el = document.getElementById('tool-' + t);
         if (el) el.classList.toggle('hidden', t !== name);
       });
       if (name === 'committee') renderComm();
       if (name === 'business') renderBiz();
+      if (name === 'zakat') calcZakat();
     }
 
     function closeTools() {
-      ['budget', 'committee', 'business'].forEach(t => {
+      ['budget', 'committee', 'business', 'zakat'].forEach(t => {
         let el = document.getElementById('tool-' + t);
         if (el) el.classList.add('hidden');
       });
@@ -577,7 +675,6 @@
       `).join('');
     }
 
-    // Fixed & Robust Guide Opener
     function openGuide(id) {
       let g = guides.find(x => x.id === id);
       if (!g) return;
@@ -597,13 +694,13 @@
             ${paragraphs.map(p => `<div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-100 text-gray-900 text-xs md:text-sm ${lang==='ur'?'urdu-font':''} shadow-2xs">${p}</div>`).join('')}
           </div>
         </div>
-        ${g.tool ? `<button onclick="closeModal(); openTool('${g.tool}')" class="w-full py-3 rounded-2xl gold-gradient text-[#0A192F] font-black text-xs shadow-lg mt-3 active:scale-95 transition">اس گائیڈ سے متعلقہ عملی ٹول کھولیں (Open Tool)</button>` : ''}
+        ${g.tool ? `<button onclick="closeModal(); openTool('${g.tool}'); setTimeout(() => { document.getElementById('tool-${g.tool}').scrollIntoView({behavior: 'smooth'}); }, 100);" class="w-full py-3 rounded-2xl gold-gradient text-[#0A192F] font-black text-xs shadow-lg mt-3 active:scale-95 transition">اس گائیڈ سے متعلقہ عملی ٹول کھولیں (Open Tool)</button>` : ''}
       `;
       
       let modal = document.getElementById('guideModal');
       if (modal) {
         modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        document.body.style.overflow = 'hidden';
       }
     }
 
@@ -619,9 +716,9 @@
       renderGuides();
     }
 
-    // Initial Safe Load
     window.onload = function() {
       loadLiveDates();
+      updateLiveClock();
       renderChat();
       renderGuides();
     };
