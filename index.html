@@ -50,7 +50,7 @@
   <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
     <div class="max-w-2xl mx-auto">
       <div class="flex flex-wrap items-center justify-center gap-2 mb-2.5">
-        <span id="heroBadgeText" class="px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold">💎 15 مکمل گائیڈز + 6 عملی ٹولز</span>
+        <span id="heroBadgeText" class="px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold">💎 15 مکمل گائیڈز + 150 منفرد اصول</span>
         <button onclick="showVisitorInfo()" class="px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center gap-1.5 shadow">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span data-ur="حقیقی وزٹرز:" data-en="Real Visitors:">حقیقی وزٹرز:</span>
@@ -66,7 +66,7 @@
         <div id="dateCalendars" class="text-[11px] text-emerald-100 flex flex-wrap justify-center gap-x-2 gap-y-1"></div>
       </div>
 
-      <h2 data-ur="غریب سے معاشی خود مختاری کا سفر: ہر گائیڈ میں 10 منفرد اور عملی اصول" data-en="From Low Income to Financial Freedom: 10 Unique Principles per Guide" class="text-base md:text-xl font-black mb-3 urdu-font">غریب سے معاشی خود مختاری کا سفر: ہر گائیڈ میں 10 منفرد اور عملی اصول</h2>
+      <h2 data-ur="غریب سے معاشی خود مختاری کا سفر: ہر گائیڈ میں 10 بالکل منفرد اور عملی اصول" data-en="From Low Income to Financial Freedom: 10 Unique Actionable Steps in Every Guide" class="text-base md:text-xl font-black mb-3 urdu-font">غریب سے معاشی خود مختاری کا سفر: ہر گائیڈ میں 10 بالکل منفرد اور عملی اصول</h2>
       <div class="max-w-md mx-auto">
         <input type="text" id="searchBox" oninput="renderGuides()" data-ph-ur="تلاش کریں (اثاثے، کاروبار، بچت، سونا، پلاٹ، ٹیکس)..." data-ph-en="Search topics (Assets, Business, Budget, Gold, Plot, Tax)..." placeholder="تلاش کریں (اثاثے، کاروبار، بچت، سونا، پلاٹ، ٹیکس)..." class="w-full px-4 py-2.5 rounded-2xl bg-white text-gray-900 text-xs shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" />
       </div>
@@ -180,462 +180,184 @@
 
     const shareSvgIcon = `<svg class="w-3.5 h-3.5 inline-block fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>`;
 
-    const getTenPoints = (cat) => [
-      ['1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)', 'Pay Yourself First (20% Savings)', '• اصول: تنخواہ یا مزدوری ملتے ہی خرچ سے پہلے 10% سے 20% رقم الگ رکھیں۔\n• عملی قدم: تنخواہ آتے ہی اتنی رقم سیونگ گلے یا الگ اکاؤنٹ میں ڈال دیں۔', '• Rule: Set aside 10% to 20% right at the start of the month before spending.'],
-      ['2. ہول سیل مارکیٹ سے ماہانہ راشن کی بلک خریداری', 'Bulk Wholesale Grocery Shopping', '• اصول: پرچون مہنگی دکان کے بجائے ہول سیل منڈی سے ایک بار سودا لیں۔\n• عملی قدم: آٹا، گھی اور دالیں مہینے کی پہلی تاریخ کو اکٹھی خریدیں تاکہ 20% بچت ہو۔', '• Rule: Buy core staples in bulk from wholesale markets to save 15%–20%.'],
-      ['3. یوٹیلیٹی بلوں میں سمارٹ کٹوتی (Peak Hours کا استعمال)', 'Smart Utility Bill Reduction', '• اصول: بجلی کے بلوں کو کم کرنے کے لیے اوقات کار کا خیال رکھیں۔\n• عملی قدم: شام 6 سے 10 بجے کے دوران بھاری آلات (استری، موٹر) چلانے سے گریز کریں۔', '• Rule: Avoid heavy appliances during peak hours (6 PM–10 PM) to slash electricity bills.'],
-      ['4. غیر ضروری روزمرہ کے چھوٹے اخراجات (Micro-Leaks) کا خاتمہ', 'Eliminating Daily Micro-Leaks', '• اصول: چائے، باہر کے ناشتے اور سگریٹ جیسے روزانہ کے چھوٹے خرچے سالانہ بڑی رقم بناتے ہیں۔\n• عملی قدم: گھر سے پانی اور ناشتہ ساتھ لے جانے کی عادت ڈالیں۔', '• Rule: Cut casual daily spending like outside tea and snacks to save big annually.'],
-      ['5. گھریلو بجٹ کے لیے 50/30/20 رول کا نفاذ', 'Implementing the 50/30/20 Rule', '• اصول: 50% ضروریات، 30% خواہشات اور 20% بچت پر ماہانہ بجٹ سیٹ کریں۔\n• عملی قدم: ہر ماہ کے شروع میں اپنے تمام اخراجات ان تین حصوں میں بانٹ دیں۔', '• Rule: Allocate 50% for needs, 30% for wants, and 20% strictly for savings.'],
-      ['6. بچوں کے اسکول کے اخراجات کی پلاننگ', 'School Expense Planning', '• اصول: کتابیں اور یونیفارم سیکنڈ ہینڈ یا ہول سیل سے خریدیں۔\n• عملی قدم: سارا سال مہنگی فیسوں کے علاوہ اضافی کوچنگ کے بوجھ سے بچنے کے لیے خود گائیڈ کریں۔', '• Rule: Buy school supplies in bulk and guide children at home to save tuition costs.'],
-      ['7. مہینے کے اختتام پر مالیاتی آڈٹ (Monthly Financial Review)', 'Monthly Financial Review', '• اصول: ہر ماہ کے آخر میں دیکھیں کہ پیسے کہاں زیادہ خرچ ہوئے۔\n• عملی قدم: ڈائری یا ایپ میں لکھے گئے تمام اخراجات کا موازنہ اپنی آمدنی سے کریں۔', '• Rule: Review all monthly expenditures on the last day to plug financial leaks.'],
-      ['8. گھریلو توانائی اور گیس کی بچت کے طریقے', 'Household Energy & Gas Conservation', '• اصول: گیس اور بجلی ضائع ہونے سے ماہانہ بجٹ خراب ہوتا ہے۔\n• عملی قدم: چولہے پر پریشر ککر کا استعمال کریں اور ایل ای ڈی بلب لگائیں۔', '• Rule: Use pressure cookers and LED bulbs to reduce monthly utility bills.'],
-      ['9. فیملی کے ساتھ مالیاتی گولز (Financial Goals) کیٹنگ', 'Setting Family Financial Goals', '• اصول: گھر کے تمام افراد کو مہنگائی اور بچت کی اہمیت سے آگاہ کریں۔\n• عملی قدم: بچوں کے سامنے غیر ضروری فضول خرچی سے گریز کریں اور بچت کا کلچر لائیں۔', '• Rule: Involve family members in budget discussions and teach them smart saving.'],
-      ['10. ماہانہ فکسڈ اخراجات (Fixed Expenses) کو کم کرنا', 'Minimizing Fixed Expenses', '• اصول: جو خرچے فکس ہیں (کرایہ، انٹرنیٹ پیکجز) ان میں سستے اور بہترین متبادل تلاش کریں۔\n• عملی قدم: سستے اور معیاری پیکجز یا گھر کا انتخاب کریں۔', '• Rule: Opt for cost-effective alternatives for recurring household expenses.']
-    ];
-
-    let baseGuides = [
-      [1, 'بجٹ اور بچت', 'Budgeting', '50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', 'The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', getTenPoints()],
-      [2, 'اثاثہ سازی', 'Micro-Assets', 'مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets)', 'Micro-Asset Building for Common People', 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے منافع بخش اثاثے کیسے بنائے؟', 'Practical steps for daily-wage earners to build income-generating assets.', 'gold', '🥇 سونا اور بچت ٹول', '🥇 Micro-Gold Tool', getTenPoints()],
-      [3, 'غربت سے آزادی', 'Micro-Business', 'صفر یا کم سرمائے سے شروع ہونے والے چھوٹے حلال کاروبار', '5 Zero-to-Low Capital Halal Micro-Businesses', 'بنا بڑے سرمائے کے محنت اور ہنر سے گھر بیٹھے حلال روزگار کیسے شروع کریں؟', 'How to launch a self-sustaining micro-business from home with minimal cash.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', getTenPoints()],
-      [4, 'ایکشن پلان', 'Action Plan', '30 دن کا فنانشل ایکشن پلان: معاشی استحکام کا سفر', '30-Day Financial Reset & Action Plan', 'صرف 4 ہفتوں میں فالتو اخراجات روکنے اور بچت کا سسٹم بنانے کا عملی روڈ میپ۔', 'A structured 4-week roadmap to audit expenses and eliminate money leaks.', 'goal', '🎯 ہدف پلانر', '🎯 Goal Planner', getTenPoints()],
-      [5, 'کمیٹی پلان', 'Committee Plan', 'کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ پلان', 'Structured Family Committee (ROSCA): 12-Month Plan', 'پاکستان میں محفوظ کمیٹی ڈالنے، تحریری ریکارڈ رکھنے اور رقم کو اثاثے میں بدلنے کا طریقہ۔', 'Organize a secure 12-member monthly savings committee and track payouts.', 'committee', '🗓️ کمیٹی ٹول', '🗓️ Committee Tool', getTenPoints()],
-      [6, 'ایمرجنسی فنڈ', 'Emergency Shield', 'ایمرجنسی فنڈ: اچانک بیماری یا بحران سے بچاؤ کی ڈھال', 'Building a 6-Month Emergency Fund Shield', 'ناگہانی ہسپتال کے خرچ یا بے روزگاری میں قرض مانگنے سے بچنے کا حفاظتی فارمولا۔', 'Formula to build 3 to 6 months of living expenses for unexpected crises.', 'goal', '🎯 ایمرجنسی کیلکولیٹر', '🎯 Emergency Tool', getTenPoints()],
-      [7, 'قرض سے نجات', 'Debt Freedom', 'قرض اور سودی قسطوں کے جال سے نکلنے کا عملی منصوبہ', 'Debt Freedom Roadmap: Escape Loans & Installment Traps', 'ڈیبٹ سنو بال (Debt Snowball) طریقے سے ادھار ختم کرنے اور مہنگی قسطوں سے بچنے کا راستہ۔', 'Use the Debt Snowball method to clear loans and avoid high-markup installment traps.', 'goal', '🎯 قرض پلانر', '🎯 Debt Payoff Tool', getTenPoints()],
-      [8, 'ریئل اسٹیٹ و قانون', 'Real Estate & Law', 'پلاٹ یا گھر خریدنے کے اصول اور پاکستانی قانونی تصدیق', '5 Golden Rules & Pakistani Legal Property Verification', 'پاکستان میں پراپرٹی خریدتے وقت جعل سازی، NOC اور فرد/انتقال کی تصدیق کا طریقہ۔', 'How to verify NOCs, land records (Fard/Registry), and avoid fraud in Pakistan.', null, '', '', getTenPoints()],
-      [9, 'سونا اور انویسٹمنٹ', 'Gold & Investing', 'مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ فنڈز', 'Beating Inflation: 24K Gold & Shariah Mutual Funds', 'نقد رقم کی گرتی قدر کو بچانے کے لیے خالص سونے اور SECP منظور شدہ حلال فنڈز کی گائیڈ۔', 'Protect purchasing power using 24K gold bars and SECP-regulated Islamic funds.', 'zakat', '🪙 زکوٰۃ کیلکولیٹر', '🪙 Zakat Tool', getTenPoints()],
-      [10, 'ڈیجیٹل اسکلز', 'Digital Skills', 'آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', 'Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال سائیڈ انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', getTenPoints()],
-      [11, 'بچوں کا مستقبل', 'Children Future', 'بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی', 'Children’s Higher Education & Marriage Fund Blueprint', '10 سے 15 سال بعد کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا سونا جوڑنے کا طریقہ۔', 'Prepare for future family milestones over 10–15 years without taking loans.', 'gold', '🥇 بچت و سونا ٹول', '🥇 Gold Saving Tool', getTenPoints()],
-      [12, 'گاڑی کے اصول', 'Vehicle Rules', 'گاڑی یا موٹرسائیکل کی خریداری، کاغذات اور مرمت', 'Smart Vehicle Purchase, Excise Check & Maintenance Rules', 'استطاعت کے مطابق سواری خریدنے، MTMIS تصدیق اور ماہانہ پیٹرول و پارٹس کا بجٹ۔', 'Rules for buying a vehicle, verifying Excise records, and budgeting for fuel/parts.', null, '', '', getTenPoints()],
-      [13, 'ٹیکس اور ایف بی آر', 'Tax & FBR', 'پاکستان میں ٹیکس فائلر (ATL) بننے کے فوائد اور طریقہ', 'Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer', 'نان فائلر کے دگنے ٹیکس سے بچنے اور ایف بی آر آئرس پر خود رجسٹریشن کی رہنمائی۔', 'Save 50%+ withholding taxes on banking and property via FBR IRIS registration.', null, '', '', getTenPoints()],
-      [14, 'ریٹائرمنٹ پلان', 'Retirement Plan', 'بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', 'Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ۔', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', getTenPoints()],
-      [15, 'دکان کا کھاتہ', 'Business Cashbook', 'چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', 'Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', getTenPoints()]
-    ];
-
-    let uploadedPdfs = JSON.parse(localStorage.getItem('flp_uploaded_pdfs_v3') || '[]');
-    let deletedBaseIds = JSON.parse(localStorage.getItem('flp_deleted_base') || '[]');
-    baseGuides = baseGuides.filter(g => !deletedBaseIds.includes(g[0]));
-
-    let totalVisitors = parseInt(localStorage.getItem('flp_real_visitors') || '0', 10) + 1;
-    localStorage.setItem('flp_real_visitors', totalVisitors);
-
-    let socialStats = JSON.parse(localStorage.getItem('flp_real_stats_v1') || '{}');
-    function getStat(id) {
-      if (!socialStats[id]) {
-        socialStats[id] = { views: 0, likes: 0, shares: 0, liked: false, comments: [] };
-      }
-      return socialStats[id];
-    }
-    function saveStats() { localStorage.setItem('flp_real_stats_v1', JSON.stringify(socialStats)); }
-
-    let commSlots = [
-      { mUr: 'اگست 2026', mEn: 'Aug 2026', nUr: 'والدہ محترمہ', nEn: 'Mother', paid: true },
-      { mUr: 'ستمبر 2026', mEn: 'Sep 2026', nUr: 'ایمرجنسی فنڈ', nEn: 'Emergency Fund', paid: true },
-      { mUr: 'اکتوبر 2026', mEn: 'Oct 2026', nUr: 'گھر کا خرچ', nEn: 'Home Expense', paid: false },
-      { mUr: 'نومبر 2026', mEn: 'Nov 2026', nUr: 'کاروبار اسٹاک', nEn: 'Business Stock', paid: false },
-      { mUr: 'دسمبر 2026', mEn: 'Dec 2026', nUr: 'سونا خریداری', nEn: 'Gold Purchase', paid: false },
-      { mUr: 'جنوری 2027', mEn: 'Jan 2027', nUr: 'بچوں کی فیس', nEn: 'School Fees', paid: false }
-    ];
-    let bizData = JSON.parse(localStorage.getItem('flp_biz_pro') || '[{"desc":"Daily Sales / آج کی سیل","amt":25000,"type":"in"},{"desc":"Stock / مال خریداری","amt":10000,"type":"exp"}]');
-    let chatData = JSON.parse(localStorage.getItem('flp_chat_pro') || '[]');
-
-    function showVisitorInfo() {
-      showToast(tr(`👁️ حقیقی وزٹس کی تعداد: ${totalVisitors.toLocaleString()}`, `👁️ Real Visits Count: ${totalVisitors.toLocaleString()}`), true);
-    }
-
-    function loadLiveDates() {
-      const now = new Date(), dIdx = now.getDay(), dNum = now.getDate(), mIdx = now.getMonth(), yNum = now.getFullYear();
-      const daysUr = ['اتوار','پیر','منگل','بدھ','جمعرات','جمعہ','ہفتہ'], daysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-      const mUr = ['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'], mEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      const dMUr = ['چیت','بیساکھ','جیٹھ','ہاڑھ','ساون','بھادوں','اسوج','کتک','مگھر','پوہ','ماگھ','پھاگن'], dMEn = ['Chet','Vaisakh','Jeth','Harh','Sawan','Bhadon','Assuj','Katak','Maghar','Poh','Magh','Phagan'];
-      let desiIdx = (mIdx + (dNum >= 15 ? 9 : 8)) % 12, desiDay = dNum >= 15 ? (dNum - 14) : (dNum + 16);
-      let hUr = '4 ربیع الثانی 1448ھ', hEn = '4 Rabi al-Thani 1448 AH';
-      try {
-        hUr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
-        hEn = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
-      } catch(e) {}
-      document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}؍ ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
-      document.getElementById('dateCalendars').innerHTML = lang === 'ur'
-        ? `<span>🌙 اسلامی: ${hUr}</span>|<span>🌾 دیسی: ${desiDay} ${dMUr[desiIdx]}</span>|<span>🇵🇰 پاکستان وقت</span>`
-        : `<span>🌙 Islamic: ${hEn}</span>|<span>🌾 Desi: ${desiDay} ${dMEn[desiIdx]}</span>|<span>🇵🇰 PKT Time</span>`;
-      document.getElementById('totalVisitorsCount').textContent = totalVisitors.toLocaleString();
-    }
-
-    function updateLiveClock() {
-      const el = document.getElementById('liveClock');
-      if (el) el.textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-    }
-    setInterval(updateLiveClock, 1000);
-
-    function switchLang(l) {
-      lang = l;
-      const root = document.getElementById('htmlRoot');
-      root.lang = l; root.dir = l === 'ur' ? 'rtl' : 'ltr';
-      document.getElementById('lang-ur').className = l === 'ur' ? 'px-3 py-1 rounded-lg text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded-lg text-xs font-semibold text-gray-300';
-      document.getElementById('lang-en').className = l === 'en' ? 'px-3 py-1 rounded-lg text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded-lg text-xs font-semibold text-gray-300';
-      document.querySelectorAll('[data-ur]').forEach(el => { el.textContent = el.getAttribute('data-' + l); el.classList.toggle('urdu-font', l === 'ur'); el.classList.toggle('eng-font', l === 'en'); });
-      document.querySelectorAll('[data-ph-ur]').forEach(el => el.placeholder = el.getAttribute('data-ph-' + l));
-      loadLiveDates();
-      if (activeTopTool) renderToolHTML('topToolPanel', activeTopTool, 'top');
-      renderChat(); renderGuides();
-    }
-
-    function triggerAdminSecret() {
-      if (isAdminLoggedIn) return;
-      secretTaps++;
-      clearTimeout(tapTimer);
-      tapTimer = setTimeout(() => { secretTaps = 0; }, 2200);
-      if (secretTaps < 5) return;
-      secretTaps = 0;
-
-      const masterPwd = localStorage.getItem('flp_master_admin_pwd') || 'Nadeem@786';
-      const pwd = prompt(tr('🔐 ڈویلپر ماسٹر پاسورڈ درج کریں (صرف ندیم اقبال کے لیے):', '🔐 Enter Developer Master Password:'));
-      if (pwd === masterPwd) {
-        isAdminLoggedIn = true;
-        document.getElementById('adminPanel').style.display = 'block';
-        renderGuides();
-        showToast(tr('🔓 ڈویلپر ایڈمن موڈ آن ہو گیا', '🔓 Developer Admin Mode Activated'), true);
-      } else if (pwd !== null) {
-        alert(tr('❌ غلط پاسورڈ!', '❌ Access Denied!'));
-      }
-    }
-
-    function changeAdminPassword() {
-      if (!isAdminLoggedIn) return;
-      const currentPwd = localStorage.getItem('flp_master_admin_pwd') || 'Nadeem@786';
-      const oldInput = prompt(tr('موجودہ ماسٹر پاسورڈ درج کریں:', 'Enter current Master Password:'));
-      if (oldInput === currentPwd) {
-        const newInput = prompt(tr('اپنا نیا ڈویلپر پاسورڈ درج کریں (کم از کم 4 حروف):', 'Enter new Developer Password (min 4 chars):'));
-        if (newInput && newInput.trim().length >= 4) {
-          localStorage.setItem('flp_master_admin_pwd', newInput.trim());
-          alert(tr('✅ آپ کا نیا ڈویلپر پاسورڈ محفوظ ہو گیا ہے!', '✅ Your new Developer Password is saved!'));
-        }
-      } else if (oldInput !== null) {
-        alert(tr('❌ موجودہ پاسورڈ غلط ہے!', '❌ Incorrect current password!'));
-      }
-    }
-
-    function adminLogout() {
-      isAdminLoggedIn = false;
-      document.getElementById('adminPanel').style.display = 'none';
-      renderGuides();
-      showToast(tr('🔒 ایڈمن موڈ بند ہو گیا', '🔒 Admin Mode Locked'), false);
-    }
-
-    function toggleLike(e, id) {
-      e.stopPropagation();
-      const st = getStat(id);
-      st.liked = !st.liked;
-      st.likes = Math.max(0, st.likes + (st.liked ? 1 : -1));
-      saveStats(); renderGuides();
-    }
-
-    function shareGuide(e, id, title) {
-      e.stopPropagation();
-      const st = getStat(id);
-      st.shares += 1;
-      saveStats(); renderGuides();
-      const url = window.location.href;
-      const text = `${title} - فنانشل لٹریسی پاکستان ایپ:\n${url}`;
-      if (navigator.share) {
-        navigator.share({ title, text, url }).catch(() => {});
-      } else {
-        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-      }
-    }
-
-    function toggleCommentBox(e, id) {
-      e.stopPropagation();
-      const el = document.getElementById('commBox-' + id);
-      if (el) el.classList.toggle('hidden');
-    }
-
-    function addGuideComment(e, id) {
-      e.preventDefault(); e.stopPropagation();
-      const nameEl = document.getElementById('cName-' + id);
-      const textEl = document.getElementById('cText-' + id);
-      const n = nameEl.value.trim(), t = textEl.value.trim();
-      if (!n || !t) return;
-      const st = getStat(id);
-      st.comments.unshift({ name: n, text: t, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-      saveStats(); renderGuides();
-      setTimeout(() => { const box = document.getElementById('commBox-' + id); if (box) box.classList.remove('hidden'); }, 50);
-    }
-
-    function renderToolHTML(cId, type, p) {
-      const box = document.getElementById(cId); if (!box) return;
-      const closeFn = p === 'top' ? 'closeTopTool()' : `document.getElementById('${cId}').classList.add('hidden')`;
-      const header = (title) => `<div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]"><span>${title}</span><button onclick="${closeFn}" class="text-red-600 text-xs font-bold px-2 py-0.5 bg-red-50 rounded">${tr('✕ بند کریں','✕ Close')}</button></div>`;
-
-      if (type === 'budget') {
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-500 shadow-lg text-xs">${header(tr('🧮 50/30/20 ماہانہ بجٹ کیلکولیٹر','🧮 50/30/20 Budget Calculator'))}<label class="block font-bold mb-1">${tr('ماہانہ آمدنی درج کریں (PKR):','Enter Monthly Income (PKR):')}</label><input type="number" id="inc-${p}" value="50000" oninput="calcB('${p}')" class="w-full p-2 border-2 border-[#064E3B] rounded-xl mb-3 font-extrabold text-sm text-[#064E3B]" /><div class="grid grid-cols-3 gap-2 text-center"><div class="p-2 bg-emerald-50 rounded-xl border"><b>${tr('50% ضروریات','50% Needs')}</b><p id="bn-${p}" class="font-black text-emerald-950 mt-1">Rs. 25,000</p></div><div class="p-2 bg-blue-50 rounded-xl border"><b>${tr('30% خواہشات','30% Wants')}</b><p id="bw-${p}" class="font-black text-blue-950 mt-1">Rs. 15,000</p></div><div class="p-2 bg-amber-50 rounded-xl border"><b>${tr('20% بچت','20% Savings')}</b><p id="bs-${p}" class="font-black text-amber-950 mt-1">Rs. 10,000</p></div></div></div>`;
-      } else if (type === 'committee') {
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-[#D4AF37] shadow-lg text-xs">${header(tr('🗓️ 12 ماہ کا کمیٹی (BC) ریکارڈ','🗓️ 12-Month Committee Tracker'))}<div class="space-y-1.5 max-h-52 overflow-y-auto">${commSlots.map((s, i) => `<div class="flex items-center justify-between p-2 bg-slate-50 border rounded-xl gap-2"><span class="w-20 font-bold">${tr(s.mUr, s.mEn)}</span><input type="text" value="${tr(s.nUr, s.nEn)}" onchange="commSlots[${i}][lang==='ur'?'nUr':'nEn']=this.value" class="flex-1 p-1 border rounded bg-white text-xs font-semibold" /><button onclick="commSlots[${i}].paid=!commSlots[${i}].paid;renderToolHTML('${cId}','committee','${p}')" class="px-2 py-1 rounded font-bold ${s.paid ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">${s.paid ? tr('✓ ادا شدہ','✓ Paid') : tr('⏳ باقی','⏳ Pending')}</button></div>`).join('')}</div></div>`;
-      } else if (type === 'business') {
-        let net = bizData.reduce((a, b) => b.type === 'in' ? a + b.amt : a - b.amt, 0);
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-slate-400 shadow-lg text-xs">${header(tr('📒 کاروبار اور دکان کا روزانہ کھاتہ','📒 Daily Business Cashbook'))}<div class="mb-2 p-2 bg-emerald-50 rounded-xl border text-center"><b>${tr('گلے میں خالص کیش:','Net Register Cash:')}</b> <span class="font-black text-emerald-950 text-sm">Rs. ${net.toLocaleString()}</span></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 mb-2"><input id="bd-${p}" placeholder="${tr('تفصیل (سیل/خرچ)','Description')}" class="p-2 border rounded-xl" /><input type="number" id="ba-${p}" placeholder="${tr('رقم (PKR)','Amount')}" class="p-2 border rounded-xl font-bold" /><select id="bt-${p}" class="p-2 border rounded-xl font-semibold"><option value="in">${tr('➕ آمدن / سیل','➕ Income')}</option><option value="exp">${tr('➖ دکان خرچ','➖ Expense')}</option><option value="draw">${tr('🏠 گھر کا خرچ','🏠 Home Draw')}</option></select></div><button onclick="addBiz('${cId}','${p}')" class="w-full py-2 gold-bg text-[#0A192F] font-extrabold rounded-xl mb-2">${tr('+ کھاتے میں درج کریں','+ Add Entry')}</button><div class="space-y-1 max-h-36 overflow-y-auto">${bizData.map((b, i) => `<div class="flex justify-between p-1.5 bg-slate-50 border rounded-lg"><span><b>${b.desc}</b> (${b.type === 'in' ? '+' : '-'})</span><span class="font-bold">Rs. ${b.amt.toLocaleString()} <button onclick="bizData.splice(${i},1);localStorage.setItem('flp_biz_pro',JSON.stringify(bizData));renderToolHTML('${cId}','business','${p}')" class="text-red-500 font-black ml-1">✕</button></span></div>`).join('')}</div></div>`;
-      } else if (type === 'zakat') {
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-600 shadow-lg text-xs">${header(tr('🪙 سالانہ زکوٰۃ کیلکولیٹر (2.5%)','🪙 Annual Zakat Calculator (2.5%)'))}<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('نقد کیش و بینک:','Cash & Bank:')}</label><input type="number" id="zc-${p}" value="100000" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('سونا و چاندی مالیت:','Gold/Silver Value:')}</label><input type="number" id="zg-${p}" value="0" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('کاروباری مال اسٹاک:','Business Stock:')}</label><input type="number" id="zb-${p}" value="0" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-300 text-center"><b>${tr('واجب الادا کل زکوٰۃ (2.5%):','Total Payable Zakat (2.5%):')}</b> <span id="zt-${p}" class="font-black text-emerald-950 text-base">Rs. 2,500</span></div></div>`;
-      } else if (type === 'gold') {
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-amber-500 shadow-lg text-xs">${header(tr('🥇 مائکرو گولڈ اور روزانہ بچت کیلکولیٹر','🥇 Micro-Gold & Daily Saving Calculator'))}<div class="grid grid-cols-2 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('روزانہ بچت (PKR):','Daily Saving (PKR):')}</label><input type="number" id="gd-${p}" value="200" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('1 گرام سونے کا ریٹ:','24K Gold Rate/Gram:')}</label><input type="number" id="gr-${p}" value="24000" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-2 gap-2 text-center"><div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>${tr('سالانہ جمع شدہ رقم','1-Year Saved Cash')}</b><p id="gy-${p}" class="font-black text-amber-950 text-sm mt-1">Rs. 73,000</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-300"><b>${tr('سالانہ خالص سونا (گرام)','Accumulated 24K Gold')}</b><p id="gg-${p}" class="font-black text-emerald-950 text-sm mt-1">3.04 Grams</p></div></div></div>`;
-      } else if (type === 'goal') {
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-blue-500 shadow-lg text-xs">${header(tr('🎯 ایمرجنسی فنڈ اور قرض نجات پلانر','🎯 Emergency Fund & Debt Payoff Planner'))}<div class="grid grid-cols-3 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('ماہانہ گھر خرچ:','Monthly Expense:')}</label><input type="number" id="em-${p}" value="30000" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('کل قرض یا ہدف:','Total Debt/Goal:')}</label><input type="number" id="dt-${p}" value="100000" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('ماہانہ قسط ادائیگی:','Monthly Payoff:')}</label><input type="number" id="dp-${p}" value="10000" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-2 gap-2 text-center"><div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>${tr('محفوظ ایمرجنسی فنڈ (3 تا 6 ماہ)','3–6 Month Emergency Target')}</b><p id="er-${p}" class="font-black text-blue-950 text-xs md:text-sm mt-1">Rs. 90k – 180k</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>${tr('قرض/ہدف مکمل ہونے کا وقت','Time to Clear Debt / Goal')}</b><p id="dr-${p}" class="font-black text-emerald-950 text-xs md:text-sm mt-1">10 Months (ماہ)</p></div></div></div>`;
-      }
-    }
-
-    function openTool(t) {
-      const p = document.getElementById('topToolPanel');
-      if (activeTopTool === t && !p.classList.contains('hidden')) { closeTopTool(); return; }
-      activeTopTool = t; p.classList.remove('hidden'); renderToolHTML('topToolPanel', t, 'top');
-    }
-    function closeTopTool() { activeTopTool = null; document.getElementById('topToolPanel').classList.add('hidden'); }
-    function toggleCardTool(e, id, t) {
-      e.stopPropagation(); const cId = 'cardTool-' + id, el = document.getElementById(cId);
-      if (!el.classList.contains('hidden')) { el.classList.add('hidden'); return; }
-      el.classList.remove('hidden'); renderToolHTML(cId, t, 'c' + id);
-    }
-
-    function calcB(p) { let v = +document.getElementById('inc-'+p).value||0; document.getElementById('bn-'+p).textContent = 'Rs. '+Math.round(v*0.5).toLocaleString(); document.getElementById('bw-'+p).textContent = 'Rs. '+Math.round(v*0.3).toLocaleString(); document.getElementById('bs-'+p).textContent = 'Rs. '+Math.round(v*0.2).toLocaleString(); }
-    function calcZ(p) { let t = (+document.getElementById('zc-'+p).value||0)+(+document.getElementById('zg-'+p).value||0)+(+document.getElementById('zb-'+p).value||0); document.getElementById('zt-'+p).textContent = 'Rs. '+Math.round(t*0.025).toLocaleString(); }
-    function calcG(p) { let d = +document.getElementById('gd-'+p).value||0, r = +document.getElementById('gr-'+p).value||1, yr = d*365; document.getElementById('gy-'+p).textContent = 'Rs. '+yr.toLocaleString(); document.getElementById('gg-'+p).textContent = (yr/r).toFixed(2)+' Grams'; }
-    function calcD(p) { let e = +document.getElementById('em-'+p).value||0, dt = +document.getElementById('dt-'+p).value||0, dp = +document.getElementById('dp-'+p).value||1; document.getElementById('er-'+p).textContent = `Rs. ${(e*3/1000).toFixed(0)}k – ${(e*6/1000).toFixed(0)}k`; document.getElementById('dr-'+p).textContent = Math.ceil(dt/dp) + tr(' ماہ (Months)',' Months'); }
-    function addBiz(cId, p) { let d = document.getElementById('bd-'+p).value.trim(), a = +document.getElementById('ba-'+p).value||0, t = document.getElementById('bt-'+p).value; if (!d || a<=0) return; bizData.unshift({desc:d, amt:a, type:t}); localStorage.setItem('flp_biz_pro', JSON.stringify(bizData)); renderToolHTML(cId, 'business', p); }
-
-    function postChatMessage(e) {
-      e.preventDefault(); let n = document.getElementById('chatName').value.trim(), t = document.getElementById('chatText').value.trim(); if (!n || !t) return;
-      chatData.unshift({ name: n, text: t, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-      localStorage.setItem('flp_chat_pro', JSON.stringify(chatData)); document.getElementById('chatText').value = ''; renderChat();
-    }
-    function renderChat() {
-      const def = { name: tr('ندیم اقبال (ڈویلپر)','Nadeem Iqbal (Developer)'), text: tr('خوش آمدید! ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء یہاں ضرور شیئر کریں۔','Welcome! Please share your valuable suggestions and feedback here to improve this app.'), time: tr('لائیو','Live') };
-      document.getElementById('chatMessagesList').innerHTML = [def, ...chatData].map(c => `<div class="p-3 bg-slate-50 border rounded-2xl"><div class="flex justify-between mb-1"><span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span><span class="text-[10px] text-gray-400">${c.time}</span></div><p class="text-gray-800 ${fCls()} text-xs">${c.text}</p></div>`).join('');
-    }
-
-    function showToast(text, isUpload) {
-      const toast = document.getElementById('progressToast');
-      const arrow = document.getElementById('toastArrow');
-      const msg = document.getElementById('toastText');
-      arrow.textContent = isUpload ? '⬆️' : '⬇️';
-      arrow.className = isUpload ? 'text-lg text-[#F3E5AB] arrow-up' : 'text-lg text-[#F3E5AB] arrow-down';
-      msg.textContent = text;
-      toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 3200);
-    }
-
-    function downloadPdfFile(pdfUrl, title) {
-      showToast(tr(`📥 "${title}" ڈاؤن لوڈ ہو رہی ہے...`, `📥 Downloading "${title}"...`), false);
-      setTimeout(() => {
-        if (pdfUrl && (pdfUrl.startsWith('data:') || pdfUrl.startsWith('blob:'))) {
-          const a = document.createElement('a');
-          a.href = pdfUrl; a.download = title + '.pdf';
-          document.body.appendChild(a); a.click(); document.body.removeChild(a);
-        } else {
-          window.print();
-        }
-      }, 900);
-    }
-
-    function downloadCurrentPdf() {
-      const allGuides = [...baseGuides, ...uploadedPdfs];
-      const g = allGuides.find(x => x[0] === currentModalId);
-      if (g) downloadPdfFile(g[11] || '', tr(g[3], g[4]));
-    }
-
-    function handleDevUpload() {
-      if (!isAdminLoggedIn) return;
-      const titleInput = document.getElementById('devPdfTitle');
-      const fileInput = document.getElementById('devPdfFile');
-      const msg = document.getElementById('uploadMsg');
-      const title = titleInput.value.trim();
-
-      if (fileInput.files.length > 0 && title) {
-        showToast(tr('⬆️ نئی پی ڈی ایف اپلوڈ ہو رہی ہے...', '⬆️ Uploading new PDF...'), true);
-        const file = fileInput.files[0];
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          const dataUrl = evt.target.result;
-          const newId = Date.now();
-          const newPdfItem = [
-            newId, 'ڈویلپر پی ڈی ایف', 'Developer PDF', title, title,
-            'ڈویلپر کی جانب سے اپلوڈ کردہ خصوصی پی ڈی ایف گائیڈ۔', 'Special PDF guide uploaded by the developer.',
-            null, '', '',
-            getTenPoints(),
-            dataUrl
-          ];
-          try {
-            uploadedPdfs.push(newPdfItem);
-            localStorage.setItem('flp_uploaded_pdfs_v3', JSON.stringify(uploadedPdfs));
-          } catch(err) {
-            newPdfItem[11] = URL.createObjectURL(file);
-          }
-          msg.textContent = tr('✅ پی ڈی ایف کامیابی سے اپلوڈ ہو گئی!', '✅ PDF uploaded successfully!');
-          titleInput.value = ''; fileInput.value = '';
-          renderGuides();
-        };
-        reader.readAsDataURL(file);
-      } else {
-        msg.textContent = tr('❌ براہ کرم گائیڈ کا نام اور پی ڈی ایف فائل دونوں منتخب کریں۔', '❌ Please enter a title and select a PDF file.');
-      }
-    }
-
-    function editGuide(event, id) {
-      event.stopPropagation();
-      if (!isAdminLoggedIn) return;
-      let allGuides = [...baseGuides, ...uploadedPdfs];
-      const g = allGuides.find(x => x[0] === id); if (!g) return;
-      const newTitle = prompt(tr('گائیڈ کا نیا نام درج کریں:', 'Enter new title for guide:'), tr(g[3], g[4]));
-      if (newTitle && newTitle.trim()) {
-        g[3] = newTitle.trim(); g[4] = newTitle.trim();
-        localStorage.setItem('flp_uploaded_pdfs_v3', JSON.stringify(uploadedPdfs));
-        renderGuides();
-        showToast(tr('✏️ گائیڈ اپڈیٹ ہو گئی!', '✏️ Guide updated!'), true);
-      }
-    }
-
-    function deleteGuide(event, id) {
-      event.stopPropagation();
-      if (!isAdminLoggedIn) return;
-      if (confirm(tr('کیا آپ واقعی اس گائیڈ کو حذف کرنا چاہتے ہیں؟ باقی نمبرز خودکار اپڈیٹ ہو جائیں گے۔', 'Delete this guide? Remaining numbers will auto-update.'))) {
-        const upIdx = uploadedPdfs.findIndex(x => x[0] === id);
-        if (upIdx !== -1) {
-          uploadedPdfs.splice(upIdx, 1);
-          localStorage.setItem('flp_uploaded_pdfs_v3', JSON.stringify(uploadedPdfs));
-        } else {
-          baseGuides = baseGuides.filter(x => x[0] !== id);
-          deletedBaseIds.push(id);
-          localStorage.setItem('flp_deleted_base', JSON.stringify(deletedBaseIds));
-        }
-        renderGuides();
-        showToast(tr('🗑️ گائیڈ حذف ہو گئی اور نمبرنگ اپڈیٹ ہو گئی!', '🗑️ Guide deleted & numbering auto-updated!'), false);
-      }
-    }
-
-    function renderGuides() {
-      const q = (document.getElementById('searchBox').value || '').toLowerCase();
-      const allGuides = [...baseGuides, ...uploadedPdfs];
-      const totalCount = allGuides.length;
-
-      document.getElementById('heroBadgeText').textContent = tr(
-        `💎 ${totalCount} مکمل گائیڈز + 6 عملی ٹولز`,
-        `💎 ${totalCount} Master Guides + 6 Live Tools`
-      );
-      document.getElementById('libraryHeading').textContent = tr(
-        `📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری (${totalCount} مکمل کتابچے):`,
-        `📚 Asset Building, Legal Guides & PDF Library (${totalCount} Master Guides):`
-      );
-
-      const list = allGuides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
-
-      document.getElementById('guidesList').innerHTML = list.map((g, idx) => {
-        const st = getStat(g[0]);
-        const titleTxt = `${idx + 1}. ${tr(g[3], g[4])}`;
-        return `
-        <div onclick="openGuide(${g[0]}, ${idx + 1})" class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer">
-          <div class="flex justify-between items-center mb-1.5">
-            <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${tr(g[1], g[2])}</span>
-            <div class="flex items-center gap-1.5">
-              <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">#${idx + 1}</span>
-              <button onclick="event.stopPropagation(); downloadPdfFile('${g[11]||''}', '${tr(g[3],g[4])}')" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold">📥 PDF</button>
-              ${isAdminLoggedIn ? `
-                <button onclick="editGuide(event, ${g[0]})" class="text-[10px] bg-blue-100 text-blue-900 px-2 py-0.5 rounded font-bold">✏️</button>
-                <button onclick="deleteGuide(event, ${g[0]})" class="text-[10px] bg-red-100 text-red-900 px-2 py-0.5 rounded font-bold">🗑️</button>
-              ` : ''}
-            </div>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fCls()} mb-1">${titleTxt}</h3>
-          <p class="text-[11px] text-gray-600 ${fCls()} mb-3">${tr(g[5], g[6])}</p>
-
-          <div class="flex flex-wrap justify-between items-center gap-2 pt-2.5 border-t text-xs">
-            <span class="text-[#064E3B] font-extrabold">${tr('مکمل گائیڈ اور قانونی سٹیپس (10 عملی پوائنٹس) پڑھیں ←','Read Full 10-Step Guide →')}</span>
-            ${g[7] ? `<button onclick="toggleCardTool(event, ${g[0]}, '${g[7]}')" class="px-3 py-1 gold-bg text-[#0A192F] font-extrabold text-[11px] rounded-xl shadow-sm">${tr(g[8], g[9])}</button>` : ''}
-          </div>
-
-          <!-- Social Engagement Bar with Authentic Social Share SVG Icon -->
-          <div onclick="event.stopPropagation()" class="flex items-center justify-between gap-1 mt-3 pt-2.5 border-t border-dashed border-gray-200 text-[11px] text-gray-600 font-bold">
-            <span class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100">
-              👁️ <span>${st.views}</span> <span class="hidden sm:inline">${tr('ویوز','Views')}</span>
-            </span>
-            <button onclick="toggleLike(event, ${g[0]})" class="flex items-center gap-1 px-2.5 py-1 rounded-lg ${st.liked ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-slate-100 hover:bg-red-50'} transition">
-              ${st.liked ? '❤️' : '🤍'} <span>${st.likes}</span> <span>${tr('لائک','Like')}</span>
-            </button>
-            <button onclick="toggleCommentBox(event, ${g[0]})" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-[#0A192F] transition">
-              💬 <span>${st.comments.length}</span> <span>${tr('کمنٹ','Comment')}</span>
-            </button>
-            <button onclick="shareGuide(event, ${g[0]}, '${titleTxt}')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-[#064E3B] border border-emerald-200 transition">
-              ${shareSvgIcon} <span>${st.shares}</span> <span>${tr('شیئر','Share')}</span>
-            </button>
-          </div>
-
-          <!-- Inline Comment Section -->
-          <div id="commBox-${g[0]}" onclick="event.stopPropagation()" class="hidden mt-3 p-3 bg-slate-50 rounded-xl border border-gray-200 text-xs space-y-2">
-            <form onsubmit="addGuideComment(event, ${g[0]})" class="flex flex-col sm:flex-row gap-1.5">
-              <input type="text" id="cName-${g[0]}" required placeholder="${tr('آپ کا نام','Your Name')}" class="sm:w-1/3 p-1.5 border rounded-lg bg-white text-xs font-semibold" />
-              <input type="text" id="cText-${g[0]}" required placeholder="${tr('اس کتابچے پر اپنا تبصرہ لکھیں...','Write a comment on this guide...')}" class="flex-1 p-1.5 border rounded-lg bg-white text-xs" />
-              <button type="submit" class="px-3 py-1.5 hero-bg text-white font-bold rounded-lg text-xs shrink-0">${tr('ارسال','Post')}</button>
-            </form>
-            <div class="space-y-1.5 max-h-32 overflow-y-auto pt-1">
-              ${st.comments.length === 0 ? `<p class="text-[10px] text-gray-400 text-center">${tr('ابھی تک کوئی تبصرہ نہیں۔ پہلا کمنٹ کریں!','No comments yet. Be the first!')}</p>` : st.comments.map(c => `<div class="p-2 bg-white border rounded-lg flex justify-between items-start gap-2"><div><b class="text-[#064E3B]">${c.name}:</b> <span class="${fCls()}">${c.text}</span></div><span class="text-[9px] text-gray-400 shrink-0">${c.time}</span></div>`).join('')}
-            </div>
-          </div>
-
-          <div id="cardTool-${g[0]}" onclick="event.stopPropagation()" class="hidden mt-3"></div>
-        </div>`;
-      }).join('');
-    }
-
-    function toggleAcc(i) {
-      const c = document.getElementById('acc-c-'+i), ic = document.getElementById('acc-i-'+i);
-      const hide = !c.classList.contains('hidden'); c.classList.toggle('hidden', hide); ic.textContent = hide ? '▼' : '▲';
-    }
-
-    function openGuide(id, displayNum) {
-      currentModalId = id;
-      const allGuides = [...baseGuides, ...uploadedPdfs];
-      const g = allGuides.find(x => x[0] === id); if (!g) return;
-
-      const st = getStat(id);
-      st.views += 1;
-      saveStats();
-      renderGuides();
-
-      const numPrefix = displayNum ? `${displayNum}. ` : '';
-      document.getElementById('mTitle').textContent = numPrefix + tr(g[3], g[4]);
-      
-      let pdfPreview = g[11] ? `
-        <div class="p-3 bg-emerald-950 text-white rounded-xl flex items-center justify-between">
-          <span class="text-xs font-bold">📄 ${tr('اصل پی ڈی ایف فائل منسلک ہے','Original PDF File Attached')}</span>
-          <a href="${g[11]}" target="_blank" class="px-3 py-1.5 rounded-lg gold-bg text-[#0A192F] font-extrabold text-xs">👁️ ${tr('پی ڈی ایف کھولیں','Open Full PDF')}</a>
-        </div>` : '';
-
-      document.getElementById('mBody').innerHTML = `
-        <div class="bg-white p-4 rounded-2xl border-2 border-emerald-200 space-y-3">
-          ${pdfPreview}
-          <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
-            <div>
-              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr('پاکستانی قانونی و عملی گائیڈ (10 پوائنٹس)','Pakistani Legal & Practical Guide (10 Steps)')}</span>
-              <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fCls()} mt-2">${tr(g[5], g[6])}</p>
-            </div>
-            <span class="text-[11px] bg-slate-100 px-2.5 py-1 rounded-lg font-bold text-gray-700">👁️ ${st.views} ${tr('مرتبہ پڑھا گیا','Views')}</span>
-          </div>
-          <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fCls()}">${tr('💡 ہدایت: نیچے دیے گئے 10 میں سے کسی بھی عملی پوائنٹ پر کلک کریں تاکہ اس کی تفصیلی گائیڈ کھل جائے:','💡 Tip: Click any of the 10 actionable steps below to expand its detailed guidance:')}</p>
-          <div class="space-y-2">
-            ${g[10].map((pt, i) => `
-              <div class="bg-emerald-50/70 rounded-2xl border border-emerald-200 overflow-hidden">
-                <button onclick="toggleAcc(${i})" class="w-full p-3.5 ${lang==='ur'?'text-right':'text-left'} font-extrabold text-[#0A192F] text-xs md:text-sm flex justify-between items-center gap-2 bg-white">
-                  <span class="${fCls()}">${tr(pt[0], pt[1])}</span>
-                  <span id="acc-i-${i}" class="text-emerald-800 text-xs bg-emerald-100 w-6 h-6 rounded-full flex items-center justify-center shrink-0">${i===0?'▲':'▼'}</span>
-                </button>
-                <div id="acc-c-${i}" class="${i===0?'':'hidden'} p-3.5 bg-emerald-50/90 border-t border-emerald-200 text-gray-900 text-xs md:text-sm ${fCls()} whitespace-pre-line">${tr(pt[2], pt[3])}</div>
-              </div>`).join('')}
-          </div>
-        </div>`;
-      document.getElementById('guideModal').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() { document.getElementById('guideModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
-
-    window.onload = () => { switchLang('ur'); updateLiveDates(); renderGuides(); };
-  </script>
-</body>
-</html>
+    // 150 Completely Unique, Non-Repeating Points (10 Distinct Points for Each of the 15 Guides)
+    const uniquePointsDB = {
+      1: [
+        ['تنخواہ ملتے ہی سب سے پہلے 20% بچت الگ کرنا|Pay Yourself First (20% Savings)', 'تنخواہ یا مزدوری ملتے ہی خرچ شروع کرنے سے پہلے 20% رقم الگ لفافے یا اکاؤنٹ میں رکھیں۔|Transfer 20% of your income into a separate savings bucket the day you get paid.'],
+        ['ہول سیل منڈی سے ماہانہ راشن کی اکٹھی خریداری|Bulk Wholesale Grocery Shopping', 'گلی کی پرچون دکان کے بجائے ہول سیل مارکیٹ سے آٹا، گھی اور دالیں اکٹھی خرید کر 15% بچائیں۔|Buy monthly staples in bulk from wholesale markets to save 15%–20% on kitchen bills.'],
+        ['شام 6 سے 10 بجے (Peak Hours) میں بجلی کی بچت|Peak-Hour Electricity Saving', 'واپڈا کے مہنگے یونٹس سے بچنے کے لیے شام 6 سے 10 بجے استری، موٹر اور اے سی بالکل نہ چلائیں۔|Avoid running heavy appliances like irons and water pumps between 6 PM and 10 PM.'],
+        ['روزمرہ کے چھوٹے غیر محسوس خرچوں (Micro-Leaks) کا خاتمہ|Stopping Daily Micro-Leaks', 'باہر کی چائے، سگریٹ، کولڈ ڈرنکس اور پان جیسے روزانہ کے چھوٹے خرچے بند کر کے ماہانہ ہزاروں بچائیں۔|Eliminate daily casual spending on outside tea, snacks, and sodas.'],
+        ['تین لفافوں والا کیش سسٹم (Envelope Budgeting)|The 3-Envelope Cash System', 'مہینے کے شروع میں راشن، بلز اور ایمرجنسی کے تین الگ لفافے بنائیں اور ان کی حد سے تجاوز نہ کریں۔|Divide monthly cash into Grocery, Utility, and Savings envelopes on day one.'],
+        ['خیر خریداری سے پہلے 24 گھنٹے انتظار کا اصول|The 24-Hour Impulse Buy Rule', 'کوئی بھی غیر ضروری چیز پسند آنے پر فوری نہ خریدیں بلکہ 24 گھنٹے رک کر سوچیں کہ کیا اس کے بغیر گزارہ ممکن ہے؟|Wait 24 hours before buying any non-essential item to avoid emotional spending.'],
+        ['کچن میں پریشر ککر اور فیول سیونگ عادات|Kitchen Gas & Fuel Efficiency', 'دال اور گوشت گلانے کے لیے پریشر ککر استعمال کریں تاکہ گیس سلنڈر یا بل آدھا رہ جائے۔|Use pressure cookers and lid-covered pots to cut cooking gas consumption by 40%.'],
+        ['موسم کے آغاز سے پہلے کپڑوں کی آف سیزن خریداری|Off-Season Clothing Purchases', 'عید یا شدید موسم کے عین وقت پر مہنگے داموں کپڑے لینے کے بجائے سیل یا آف سیزن میں خریداری کریں۔|Buy family clothes during off-season clearance sales rather than peak festive markups.'],
+        ['فریج اور الیکٹرانکس کی صفائی سے بل میں کمی|Appliance Maintenance for Lower Bills', 'فریج کی ربر اور پنکھوں کی بروقت سروس رکھیں تاکہ کمپریسر زیادہ بجلی نہ کھینچے۔|Keep refrigerator coils and door seals clean so appliances consume less electricity.'],
+        ['ہر اتوار کی رات 10 منٹ کا فیملی بجٹ آڈٹ|Sunday Night 10-Minute Family Audit', 'ہر ہفتے کے آخر میں گھر والوں کے ساتھ بیٹھ کر پچھلے 7 دن کے خرچوں کا حساب ملائیں۔|Review weekly household spending every Sunday night to stay on track.']
+      ],
+      2: [
+        ['مائکرو گولڈ: 0.1 گرام یا 1 گرام 24K سونے کی شیٹ|Micro-Gold: Buying Fractional 24K Gold', 'تولہ سونا جمع ہونے کا انتظار نہ کریں؛ روزانہ 100 یا 200 روپے جوڑ کر سنار سے 24K سونے کی چھوٹی شیٹ پکی رسید کے ساتھ لیں۔|Save PKR 100–200 daily to buy 0.1g to 1g certified 24K pure gold sheets with an invoice.'],
+        ['کاریگر اور مزدور کے لیے جدید اوزار بطورِ فیکٹری|Modern Power Tools as Income Assets', 'مستری، الیکٹریشن، پلمبر یا درزی اپنی بچت سے جدید مشینری خریدیں جو کام کی رفتار اور دہاڑی دگنی کر دے۔|Invest savings into professional power tools or sewing machines that double daily output.'],
+        ['صحن یا چھت پر 5 دیسی مرغیوں کا چھوٹا فارم|5-Hen Backyard Poultry Asset', 'گھر میں 5 دیسی مرغیاں پالنے سے کچن کے بچے ہوئے کھانے سے روزانہ تازہ انڈے اور نقد آمدن حاصل ہوتی ہے۔|Raise 5 Desi hens at home using kitchen scraps for daily organic eggs and cash sales.'],
+        ['گملوں اور توڑوں میں کچن گارڈننگ (سبزیاں اگانا)|Pot & Sack Kitchen Gardening', 'چھت پر پرانے ٹب یا توڑوں میں ٹماٹر، ہری مرچ، دھنیا اور پودینہ اگا کر ماہانہ سبزی کا خرچ صفر کریں۔|Grow tomatoes, chilies, mint, and coriander in pots to eliminate vegetable expenses.'],
+        ['فالتو سائیکل، ریڑھی یا سیڑھی روزانہ کرائے پر دینا|Renting Out Spare Carts, Ladders & Tools', 'گھر میں بیکار پڑی ریڑھی، ویلڈنگ مشین یا لمبی سیڑھی محلے کے مزدور کو روزانہ کرائے پر دے کر آمدن بنائیں۔|Generate daily rental cashflow by renting spare pushcarts, ladders, or drills to locals.'],
+        ['دیہات یا مضافات میں ادھیاری (حصے) پر بکری پالنا|Livestock Sharing (Adhiyari Goat Rearing)', 'کم رقم سے بکری کا بچہ خرید کر کسی امانت دار دیہاتی کو آدھے حصے پر پالنے کے لیے دیں جو سال میں دگنا اثاثہ بنتا ہے۔|Partner with trusted rural caretakers on a 50/50 profit-share basis for goat rearing.'],
+        ['پرانے فرنیچر یا لوہے کے سامان کی مرمت و ری سیل|Refurbishing & Flipping Used Items', 'کباڑ یا سیکنڈ ہینڈ مارکیٹ سے سستا سامان لے کر خود پالش اور مرمت کر کے منافع پر فروخت کریں۔|Buy cheap used furniture or tools, repair and polish them at home, and resell for profit.'],
+        ['کاریگر کے لیے خام مال (Raw Material) ہول سیل میں رکھنا|Stocking Raw Materials at Wholesale Rates', 'تار، پائپ، دھاگہ یا لکڑی ہول سیل سے سستی خرید کر اپنے پاس بطورِ اسٹاک اثاثہ رکھیں۔|Keep fast-moving raw materials (wire, thread, fittings) in stock bought at wholesale rates.'],
+        ['گلی یا مارکیٹ کے کونے پر چھوٹا موبائل کیبن (کھوکھا)|Movable Iron Cabin (Khokha) Asset', 'لاکھوں کی دکان کے بجائے لوہے کا پورٹ ایبل کیبن بنوائیں جسے خود استعمال کریں یا ماہانہ کرائے پر دیں۔|Build a low-cost movable iron kiosk to run a micro-shop or rent out for monthly income.'],
+        ['اپنے تمام چھوٹے اثاثوں کا تحریری رجسٹر بنانا|Maintaining a Personal Asset Register', 'اپنے پاس موجود سونے کے ٹکڑوں، اوزاروں اور اسٹاک کی مالیت ہر ماہ ایک ڈائری میں درج کریں۔|Keep a written log of every gram of gold, tool, and productive item you own.']
+      ],
+      3: [
+        ['دفاتر اور ہاسٹلز کے لیے ہوم میڈ لنچ باکس (ٹفن) سروس|Homemade Office & Hostel Tiffin Service', 'صرف 5 گاہکوں سے ہفتہ وار ایڈوانس پیسوں پر دوپہر کے صاف ستھرے کھانے کے ٹفن سپلائی کرنا شروع کریں۔|Start supplying hygienic homemade lunch boxes to 5 local office or hostel clients on advance pay.'],
+        ['اسکول کے باہر اسٹیشنری اور فارم فلنگ اسٹال|School Stationery & Form-Filling Table', 'کاپی، پنسل، فائل کور اور نادرا/بلوں کے فارم پُر کرنے کا چھوٹا ٹیبل لگا کر پہلے دن سے نقد کمائیں۔|Set up a small table near schools or offices offering stationery and form-filling help.'],
+        ['شام کے وقت گھر کی بیٹھک میں ٹیوشن اور ناظرہ سینٹر|Evening Home Tuition & Quran Academy', 'بغیر ایک روپیہ لگائے اپنے محلے کے 10 سے 15 بچوں کو شام کو ٹیوشن اور قرآن پاک پڑھائیں۔|Use a room at home for 2 hours every evening to tutor neighborhood children.'],
+        ['خواتین کے لیے کپڑوں کی سلائی، پیکو اور الٹریشن|Home Tailoring & Garment Alteration', 'نئے سوٹ کے علاوہ پرانے کپڑوں کی فٹنگ اور مرمت سے روزانہ فوری نقد آمدن حاصل کریں۔|Offer quick garment alteration, stitching, and hemming services for daily cashflow.'],
+        ['خالص گھریلو مصالحہ جات، اچار اور چٹنی کی پیکنگ|Homemade Spices, Pickles & Chutney Packing', 'خالص ہلدی، مرچ، گرم مصالحہ اور اچار چھوٹے صاف پیکٹوں میں پیک کر کے محلے اور کریانہ اسٹورز کو دیں۔|Pack pure homemade spices and pickles in small pouches for neighborhood families and shops.'],
+        ['صبح کے وقت صرف 3 گھنٹے کا ناشتہ (چنے، پراٹھا، چائے) پوائنٹ|3-Hour Morning Breakfast Point', 'مزدوروں کے اڈے یا مارکیٹ کے پاس صبح 6 سے 9 بجے تک تازہ پراٹھے، ابلے انڈے اور چائے فروخت کریں۔|Run a high-margin early morning breakfast cart (paratha, eggs, tea) from 6 AM to 9 AM.'],
+        ['موبائل کار اور موٹرسائیکل سروس و پالش ایٹ ڈور اسٹیپ|Doorstep Bike & Car Wash Service', 'پریشر پائپ، شیمپو اور پالش لے کر لوگوں کے گھروں کے باہر ان کی گاڑیاں اور بائیک صاف کر کے دیں۔|Offer convenient doorstep motorcycle and car washing in residential streets.'],
+        ['گھر میں پودوں کی قلمیں (کٹنگز) لگا کر نرسری بنانا|Home Plant Propagation & Sapling Sales', 'منی پلانٹ، گلاب اور موسمی سبزیوں کی پنیری مفت قلموں سے پلاسٹک شاپرز میں تیار کر کے بیچیں۔|Propagate indoor plants and vegetable saplings from cuttings in plastic bags for local sale.'],
+        ['موبائل ایزی لوڈ، بل پیمنٹ اور فریش سم سروس|Mobile Top-Up & Utility Bill Desk', 'اپنے موبائل والٹ سے محلے داروں کے بجلی/گیس کے بل جمع کریں اور کمیشن کمائیں۔|Pay utility bills and mobile loads for elderly neighbors using digital wallets for commission.'],
+        ['ہفتہ وار اتوار/جمعہ بازار میں ہول سیل آئٹم کا اسٹال|Weekly Bazaar Single-Item Trading', 'ہول سیل مارکیٹ سے جرابیں، تولیے یا کچن کا ایک سستا آئٹم لا کر ہفتہ وار بازار میں نقد بیچیں۔|Source one high-demand everyday item from wholesale markets to sell at weekly bazaars.']
+      ],
+      4: [
+        ['دن 1 تا 3: جیب سے نکلنے والے ہر ایک روپے کا مکمل ریکارڈ|Days 1–3: Complete 72-Hour Cash Tracking', 'پہلے تین دن اپنے موبائل یا چھوٹی ڈائری میں 10 روپے کی ٹافی تک کا حساب لکھیں تاکہ اصل لیکج پکڑی جائے۔|Write down every single rupee spent for the first 3 days to expose hidden spending habits.'],
+        ['دن 4 تا 7: کیبل، فالتو پیکجز اور غیر ضروری سبسکرپشنز بند کرنا|Days 4–7: Canceling Unused Subscriptions', 'مہنگے موبائل ڈیٹا پیکجز اور غیر ضروری سروسز ختم کر کے سستے ماہانہ بنڈل پر آئیں۔|Downgrade costly mobile/internet packages and cancel unused paid services.'],
+        ['دن 8 تا 10: بغیر اے ٹی ایم کارڈ کے الگ سیونگ اکاؤنٹ کھولنا|Days 8–10: Opening a No-ATM Savings Account', 'ایسا بینک یا اسلامک سیونگ اکاؤنٹ کھولیں جس میں پیسے جمع تو ہو سکیں مگر اے ٹی ایم کارڈ موجود نہ ہو۔|Open a dedicated savings account without requesting a debit card so funds stay untouched.'],
+        ['دن 11 تا 14: تمام چھوٹے بڑے ادھار اور قرضوں کی تحریری فہرست|Days 11–14: Listing All Debts on Paper', 'کریانہ اسٹور، دوستوں اور قسطوں کے تمام بقایا جات ایک صفحے پر لکھیں اور نیا ادھار لینا مکمل بند کر دیں۔|Write down every single debt owed and freeze any further credit buying immediately.'],
+        ['دن 15 تا 17: کچن اور اسٹور روم کی اشیاء کا مکمل آڈٹ|Days 15–17: Pantry & Kitchen Inventory Audit', 'گھر میں پہلے سے موجود دالوں، مصالحوں اور راشن کو استعمال کریں تاکہ نیا راشن بل کم ہو۔|Use up existing pantry stocks before buying duplicate grocery items.'],
+        ['دن 18 تا 21: گھر میں پڑا فالتو اور ناکارہ سامان فروخت کرنا|Days 18–21: Selling Unused Household Clutter', 'پرانا خراب ٹی وی، فالتو لوہا یا غیر مستعمل سامان OLX یا کباڑی کو بیچ کر شروعاتی ایمرجنسی کیش بنائیں۔|Sell unused electronics, scrap, or furniture to generate instant starter emergency cash.'],
+        ['دن 22 تا 24: اگلے 12 ماہ کا تحریری اثاثہ ہدف مقرر کرنا|Days 22–24: Setting a 12-Month Asset Target', 'کاغذ پر لکھ کر دیوار پر لگائیں کہ اس سال کے آخر تک کتنے گرام سونا یا کون سا اوزار خریدنا ہے۔|Write down a concrete 1-year target for how many grams of gold or tools you will own.'],
+        ['دن 25 تا 27: بلوں کی آخری تاریخ سے 3 دن پہلے ادائیگی کا الرٹ|Days 25–27: Eliminating Late Bill Surcharges', 'بجلی اور گیس کے بل پر لگنے والے 10% لیٹ سرچارج سے بچنے کے لیے موبائل میں الارم لگائیں۔|Set calendar alerts 3 days before utility due dates to never pay late-payment surcharges again.'],
+        ['دن 28 تا 29: گھر کے تمام افراد کے ساتھ سادگی کا معاہدہ|Days 28–29: Family Simplicity Pact', 'بیوی بچوں کو اعتماد میں لیں کہ اگلے 6 ماہ تک دکھاوے کی دعوتوں اور برانڈڈ شاپنگ سے پرہیز کرنا ہے۔|Get the whole family on board to avoid status-driven spending and lavish parties.'],
+        ['دن 30: پہلے مہینے کی بچائی گئی رقم سے پہلا حلال اثاثہ خریدنا|Day 30: Buying Your First Micro-Asset', 'تیسویں دن اپنی بچائی ہوئی رقم کو کیش رکھنے کے بجائے سونے کی کنی یا حلال فنڈ میں منتقل کر کے جشن منائیں۔|Convert your first month’s saved cash directly into fractional gold or an Islamic fund.']
+      ],
+      5: [
+        ['کمیٹی شروع کرنے سے پہلے ممبران کے ماضی کے لین دین کی جانچ|Vetting Members’ Past Financial Discipline', 'صرف ان رشتہ داروں یا ساتھیوں کو کمیٹی میں شامل کریں جو وعدے کے پکے اور وقت پر قسط دینے والے ہوں۔|Only include members who have a proven track record of punctual payments.'],
+        ['کمیٹی کا تحریری کارڈ اور واٹس ایپ گروپ ریکارڈ بنانا|Written Ledger & WhatsApp Group Transparency', 'ہر مہینے کس نے کتنی قسط دی اور کس کی کمیٹی نکلی، اس کا مکمل ریکارڈ اس ایپ کے کمیٹی ٹول میں رکھیں۔|Log every monthly payment in this app’s Committee Tracker and share screenshots in the group.'],
+        ['کمیٹی کھلنے سے پہلے ہی اس رقم کے اثاثے کا نام طے کرنا|Pre-Assigning an Asset Name to the Committee', 'کمیٹی کا نام ہی "گولڈ کمیٹی" یا "دکان اسٹاک کمیٹی" رکھیں تاکہ رقم ملتے ہی عام خرچے میں ضائع نہ ہو۔|Label your committee slot in advance (e.g., "Gold Bar Slot" or "Debt Clearance Slot").'],
+        ['پہلی قسطوں کی قرعہ اندازی تمام ممبران کے سامنے کرنا|Conducting Live Transparent Draws', 'کسی بھی بدگمانی سے بچنے کے لیے پہلی ہی میٹنگ میں تمام ممبران کے سامنے پرچیاں ڈال کر ترتیب طے کریں۔|Draw all monthly payout numbers openly in front of all members at the very start.'],
+        ['بیماری یا شدید مجبوری والے ممبر سے باری کا تبادلہ|Emergency Slot Swapping Among Members', 'اگر کسی ممبر کو اچانک ہسپتال یا شادی کی ضرورت پڑ جائے تو باہمی رضامندی سے اسے پہلا نمبر دے دیں۔|Allow mutually agreed slot swaps if a member faces a sudden medical emergency.'],
+        ['ہر ماہ کی 1 سے 5 تاریخ تک قسط جمع کروانے کی سخت پابندی|Strict 1st-to-5th Monthly Collection Window', 'تنخواہ آتے ہی پہلی 5 تاریخ کے اندر تمام اقساط اکٹھی کریں تاکہ مہینے کے آخر میں کسی کے پاس بہانہ نہ ہو۔|Collect all installments strictly between the 1st and 5th of every month right after payday.'],
+        ['اپنی ماہانہ بچت کی طاقت سے بڑی کمیٹی نہ ڈالنا|Keeping Installment Size Within 20% of Income', 'جوش میں آ کر اتنی بڑی کمیٹی نہ ڈال لیں کہ قسط دینے کے لیے آپ کو کسی اور سے ادھار مانگنا پڑے۔|Never commit to a committee installment that exceeds your realistic monthly savings capacity.'],
+        ['شروع میں کمیٹی نکل آئے تو فوری سونا خرید کر لاک کرنا|Converting Early Payouts Into Gold Immediately', 'اگر آپ کی کمیٹی پہلے یا دوسرے مہینے نکل آئے تو کیش گھر رکھنے کے بجائے فوری 24K سونا خرید لیں۔|If you win an early slot, immediately buy 24K gold so the cash cannot be spent casually.'],
+        ['فیس بک یا انجان آن لائن کمیٹی گروپس کے فراڈ سے بچنا|Avoiding Anonymous Online BC Scams', 'سوشل میڈیا پر انجان لوگوں کی چلائی جانے والی آن لائن کمیٹیوں میں ہرگز پیسہ نہ پھنسائیں۔|Never join social media committees run by strangers without physical legal guarantees.'],
+        ['ایک کمیٹی ختم ہوتے ہی اگلے مہینے نئی کمیٹی شروع کر دینا|Rolling Over Into the Next Committee Cycle', 'جب 12 ماہ قسط دینے کی عادت پکی ہو جائے تو وقفہ کیے بغیر اگلے اثاثے کے لیے نئی کمیٹی جوڑ لیں۔|Keep the monthly saving habit alive by starting a new cycle as soon as one finishes.']
+      ],
+      6: [
+        ['گھر کے 3 سے 6 ماہ کے لازمی سروائیول خرچ کا حساب لگانا|Calculating 3–6 Months of Bare Survival Costs', 'صرف راشن، مکان کا کرایہ، بجلی کے بل اور دوائی کا ماہانہ خرچ جمع کر کے اسے 3 سے ضرب دیں—یہ آپ کا پہلا ہدف ہے۔|Multiply your strict monthly survival costs (food, rent, utilities) by 3 to set your target.'],
+        ['ہسپتال اور ایمرجنسی دوائی کے لیے گھر میں فوری نقد لفافہ|Home Medical Cash Envelope for Night Emergencies', 'رات بے وقت ہسپتال جانے کے لیے کم از کم 10 سے 15 ہزار روپے نقد گھر میں ایک محفوظ جگہ پر الگ رکھیں۔|Keep PKR 10,000–15,000 in physical cash locked at home for late-night medical emergencies.'],
+        ['ایمرجنسی فنڈ کو شاپنگ کارڈ اور موبائل والٹ سے دور رکھنا|Separating Emergency Cash from Shopping Apps', 'ایمرجنسی فنڈ کو ایسے اکاؤنٹ میں نہ رکھیں جو فوڈ ڈیلیوری یا آن لائن شاپنگ ایپس سے منسلک ہو۔|Never keep your emergency fund in a mobile wallet linked to shopping or food delivery apps.'],
+        ['ایمرجنسی فنڈ کا آدھا حصہ اسلامک منی مارکیٹ فنڈ میں رکھنا|Parking Half in a Liquid Islamic Cash Fund', 'تاکہ آپ کا پیسہ مہنگائی سے گھٹے بھی نہیں اور ضرورت پڑنے پر 24 گھنٹے میں واپس بینک میں نکل سکے۔|Keep 50% of your emergency fund in an SECP-approved Islamic Cash Fund for halal daily profit.'],
+        ['نوکری چھوٹنے کے پہلے دن ہی "سروائیول بجٹ موڈ" نافذ کرنا|Activating "Survival Budget Mode" on Day 1 of Job Loss', 'خدانخواستہ روزگار رکے تو اسی دن تمام خواہشات (30% بجٹ) بند کر دیں تاکہ ایمرجنسی فنڈ 6 ماہ کے بجائے 9 ماہ چلے۔|Immediately pause all non-essential spending if income stops so your reserve lasts longer.'],
+        ['خاندان کے 4 قریبی افراد کا "باہمی قرضِ حسنہ پول" بنانا|Forming a 4-Member Family Qarz-e-Hasana Pool', 'اپنے سگے بھائیوں یا قریبی دوستوں کے ساتھ مل کر ایک چھوٹا ایمرجنسی پول بنائیں جو صرف بیماری میں بلاسود کام آئے۔|Create a small mutual emergency pool with trusted siblings to avoid loan sharks during crises.'],
+        ['گھر کے کاغذات، شناختی کارڈز اور رسیدوں کا واٹر پروف فولڈر|Waterproof Folder for Vital Family Documents', 'سیلاب، آگ یا ایمرجنسی میں شناختی کارڈ، رجسٹری اور سرٹیفکیٹس ایک ہی محفوظ پلاسٹک فائل میں رکھیں۔|Keep all original CNICs, property deeds, and certificates in one grab-and-go waterproof file.'],
+        ['کمانے والے کے زیرِ استعمال بائیک یا اوزار کی مرمت کا ریزرو|Dedicated Repair Buffer for Work Vehicle/Tools', 'اگر بائیک یا مشین خراب ہونے سے روزی رکتی ہو، تو اس کی فوری مرمت کے لیے 5 ہزار روپے ہمیشہ الگ رکھیں۔|Maintain a small PKR 5,000 buffer specifically to repair your work bike or tools instantly.'],
+        ['دہاڑی دار مزدور کے لیے بارش اور مندی کے دنوں کا ہفتہ وار کوٹہ|Rainy-Day Buffer for Daily Wage Earners', 'جب ہفتے کے 6 دن کام اچھا چلے تو روزانہ 150 روپے ان دنوں کے لیے الگ رکھیں جب بارش یا ہڑتال کی وجہ سے کام نہ ملے۔|Save PKR 150 on good workdays to cover days lost to rain, strikes, or illness.'],
+        ['ایمرجنسی گزرنے کے بعد سب سے پہلے خرچ شدہ فنڈ واپس بھرنا|Replenishing the Fund Immediately After Use', 'جب بھی ایمرجنسی فنڈ میں سے پیسہ نکلے، اگلے مہینے دوسری تمام خریداری روک کر پہلے اس ڈھال کو دوبارہ مکمل کریں۔|Make refilling your emergency fund your #1 priority after any crisis withdrawal.']
+      ],
+      7: [
+        ['ڈیٹ سنو بال (Debt Snowball): سب سے چھوٹا ادھار سب سے پہلے چکانا|Debt Snowball: Clearing the Smallest Debt First', 'اپنے تمام قرضوں کو چھوٹی سے بڑی رقم کی ترتیب سے لکھیں اور سب سے چھوٹے ادھار کو ختم کر کے ذہنی بوجھ کم کریں۔|Pay off your smallest debt balance first to win quick psychological relief and momentum.'],
+        ['سودی کریڈٹ کارڈز کو قینچی سے کاٹ کر ہمیشہ کے لیے بند کروانا|Cutting Up & Canceling Credit Cards', 'کریڈٹ کارڈ کا ماہانہ 40% تک سالانہ سود انسان کو کبھی سنبھلنے نہیں دیتا؛ آج ہی کارڈ کینسل کر کے ڈیبٹ/کیش پر آئیں۔|Cancel revolving credit cards immediately to stop 35%–45% annual markup bleeding.'],
+        ['محلے کے کریانہ اسٹور اور دودھ والے کا کھاتہ بند کر کے نقد سودا لینا|Switching Grocery & Milk Accounts to Cash Only', 'ماہانہ کھاتے میں انسان بے دھیانی میں 20% زیادہ سامان لے لیتا ہے؛ پچھلا بقایا قسطوں میں دیں اور آج سے نقد خریداری کریں۔|Stop buying daily groceries on monthly credit; pay cash daily while clearing old dues bit by bit.'],
+        ['40% اضافی مارک اپ والی قسطوں پر موبائل اور ایل ای ڈی نہ لینا|Boycotting High-Markup Installment Appliances', '30 ہزار کی چیز قسطوں پر 45 ہزار میں لے کر اپنی آنے والی تنخواہیں گروی مت رکھیں۔|Never buy smartphones, bikes, or TVs on high-markup lease/installment plans.'],
+        ['بینک کے پرانے قرض پر یکمشت سیٹلمنٹ (One-Time Settlement) کی بات کرنا|Negotiating a Lump-Sum Bank Settlement', 'اگر بینک کا قرض بڑھ گیا ہے تو مینیجر سے تحریری درخواست کے ذریعے اضافی جرمانے معاف کروا کر اصل رقم ادا کریں۔|Approach the bank in writing to waive late penalties in exchange for a lump-sum principal payoff.'],
+        ['آج کے بعد نیا قرض نہ لینے کا پختہ عہد (Zero New Debt Oath)|Taking the Strict Zero-New-Debt Oath', 'گڑھے سے نکلنے کا پہلا اصول یہ ہے کہ مزید کھودنا بند کریں؛ جب تک پرانا قرض نہ اترے ایک روپیہ نیا ادھار نہ لیں۔|Stop digging the hole deeper: pledge not to borrow a single rupee for lifestyle wants.'],
+        ['صرف قرض اتارنے کے لیے روزانہ 2 گھنٹے اوور ٹائم یا پارٹ ٹائم کام|Dedicated 2-Hour Daily Overtime for Debt Payoff', 'اپنے معمول کے کام کے بعد روزانہ 2 گھنٹے اضافی محنت کریں اور اس کی 100% کمائی سیدھی قرض خواہ کو دیں۔|Dedicate 100% of earnings from evening overtime or weekend side-work strictly to debt clearance.'],
+        ['گھر میں موجود غیر ضروری قیمتی چیز بیچ کر قرض کا بوجھ ہلکا کرنا|Selling Idle Luxury Items to Wipe Out Debt', 'سود اور ذلت اٹھانے سے بہتر ہے کہ فالتو موٹرسائیکل، مہنگا فون یا غیر ضروری سامان بیچ کر فوری قرض اتار دیں۔|Sell spare gadgets, second bikes, or unused items to eliminate high-cost debt immediately.'],
+        ['موبائل لون ایپس (Loan Apps) اور سودی ساہوکاروں سے مکمل بائیکاٹ|Boycotting Predatory Loan Apps & Loan Sharks', 'فوری قرض دینے والی غیر قانونی موبائل ایپس بلیک میلنگ اور تباہی کا جال ہیں—ان کو کبھی انسٹال نہ کریں۔|Never install quick-loan apps or borrow from informal usurers charging daily/weekly interest.'],
+        ['قرض ختم ہونے کے اگلے ہی مہینے وہی قسط کی رقم سونے/بچت میں لگانا|Redirecting Cleared Installments Straight Into Assets', 'جس دن آخری قسط ختم ہو، اس رقم کو خرچ کرنے کے بجائے ہر ماہ اسی تاریخ کو اپنے اثاثہ فنڈ میں ڈالنا شروع کر دیں۔|Once debt-free, channel the exact monthly installment amount straight into buying gold or assets.']
+      ],
+      8: [
+        ['متعلقہ ڈویلپمنٹ اتھارٹی (CDA/LDA/RDA/SBCA) سے NOC کی تصدیق|Official NOC Check from CDA/LDA/RDA/SBCA', 'بیانہ دینے سے پہلے سرکاری اتھارٹی کی ویب سائٹ یا دفتر سے چیک کریں کہ سوسائٹی کا NOC اور کھسرہ نمبر منظور شدہ ہے۔|Verify the housing society’s valid NOC and approved layout plan directly with the civic authority.'],
+        ['اراضی ریکارڈ سینٹر (PLRA / تحصیل آفس) سے اصل فرد اور انتقال چیک کرنا|Verifying Original Fard & Intiqal at Land Centers', 'فوٹو کاپی پر بھروسہ نہ کریں؛ سرکاری کمپیوٹرائزڈ اراضی سینٹر سے بیچنے والے کے نام اصل ملکیت اور حدود چیک کریں۔|Check computerized ownership (Fard) and mutation (Intiqal) records in person at the Arazi Center.'],
+        ['صرف سادہ اسٹامپ پیپر (اقرار نامہ) کے بجائے پکی رجسٹری کروانا|Insisting on Official Sub-Registrar Registry', 'صرف اشٹام پیپر پر پلاٹ لینے سے قانونی ملکیت منتقل نہیں ہوتی؛ سب رجسٹرار آفس میں پکی رجسٹری یا اتھارٹی ٹرانسفر کروائیں۔|Never rely solely on an unregistered stamp paper; complete official registry and mutation.'],
+        ['ہوا میں موجود غیر منظور شدہ "پلاٹ فائلوں" کے جال سے بچنا|Avoiding Unbacked "Plot File" Trading Traps', 'جہاں زمین کا وجود ہی نہ ہو وہاں صرف کاغذی فائل قسطوں پر خریدنا سب سے بڑا رسک ہے؛ ہمیشہ موقع پر موجود پلاٹ لیں۔|Avoid speculative paper files where land is not yet acquired; buy on-ground plots with plot numbers.'],
+        ['ایف بی آر ٹیکس (236K) اور اسٹامپ ڈیوٹی کے لیے 8% اضافی بجٹ رکھنا|Keeping an 8%–10% Buffer for Taxes & Stamp Duty', 'پلاٹ کی قیمت کے علاوہ سرکاری اسٹامپ ڈیوٹی، ٹی ایم اے فیس اور FBR سیکشن 236K ٹیکس کا خرچ پہلے سے الگ رکھیں۔|Budget an extra 8%–10% above the property price for government transfer taxes and stamp duties.'],
+        ['رجسٹری کروانے سے پہلے ایف بی آر ایکٹو ٹیکس فائلر (ATL) بننا|Becoming an Active Tax Filer Before Registry Day', 'نان فائلر پر پراپرٹی خریدتے وقت دگنا سے زیادہ ایڈوانس ٹیکس لگتا ہے؛ رجسٹری سے پہلے فائلر بن کر لاکھوں بچائیں۔|Get on FBR’s Active Taxpayer List (ATL) before property transfer to slash withholding tax rates.'],
+        ['موقع پر جا کر پلاٹ کا قبضہ (Possession) اور فوری چاردیواری کرنا|On-Site Possession Check & Boundary Wall', 'کاغذات کے ساتھ موقع پر جا کر محلے داروں سے تصدیق کریں اور پلاٹ خریدتے ہی اپنی چاردیواری اور نام کی تختی لگائیں۔|Visit the plot physically, confirm possession with neighbors, and erect a boundary marker immediately.'],
+        ['پچھلے 30 سال کا ریکارڈ اور وراثتی حصے داروں کی کلیئرنس دیکھنا|Checking Inheritance Clearance & 30-Year Title Chain', 'تسلی کریں کہ جائیداد میں کسی بہن، بیوہ یا نابالغ کا وراثتی حق دبایا نہیں گیا اور نہ ہی کوئی دیوانی مقدمہ چل رہا ہے۔|Ensure all legal heirs have signed off on inherited property and there is no court stay order.'],
+        ['سوسائٹی سے نو-ڈیوز سرٹیفکیٹ (NDC) اور بجلی/گیس کے بل کلئیر کروانا|Obtaining Society NDC & Utility Bill Clearance', 'پچھلے مالک کے ذمے ڈویلپمنٹ چارجز، بجلی یا گیس کے تمام بقایا جات کلیئر کروا کر تحریری NDC حاصل کریں۔|Demand a formal No-Dues Certificate (NDC) and paid final utility bills before final payment.'],
+        ['نقد کیش کے بجائے صرف بینک پے آرڈر یا کراس چیک سے ادائیگی کرنا|Paying Strictly via Bank Pay Order or Crossed Cheque', 'پراپرٹی کی ہر قسط یا بیانہ مالک کے اپنے بینک اکاؤنٹ میں پے آرڈر کے ذریعے دیں اور دو گواہوں کے دستخط لیں۔|Make all property payments via traceable Bank Pay Orders in the actual owner’s name.']
+      ],
+      9: [
+        ['زیورات (21K) کے بجائے خالص 24 قیراط (999.9) سونے کے بسکٹ لینا|Buying 24K (999.9) Pure Gold Bars Over Jewelry', 'زیورات پر 15% سے 25% بنائی اور پالش کی کٹوتی ضائع ہوتی ہے؛ بچت کے لیے ہمیشہ 24K پیک شدہ گولڈ بسکٹ یا سکے لیں۔|Avoid jewelry making charges and resale deductions by investing strictly in 24K pure gold bars.'],
+        ['مستند لیب ٹیسٹنگ (ARY / Millat / Swiss) اور پکی رسید لازمی لینا|Demanding Certified Hallmarks & Stamped Invoices', 'سونا خریدتے وقت سنار سے کمپیوٹرائزڈ لیب پرچی اور دکان کی مہر لگی پکی رسید لیں جس پر واپسی کی شرائط درج ہوں۔|Always obtain a laboratory purity certificate and a stamped jeweler invoice upon purchase.'],
+        ['ایس ای سی پی (SECP) سے منظور شدہ اسلامک منی مارکیٹ فنڈ میں اکاؤنٹ|Opening an SECP-Regulated Islamic Cash Fund Account', 'بینک میں پیسہ بیکار رکھنے کے بجائے المیزان، این بی پی یا الفلاح اسلامک کے شریعہ کمپلائنٹ فنڈ میں حلال منافع کمائیں۔|Park liquid savings in SECP-licensed Islamic Money Market Funds for daily halal returns.'],
+        ['پاکستان اسٹاک ایکسچینج کے شریعہ انڈیکس (KMI-30) کو سمجھنا|Understanding KMI-30 Shariah-Compliant Stocks', 'سٹے بازی کے بجائے پاکستان کی ٹاپ حلال کمپنیوں (فرٹیلائزر، سیمنٹ، انرجی) کے شیئرز میں طویل مدتی حصہ داری کریں۔|Invest long-term in Shariah-screened dividend-paying companies on the PSX KMI-30 index.'],
+        ['روپی کاسٹ ایوریجنگ: ہر مہینے مقررہ تاریخ پر تھوڑی سرمایہ کاری|Rupee Cost Averaging (Monthly Systematic Buying)', 'مارکیٹ کے اتار چڑھاؤ سے ڈرنے کے بجائے ہر ماہ تنخواہ ملتے ہی ایک مقررہ رقم سے سونا یا حلال یونٹس خریدتے رہیں۔|Invest a fixed amount every month regardless of market highs or lows to average out costs.'],
+        ['جعلی "ڈبل شاہ" ایپس اور ماہانہ فکس ڈبل منافع کے فراڈ سے بچنا|Boycotting Unregistered Ponzi Apps & Schemes', 'جو کمپنی یا ایپ بغیر محنت کے ہر ماہ 10% یا 20% فکس منافع کا لالچ دے وہ 100% فراڈ ہے؛ صرف SECP رجسٹرڈ ادارے چنیں۔|Never trust apps or schemes promising guaranteed high monthly returns; verify SECP licensing.'],
+        ['گھر میں سونے کی حفاظت اور بینک لاکر کے اصول|Safe Storage & Bank Locker Security for Gold', 'اپنے سونے کا چرچا کسی کے سامنے نہ کریں اور زیادہ مقدار ہونے پر محفوظ بینک لاکر یا مضبوط خفیہ سیف استعمال کریں۔|Keep your gold holdings confidential and store them in a secure home safe or bank locker.'],
+        ['سرمایہ کاری کو تین حصوں (50% سونا، 30% حلال فنڈ، 20% کیش) میں بانٹنا|The 50/30/20 Halal Asset Allocation Formula', 'سارا پیسہ ایک ہی جگہ نہ پھنسائیں؛ سونے، اسلامک میوچل فنڈ اور فوری ضرورت کے کیش میں توازن رکھیں۔|Diversify your wealth across physical 24K gold (50%), Islamic funds (30%), and liquid cash (20%).'],
+        ['میوچل فنڈز پر کیپیٹل گین ٹیکس (CGT) اور زکوٰۃ کی کٹوتی سمجھنا|Managing CGT & Zakat Declaration on Mutual Funds', 'اپنے فنڈ مینیجر کو زکوٰۃ ڈیکلریشن (CZ-50) جمع کروائیں اگر آپ خود اپنے ہاتھ سے مستحقین کو زکوٰۃ ادا کرنا چاہتے ہیں۔|Submit a CZ-50 declaration to your AMC if you prefer distributing Zakat directly to the needy.'],
+        ['کمپاؤنڈنگ کا جادو: منافع کو خرچ کرنے کے بجائے واپس انویسٹ کرنا|Reinvesting Halal Profits for Compound Growth', 'پہلے 5 سال تک اپنے حلال فنڈ سے ملنے والے منافع (Dividend) کو نکال کر خرچ نہ کریں بلکہ اسی میں دوبارہ شامل ہونے دیں۔|Reinvest your halal dividends for at least 5 years to let compounding multiply your assets.']
+      ],
+      10: [
+        ['حکومتِ پاکستان کے مفت پورٹل DigiSkills.pk اور NAVTTC میں داخلہ|Enrolling in Free DigiSkills.pk & NAVTTC Courses', 'مہنگے اکیڈمی کورسز کے بجائے سرکاری مفت پورٹل سے فری لانسنگ، گرافک ڈیزائن اور ای کامرس کے سرٹیفکیٹ لیں۔|Master high-income digital skills for free through official government portals like DigiSkills.pk.'],
+        ['موبائل ایپ کینوا (Canva) سے مقامی دکانوں کے پوسٹرز بنا کر کمانا|Earning via Mobile Canva Design for Local Shops', 'اپنے ہی موبائل پر Canva سیکھیں اور اپنے علاقے کے اسکولوں، کلینکس اور ریسٹورنٹس کے سوشل میڈیا پوسٹر بنا کر دیں۔|Design social media banners and flyers on your phone using Canva for neighborhood businesses.'],
+        ['چیٹ جی پی ٹی (ChatGPT) اور اے آئی سے مواد لکھنے اور ترجمے کا کام|Using AI & ChatGPT for Content & Translation', 'اے آئی ٹولز کی مدد سے بزنس لیٹرز، سی وی (CV)، اشتہارات اور اردو/انگلش ترجمے کی تیز رفتار سروس دیں۔|Use AI assistants to offer professional CV writing, copywriting, and bilingual translation services.'],
+        ['کیپ کٹ (CapCut) پر موبائل ویڈیو ایڈیٹنگ سے ریلس اور شارٹس بنانا|Mobile Video Editing with CapCut for Reels/Shorts', 'آج ہر کاروبار کو یوٹیوب شارٹس اور ٹک ٹاک/ریلس کے لیے ویڈیو ایڈیٹر کی ضرورت ہے جو آپ موبائل پر کر سکتے ہیں۔|Edit short promotional videos on your smartphone using CapCut for local brands and creators.'],
+        ['مقامی ہنرمندوں اور دکانداروں کا واٹس ایپ بزنس کیٹلاگ بنانا|Setting Up WhatsApp Business Catalogs for Merchants', 'اپنے بازار کے کپڑے، جوتے یا بیکری والوں کا واٹس ایپ بزنس کیٹلاگ اور گوگل میپ لوکیشن بنا کر فیس چارج کریں۔|Get paid to set up Google Maps pins and WhatsApp Business product catalogs for local stores.'],
+        ['اپنے ذاتی ہنر (مستری، کوکنگ، ٹیچنگ) کا معلوماتی یوٹیوب/فیس بک پیج|Monetizing Your Craft via YouTube & Facebook', 'آپ جو بھی کام جانتے ہیں اس کی روزانہ 3 منٹ کی معلوماتی ویڈیو بنا کر اپلوڈ کریں جس سے نئے گاہک اور ایڈ ریونیو ملے گا۔|Record short helpful videos of your daily trade or skill to attract clients and ad revenue.'],
+        ['فائیور (Fiverr) اور اپ ورک پر ڈالرز میں سروس بیچنے کی پروفائل|Building a Fiverr & Upwork Profile for Dollar Income', 'ایک مخصوص ہنر (مثلاً لوگو ڈیزائن، ڈیٹا انٹری یا وائس اوور) چن کر عالمی فری لانس مارکیٹ میں کھاتہ کھولیں۔|Create a focused gig on Fiverr or Upwork to sell your digital skill to international clients in USD.'],
+        ['بیرونی کمائی منگوانے کے لیے SadaPay، NayaPay یا بینک IBAN کا استعمال|Receiving Freelance Payments via Legal Banking Channels', 'پے پال کے چکر میں پھنسنے کے بجائے Payoneer، Elevate یا براہِ راست پاکستانی بینک IBAN میں قانونی طریقے سے رقم منگوائیں۔|Use official channels like Payoneer linked to local bank accounts or digital wallets for safe payouts.'],
+        ['آئی ٹی ایکسپورٹ پر ٹیکس چھوٹ کے لیے بینک سے PRC سرٹیفکیٹ لینا|Obtaining Bank PRC for Freelance Tax Exemption', 'بیرون ملک سے آنے والی فری لانس کمائی پر اپنے بینک سے Proceed Realization Certificate لیں اور PSEB میں رجسٹر ہوں۔|Collect official PRC certificates from your bank to claim Pakistan’s 0.25% reduced IT export tax rate.'],
+        ['آن لائن فراڈ اور ہیکنگ سے بچنے کے لیے ٹو-فیکٹر اتھنٹیکیشن (2FA)|Securing Accounts with 2FA & Avoiding Task Scams', 'ٹیلی گرام پر پیسے لگا کر لائک کرنے والے جعلی ٹاسک فراڈ سے بچیں اور اپنے جی میل و بینک ایپ پر 2FA لاک لگائیں۔|Never pay money for online "task/like" jobs, and secure all your accounts with Two-Factor Authentication.']
+      ],
+      11: [
+        ['بچے کی پیدائش سے ہر سالگرہ پر 1 گرام 24K سونا لے کر رکھنا|Buying 1 Gram of 24K Gold on Every Child’s Birthday', 'کھلونوں اور مہنگی سالگرہ پارٹیوں پر پیسہ اڑانے کے بجائے ہر سال 1 گرام سونا بچے کے نام کے لفافے میں رکھتے جائیں۔|Skip lavish birthday parties and buy 1 gram of pure gold every year from birth till age 18.'],
+        ['مہنگے اسٹیٹس اسکولوں کے بجائے مضبوط بنیادی تعلیم اور آئی ٹی ہنر|Prioritizing Core Literacy & Tech Skills Over Status Schools', 'تنخواہ کا آدھا حصہ دکھاوے کے اسکول میں دینے کے بجائے مناسب اسکول چنیں اور بچے کو کمپیوٹر و انگلش میں ماہر بنائیں۔|Choose affordable quality schooling and invest the saved money into computer hardware and tech skills.'],
+        ['شادیوں پر جہیز اور سودی قرض کے خلاف خاندانی معاہدہ|Pledging Debt-Free, Simple Sunnah Weddings', 'آج ہی عہد کریں کہ بچوں کی شادی سنت کے مطابق سادگی سے کریں گے اور دکھاوے کے کھانوں کے لیے ایک روپیہ قرض نہیں لیں گے۔|Commit strictly to simple, debt-free weddings rather than borrowing for status displays.'],
+        ['بچوں کو چھوٹی عمر سے 3 گلّوں (خرچ، بچت، صدقہ) کی عادت ڈالنا|Teaching Kids the 3-Jar Rule (Save, Spend, Charity)', 'بچوں کو ملنے والی عیدی اور جیب خرچ کو تین حصوں میں بانٹنا سکھائیں تاکہ وہ بڑے ہو کر مال کی قدر جانیں۔|Train children to split their Eidi and pocket money into Saving, Spending, and Charity jars.'],
+        ['بینکوں کی مہنگی کمیشن والی انشورنس پالیسیوں (Bancassurance) سے بچنا|Avoiding High-Commission Bancassurance Policies', 'بینک برانچ میں بیچی جانے والی لمبی انشورنس پالیسیوں میں پہلے دو سال بھاری کٹوتی ہوتی ہے؛ ان کے بجائے خالص اسلامک فنڈ لیں۔|Avoid rigid insurance policies with heavy early-surrender penalties; use direct Islamic mutual funds.'],
+        ['ایس ای سی پی منظور شدہ اسلامک چائلڈ ایجوکیشن پلان میں ماہانہ قسط|Starting a Monthly Islamic Child Education SIP', 'ہر ماہ صرف 2 ہزار یا 5 ہزار روپے کسی مستند اسلامک فنڈ میں جمع کروائیں جو 15 سال بعد یونیورسٹی کی پوری فیس بن جائے گا۔|Automate a small monthly contribution into an SECP-regulated Islamic Equity/Balanced fund for 15 years.'],
+        ['گھر میں موبائل گیمز کے بجائے کتاب خوانی اور لائبریری کا ماحول|Building a Home Mini-Library & Reading Habit', 'ہر مہینے بچوں کے لیے ایک نئی معلوماتی یا اخلاقی کتاب لائیں تاکہ ان کی ذہنی صلاحیت اور خود اعتمادی بڑھے۔|Replace excessive screen time with a small home bookshelf of biographies, science, and Islamic history.'],
+        ['پندرہ سال کی عمر سے بچوں کو گرمیوں کی چھٹیوں میں عملی کام سکھانا|Summer Apprenticeships & Practical Trade Exposure for Teens', 'میٹرک کے بعد بچوں کو چھٹیوں میں کسی دکان، ورکشاپ یا فری لانس ہنر کے ساتھ جوڑیں تاکہ انہیں حلال روزی کمانے کا تجربہ ہو۔|Encourage teenagers to learn a practical trade or freelance skill during summer vacations.'],
+        ['سرکاری اسکالرشپس (HEC / PEEF / بیت المال) کے معیار کی تیاری|Targeting Merit Scholarships (HEC / PEEF)', 'بچوں کے نمبرز اور تعلیمی ریکارڈ شروع سے ایسا رکھیں کہ یونیورسٹی کی تعلیم سرکاری میرٹ اسکالرشپ پر مفت مکمل ہو۔|Guide students early to qualify for PEEF, HEC, and merit scholarships for debt-free university degrees.'],
+        ['ہر بچے کے نام کا الگ فنانشل فولڈر اور اثاثہ ریکارڈ رکھنا|Maintaining Individual Asset Folders for Each Child', 'جس بچے کی عیدی یا بچت سے جو سونا یا سرٹیفکیٹ خریدا جائے، اس پر اسی کا نام اور تاریخ لکھ کر الگ فائل میں محفوظ کریں۔|Label and store each child’s Eidi-funded gold or mutual fund units in their own dedicated folder.']
+      ],
+      12: [
+        ['بیانہ دینے سے پہلے صوبائی ایکسائز پورٹل (MTMIS) پر نمبر چیک کرنا|Verifying Vehicle Records on Excise MTMIS Online', 'موٹرسائیکل یا کار خریدنے سے پہلے آن لائن MTMIS اور پولیس 15 سے تصدیق کریں کہ گاڑی چوری یا کیس میں مطلوب نہیں ہے۔|Check provincial MTMIS and police records online before paying any token money for a used vehicle.'],
+        ['خریداری کے دن ہی نادرا بائیو میٹرک ٹرانسفر مکمل کروانا|Completing NADRA Biometric Transfer on Day One', 'کھلی ٹرانسفر لیٹر (Open Letter) پر گاڑی چلانا قانونی جرم اور خطرہ ہے؛ فوری ای-سہولت سے اپنے نام بائیو میٹرک کروائیں۔|Never drive on an open transfer letter; complete biometric ownership transfer immediately.'],
+        ['مقامی مارکیٹ میں سستے پارٹس اور فوری ری سیل والی سواری چننا|Choosing High-Resale Models with Cheap Local Parts', 'ایسی عام موٹرسائیکل یا کار (جیسے CD-70 یا چھوٹی لوکل کار) لیں جس کا مستری اور سستا پرزہ ہر قصبے میں مل جائے۔|Buy common, fuel-efficient local models whose spare parts and mechanics are cheap and everywhere.'],
+        ['ہر ماہ پیٹرول کے علاوہ مرمت اور ٹائر/آئل کا الگ سنکنگ فنڈ رکھنا|Monthly Sinking Fund for Oil, Tires & Brakes', 'گاڑی کا انجن سیز ہونے سے بچانے کے لیے ہر ماہ 1,500 سے 3,000 روپے الگ رکھیں تاکہ وقت پر موبل آئل اور ٹائر بدلے جا سکیں۔|Set aside a small monthly maintenance reserve so tire or engine repairs never wreck your budget.'],
+        ['بھاری چالان اور قانونی پریشانی سے بچنے کے لیے ڈرائیونگ لائسنس بنوانا|Holding a Valid Driving License & Helmet', 'دو ہزار کے چالان اور تھانے کی ذلت سے بچنے کے لیے اپنا لرنر اور پکا ڈرائیونگ لائسنس اور ہیلمٹ ہمیشہ مکمل رکھیں۔|Keep your driving license and helmet updated to avoid heavy traffic fines and legal trouble.'],
+        ['جولائی میں آن لائن ای-پے (ePay) سے سالانہ ٹوکن ٹیکس جمع کروانا|Paying Annual Token Tax Online via ePay', 'ایجنٹوں کو اضافی پیسے دینے کے بجائے حکومت کی ePay ایپ سے گھر بیٹھے ٹوکن ٹیکس ادا کریں اور فائلر ڈسکاؤنٹ لیں۔|Pay annual vehicle token taxes directly via official ePay apps without paying middleman fees.'],
+        ['اپنی کل جمع پونجی کے 15% سے مہنگی ذاتی سواری نہ خریدنا|Capping Vehicle Value at 15% of Net Worth', 'گاڑی وقت کے ساتھ قیمت کھونے والی چیز (Liability) ہے؛ دکھاوے کے لیے پلاٹ یا سونا بیچ کر مہنگی کار ہرگز نہ لیں۔|Never sell appreciating assets like gold or land to buy an expensive, depreciating car.'],
+        ['چوری سے بچاؤ کے لیے خفیہ سوئچ (Kill-Switch) اور ڈبل لاک لگانا|Installing Hidden Ignition Kill-Switches & Locks', 'موٹرسائیکل یا گاڑی میں صرف 500 روپے کا خفیہ فیول/کرنٹ بٹن اور مضبوط ویل لاک لگوا کر لاکھوں کی سواری محفوظ بنائیں۔|Install a hidden ignition cut-off switch and heavy-duty wheel lock to prevent theft.'],
+        ['کمرشل یا روزگار والی گاڑی کا اسلامک تکافل کروانا|Shariah-Compliant Takaful for Work Vehicles', 'اگر آپ کی روزی رکشہ، لوڈر یا ٹیکسی سے جڑی ہے تو حادثے کے نقصان سے بچنے کے لیے حلال تکافل کوور رکھیں۔|Protect income-generating commercial vehicles against major accidents using Islamic Takaful.'],
+        ['ٹائروں کی ہوا، پلگ کی صفائی اور 50 کی سپیڈ سے 20% پیٹرول بچانا|Saving 20% Fuel via Tuning & Steady Speed', 'ہر ہفتے ٹائروں کا پریشر پورا رکھنے اور درمیانی رفتار (Economy Speed) پر سواری چلانے سے ماہانہ پیٹرول کا خرچ 20% کم ہو جاتا ہے۔|Maintain correct tire pressure and steady economy speeds to cut monthly fuel bills by 20%.']
+      ],
+      13: [
+        ['اپنے شناختی کارڈ اور سم سے ایف بی آر IRIS پورٹل پر مفت رجسٹریشن|Free Self-Registration on FBR IRIS Portal', 'کسی وکیل کو ہزاروں روپے دیے بغیر iris.fbr.gov.pk یا Tax Asaan موبائل ایپ پر اپنے CNIC سے مفت NTN بنائیں۔|Register your free NTN in 10 minutes on iris.fbr.gov.pk using your CNIC and registered SIM.'],
+        ['ہر سال 30 ستمبر سے پہلے انکم ٹیکس ریٹرن اور ویلتھ اسٹیٹمنٹ فائل کرنا|Filing Annual Return & Wealth Statement Before Sep 30', 'اگر آپ کی آمدن ٹیکس کی حد سے کم بھی ہے تو بھی اپنی سالانہ زیرو (Nil) ریٹرن اور اثاثوں کی تفصیل جمع کروائیں۔|File your annual income return and wealth statement on time, even if your taxable tax is zero.'],
+        ['ایس ایم ایس (9966 پر ATL لکھ کر) اپنا ایکٹو فائلر اسٹیٹس چیک کرنا|Verifying Active Taxpayer Status via 9966 SMS', 'کوئی بھی بڑی بینک یا پراپرٹی ٹرانزیکشن کرنے سے پہلے اپنے موبائل سے ATL لکھ کر 9966 پر بھیج کر تصدیق کریں۔|Text "ATL [13-digit CNIC]" to 9966 to confirm your active filer status before major deals.'],
+        ['اسلامک سیونگ اکاؤنٹ اور میوچل فنڈ کے منافع پر آدھا ٹیکس بچانا|Saving 50% Withholding Tax on Halal Profits', 'نان فائلر کے حلال منافع سے دوگنا ٹیکس کٹ جاتا ہے جبکہ فائلر بننے سے آپ کی محنت کی کمائی کا بڑا حصہ بچ جاتا ہے۔|Active filers pay roughly half the withholding tax rate on Islamic bank and mutual fund profits.'],
+        ['گاڑی کی رجسٹریشن، ٹرانسفر اور سالانہ ٹوکن ٹیکس میں بھاری بچت|Slashing Vehicle Registration & Token Taxes', 'موٹرسائیکل یا کار اپنے نام کرواتے وقت اور سالانہ ٹوکن بھرتے وقت فائلر کو نان فائلر کے مقابلے میں 50% سے زائد رعایت ملتی ہے۔|Save thousands of rupees on vehicle ownership transfers and annual token taxes as a filer.'],
+        ['پلاٹ کی خرید و فروخت میں سیکشن 236K اور 236C کے دگنے ٹیکس سے نجات|Massive Savings on Property Section 236K/236C Taxes', 'پراپرٹی خریدتے یا بیچتے وقت نان فائلر پر لاکھوں روپے اضافی ٹیکس لگتا ہے جو صرف فائلر ہونے سے بچ جاتا ہے۔|Avoid punitive non-filer tax slabs when buying (236K) or selling (236C) real estate in Pakistan.'],
+        ['تنخواہ دار ملازم کا اپنی کمپنی سے ٹیکس کٹوتی سرٹیفکیٹ (سیکشن 149) لینا|Collecting Employer Tax Deduction Certificate (Sec 149)', 'اگر آپ کی تنخواہ یا موبائل بلز پر پہلے ہی ٹیکس کٹ چکا ہے تو اس کا سرٹیفکیٹ لے کر اپنی ریٹرن میں ایڈجسٹ کریں۔|Attach your employer’s annual tax deduction certificate & mobile tax certificates when filing.'],
+        ['اپنے بینک اکاؤنٹ میں آنے والی رقوم کو ویلتھ اسٹیٹمنٹ سے میچ رکھنا|Reconciling Bank Inflows with Declared Wealth', 'کسی دوست یا کمیٹی کا پیسہ اپنے بینک میں منگواتے وقت تحریری ریکارڈ رکھیں تاکہ FBR نوٹس کی صورت میں ثبوت موجود ہو۔|Keep clear records of committee payouts, gifts, or remittances entering your bank account.'],
+        ['خیراتی اداروں کو زکوٰۃ/عطیات اور پنشن فنڈ پر ٹیکس کریڈٹ لینا|Claiming Tax Credits on Charity & Halal Pension', 'منظور شدہ فلاحی اداروں (جیسے شوکت خانم، انڈس ہسپتال) کو دی گئی رقم کی رسید پر قانون کے مطابق ٹیکس میں چھوٹ ملتی ہے۔|Keep receipts of donations to approved charities and VPS contributions to claim legal tax rebates.'],
+        ['نان فائلر پر لگنے والی سم بلاکنگ اور اضافی بل ٹیکسز سے محفوظ رہنا|Avoiding Non-Filer SIM, Utility & Travel Penalties', 'وقت پر ریٹرن فائل کر کے موبائل سم بند ہونے، بیرونِ ملک سفر پر اضافی ٹیکس اور قانونی جرمانوں سے مکمل محفوظ رہیں۔|Stay compliant to protect yourself from non-filer restrictions on SIMs, utilities, and travel.']
+      ],
+      14: [
+        ['جوانی کی بچت سے کم از کم ایک چھوٹی کرائے کی دکان یا گودام بنانا|Acquiring a Small Rental Shop During Working Years', 'بڑھاپے میں کسی کے آگے ہاتھ پھیلانے سے بچنے کا سب سے مضبوط ذریعہ ایک چھوٹا کمرشل یونٹ ہے جس کا کرایہ ہر ماہ آتا رہے۔|Build or buy a small commercial shop or godown during your youth to guarantee monthly rent in old age.'],
+        ['ایس ای سی پی منظور شدہ اسلامک والنٹری پنشن اسکیم (VPS) میں حصہ لینا|Contributing to an SECP Islamic Pension Scheme (VPS)', 'پرائیویٹ ملازم اور مزدور ہر ماہ اپنی آمدن کا 10% اسلامک پنشن فنڈ میں ڈالیں جو 60 سال کی عمر میں بڑا فنڈ بن جاتا ہے۔|Invest 10% monthly into a Shariah-compliant Voluntary Pension Scheme for tax-free compounding.'],
+        ['بڑھاپے کی دوائی اور علاج کے لیے الگ "سینئر میڈیکل فنڈ" رکھنا|Building a Dedicated Senior Healthcare Reserve', 'عمر کے ساتھ شوگر، بلڈ پریشر اور آنکھوں کے علاج کے خرچے بڑھتے ہیں؛ ان کے لیے الگ حلال انکم فنڈ مخصوص کریں۔|Maintain a separate medical corpus so old-age treatments never drain your daily kitchen money.'],
+        ['خالص سونا (24K) اپنے بڑھاپے کے آخری ریزرو کے طور پر محفوظ رکھنا|Keeping 24K Gold as Your Ultimate Senior Backup', 'کاغذی نوٹوں کی قدر 20 سال بعد گر جاتی ہے، لیکن جوانی میں رکھا گیا سونا بڑھاپے میں بھی پوری طاقت رکھتا ہے۔|Hold physical 24K gold bars as a permanent, inflation-proof reserve for your senior years.'],
+        ['55 سال کی عمر سے پہلے ذاتی چھت (قرض سے پاک گھر) مکمل کرنا|Securing a Debt-Free Home Before Age 55', 'بڑھاپے میں مکان کا کرایہ دینا سب سے بڑا عذاب ہے؛ چاہے دو مرلے کا ہی ہو مگر ریٹائرمنٹ سے پہلے اپنا ذاتی گھر بنائیں۔|Make owning a modest, debt-free roof over your head a non-negotiable goal before retirement.'],
+        ['بھاری جسمانی مشقت سے ہلکے تجربہ کار کام (سپروائزری/مشاورت) کی طرف آنا|Transitioning from Physical Labor to Advisory/Light Trade', '50 سال کے بعد اپنے تجربے کی بنیاد پر نئے شاگردوں کی نگرانی، دکان داری یا کنسلٹنسی کا ہلکا کام اپنائیں۔|Shift gradually from heavy physical labor to shopkeeping, supervision, or teaching your craft.'],
+        ['ریٹائرمنٹ یا گریجویٹی کی یکمشت رقم کو رسکی کاروبار میں نہ ڈبونا|Protecting Lump-Sum Gratuity from Risky Ventures', 'ریٹائرمنٹ پر ملنے والی زندگی بھر کی پونجی کسی ناتجربہ کار کاروبار یا رشتہ دار کے حوالے کرنے کے بجائے محفوظ حلال منافع میں رکھیں۔|Never gamble your retirement lump-sum on untested businesses; place it in low-risk halal income funds.'],
+        ['زندگی ہی میں شرعی وصیت اور اپنے اثاثوں کی واضح تحریر لکھنا|Writing a Clear Islamic Will (Wasiyyat) & Asset Record', 'اپنے تمام بینک اکاؤنٹس، لاکرز، قرض اور جائیداد کی تفصیل ایک رجسٹر میں لکھیں تاکہ بعد میں اولاد میں جھگڑا نہ ہو۔|Document all bank accounts, gold, and property clearly in accordance with Islamic inheritance laws.'],
+        ['زندگی میں اپنی ساری جائیداد اولاد کے نام کر کے خود محتاج نہ بننا|Retaining Ownership of Core Assets During Your Lifetime', 'شرعی اور اخلاقی طور پر اپنی زندگی میں اپنا گھر اور بنیادی پنشن اثاثہ اپنے ہی نام رکھیں تاکہ آپ کی عزتِ نفس برقرار رہے۔|Keep ownership of your primary residence and pension assets in your own name throughout your life.'],
+        ['روزانہ پیدل چلنے اور سادہ خوراک سے ہسپتال کے لاکھوں روپے بچانا|Preventive Health: Daily Walk & Simple Diet', 'بڑھاپے کی سب سے بڑی مالی بچت اچھی صحت ہے؛ روزانہ 30 منٹ واک اور چینی/چکنائی کم کر کے ہسپتال کے بلوں سے بچیں۔|Walk 30 minutes daily and eat simple home food—good health is the biggest money-saver in old age.']
+      ],
+      15: [
+        ['دکان کا گلہ (Cash Register) اور گھر کی جیب 100% الگ رکھنا|Strictly Separating Shop Register from Home Wallet', 'چھوٹی دکان کے دیوالیہ ہونے کی سب سے بڑی وجہ گلے سے براہِ راست سبزی اور گھر کے خرچے نکالنا ہے—اسے آج ہی بند کریں۔|Never pull unrecorded cash from the shop drawer for household groceries or personal bills.'],
+        ['دکاندار کا اپنے لیے ایک مقررہ ماہانہ یا ہفتہ وار تنخواہ طے کرنا|Fixing a Set Monthly/Weekly Salary for the Owner', 'خود کو دکان کا ملازم سمجھ کر ہر مہینے ایک فکس تنخواہ لیں اور باقی سارا پیسہ دکان کے مال (ورکنگ کیپیٹل) میں رہنے دیں۔|Pay yourself a fixed owner’s salary and leave the remaining capital inside the business.'],
+        ['روزانہ کی ہر سیل اور خرچ کو "کاروباری کھاتہ ٹول" میں درج کرنا|Logging Every Sale & Expense in the Daily Cashbook', 'رات کو دکان بند کرنے سے پہلے گلے کا کیش گنیں اور اس ایپ کے کھاتہ ٹول میں آج کی کل آمدن اور خرچ لکھیں۔|Count register cash every night before closing and log daily totals in this app’s Cashbook tool.'],
+        ['ادھار (کریڈٹ سیل) پر سخت پابندی اور "آج نقد کل ادھار" کی پالیسی|Enforcing Strict Cash-Only Sales to Protect Capital', 'ادھار دینے سے گاہک بھی ٹوٹتا ہے اور دکان میں نیا مال ڈالنے کے پیسے بھی ختم ہو جاتے ہیں؛ سستا بیچیں مگر نقد بیچیں۔|Sell at a slightly lower margin if needed, but insist on cash sales so working capital never freezes.'],
+        ['ہول سیل سپلائرز کو وقت پر نقد ادائیگی کر کے 3% سے 5% رعایت لینا|Paying Wholesalers on Time for Cash Discounts', 'جب آپ ہول سیلر کو وقت پر نقد پیسے دیتے ہیں تو وہ آپ کو سب سے سستا ریٹ اور بہترین مال سب سے پہلے دیتا ہے۔|Build a reputation for prompt cash payments with wholesalers to unlock 3%–5% bulk discounts.'],
+        ['دکان میں رکے ہوئے پرانے مال (Dead Stock) کو سیل لگا کر نقد میں بدلنا|Liquidating Slow-Moving Stock via Discount Sales', 'جو مال 3 مہینے سے شیلف پر پڑا ہے اور بک نہیں رہا، اسے اصل قیمت پر بیچ کر اس کی جگہ روزانہ بکنے والا آئٹم لائیں۔|Clear out stagnant inventory at cost price and reinvest that cash into fast-moving daily items.'],
+        ['دکان کے کرائے، بجلی اور شاپنگ بیگز کے خرچے کا ماہانہ آڈٹ|Auditing Shop Overheads (Electricity, Rent, Packaging)', 'دکان میں ایل ای ڈی لائٹس لگائیں اور پلاسٹک بیگز و پیکنگ کا ضیاع روک کر اپنا خالص منافع بڑھائیں۔|Cut shop electricity waste and buy packaging bags in wholesale bundles to protect net margins.'],
+        ['ہر پروڈکٹ پر کرایہ اور خرچہ نکال کر اصل خالص منافع (Net Profit) گننا|Calculating True Net Profit After All Overheads', 'صرف خرید و فروخت کا فرق منافع نہیں ہوتا؛ دکان کا کرایہ، بجلی اور ٹوٹ پھوٹ نکال کر اصل بچت کا حساب رکھیں۔|Deduct rent, electricity, transport, and spoilage from gross sales to know your real net profit.'],
+        ['دکان کے 2 ماہ کے کرائے اور ہنگامی مال کے لیے الگ بزنس بفر رکھنا|Maintaining a 2-Month Shop Rent & Stock Buffer', 'کاروبار کی مندی یا لاک ڈاؤن جیسے حالات کے لیے دکان کے 2 ماہ کے کرائے کے برابر رقم الگ بزنس اکاؤنٹ میں رکھیں۔|Keep 2 months of shop rent in a separate business reserve so slow months never force closure.'],
+        
