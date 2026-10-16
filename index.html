@@ -49,7 +49,7 @@
   <!-- Hero & Live Date/Clock -->
   <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
     <div class="max-w-2xl mx-auto">
-      <span data-ur="💎 15 گائیڈز + لائیو پی ڈی ایف ویور اور ڈاؤن لوڈ + 6 عملی ٹولز" data-en="💎 15 Guides + Live PDF Viewer & Downloads + 6 Live Tools" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
+      <span id="heroBadgeText" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
       <div class="max-w-md mx-auto my-2 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB]">
         <div class="flex items-center justify-between border-b border-white/15 pb-1.5 mb-1.5 gap-2">
           <span id="dateGregorian" class="font-bold">...</span>
@@ -98,8 +98,8 @@
       <div id="topToolPanel" class="hidden mt-3.5"></div>
     </div>
 
-    <!-- Guides List -->
-    <h3 data-ur="📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری:" data-en="📚 Asset Building, Legal Guides & PDF Library:" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font"></h3>
+    <!-- Guides List with Auto-Updated Count -->
+    <h3 id="libraryHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font"></h3>
     <div id="guidesList" class="space-y-3 mb-8"></div>
   </main>
 
@@ -115,7 +115,7 @@
         
         <!-- Secure Developer Uploader -->
         <div class="bg-black/30 p-3.5 rounded-2xl border border-emerald-500/40 text-right text-xs">
-          <span data-ur="🔒 ڈویلپر پینل: نئی پی ڈی ایف اپلوڈ کریں (خودکار نمبر 16، 17...)" data-en="🔒 Developer Panel: Upload New PDF (Auto-Numbered)" class="font-bold text-[#F3E5AB] block mb-2"></span>
+          <span data-ur="🔒 ڈویلپر پینل: نئی پی ڈی ایف اپلوڈ کریں (آٹو نمبرنگ)" data-en="🔒 Developer Panel: Upload New PDF (Auto-Numbered)" class="font-bold text-[#F3E5AB] block mb-2"></span>
           <div class="space-y-2">
             <input type="text" id="devPdfTitle" data-ph-ur="گائیڈ کا نام درج کریں..." data-ph-en="Enter Guide Title..." class="w-full p-2 border rounded-xl text-xs bg-white text-gray-900 font-semibold" />
             <div class="flex flex-col sm:flex-row gap-2">
@@ -159,11 +159,12 @@
   </div>
 
   <script>
-    let lang = 'ur', activeTopTool = null, currentModalId = 1, currentPdfUrl = '';
+    let lang = 'ur', activeTopTool = null, currentModalId = 1;
     const tr = (ur, en) => lang === 'ur' ? ur : en;
     const fCls = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
 
-    const baseGuides = [
+    // Base Guides (1 to 15)
+    let baseGuides = [
       [1, 'بجٹ اور بچت', 'Budgeting', '1. 50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', '1. The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', [
         ['1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)', '1. Pay Yourself First (20% Immediate Savings)', '• تنخواہ یا مزدوری ملتے ہی خرچ سے پہلے 10% سے 20% رقم الگ رکھیں۔ مہینے کے آخر کا انتظار نہ کریں۔', '• Immediately transfer 10%–20% into savings the day you get paid before spending a rupee.'],
         ['2. ہول سیل مارکیٹ سے راشن کی خریداری (50% ضروریات)', '2. Bulk Wholesale Grocery Planning (50% Needs)', '• پرچون کے بجائے مہینے کے شروع میں ہول سیل منڈی سے آٹا، گھی اور دالیں اکٹھی خرید کر 15% سے 20% بچت کریں۔', '• Buy monthly staples in bulk from wholesale markets at the start of the month to save 15%–20%.']
@@ -212,7 +213,7 @@
       ]]
     ];
 
-    let uploadedPdfs = JSON.parse(localStorage.getItem('flp_uploaded_pdfs') || '[]');
+    let uploadedPdfs = JSON.parse(localStorage.getItem('flp_uploaded_pdfs_v2') || '[]');
 
     let commSlots = [
       { mUr: 'اگست 2026', mEn: 'Aug 2026', nUr: 'والدہ محترمہ', nEn: 'Mother', paid: true },
@@ -359,26 +360,26 @@
         
         const file = fileInput.files[0];
         const fileUrl = URL.createObjectURL(file);
-        const newId = 16 + uploadedPdfs.length;
+        const newId = Date.now(); // Unique ID
 
         const newPdfItem = [
           newId,
           'ڈویلپر اپلوڈ', 'Developer PDF',
-          `${newId}. ${title}`, `${newId}. ${title}`,
+          title, title,
           tr('یہ گائیڈ ڈویلپر کی طرف سے اپلوڈ کی گئی ہے اور اب پڑھنے اور ڈاؤن لوڈ کے لیے دستیاب ہے۔', 'This guide was uploaded by the developer and is now available for reading and download.'),
           tr('This guide was uploaded by the developer and is now available for reading and download.', 'This guide was uploaded by the developer and is now available for reading and download.'),
           null, '', '',
           [
             [tr('تفصیلی مواد اور معلومات', 'Detailed Content & Information'), tr('Detailed Content & Information', 'Detailed Content & Information'), tr('یہ فائل ڈویلپر کے ذریعہ پی ڈی ایف لائبریری میں شامل کی گئی ہے۔ اوپر دیے گئے "PDF Read" یا "📥 PDF" بٹن سے آپ اسے مکمل پڑھ یا ڈاؤن لوڈ کر سکتے ہیں۔', 'This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.'), tr('This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.', 'This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.')]
           ],
-          fileUrl // Index 11 holds the live blob URL for download/viewing
+          fileUrl // Index 11 holds live blob URL
         ];
 
         uploadedPdfs.push(newPdfItem);
-        localStorage.setItem('flp_uploaded_pdfs', JSON.stringify(uploadedPdfs));
+        localStorage.setItem('flp_uploaded_pdfs_v2', JSON.stringify(uploadedPdfs));
 
         setTimeout(() => {
-          msg.textContent = tr(`✅ نمبر ${newId} کے طور پر کامیابی سے اپلوڈ ہو گئی!`, `✅ Successfully uploaded as #${newId}!`);
+          msg.textContent = tr('✅ کامیابی سے اپلوڈ ہو گئی!', '✅ Successfully uploaded!');
           titleInput.value = '';
           fileInput.value = '';
           renderGuides();
@@ -388,21 +389,75 @@
       }
     }
 
+    // Developer Edit Guide function
+    function editGuide(event, id) {
+      event.stopPropagation();
+      const allGuides = [...baseGuides, ...uploadedPdfs];
+      const g = allGuides.find(x => x[0] === id);
+      if (!g) return;
+
+      const newTitle = prompt(tr('گائیڈ کا نیا نام درج کریں:', 'Enter new title for guide:'), tr(g[3], g[4]));
+      if (newTitle !== null && newTitle.trim() !== '') {
+        g[3] = newTitle.trim();
+        g[4] = newTitle.trim();
+        if (uploadedPdfs.some(x => x[0] === id)) {
+          localStorage.setItem('flp_uploaded_pdfs_v2', JSON.stringify(uploadedPdfs));
+        } else {
+          // If it's a base guide, we can store overrides in localStorage if needed, or update in memory
+          baseGuides = baseGuides.map(item => item[0] === id ? g : item);
+        }
+        renderGuides();
+        showToast(tr('✏️ گائیڈ کامیابی سے اپڈیٹ ہو گئی!', '✏️ Guide successfully updated!'), true);
+      }
+    }
+
+    // Developer Delete Guide function with Auto-Re-indexing / Re-numbering
+    function deleteGuide(event, id) {
+      event.stopPropagation();
+      if (confirm(tr('کیا آپ واقعی اس گائیڈ کو حذف کرنا چاہتے ہیں؟', 'Are you sure you want to delete this guide?'))) {
+        // Check if it's in uploadedPdfs
+        const upIdx = uploadedPdfs.findIndex(x => x[0] === id);
+        if (upIdx !== -1) {
+          uploadedPdfs.splice(upIdx, 1);
+          localStorage.setItem('flp_uploaded_pdfs_v2', JSON.stringify(uploadedPdfs));
+        } else {
+          // If in baseGuides, filter it out
+          baseGuides = baseGuides.filter(x => x[0] !== id);
+        }
+        renderGuides();
+        showToast(tr('🗑️ گائیڈ حذف کر دی گئی اور نمبرز خود بخود اپڈیٹ ہو گئے!', '🗑️ Guide deleted and numbers auto-updated!'), false);
+      }
+    }
+
     function renderGuides() {
       const q = (document.getElementById('searchBox').value || '').toLowerCase();
       const allGuides = [...baseGuides, ...uploadedPdfs];
+      const totalCount = allGuides.length;
+
+      // Update Header badge & library heading dynamically with auto-counted total number!
+      document.getElementById('heroBadgeText').textContent = tr(
+        `💎 ${totalCount} مکمل گائیڈز + پی ڈی ایف ڈاؤن لوڈ + 6 عملی ٹولز`,
+        `💎 ${totalCount} Master Guides + PDF Downloads + 6 Live Tools`
+      );
+      document.getElementById('libraryHeading').textContent = tr(
+        `📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری (${totalCount} مکمل کتابچے):`,
+        `📚 Asset Building, Legal Guides & PDF Library (${totalCount} Master Guides):`
+      );
+
       const list = allGuides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
 
       document.getElementById('guidesList').innerHTML = list.map((g, idx) => `
-        <div onclick="openGuide(${g[0]})" class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer">
+        <div onclick="openGuide(${g[0]})" class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer relative">
           <div class="flex justify-between items-center mb-1.5">
             <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${tr(g[1], g[2])}</span>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5">
               <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">#${idx + 1}</span>
-              <button onclick="event.stopPropagation(); g[11] ? downloadPdfFile(g[11], tr(g[3],g[4])) : downloadCurrentPdf()" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>
+              ${g[11] ? `<button onclick="event.stopPropagation(); downloadPdfFile('${g[11]}', tr('${g[3]}','${g[4]}'))" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>` : `<button onclick="event.stopPropagation(); downloadCurrentPdf()" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>`}
+              <button onclick="editGuide(event, ${g[0]})" class="text-[10px] bg-blue-100 text-blue-900 px-2 py-0.5 rounded font-bold hover:bg-blue-200" title="Edit Guide">✏️</button>
+              <button onclick="deleteGuide(event, ${g[0]})" class="text-[10px] bg-red-100 text-red-900 px-2 py-0.5 rounded font-bold hover:bg-red-200" title="Delete Guide">🗑️</button>
             </div>
           </div>
-          <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fCls()} mb-1">${tr(g[3], g[4])}</h3>
+          <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fCls()} mb-1">${idx + 1}. ${tr(g[3], g[4])}</h3>
           <p class="text-[11px] text-gray-600 ${fCls()} mb-3">${tr(g[5], g[6])}</p>
           <div class="flex flex-wrap justify-between items-center gap-2 pt-2.5 border-t text-xs">
             <span class="text-[#064E3B] font-extrabold">${tr('مکمل گائیڈ اور قانونی سٹیپس پڑھیں ←','Read Full Step-by-Step Guide →')}</span>
