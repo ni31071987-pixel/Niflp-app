@@ -13,9 +13,19 @@
     .hero-bg { background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%); }
     .gold-bg { background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%); }
     button, input, select, textarea { touch-action: manipulation; }
+    @keyframes bounceDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+    @keyframes bounceUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .animate-down { animation: bounceDown 0.8s infinite; }
+    .animate-up { animation: bounceUp 0.8s infinite; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
+
+  <!-- Visual Progress Arrow Toast (Top Screen) -->
+  <div id="progressToast" class="fixed top-2 left-1/2 -translate-x-1/2 z-50 hidden bg-[#0A192F] text-white px-4 py-2 rounded-2xl border border-[#D4AF37] shadow-2xl flex items-center gap-2 text-xs font-bold">
+    <span id="toastIcon" class="text-base">⬇️</span>
+    <span id="toastText">فائل ڈاؤن لوڈ ہو رہی ہے...</span>
+  </div>
 
   <!-- Header -->
   <header class="hero-bg text-white sticky top-0 z-50 shadow-lg border-b border-[#D4AF37]/50">
@@ -37,7 +47,7 @@
   <!-- Hero & Live Date/Clock -->
   <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
     <div class="max-w-2xl mx-auto">
-      <span data-ur="💎 15 مکمل گائیڈز + پی ڈی ایف ڈاؤن لوڈ + 6 عملی ٹولز" data-en="💎 15 Master Guides + PDF Downloads + 6 Live Tools" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
+      <span data-ur="💎 15 گائیڈز + آٹو اپڈیٹڈ پی ڈی ایف لائبریری + 6 عملی ٹولز" data-en="💎 15 Guides + Auto-Updated PDF Library + 6 Live Tools" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
       <div class="max-w-md mx-auto my-2 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB]">
         <div class="flex items-center justify-between border-b border-white/15 pb-1.5 mb-1.5 gap-2">
           <span id="dateGregorian" class="font-bold">...</span>
@@ -86,27 +96,30 @@
       <div id="topToolPanel" class="hidden mt-3.5"></div>
     </div>
 
-    <!-- 15 Guides List -->
-    <h3 data-ur="📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری (15 مکمل کتابچے):" data-en="📚 Asset Building, Legal Guides & PDF Library (15 Master Guides):" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font"></h3>
+    <!-- Guides List (Auto-Numbered with Uploaded PDFs at the End) -->
+    <h3 data-ur="📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری:" data-en="📚 Asset Building, Legal Guides & PDF Library:" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font"></h3>
     <div id="guidesList" class="space-y-3 mb-8"></div>
   </main>
 
-  <!-- Bottom Developer Contact, PDF Uploader & Feedback Section -->
+  <!-- Bottom Developer Contact, Secure PDF Uploader & Feedback Section -->
   <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto">
     <div class="max-w-3xl mx-auto space-y-6">
 
-      <!-- Developer Info & Secure PDF Upload Box (Only for Developer) -->
+      <!-- Developer Info & Secure PDF Upload Box -->
       <div class="bg-white/10 p-5 rounded-3xl border border-[#D4AF37]/50 text-center space-y-3">
         <div class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base">NI</div>
         <h3 data-ur="فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال" data-en="Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal" class="text-sm font-extrabold text-[#F3E5AB]"></h3>
-        <p data-ur="موبائل رابطہ: 0310-5379765 | جی میل: ni31071987@gmail.com" data-en="Phone: 0310-5379765 | Email: ni31071987@gmail.com" class="text-xs text-emerald-200 font-mono"></p>
+        <p data-ur="موبایل رابطہ: 0310-5379765 | جی میل: ni31071987@gmail.com" data-en="Phone: 0310-5379765 | Email: ni31071987@gmail.com" class="text-xs text-emerald-200 font-mono"></p>
         
-        <!-- Developer PDF Uploader Box -->
+        <!-- Secure Developer Uploader -->
         <div class="bg-black/30 p-3.5 rounded-2xl border border-emerald-500/40 text-right text-xs">
-          <span data-ur="🔒 ڈویلپر پینل: نئی پی ڈی ایف اپلوڈ کریں (صرف ایڈمن)" data-en="🔒 Developer Panel: Upload New PDF (Admin Only)" class="font-bold text-[#F3E5AB] block mb-2"></span>
-          <div class="flex flex-col sm:flex-row gap-2">
-            <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#D4AF37] file:text-[#0A192F] hover:file:bg-amber-400 cursor-pointer" />
-            <button onclick="handleDevUpload()" data-ur="اپلوڈ کریں" data-en="Upload PDF" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-white shrink-0"></button>
+          <span data-ur="🔒 ڈویلپر پینل: نئی پی ڈی ایف اپلوڈ کریں (خودکار نمبر 16، 17...)" data-en="🔒 Developer Panel: Upload New PDF (Auto-Numbered)" class="font-bold text-[#F3E5AB] block mb-2"></span>
+          <div class="space-y-2">
+            <input type="text" id="devPdfTitle" data-ph-ur="گائیڈ کا نام درج کریں..." data-ph-en="Enter Guide Title..." class="w-full p-2 border rounded-xl text-xs bg-white text-gray-900 font-semibold" />
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#D4AF37] file:text-[#0A192F] hover:file:bg-amber-400 cursor-pointer" />
+              <button onclick="handleDevUpload()" data-ur="اپلوڈ کریں" data-en="Upload PDF" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-white shrink-0"></button>
+            </div>
           </div>
           <p id="uploadMsg" class="text-[10px] text-emerald-300 mt-1.5"></p>
         </div>
@@ -129,7 +142,7 @@
     </div>
   </section>
 
-  <!-- Reader Modal with PDF Download Button -->
+  <!-- Reader Modal -->
   <div id="guideModal" class="fixed inset-0 bg-black/85 z-50 hidden overflow-y-auto p-2 md:p-6 backdrop-blur-sm">
     <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-4 border-2 border-[#D4AF37]">
       <div class="hero-bg text-white px-4 py-3.5 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 gap-2">
@@ -148,22 +161,19 @@
     const tr = (ur, en) => lang === 'ur' ? ur : en;
     const fCls = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
 
-    const guides = [
+    // Base Guides (Properly Sorted 1 to 15)
+    const baseGuides = [
       [1, 'بجٹ اور بچت', 'Budgeting', '1. 50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', '1. The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', [
         ['1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)', '1. Pay Yourself First (20% Immediate Savings)', '• تنخواہ یا مزدوری ملتے ہی خرچ سے پہلے 10% سے 20% رقم الگ رکھیں۔ مہینے کے آخر کا انتظار نہ کریں۔', '• Immediately transfer 10%–20% into savings the day you get paid before spending a rupee.'],
-        ['2. ہول سیل مارکیٹ سے راشن کی خریداری (50% ضروریات)', '2. Bulk Wholesale Grocery Planning (50% Needs)', '• پرچون کے بجائے مہینے کے شروع میں ہول سیل منڈی سے آٹا، گھی اور دالیں اکٹھی خرید کر 15% سے 20% بچت کریں۔', '• Buy monthly staples in bulk from wholesale markets at the start of the month to save 15%–20%.'],
-        ['3. بجلی کے بل اور خواہشات پر کنٹرول (30%)', '3. Peak-Hour Utility & Lifestyle Control (30% Wants)', '• شام 6 سے 10 بجے (Peak Hours) میں استری اور موٹر نہ چلائیں۔', '• Avoid running heavy electrical appliances during peak hours (6 PM–10 PM).']
+        ['2. ہول سیل مارکیٹ سے راشن کی خریداری (50% ضروریات)', '2. Bulk Wholesale Grocery Planning (50% Needs)', '• پرچون کے بجائے مہینے کے شروع میں ہول سیل منڈی سے آٹا، گھی اور دالیں اکٹھی خرید کر 15% سے 20% بچت کریں۔', '• Buy monthly staples in bulk from wholesale markets at the start of the month to save 15%–20%.']
       ]],
-      [15, 'اثاثہ سازی', 'Micro-Assets', '2. مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets)', '2. Micro-Asset Building for Common People', 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے منافع بخش اثاثے کیسے بنائے؟', 'Practical steps for daily-wage earners to build income-generating assets.', 'gold', '🥇 سونا اور بچت ٹول', '🥇 Micro-Gold Tool', [
-        ['1. مائکرو گولڈ (0.1 گرام یا 1 گرام سونے کے ٹکڑے)', '1. Micro-Gold Accumulation (Fractional 24K Gold)', '• تولہ سونا خریدنے کا انتظار نہ کریں۔ روزانہ 100 یا 200 روپے الگ جمع کریں اور 24 قیراط سونے کے چھوٹے ٹکڑے پکی رسید کے ساتھ لیں۔', '• Do not wait for a full Tola. Save PKR 100–200 daily and buy fractional 24K pure gold sheets with an invoice.'],
-        ['2. اوزار اور مشینری بطورِ اثاثہ (Tools as Capital)', '2. Working Tools & Equipment as Cash-Flowing Assets', '• کاریگر، مستری یا درزی کے لیے جدید اوزار ہی اس کی فیکٹری ہیں۔ بچت سے بہتر مشینری لیں۔', '• Reinvest small savings into better power tools or sewing machines to double work speed.'],
-        ['3. گھریلو پیداواری اثاثے (مرغی پالن اور سبزیاں)', '3. Household Productive Assets (Poultry & Gardening)', '• گھر میں مرغیاں پالنا روزانہ انڈے کی نقد آمدن دیتا ہے۔', '• Raise hens at home for daily egg sales and grow kitchen herbs.']
+      [2, 'اثاثہ سازی', 'Micro-Assets', '2. مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets)', '2. Micro-Asset Building for Common People', 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے منافع بخش اثاثے کیسے بنائے؟', 'Practical steps for daily-wage earners to build income-generating assets.', 'gold', '🥇 سونا اور بچت ٹول', '🥇 Micro-Gold Tool', [
+        ['1. مائکرو گولڈ (0.1 گرام یا 1 گرام سونے کے ٹکڑے)', '1. Micro-Gold Accumulation (Fractional 24K Gold)', '• تولہ سونا خریدنے کا انتظار نہ کریں۔ روزانہ 100 یا 200 روپے الگ جمع کریں اور 24 قیراط سونے کے چھوٹے ٹکڑے پکی رسید کے ساتھ لیں۔', '• Do not wait for a full Tola. Save PKR 100–200 daily and buy fractional 24K pure gold sheets with an invoice.']
       ]],
-      [14, 'غربت سے آزادی', 'Micro-Business', '3. صفر یا کم سرمائے سے شروع ہونے والے چھوٹے حلال کاروبار', '4. 5 Zero-to-Low Capital Halal Micro-Businesses', 'بنا بڑے سرمائے کے محنت اور ہنر سے گھر بیٹھے حلال روزگار کیسے شروع کریں؟', 'How to launch a self-sustaining micro-business from home with minimal cash.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
-        ['1. ہوم مینڈ ٹفن اور لنچ باکس سروس', '1. Homemade Tiffin & Office Lunch Service', '• محلے کے دفاتر یا طلبہ کے لیے صاف ستھرا گھر کا کھانا تیار کریں۔', '• Supply hygienic homemade lunch boxes to local offices.'],
-        ['2. اسکول اسٹیشنری اور آن لائن فارم سروس', '2. Stationery Stall & Online Form Assistance', '• اسکول کے باہر کاپی پنسل کا اسٹال لگائیں۔', '• Set up a small stationery counter near a school.']
+      [3, 'غربت سے آزادی', 'Micro-Business', '3. صفر یا کم سرمائے سے شروع ہونے والے چھوٹے حلال کاروبار', '3. 5 Zero-to-Low Capital Halal Micro-Businesses', 'بنا بڑے سرمائے کے محنت اور ہنر سے گھر بیٹھے حلال روزگار کیسے شروع کریں؟', 'How to launch a self-sustaining micro-business from home with minimal cash.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
+        ['1. ہوم میڈ ٹفن اور لنچ باکس سروس', '1. Homemade Tiffin & Office Lunch Service', '• محلے کے دفاتر یا طلبہ کے لیے صاف ستھرا گھر کا کھانا تیار کریں۔', '• Supply hygienic homemade lunch boxes to local offices.']
       ]],
-      [3, 'ایکشن پلان', 'Action Plan', '4. 30 دن کا فنانشل ایکشن پلان: معاشی استحکام کا سفر', '3. 30-Day Financial Reset & Action Plan', 'صرف 4 ہفتوں میں فالتو اخراجات روکنے اور بچت کا سسٹم بنانے کا عملی روڈ میپ.', 'A structured 4-week roadmap to audit expenses and eliminate money leaks.', 'goal', '🎯 ہدف پلانر', '🎯 Goal Planner', [
+      [4, 'ایکشن پلان', 'Action Plan', '4. 30 دن کا فنانشل ایکشن پلان: معاشی استحکام کا سفر', '4. 30-Day Financial Reset & Action Plan', 'صرف 4 ہفتوں میں فالتو اخراجات روکنے اور بچت کا سسٹم بنانے کا عملی روڈ میپ۔', 'A structured 4-week roadmap to audit expenses and eliminate money leaks.', 'goal', '🎯 ہدف پلانر', '🎯 Goal Planner', [
         ['ہفتہ 1 اور 2: روزانہ کے اخراجات کی ڈائری اور 30% کٹوتی', 'Weeks 1 & 2: Daily Expense Tracking & 30% Cut', '• پہلے ہفتے ہر ایک روپیہ ڈائری میں لکھیں اور دوسرے ہفتے فالتو اخراجات میں 30% کمی لائیں۔', '• Track every single rupee spent for 7 days, then cut lifestyle leaks by 30% in Week 2.']
       ]],
       [5, 'کمیٹی پلان', 'Committee Plan', '5. کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ پلان', '5. Structured Family Committee (ROSCA): 12-Month Plan', 'پاکستان میں محفوظ کمیٹی ڈالنے، تحریری ریکارڈ رکھنے اور رقم کو اثاثے میں بدلنے کا طریقہ۔', 'Organize a secure 12-member monthly savings committee and track payouts.', 'committee', '🗓️ کمیٹی ٹول', '🗓️ Committee Tool', [
@@ -175,31 +185,34 @@
       [7, 'قرض سے نجات', 'Debt Freedom', '7. قرض اور سودی قسطوں کے جال سے نکلنے کا عملی منصوبہ', '7. Debt Freedom Roadmap: Escape Loans & Installment Traps', 'ڈیبٹ سنو بال (Debt Snowball) طریقے سے ادھار ختم کرنے اور مہنگی قسطوں سے بچنے کا راستہ۔', 'Use the Debt Snowball method to clear loans and avoid high-markup installment traps.', 'goal', '🎯 قرض پلانر', '🎯 Debt Payoff Tool', [
         ['1. سب سے چھوٹے قرض کو سب سے پہلے ختم کریں', '1. Attack Smallest Debt First (Debt Snowball)', '• تمام قرضوں کی فہرست بنائیں، سب سے چھوٹا ادھار پہلے چکا کر ذہنی حوصلہ حاصل کریں۔', '• List all debts from smallest to largest, clear the smallest first for momentum.']
       ]],
-      [2, 'ریئل اسٹیٹ و قانون', 'Real Estate & Law', '8. پلاٹ یا گھر خریدنے کے اصول اور پاکستانی قانونی تصدیق', '2. 5 Golden Rules & Pakistani Legal Property Verification', 'پاکستان میں پراپرٹی خریدتے وقت جعل سازی، NOC اور فرد/انتقال کی تصدیق کا طریقہ۔', 'How to verify NOCs, land records (Fard/Registry), and avoid fraud in Pakistan.', null, '', '', [
+      [8, 'ریئل اسٹیٹ و قانون', 'Real Estate & Law', '8. پلاٹ یا گھر خریدنے کے اصول اور پاکستانی قانونی تصدیق', '8. 5 Golden Rules & Pakistani Legal Property Verification', 'پاکستان میں پراپرٹی خریدتے وقت جعل سازی، NOC اور فرد/انتقال کی تصدیق کا طریقہ۔', 'How to verify NOCs, land records (Fard/Registry), and avoid fraud in Pakistan.', null, '', '', [
         ['1. این او سی (NOC) اور فردِ ملکیت کی سرکاری تصدیق', '1. Official NOC & Land Record Verification (CDA/LDA/PLRA)', '• بیانہ دینے سے پہلے متعلقہ اتھارٹی سے سوسائٹی کا منظور شدہ NOC چیک کریں۔', '• Verify valid society NOC from CDA, LDA, RDA, or SBCA before token payment.']
       ]],
-      [4, 'سونا اور انویسٹمنٹ', 'Gold & Investing', '9. مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ فنڈز', '4. Beating Inflation: 24K Gold & Shariah Mutual Funds', 'نقد رقم کی گرتی قدر کو بچانے کے لیے خالص سونے اور SECP منظور شدہ حلال فنڈز کی گائیڈ۔', 'Protect purchasing power using 24K gold bars and SECP-regulated Islamic funds.', 'zakat', '🪙 زکوٰۃ کیلکولیٹر', '🪙 Zakat Tool', [
+      [9, 'سونا اور انویسٹمنٹ', 'Gold & Investing', '9. مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ فنڈز', '9. Beating Inflation: 24K Gold & Shariah Mutual Funds', 'نقد رقم کی گرتی قدر کو بچانے کے لیے خالص سونے اور SECP منظور شدہ حلال فنڈز کی گائیڈ۔', 'Protect purchasing power using 24K gold bars and SECP-regulated Islamic funds.', 'zakat', '🪙 زکوٰۃ کیلکولیٹر', '🪙 Zakat Tool', [
         ['1. زیورات کے بجائے 24 قیراط سونے کے بسکٹ یا سکے', '1. Buy 24K Certified Gold Bars Instead of Jewelry', '• زیورات پر کٹوتی ہوتی ہے۔ ہمیشہ 24K پیک شدہ گولڈ بسکٹ خریدیں۔', '• Jewelry loses value in making charges. Buy 24K sealed gold bars with zero resale deduction.']
       ]],
-      [8, 'ڈیجیٹل اسکلز', 'Digital Skills', '10. آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', '8. Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال سائیڈ انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', [
+      [10, 'ڈیجیٹل اسکلز', 'Digital Skills', '10. آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', '10. Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال ساید انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', [
         ['1. مفت سرکاری کورسز (DigiSkills / NAVTTC)', '1. Free Portals (DigiSkills / NAVTTC) & Local Services', '• مفت سرکاری کورسز سے گرافک ڈیزائن اور AI سیکھ کر خدمات دیں۔', '• Master design and AI tools via DigiSkills.pk/NAVTTC.']
       ]],
-      [9, 'بچوں کا مستقبل', 'Children Future', '11. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی', '9. Children’s Higher Education & Marriage Fund Blueprint', '10 سے 15 سال بعد کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا سونا جوڑنے کا طریقہ۔', 'Prepare for future family milestones over 10–15 years without taking loans.', 'gold', '🥇 بچت و سونا ٹول', '🥇 Gold Saving Tool', [
+      [11, 'بچوں کا مستقبل', 'Children Future', '11. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی', '11. Children’s Higher Education & Marriage Fund Blueprint', '10 سے 15 سال بعد کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا سونا جوڑنے کا طریقہ۔', 'Prepare for future family milestones over 10–15 years without taking loans.', 'gold', '🥇 بچت و سونا ٹول', '🥇 Gold Saving Tool', [
         ['1. ہر سال سونے کی چھوٹی بچت', '1. Annual Gold Accumulation & Education Priority', '• بچے کی پیدائش سے ہی ہر سال بچت سے 1 یا 2 گرام سونا لے کر رکھیں۔', '• Convert small monthly child savings into 1–2 grams of 24K gold yearly.']
       ]],
-      [10, 'گاڑی کے اصول', 'Vehicle Rules', '12. گاڑی یا موٹرسائیکل کی خریداری، کاغذات اور مرمت', '10. Smart Vehicle Purchase, Excise Check & Maintenance Rules', 'استطاعت کے مطابق سواری خریدنے، MTMIS تصدیق اور ماہانہ پیٹرول و پارٹس کا بجٹ۔', 'Rules for buying a vehicle, verifying Excise records, and budgeting for fuel/parts.', null, '', '', [
+      [12, 'گاڑی کے اصول', 'Vehicle Rules', '12. گاڑی یا موٹرسائیکل کی خریداری، کاغذات اور مرمت', '12. Smart Vehicle Purchase, Excise Check & Maintenance Rules', 'استطاعت کے مطابق سواری خریدنے، MTMIS تصدیق اور ماہانہ پیٹرول و پارٹس کا بجٹ۔', 'Rules for buying a vehicle, verifying Excise records, and budgeting for fuel/parts.', null, '', '', [
         ['1. ایکسائز (MTMIS) تصدیق اور مینٹیننس فنڈ', '1. Excise MTMIS Check, Spare Parts & Maintenance Fund', '• خریداری سے پہلے آن لائن MTMIS ریکارڈ اور بائیو میٹرک ٹرانسفر یقینی بنائیں۔', '• Verify vehicle records on provincial Excise MTMIS before purchase.']
       ]],
-      [11, 'ٹیکس اور ایف بی آر', 'Tax & FBR', '13. پاکستان میں ٹیکس فائلر (ATL) بننے کے فوائد اور طریقہ', '11. Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer', 'نان فائلر کے دگنے ٹیکس سے بچنے اور FBR IRIS پر خود رجسٹریشن کرنے کی رہنمائی۔', 'Save 50%+ withholding taxes on banking and property via FBR IRIS registration.', null, '', '', [
+      [13, 'ٹیکس اور ایف بی آر', 'Tax & FBR', '13. پاکستان میں ٹیکس فائلر (ATL) بننے کے فوائد اور طریقہ', '13. Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer', 'نان فائلر کے دگنے ٹیکس سے بچنے اور FBR IRIS پر خود رجسٹریشن کرنے کی رہنمائی۔', 'Save 50%+ withholding taxes on banking and property via FBR IRIS registration.', null, '', '', [
         ['1. ایف بی آر آئرس (IRIS) پر مفت رجسٹریشن', '1. Free FBR IRIS Registration & Withholding Tax Savings', '• اپنے شناختی کارڈ اور سم سے iris.fbr.gov.pk پر مفت NTN بنائیں۔', '• Register with your CNIC on iris.fbr.gov.pk.']
       ]],
-      [12, 'ریٹائرمنٹ پلان', 'Retirement Plan', '14. بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', '12. Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ۔', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', [
+      [14, 'ریٹائرمنٹ پلان', 'Retirement Plan', '14. بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', '14. Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ.', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', [
         ['1. کرائے کی دکان اور اسلامک پنشن اسکیم (VPS)', '1. Commercial Rental Unit & Islamic Pension (VPS)', '• جوانی کی بچت سے ایک چھوٹی دکان بنائیں یا SECP اسلامک VPS میں حصہ لیں۔', '• Aim to acquire a small rental shop during working years or invest in VPS.']
       ]],
-      [13, 'دکان کا کھاتہ', 'Business Cashbook', '15. چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', '13. Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
+      [15, 'دکان کا کھاتہ', 'Business Cashbook', '15. چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', '15. Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
         ['1. دکان کا گلہ الگ رکھیں اور اپنی تنخواہ مقرر کریں', '1. Separate Registers & Fixed Owner Salary', '• دکان کے کیش سے براہِ راست گھر کا خرچ نہ نکالیں۔ اپنی تنخواہ مقرر کریں۔', '• Never draw unrecorded household cash from the shop register. Set a fixed salary.']
       ]]
     ];
+
+    // Load uploaded dynamic guides from localStorage (Auto-numbered 16, 17...)
+    let uploadedPdfs = JSON.parse(localStorage.getItem('flp_uploaded_pdfs') || '[]');
 
     let commSlots = [
       { mUr: 'اگست 2026', mEn: 'Aug 2026', nUr: 'والدہ محترمہ', nEn: 'Mother', paid: true },
@@ -207,13 +220,7 @@
       { mUr: 'اکتوبر 2026', mEn: 'Oct 2026', nUr: 'گھر کا خرچ', nEn: 'Home Expense', paid: false },
       { mUr: 'نومبر 2026', mEn: 'Nov 2026', nUr: 'کاروبار اسٹاک', nEn: 'Business Stock', paid: false },
       { mUr: 'دسمبر 2026', mEn: 'Dec 2026', nUr: 'سونا خریداری', nEn: 'Gold Purchase', paid: false },
-      { mUr: 'جنوری 2027', mEn: 'Jan 2027', nUr: 'بچوں کی فیس', nEn: 'School Fees', paid: false },
-      { mUr: 'فروری 2027', mEn: 'Feb 2027', nUr: 'رمضان/عید بجٹ', nEn: 'Eid Budget', paid: false },
-      { mUr: 'مارچ 2027', mEn: 'Mar 2027', nUr: 'حلال انویسٹمنٹ', nEn: 'Halal Fund', paid: false },
-      { mUr: 'اپریل 2027', mEn: 'Apr 2027', nUr: 'قربانی فنڈ', nEn: 'Qurbani Fund', paid: false },
-      { mUr: 'مئی 2027', mEn: 'May 2027', nUr: 'گاڑی مینٹیننس', nEn: 'Vehicle Maint.', paid: false },
-      { mUr: 'جون 2027', mEn: 'Jun 2027', nUr: 'ٹولز/مشینری', nEn: 'Tools Upgrade', paid: false },
-      { mUr: 'جولائی 2027', mEn: 'Jul 2027', nUr: 'سالانہ بچت', nEn: 'Annual Savings', paid: false }
+      { mUr: 'جنوری 2027', mEn: 'Jan 2027', nUr: 'بچوں کی فیس', nEn: 'School Fees', paid: false }
     ];
     let bizData = JSON.parse(localStorage.getItem('flp_biz_pro') || '[{"desc":"Daily Sales / آج کی سیل","amt":25000,"type":"in"},{"desc":"Stock / مال خریداری","amt":10000,"type":"exp"}]');
     let chatData = JSON.parse(localStorage.getItem('flp_chat_pro') || '[]');
@@ -303,25 +310,65 @@
       document.getElementById('chatMessagesList').innerHTML = [def, ...chatData].map(c => `<div class="p-3 bg-slate-50 border rounded-2xl"><div class="flex justify-between mb-1"><span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span><span class="text-[10px] text-gray-400">${c.time}</span></div><p class="text-gray-800 ${fCls()} text-xs">${c.text}</p></div>`).join('');
     }
 
-    // PDF Download handler for simulated PDF generation/download
+    // Visual Toast with Up/Down Arrow Animation for Upload/Download
+    function showToast(text, isUpload) {
+      const toast = document.getElementById('progressToast');
+      const icon = document.getElementById('toastIcon');
+      const msg = document.getElementById('toastText');
+      icon.textContent = isUpload ? '⬆️' : '⬇️';
+      icon.className = isUpload ? 'text-base animate-up' : 'text-base animate-down';
+      msg.textContent = text;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
     function downloadCurrentPdf() {
-      alert(tr('📥 پی ڈی ایف ڈاؤن لوڈ شروع ہو رہی ہے...', '📥 PDF download starting...'));
+      showToast(tr('📥 پی ڈی ایف ڈاؤن لوڈ ہو رہی ہے...', '📥 Downloading PDF...'), false);
     }
 
     function handleDevUpload() {
+      const titleInput = document.getElementById('devPdfTitle');
       const fileInput = document.getElementById('devPdfFile');
       const msg = document.getElementById('uploadMsg');
-      if (fileInput.files.length > 0) {
-        msg.textContent = tr('✅ فائل کامیابی سے اپلوڈ ہو گئی ہے!', '✅ File successfully uploaded!');
-        fileInput.value = '';
+      const title = titleInput.value.trim();
+
+      if (fileInput.files.length > 0 && title) {
+        showToast(tr('⬆️ نئی پی ڈی ایف اپلوڈ ہو رہی ہے...', '⬆️ Uploading new PDF...'), true);
+        
+        // Auto-Numbering calculation (Base 15 + uploaded count + 1)
+        const newId = 16 + uploadedPdfs.length;
+        const newPdfItem = [
+          newId,
+          'ڈویلپر اپلوڈ', 'Developer PDF',
+          `${newId}. ${title}`, `${newId}. ${title}`,
+          tr('یہ گائیڈ ڈویلپر کی طرف سے اپلوڈ کی گئی ہے۔', 'This guide was uploaded by the developer.'),
+          tr('This guide was uploaded by the developer.', 'This guide was uploaded by the developer.'),
+          null, '', '',
+          [
+            [tr('تفصیلی مواد اور معلومات', 'Detailed Content & Information'), tr('Detailed Content & Information', 'Detailed Content & Information'), tr('یہ فائل ڈویلپر کے ذریعہ پی ڈی ایف لائبریری میں شامل کی گئی ہے۔', 'This file was added to the PDF library by the developer.'), tr('This file was added to the PDF library by the developer.', 'This file was added to the PDF library by the developer.')]
+          ]
+        ];
+
+        uploadedPdfs.push(newPdfItem);
+        localStorage.setItem('flp_uploaded_pdfs', JSON.stringify(uploadedPdfs));
+
+        setTimeout(() => {
+          msg.textContent = tr(`✅ نمبر ${newId} کے طور پر کامیابی سے اپلوڈ ہو گئی!`, `✅ Successfully uploaded as #${newId}!`);
+          titleInput.value = '';
+          fileInput.value = '';
+          renderGuides();
+        }, 1500);
       } else {
-        msg.textContent = tr('❌ براہ کرم پہلے کوئی پی ڈی ایف فائل منتخب کریں۔', '❌ Please select a PDF file first.');
+        msg.textContent = tr('❌ براہ کرم گائیڈ کا نام اور پی ڈی ایف فائل دونوں منتخب کریں۔', '❌ Please enter a title and select a PDF file.');
       }
     }
 
     function renderGuides() {
       const q = (document.getElementById('searchBox').value || '').toLowerCase();
-      const list = guides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
+      // Combine base guides (1 to 15) with auto-numbered uploaded pdfs (16, 17...)
+      const allGuides = [...baseGuides, ...uploadedPdfs];
+      const list = allGuides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
+
       document.getElementById('guidesList').innerHTML = list.map((g, idx) => `
         <div onclick="openGuide(${g[0]})" class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer">
           <div class="flex justify-between items-center mb-1.5">
@@ -347,15 +394,14 @@
     }
     function openGuide(id) {
       currentModalId = id;
-      const g = guides.find(x => x[0] === id); if (!g) return;
+      const allGuides = [...baseGuides, ...uploadedPdfs];
+      const g = allGuides.find(x => x[0] === id); if (!g) return;
       document.getElementById('mTitle').textContent = tr(g[3], g[4]);
       document.getElementById('mBody').innerHTML = `
         <div class="bg-white p-4 rounded-2xl border-2 border-emerald-200 space-y-3">
-          <div class="border-b pb-2 flex justify-between items-center">
-            <div>
-              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr('پاکستانی قانونی و عملی گائیڈ','Pakistani Legal & Practical Roadmap')}</span>
-              <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fCls()} mt-2">${tr(g[5], g[6])}</p>
-            </div>
+          <div class="border-b pb-2">
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr('پاکستانی قانونی و عملی گائیڈ','Pakistani Legal & Practical Roadmap')}</span>
+            <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fCls()} mt-2">${tr(g[5], g[6])}</p>
           </div>
           <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fCls()}">${tr('💡 ہدایت: نیچے کسی بھی پوائنٹ پر کلک کریں تاکہ اس کی سٹیپ بائی سٹیپ تفصیل کھل جائے:','💡 Tip: Click any bullet point below to expand its step-by-step action plan:')}</p>
           <div class="space-y-2">
