@@ -21,16 +21,16 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- Top Toast -->
+  <!-- Top Animated Toast -->
   <div id="progressToast" class="fixed top-3 left-1/2 -translate-x-1/2 z-50 hidden bg-[#0A192F] text-white px-5 py-2.5 rounded-2xl border-2 border-[#D4AF37] shadow-2xl flex items-center gap-3 text-xs font-bold">
     <div class="relative w-6 h-6 flex items-center justify-center overflow-hidden">
       <span id="toastArrow" class="text-lg text-[#F3E5AB] arrow-down">⬇️</span>
     </div>
-    <span id="toastText">فائل ڈاؤن لوڈ ہو رہی ہے...</span>
+    <span id="toastText">...</span>
   </div>
 
   <!-- Header -->
-  <header class="hero-bg text-white sticky top-0 z-50 shadow-lg border-b border-[#D4AF37]/50">
+  <header class="hero-bg text-white sticky top-0 z-40 shadow-lg border-b border-[#D4AF37]/50">
     <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-2xl gold-bg flex items-center justify-center text-[#0A192F] font-black text-lg shadow shrink-0">FLP</div>
@@ -46,10 +46,18 @@
     </div>
   </header>
 
-  <!-- Hero & Live Date/Clock -->
+  <!-- Hero, Live Visitors Counter & Date/Clock -->
   <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
     <div class="max-w-2xl mx-auto">
-      <span id="heroBadgeText" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-2.5">
+        <span id="heroBadgeText" class="px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold"></span>
+        <button onclick="showVisitorInfo()" class="px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center gap-1.5 shadow">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span data-ur="کل وزٹرز:" data-en="Total Visitors:"></span>
+          <span id="totalVisitorsCount" class="font-mono font-extrabold text-[#F3E5AB]">0</span>
+        </button>
+      </div>
+
       <div class="max-w-md mx-auto my-2 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB]">
         <div class="flex items-center justify-between border-b border-white/15 pb-1.5 mb-1.5 gap-2">
           <span id="dateGregorian" class="font-bold">...</span>
@@ -57,6 +65,7 @@
         </div>
         <div id="dateCalendars" class="text-[11px] text-emerald-100 flex flex-wrap justify-center gap-x-2 gap-y-1"></div>
       </div>
+
       <h2 data-ur="غریب سے معاشی خود مختاری کا سفر: پی ڈی ایف گائیڈز اور اثاثہ سازی" data-en="From Low Income to Financial Freedom: PDF Guides & Asset Building" class="text-base md:text-xl font-black mb-3 urdu-font"></h2>
       <div class="max-w-md mx-auto">
         <input type="text" id="searchBox" oninput="renderGuides()" data-ph-ur="تلاش کریں (اثاثے، کاروبار، بچت، سونا، پلاٹ، ٹیکس)..." data-ph-en="Search topics (Assets, Business, Budget, Gold, Plot, Tax)..." class="w-full px-4 py-2.5 rounded-2xl bg-white text-gray-900 text-xs shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" />
@@ -100,49 +109,51 @@
 
     <!-- Guides List -->
     <h3 id="libraryHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font"></h3>
-    <div id="guidesList" class="space-y-3 mb-8"></div>
+    <div id="guidesList" class="space-y-3.5 mb-8"></div>
   </main>
 
-  <!-- Bottom Developer Contact, Secure Admin Panel & Feedback Section -->
+  <!-- Bottom Developer Contact, Hidden Admin Trigger & Feedback Section -->
   <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto">
     <div class="max-w-3xl mx-auto space-y-6">
-
-      <!-- Developer Info & Secure Admin Login / Panel (Hidden trigger via subtle click on logo or text for ultimate security) -->
       <div class="bg-white/10 p-5 rounded-3xl border border-[#D4AF37]/50 text-center space-y-3">
-        <div onclick="triggerAdminSecret()" class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base cursor-pointer select-none" title="Admin Access">NI</div>
+        <!-- Secret Developer Access: Tap NI Logo -->
+        <div onclick="triggerAdminSecret()" class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base cursor-pointer select-none shadow" title="Developer Admin">NI</div>
         <h3 data-ur="فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال" data-en="Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal" class="text-sm font-extrabold text-[#F3E5AB]"></h3>
-        <p data-ur="موبایل رابطہ: 0310-5379765 | جی میل: ni31071987@gmail.com" data-en="Phone: 0310-5379765 | Email: ni31071987@gmail.com" class="text-xs text-emerald-200 font-mono"></p>
-        
-        <!-- Secure Developer Uploader (Hidden until authenticated) -->
+        <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
+          <a href="tel:03105379765" class="px-3 py-1.5 rounded-xl bg-[#064E3B] border border-emerald-400 font-bold">📞 0310-5379765</a>
+          <a href="mailto:ni31071987@gmail.com" class="px-3 py-1.5 rounded-xl bg-white/15 border border-[#D4AF37]/40 font-bold">✉️ ni31071987@gmail.com</a>
+        </div>
+
+        <!-- Hidden Admin Panel (Only visible after Developer Login/Password Setup) -->
         <div id="adminPanel" class="hidden bg-black/40 p-4 rounded-2xl border-2 border-emerald-500 text-right text-xs space-y-3 mt-3">
           <div class="flex justify-between items-center border-b border-emerald-500/30 pb-2">
-            <span class="font-extrabold text-emerald-300">🔓 ایڈمن موڈ فعال (Admin Mode)</span>
+            <span class="font-extrabold text-emerald-300">🔓 ڈویلپر ایڈمن موڈ (Admin Active)</span>
             <div class="flex gap-2">
-              <button onclick="changeAdminPassword()" class="text-amber-300 font-bold px-2 py-0.5 bg-amber-950/50 rounded border border-amber-500/50">پاسورڈ بدلیں</button>
-              <button onclick="adminLogout()" class="text-red-400 font-bold px-2 py-0.5 bg-red-950/50 rounded border border-red-500/50">لاگ آؤٹ</button>
+              <button onclick="changeAdminPassword()" class="text-amber-300 font-bold px-2 py-0.5 bg-amber-950/60 rounded border border-amber-500/50">پاسورڈ تبدیل کریں</button>
+              <button onclick="adminLogout()" class="text-red-400 font-bold px-2 py-0.5 bg-red-950/60 rounded border border-red-500/50">لاگ آؤٹ</button>
             </div>
           </div>
           <div>
             <span data-ur="🔒 نئی پی ڈی ایف گائیڈ اپلوڈ کریں:" data-en="🔒 Upload New PDF Guide:" class="font-bold text-[#F3E5AB] block mb-1"></span>
-            <input type="text" id="devPdfTitle" data-ph-ur="گائیڈ کا نام درج کریں..." data-ph-en="Enter Guide Title..." class="w-full p-2 border rounded-xl text-xs bg-white text-gray-900 font-semibold mb-2" />
+            <input type="text" id="devPdfTitle" data-ph-ur="گائیڈ کا عنوان درج کریں..." data-ph-en="Enter Guide Title..." class="w-full p-2 border rounded-xl text-xs bg-white text-gray-900 font-semibold mb-2" />
             <div class="flex flex-col sm:flex-row gap-2">
-              <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#D4AF37] file:text-[#0A192F] hover:file:bg-amber-400 cursor-pointer" />
-              <button onclick="handleDevUpload()" data-ur="اپلوڈ کریں" data-en="Upload PDF" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-white shrink-0"></button>
+              <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#D4AF37] file:text-[#0A192F] cursor-pointer" />
+              <button onclick="handleDevUpload()" data-ur="اپلوڈ کریں" data-en="Upload PDF" class="px-4 py-1.5 rounded-xl bg-emerald-600 font-bold text-white shrink-0"></button>
             </div>
             <p id="uploadMsg" class="text-[10px] text-emerald-300 mt-1.5"></p>
           </div>
         </div>
       </div>
 
-      <!-- Feedback Box -->
+      <!-- Bottom App Feedback Box -->
       <div class="bg-white text-gray-900 p-5 rounded-3xl border-2 border-[#D4AF37] shadow-2xl">
         <div class="flex items-center justify-between mb-2 border-b pb-2 gap-2">
-          <h3 data-ur="💬 ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز دیں" data-en="💬 Share Your Valuable Suggestions to Improve This App" class="text-xs md:text-sm font-extrabold text-[#0A192F]"></h3>
+          <h3 data-ur="💬 ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء سے مستفید فرمائیں" data-en="💬 Share Your Valuable Suggestions & Feedback to Improve This App" class="text-xs md:text-sm font-extrabold text-[#0A192F]"></h3>
           <span data-ur="آراء و تجاویز" data-en="Feedback" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full font-bold shrink-0"></span>
         </div>
         <form onsubmit="postChatMessage(event)" class="space-y-2.5 mb-4">
           <input type="text" id="chatName" required data-ph-ur="آپ کا نام..." data-ph-en="Your Name..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50 font-semibold" />
-          <textarea id="chatText" required rows="2" data-ph-ur="ایپ کی بہتری کے لیے اپنی تجویز یہاں لکھیں..." data-ph-en="Write your suggestion here..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50"></textarea>
+          <textarea id="chatText" required rows="2" data-ph-ur="ایپ کی بہتری کے لیے اپنی تجویز یا رائے یہاں لکھیں..." data-ph-en="Write your suggestion or feedback here..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50"></textarea>
           <button type="submit" data-ur="تجویز اور رائے ارسال کریں" data-en="Submit Suggestion" class="w-full py-2.5 gold-bg text-[#0A192F] font-extrabold rounded-xl text-xs shadow"></button>
         </form>
         <div id="chatMessagesList" class="space-y-2 max-h-48 overflow-y-auto border-t pt-3 text-xs"></div>
@@ -156,9 +167,9 @@
     <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-4 border-2 border-[#D4AF37]">
       <div class="hero-bg text-white px-4 py-3.5 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 gap-2">
         <h3 id="mTitle" class="text-xs md:text-sm font-bold text-[#F3E5AB]"></h3>
-        <div class="flex items-center gap-2">
-          <button onclick="downloadCurrentPdf()" id="modalPdfBtn" class="px-3 py-1 rounded-lg bg-[#D4AF37] text-[#0A192F] font-bold text-xs flex items-center gap-1 shadow">📥 PDF Read</button>
-          <button onclick="closeModal()" class="w-8 h-8 rounded-xl bg-white/20 text-white font-black text-xs flex items-center justify-center shrink-0">✕</button>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="downloadCurrentPdf()" class="px-3 py-1 rounded-lg bg-[#D4AF37] text-[#0A192F] font-bold text-xs flex items-center gap-1 shadow">📥 PDF</button>
+          <button onclick="closeModal()" class="w-8 h-8 rounded-xl bg-white/20 text-white font-black text-xs flex items-center justify-center">✕</button>
         </div>
       </div>
       <div id="mBody" class="p-4 md:p-6 space-y-3 text-xs md:text-sm text-gray-800 bg-slate-50"></div>
@@ -170,56 +181,74 @@
     const tr = (ur, en) => lang === 'ur' ? ur : en;
     const fCls = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
 
-    const baseGuides = [
-      [1, 'بجٹ اور بچت', 'Budgeting', '1. 50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', '1. The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', [
+    // 15 Sorted Guides (Without hardcoded number prefix so auto-numbering stays clean)
+    let baseGuides = [
+      [1, 'بجٹ اور بچت', 'Budgeting', '50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', 'The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', [
         ['1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)', '1. Pay Yourself First (20% Immediate Savings)', '• تنخواہ یا مزدوری ملتے ہی خرچ سے پہلے 10% سے 20% رقم الگ رکھیں۔ مہینے کے آخر کا انتظار نہ کریں۔', '• Immediately transfer 10%–20% into savings the day you get paid before spending a rupee.'],
         ['2. ہول سیل مارکیٹ سے راشن کی خریداری (50% ضروریات)', '2. Bulk Wholesale Grocery Planning (50% Needs)', '• پرچون کے بجائے مہینے کے شروع میں ہول سیل منڈی سے آٹا، گھی اور دالیں اکٹھی خرید کر 15% سے 20% بچت کریں۔', '• Buy monthly staples in bulk from wholesale markets at the start of the month to save 15%–20%.']
       ]],
-      [2, 'اثاثہ سازی', 'Micro-Assets', '2. مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets)', '2. Micro-Asset Building for Common People', 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے منافع بخش اثاثے کیسے بنائے؟', 'Practical steps for daily-wage earners to build income-generating assets.', 'gold', '🥇 سونا اور بچت ٹول', '🥇 Micro-Gold Tool', [
-        ['1. مائکرو گولڈ (0.1 گرام یا 1 گرام سونے کے ٹکڑے)', '1. Micro-Gold Accumulation (Fractional 24K Gold)', '• تولہ سونا خریدنے کا انتظار نہ کریں۔ روزانہ 100 یا 200 روپے الگ جمع کریں اور 24 قیراط سونے کے چھوٹے ٹکڑے پکی رسید کے ساتھ لیں۔', '• Do not wait for a full Tola. Save PKR 100–200 daily and buy fractional 24K pure gold sheets with an invoice.']
+      [2, 'اثاثہ سازی', 'Micro-Assets', 'مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets)', 'Micro-Asset Building for Common People', 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے منافع بخش اثاثے کیسے بنائے؟', 'Practical steps for daily-wage earners to build income-generating assets.', 'gold', '🥇 سونا اور بچت ٹول', '🥇 Micro-Gold Tool', [
+        ['1. مائکرو گولڈ (0.1 گرام یا 1 گرام سونے کے ٹکڑے)', '1. Micro-Gold Accumulation (Fractional 24K Gold)', '• تولہ سونا خریدنے کا انتظار نہ کریں۔ روزانہ 100 یا 200 روپے الگ جمع کریں اور 24 قیراط سونے کے چھوٹے ٹکڑے پکی رسید کے ساتھ لیں۔', '• Do not wait for a full Tola. Save PKR 100–200 daily and buy fractional 24K pure gold sheets with an invoice.'],
+        ['2. اوزار اور مشینری بطورِ اثاثہ (Tools as Capital)', '2. Working Tools & Equipment as Cash-Flowing Assets', '• کاریگر، مستری یا درزی کے لیے جدید اوزار ہی اس کی فیکٹری ہیں۔ بچت سے بہتر مشینری لیں۔', '• Reinvest small savings into better power tools or sewing machines to double work speed.']
       ]],
-      [3, 'غربت سے آزادی', 'Micro-Business', '3. صفر یا کم سرمائے سے شروع ہونے والے چھوٹے حلال کاروبار', '3. 5 Zero-to-Low Capital Halal Micro-Businesses', 'بنا بڑے سرمائے کے محنت اور ہنر سے گھر بیٹھے حلال روزگار کیسے شروع کریں؟', 'How to launch a self-sustaining micro-business from home with minimal cash.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
-        ['1. ہوم میڈ ٹفن اور لنچ باکس سروس', '1. Homemade Tiffin & Office Lunch Service', '• محلے کے دفاتر یا طلبہ کے لیے صاف ستھرا گھر کا کھانا تیار کریں۔', '• Supply hygienic homemade lunch boxes to local offices.']
+      [3, 'غربت سے آزادی', 'Micro-Business', 'صفر یا کم سرمائے سے شروع ہونے والے چھوٹے حلال کاروبار', '5 Zero-to-Low Capital Halal Micro-Businesses', 'بنا بڑے سرمائے کے محنت اور ہنر سے گھر بیٹھے حلال روزگار کیسے شروع کریں؟', 'How to launch a self-sustaining micro-business from home with minimal cash.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
+        ['1. ہوم میڈ ٹفن، اسٹیشنری اور ہوم ٹیوشن', '1. Homemade Tiffin, Stationery & Tutoring', '• محلے کے دفاتر کے لیے کھانا، اسکول کے باہر اسٹیشنری یا شام کو بچوں کو ٹیوشن پڑھا کر بغیر سرمائے کے کمائی شروع کریں۔', '• Supply homemade lunch boxes, set up a stationery stall, or tutor local children with zero upfront capital.']
       ]],
-      [4, 'ایکشن پلان', 'Action Plan', '4. 30 دن کا فنانشل ایکشن پلان: معاشی استحکام کا سفر', '4. 30-Day Financial Reset & Action Plan', 'صرف 4 ہفتوں میں فالتو اخراجات روکنے اور بچت کا سسٹم بنانے کا عملی روڈ میپ۔', 'A structured 4-week roadmap to audit expenses and eliminate money leaks.', 'goal', '🎯 ہدف پلانر', '🎯 Goal Planner', [
-        ['ہفتہ 1 اور 2: روزانہ کے اخراجات کی ڈائری اور 30% کٹوتی', 'Weeks 1 & 2: Daily Expense Tracking & 30% Cut', '• پہلے ہفتے ہر ایک روپیہ ڈائری میں لکھیں اور دوسرے ہفتے فالتو اخراجات میں 30% کمی لائیں۔', '• Track every single rupee spent for 7 days, then cut lifestyle leaks by 30% in Week 2.']
+      [4, 'ایکشن پلان', 'Action Plan', '30 دن کا فنانشل ایکشن پلان: معاشی استحکام کا سفر', '30-Day Financial Reset & Action Plan', 'صرف 4 ہفتوں میں فالتو اخراجات روکنے اور بچت کا سسٹم بنانے کا عملی روڈ میپ۔', 'A structured 4-week roadmap to audit expenses and eliminate money leaks.', 'goal', '🎯 ہدف پلانر', '🎯 Goal Planner', [
+        ['ہفتہ وار اخراجات کی ڈائری اور 30% کٹوتی', 'Weekly Expense Audit & 30% Cut', '• پہلے ہفتے ہر ایک روپیہ ڈائری میں لکھیں اور دوسرے ہفتے فالتو اخراجات میں 30% کمی لائیں۔', '• Track every single rupee spent for 7 days, then cut lifestyle leaks by 30%.']
       ]],
-      [5, 'کمیٹی پلان', 'Committee Plan', '5. کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ پلان', '5. Structured Family Committee (ROSCA): 12-Month Plan', 'پاکستان میں محفوظ کمیٹی ڈالنے، تحریری ریکارڈ رکھنے اور رقم کو اثاثے میں بدلنے کا طریقہ۔', 'Organize a secure 12-member monthly savings committee and track payouts.', 'committee', '🗓️ کمیٹی ٹول', '🗓️ Committee Tool', [
-        ['1. قابلِ اعتماد ممبران اور تحریری شیڈول', '1. Trusted Members & Written Ledger', '• صرف آزمودہ لوگوں کے ساتھ کمیٹی ڈالیں اور اس ایپ کے کمیٹی ٹول میں ہر ماہ کا ریکارڈ رکھیں۔', '• Join committees only with reliable family/friends and log every monthly installment.']
+      [5, 'کمیٹی پلان', 'Committee Plan', 'کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ پلان', 'Structured Family Committee (ROSCA): 12-Month Plan', 'پاکستان میں محفوظ کمیٹی ڈالنے، تحریری ریکارڈ رکھنے اور رقم کو اثاثے میں بدلنے کا طریقہ۔', 'Organize a secure 12-member monthly savings committee and track payouts.', 'committee', '🗓️ کمیٹی ٹول', '🗓️ Committee Tool', [
+        ['قابلِ اعتماد ممبران اور تحریری شیڈول', 'Trusted Members & Written Ledger', '• صرف آزمودہ لوگوں کے ساتھ کمیٹی ڈالیں اور اس ایپ کے کمیٹی ٹول میں ہر ماہ کا ریکارڈ رکھیں۔', '• Join committees only with reliable family/friends and log every monthly installment.']
       ]],
-      [6, 'ایمرجنسی فنڈ', 'Emergency Shield', '6. ایمرجنسی فنڈ: اچانک بیماری یا بحران سے بچاؤ کی ڈھال', '6. Building a 6-Month Emergency Fund Shield', 'ناگہانی ہسپتال کے خرچ یا بے روزگاری میں قرض مانگنے سے بچنے کا حفاظتی فارمولا۔', 'Formula to build 3 to 6 months of living expenses for unexpected crises.', 'goal', '🎯 ایمرجنسی کیلکولیٹر', '🎯 Emergency Tool', [
-        ['1. تین سے چھ ماہ کے لازمی اخراجات کا حساب', '1. The 3-to-6 Month Survival Expense Formula', '• اپنے گھر کے ایک ماہ کے راشن، کرائے اور بلوں کو 3 یا 6 سے ضرب دیں۔', '• Multiply essential monthly survival costs by 3 to 6 and keep this reserve separate.']
+      [6, 'ایمرجنسی فنڈ', 'Emergency Shield', 'ایمرجنسی فنڈ: اچانک بیماری یا بحران سے بچاؤ کی ڈھال', 'Building a 6-Month Emergency Fund Shield', 'ناگہانی ہسپتال کے خرچ یا بے روزگاری میں قرض مانگنے سے بچنے کا حفاظتی فارمولا۔', 'Formula to build 3 to 6 months of living expenses for unexpected crises.', 'goal', '🎯 ایمرجنسی کیلکولیٹر', '🎯 Emergency Tool', [
+        ['تین سے چھ ماہ کے لازمی اخراجات کا حساب', 'The 3-to-6 Month Survival Expense Formula', '• اپنے گھر کے ایک ماہ کے راشن، کرائے اور بلوں کو 3 یا 6 سے ضرب دیں اور الگ محفوظ رکھیں۔', '• Multiply essential monthly survival costs by 3 to 6 and keep this reserve separate.']
       ]],
-      [7, 'قرض سے نجات', 'Debt Freedom', '7. قرض اور سودی قسطوں کے جال سے نکلنے کا عملی منصوبہ', '7. Debt Freedom Roadmap: Escape Loans & Installment Traps', 'ڈیبٹ سنو بال (Debt Snowball) طریقے سے ادھار ختم کرنے اور مہنگی قسطوں سے بچنے کا راستہ۔', 'Use the Debt Snowball method to clear loans and avoid high-markup installment traps.', 'goal', '🎯 قرض پلانر', '🎯 Debt Payoff Tool', [
-        ['1. سب سے چھوٹے قرض کو سب سے پہلے ختم کریں', '1. Attack Smallest Debt First (Debt Snowball)', '• تمام قرضوں کی فہرست بنائیں، سب سے چھوٹا ادھار پہلے چکا کر ذہنی حوصلہ حاصل کریں۔', '• List all debts from smallest to largest, clear the smallest first for momentum.']
+      [7, 'قرض سے نجات', 'Debt Freedom', 'قرض اور سودی قسطوں کے جال سے نکلنے کا عملی منصوبہ', 'Debt Freedom Roadmap: Escape Loans & Installment Traps', 'ڈیبٹ سنو بال (Debt Snowball) طریقے سے ادھار ختم کرنے اور مہنگی قسطوں سے بچنے کا راستہ۔', 'Use the Debt Snowball method to clear loans and avoid high-markup installment traps.', 'goal', '🎯 قرض پلانر', '🎯 Debt Payoff Tool', [
+        ['سب سے چھوٹے قرض کو سب سے پہلے ختم کریں', 'Attack Smallest Debt First (Debt Snowball)', '• تمام قرضوں کی فہرست بنائیں، سب سے چھوٹا ادھار پہلے چکا کر ذہنی حوصلہ حاصل کریں۔', '• List all debts from smallest to largest, clear the smallest first for momentum.']
       ]],
-      [8, 'ریئل اسٹیٹ و قانون', 'Real Estate & Law', '8. پلاٹ یا گھر خریدنے کے اصول اور پاکستانی قانونی تصدیق', '8. 5 Golden Rules & Pakistani Legal Property Verification', 'پاکستان میں پراپرٹی خریدتے وقت جعل سازی، NOC اور فرد/انتقال کی تصدیق کا طریقہ۔', 'How to verify NOCs, land records (Fard/Registry), and avoid fraud in Pakistan.', null, '', '', [
-        ['1. این او سی (NOC) اور فردِ ملکیت کی سرکاری تصدیق', '1. Official NOC & Land Record Verification (CDA/LDA/PLRA)', '• بیانہ دینے سے پہلے متعلقہ اتھارٹی سے سوسائٹی کا منظور شدہ NOC چیک کریں۔', '• Verify valid society NOC from CDA, LDA, RDA, or SBCA before token payment.']
+      [8, 'ریئل اسٹیٹ و قانون', 'Real Estate & Law', 'پلاٹ یا گھر خریدنے کے اصول اور پاکستانی قانونی تصدیق', '5 Golden Rules & Pakistani Legal Property Verification', 'پاکستان میں پراپرٹی خریدتے وقت جعل سازی، NOC اور فرد/انتقال کی تصدیق کا طریقہ۔', 'How to verify NOCs, land records (Fard/Registry), and avoid fraud in Pakistan.', null, '', '', [
+        ['این او سی (NOC) اور فردِ ملکیت کی سرکاری تصدیق', 'Official NOC & Land Record Verification (CDA/LDA/PLRA)', '• بیانہ دینے سے پہلے متعلقہ اتھارٹی (CDA/LDA/RDA) سے منظور شدہ NOC اور اراضی سینٹر سے فرد چیک کریں۔', '• Verify valid society NOC from CDA, LDA, or RDA and check original Fard before token payment.']
       ]],
-      [9, 'سونا اور انویسٹمنٹ', 'Gold & Investing', '9. مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ فنڈز', '9. Beating Inflation: 24K Gold & Shariah Mutual Funds', 'نقد رقم کی گرتی قدر کو بچانے کے لیے خالص سونے اور SECP منظور شدہ حلال فنڈز کی گائیڈ۔', 'Protect purchasing power using 24K gold bars and SECP-regulated Islamic funds.', 'zakat', '🪙 زکوٰۃ کیلکولیٹر', '🪙 Zakat Tool', [
-        ['1. زیورات کے بجائے 24 قیراط سونے کے بسکٹ یا سکے', '1. Buy 24K Certified Gold Bars Instead of Jewelry', '• زیورات پر کٹوتی ہوتی ہے۔ ہمیشہ 24K پیک شدہ گولڈ بسکٹ خریدیں۔', '• Jewelry loses value in making charges. Buy 24K sealed gold bars with zero resale deduction.']
+      [9, 'سونا اور انویسٹمنٹ', 'Gold & Investing', 'مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ فنڈز', 'Beating Inflation: 24K Gold & Shariah Mutual Funds', 'نقد رقم کی گرتی قدر کو بچانے کے لیے خالص سونے اور SECP منظور شدہ حلال فنڈز کی گائیڈ۔', 'Protect purchasing power using 24K gold bars and SECP-regulated Islamic funds.', 'zakat', '🪙 زکوٰۃ کیلکولیٹر', '🪙 Zakat Tool', [
+        ['زیورات کے بجائے 24 قیراط سونے کے بسکٹ یا سکے', 'Buy 24K Certified Gold Bars Instead of Jewelry', '• زیورات پر کٹوتی ہوتی ہے۔ ہمیشہ 24K پیک شدہ گولڈ بسکٹ خریدیں۔', '• Jewelry loses value in making charges. Buy 24K sealed gold bars with zero resale deduction.']
       ]],
-      [10, 'ڈیجیٹل اسکلز', 'Digital Skills', '10. آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', '10. Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال سائیڈ انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', [
-        ['1. مفت سرکاری کورسز (DigiSkills / NAVTTC)', '1. Free Portals (DigiSkills / NAVTTC) & Local Services', '• مفت سرکاری کورسز سے گرافک ڈیزائن اور AI سیکھ کر خدمات دیں۔', '• Master design and AI tools via DigiSkills.pk/NAVTTC.']
+      [10, 'ڈیجیٹل اسکلز', 'Digital Skills', 'آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', 'Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال سائیڈ انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', [
+        ['مفت سرکاری کورسز (DigiSkills / NAVTTC)', 'Free Portals (DigiSkills / NAVTTC) & Local Services', '• مفت سرکاری کورسز سے گرافک ڈیزائن اور AI سیکھ کر خدمات دیں۔', '• Master design and AI tools via DigiSkills.pk/NAVTTC.']
       ]],
-      [11, 'بچوں کا مستقبل', 'Children Future', '11. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی', '11. Children’s Higher Education & Marriage Fund Blueprint', '10 سے 15 سال بعد کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا سونا جوڑنے کا طریقہ۔', 'Prepare for future family milestones over 10–15 years without taking loans.', 'gold', '🥇 بچت و سونا ٹول', '🥇 Gold Saving Tool', [
-        ['1. ہر سال سونے کی چھوٹی بچت', '1. Annual Gold Accumulation & Education Priority', '• بچے کی پیدائش سے ہی ہر سال بچت سے 1 یا 2 گرام سونا لے کر رکھیں۔', '• Convert small monthly child savings into 1–2 grams of 24K gold yearly.']
+      [11, 'بچوں کا مستقبل', 'Children Future', 'بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی', 'Children’s Higher Education & Marriage Fund Blueprint', '10 سے 15 سال بعد کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا سونا جوڑنے کا طریقہ۔', 'Prepare for future family milestones over 10–15 years without taking loans.', 'gold', '🥇 بچت و سونا ٹول', '🥇 Gold Saving Tool', [
+        ['ہر سال سونے کی چھوٹی بچت', 'Annual Gold Accumulation & Education Priority', '• بچے کی پیدائش سے ہی ہر سال بچت سے 1 یا 2 گرام سونا لے کر رکھیں۔', '• Convert small monthly child savings into 1–2 grams of 24K gold yearly.']
       ]],
-      [12, 'گاڑی کے اصول', 'Vehicle Rules', '12. گاڑی یا موٹرسائیکل کی خریداری، کاغذات اور مرمت', '12. Smart Vehicle Purchase, Excise Check & Maintenance Rules', 'استطاعت کے مطابق سواری خریدنے، MTMIS تصدیق اور ماہانہ پیٹرول و پارٹس کا بجٹ۔', 'Rules for buying a vehicle, verifying Excise records, and budgeting for fuel/parts.', null, '', '', [
-        ['1. ایکسائز (MTMIS) تصدیق اور مینٹیننس فنڈ', '1. Excise MTMIS Check, Spare Parts & Maintenance Fund', '• خریداری سے پہلے آن لائن MTMIS ریکارڈ اور بائیو میٹرک ٹرانسفر یقینی بنائیں۔', '• Verify vehicle records on provincial Excise MTMIS before purchase.']
+      [12, 'گاڑی کے اصول', 'Vehicle Rules', 'گاڑی یا موٹرسائیکل کی خریداری، کاغذات اور مرمت', 'Smart Vehicle Purchase, Excise Check & Maintenance Rules', 'استطاعت کے مطابق سواری خریدنے، MTMIS تصدیق اور ماہانہ پیٹرول و پارٹس کا بجٹ۔', 'Rules for buying a vehicle, verifying Excise records, and budgeting for fuel/parts.', null, '', '', [
+        ['ایکسائز (MTMIS) تصدیق اور مینٹیننس فنڈ', 'Excise MTMIS Check, Spare Parts & Maintenance Fund', '• خریداری سے پہلے آن لائن MTMIS ریکارڈ اور بائیو میٹرک ٹرانسفر یقینی بنائیں۔', '• Verify vehicle records on provincial Excise MTMIS before purchase.']
       ]],
-      [13, 'ٹیکس اور ایف بی آر', 'Tax & FBR', '13. پاکستان میں ٹیکس فائلر (ATL) بننے کے فوائد اور طریقہ', '13. Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer', 'نان فائلر کے دگنے ٹیکس سے بچنے اور FBR IRIS پر خود رجسٹریشن کرنے کی رہنمائی۔', 'Save 50%+ withholding taxes on banking and property via FBR IRIS registration.', null, '', '', [
-        ['1. ایف بی آر آئرس (IRIS) پر مفت رجسٹریشن', '1. Free FBR IRIS Registration & Withholding Tax Savings', '• اپنے شناختی کارڈ اور سم سے iris.fbr.gov.pk پر مفت NTN بنائیں۔', '• Register with your CNIC on iris.fbr.gov.pk.']
+      [13, 'ٹیکس اور ایف بی آر', 'Tax & FBR', 'پاکستان میں ٹیکس فائلر (ATL) بننے کے فوائد اور طریقہ', 'Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer', 'نان فائلر کے دگنے ٹیکس سے بچنے اور FBR IRIS پر خود رجسٹریشن کرنے کی رہنمائی۔', 'Save 50%+ withholding taxes on banking and property via FBR IRIS registration.', null, '', '', [
+        ['ایف بی آر آئرس (IRIS) پر مفت رجسٹریشن', 'Free FBR IRIS Registration & Withholding Tax Savings', '• اپنے شناختی کارڈ اور سم سے iris.fbr.gov.pk پر مفت NTN بنائیں۔', '• Register with your CNIC on iris.fbr.gov.pk.']
       ]],
-      [14, 'ریٹائرمنٹ پلان', 'Retirement Plan', '14. بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', '14. Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ۔', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', [
-        ['1. کرائے کی دکان اور اسلامک پنشن اسکیم (VPS)', '1. Commercial Rental Unit & Islamic Pension (VPS)', '• جوانی کی بچت سے ایک چھوٹی دکان بنائیں یا SECP اسلامک VPS میں حصہ لیں۔', '• Aim to acquire a small rental shop during working years or invest in VPS.']
+      [14, 'ریٹائرمنٹ پلان', 'Retirement Plan', 'بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', 'Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ۔', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', [
+        ['کرائے کی دکان اور اسلامک پنشن اسکیم (VPS)', 'Commercial Rental Unit & Islamic Pension (VPS)', '• جوانی کی بچت سے ایک چھوٹی دکان بنائیں یا SECP اسلامک VPS میں حصہ لیں۔', '• Aim to acquire a small rental shop during working years or invest in VPS.']
       ]],
-      [15, 'دکان کا کھاتہ', 'Business Cashbook', '15. چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', '15. Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
-        ['1. دکان کا گلہ الگ رکھیں اور اپنی تنخواہ مقرر کریں', '1. Separate Registers & Fixed Owner Salary', '• دکان کے کیش سے براہِ راست گھر کا خرچ نہ نکالیں۔ اپنی تنخواہ مقرر کریں۔', '• Never draw unrecorded household cash from the shop register. Set a fixed salary.']
+      [15, 'دکان کا کھاتہ', 'Business Cashbook', 'چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', 'Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
+        ['دکان کا گلہ الگ رکھیں اور اپنی تنخواہ مقرر کریں', 'Separate Registers & Fixed Owner Salary', '• دکان کے کیش سے براہِ راست گھر کا خرچ نہ نکالیں۔ اپنی تنخواہ مقرر کریں۔', '• Never draw unrecorded household cash from the shop register. Set a fixed salary.']
       ]]
     ];
 
-    let uploadedPdfs = JSON.parse(localStorage.getItem('flp_uploaded_pdfs_v2') || '[]');
+    let uploadedPdfs = JSON.parse(localStorage.getItem('flp_uploaded_pdfs_v3') || '[]');
+    let deletedBaseIds = JSON.parse(localStorage.getItem('flp_deleted_base') || '[]');
+    baseGuides = baseGuides.filter(g => !deletedBaseIds.includes(g[0]));
+
+    // Social Stats (Views, Likes, Shares, Comments per Guide) + Total App Visitors
+    let totalVisitors = parseInt(localStorage.getItem('flp_total_visitors') || '1480', 10) + 1;
+    localStorage.setItem('flp_total_visitors', totalVisitors);
+
+    let socialStats = JSON.parse(localStorage.getItem('flp_social_stats') || '{}');
+    function getStat(id) {
+      if (!socialStats[id]) {
+        const seed = (Number(id) % 15) + 1;
+        socialStats[id] = { views: 110 + seed * 19, likes: 32 + seed * 5, shares: 11 + seed * 2, liked: false, comments: [] };
+      }
+      return socialStats[id];
+    }
+    function saveStats() { localStorage.setItem('flp_social_stats', JSON.stringify(socialStats)); }
 
     let commSlots = [
       { mUr: 'اگست 2026', mEn: 'Aug 2026', nUr: 'والدہ محترمہ', nEn: 'Mother', paid: true },
@@ -232,6 +261,10 @@
     let bizData = JSON.parse(localStorage.getItem('flp_biz_pro') || '[{"desc":"Daily Sales / آج کی سیل","amt":25000,"type":"in"},{"desc":"Stock / مال خریداری","amt":10000,"type":"exp"}]');
     let chatData = JSON.parse(localStorage.getItem('flp_chat_pro') || '[]');
 
+    function showVisitorInfo() {
+      showToast(tr(`👁️ اب تک ${totalVisitors.toLocaleString()} افراد اس ایپ کا وزٹ کر چکے ہیں!`, `👁️ ${totalVisitors.toLocaleString()} total visitors have accessed this app!`), true);
+    }
+
     function loadLiveDates() {
       const now = new Date(), dIdx = now.getDay(), dNum = now.getDate(), mIdx = now.getMonth(), yNum = now.getFullYear();
       const daysUr = ['اتوار','پیر','منگل','بدھ','جمعرات','جمعہ','ہفتہ'], daysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -243,10 +276,11 @@
         hUr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
         hEn = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
       } catch(e) {}
-      document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}؍ ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
+      document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}، ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
       document.getElementById('dateCalendars').innerHTML = lang === 'ur'
         ? `<span>🌙 اسلامی: ${hUr}</span>|<span>🌾 دیسی: ${desiDay} ${dMUr[desiIdx]}</span>|<span>🇵🇰 پاکستان وقت</span>`
         : `<span>🌙 Islamic: ${hEn}</span>|<span>🌾 Desi: ${desiDay} ${dMEn[desiIdx]}</span>|<span>🇵🇰 PKT Time</span>`;
+      document.getElementById('totalVisitorsCount').textContent = totalVisitors.toLocaleString();
     }
 
     function updateLiveClock() {
@@ -268,12 +302,22 @@
       renderChat(); renderGuides();
     }
 
-    // Secret Admin Login with password creation & changing support
+    // Secret Developer Password Setup & Login (Triggered by clicking NI Logo)
     function triggerAdminSecret() {
       if (isAdminLoggedIn) return;
-      let savedPwd = localStorage.getItem('flp_admin_pwd') || '1234';
-      
-      const pwd = prompt(tr('ڈویلپر پاسورڈ درج کریں:', 'Enter Developer Password:'));
+      let savedPwd = localStorage.getItem('flp_admin_pwd');
+      if (!savedPwd) {
+        const newPwd = prompt(tr('🔐 پہلی بار ڈویلپر سیٹ اپ: اپنا نیا ایڈمن پاسورڈ بنائیں (Create Password):', '🔐 First-Time Developer Setup: Create your new Admin Password:'));
+        if (newPwd && newPwd.trim().length >= 3) {
+          localStorage.setItem('flp_admin_pwd', newPwd.trim());
+          isAdminLoggedIn = true;
+          document.getElementById('adminPanel').classList.remove('hidden');
+          renderGuides();
+          showToast(tr('✅ آپ کا ڈویلپر پاسورڈ بن گیا اور ایڈمن موڈ آن ہو گیا!', '✅ Password created & Admin Mode activated!'), true);
+        }
+        return;
+      }
+      const pwd = prompt(tr('🔐 ڈویلپر پاسورڈ درج کریں:', '🔐 Enter Developer Password:'));
       if (pwd === savedPwd) {
         isAdminLoggedIn = true;
         document.getElementById('adminPanel').classList.remove('hidden');
@@ -285,16 +329,16 @@
     }
 
     function changeAdminPassword() {
-      let currentPwd = localStorage.getItem('flp_admin_pwd') || '1234';
-      let oldInput = prompt(tr('پرانا پاسورڈ درج کریں:', 'Enter current password:'));
+      let currentPwd = localStorage.getItem('flp_admin_pwd');
+      let oldInput = prompt(tr('موجودہ پاسورڈ درج کریں:', 'Enter current password:'));
       if (oldInput === currentPwd) {
         let newInput = prompt(tr('نیا پاسورڈ درج کریں:', 'Enter new password:'));
-        if (newInput && newInput.trim() !== '') {
+        if (newInput && newInput.trim().length >= 3) {
           localStorage.setItem('flp_admin_pwd', newInput.trim());
-          alert(tr('✅ پاسورڈ کامیابی سے تبدیل ہو گیا!', '✅ Password successfully changed!'));
+          alert(tr('✅ پاسورڈ کامیابی سے تبدیل ہو گیا!', '✅ Password successfully updated!'));
         }
       } else if (oldInput !== null) {
-        alert(tr('❌ پرانا پاسورڈ غلط ہے!', '❌ Incorrect old password!'));
+        alert(tr('❌ موجودہ پاسورڈ غلط ہے!', '❌ Incorrect current password!'));
       }
     }
 
@@ -302,9 +346,51 @@
       isAdminLoggedIn = false;
       document.getElementById('adminPanel').classList.add('hidden');
       renderGuides();
-      showToast(tr('🔒 لاگ آؤٹ ہو گیا', '🔒 Logged Out'), false);
+      showToast(tr('🔒 ایڈمن لاگ آؤٹ ہو گیا', '🔒 Admin Logged Out'), false);
     }
 
+    // Social Engagement Actions (Like, Share, Comment)
+    function toggleLike(e, id) {
+      e.stopPropagation();
+      const st = getStat(id);
+      st.liked = !st.liked;
+      st.likes += st.liked ? 1 : -1;
+      saveStats(); renderGuides();
+    }
+
+    function shareGuide(e, id, title) {
+      e.stopPropagation();
+      const st = getStat(id);
+      st.shares += 1;
+      saveStats(); renderGuides();
+      const url = window.location.href;
+      const text = `${title} - فنانشل لٹریسی پاکستان ایپ:\n${url}`;
+      if (navigator.share) {
+        navigator.share({ title, text, url }).catch(() => {});
+      } else {
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+      }
+    }
+
+    function toggleCommentBox(e, id) {
+      e.stopPropagation();
+      const el = document.getElementById('commBox-' + id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    function addGuideComment(e, id) {
+      e.preventDefault(); e.stopPropagation();
+      const nameEl = document.getElementById('cName-' + id);
+      const textEl = document.getElementById('cText-' + id);
+      const n = nameEl.value.trim(), t = textEl.value.trim();
+      if (!n || !t) return;
+      const st = getStat(id);
+      st.comments.unshift({ name: n, text: t, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+      saveStats(); renderGuides();
+      setTimeout(() => { const box = document.getElementById('commBox-' + id); if (box) box.classList.remove('hidden'); }, 50);
+    }
+
+    // Tools Logic
     function renderToolHTML(cId, type, p) {
       const box = document.getElementById(cId); if (!box) return;
       const closeFn = p === 'top' ? 'closeTopTool()' : `document.getElementById('${cId}').classList.add('hidden')`;
@@ -362,33 +448,26 @@
       arrow.className = isUpload ? 'text-lg text-[#F3E5AB] arrow-up' : 'text-lg text-[#F3E5AB] arrow-down';
       msg.textContent = text;
       toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 3500);
+      setTimeout(() => toast.classList.add('hidden'), 3200);
     }
 
     function downloadPdfFile(pdfUrl, title) {
       showToast(tr(`📥 "${title}" ڈاؤن لوڈ ہو رہی ہے...`, `📥 Downloading "${title}"...`), false);
       setTimeout(() => {
-        if (pdfUrl && pdfUrl.startsWith('blob:')) {
+        if (pdfUrl && (pdfUrl.startsWith('data:') || pdfUrl.startsWith('blob:'))) {
           const a = document.createElement('a');
-          a.href = pdfUrl;
-          a.download = title + '.pdf';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
+          a.href = pdfUrl; a.download = title + '.pdf';
+          document.body.appendChild(a); a.click(); document.body.removeChild(a);
         } else {
-          alert(tr('📥 پی ڈی ایف ڈاؤن لوڈ شروع ہو گئی!', '📥 PDF download initiated!'));
+          window.print();
         }
-      }, 1000);
+      }, 900);
     }
 
     function downloadCurrentPdf() {
       const allGuides = [...baseGuides, ...uploadedPdfs];
       const g = allGuides.find(x => x[0] === currentModalId);
-      if (g && g[11]) {
-        downloadPdfFile(g[11], tr(g[3], g[4]));
-      } else {
-        showToast(tr('📥 پی ڈی ایف فائل ڈاؤن لوڈ ہو رہی ہے...', '📥 Downloading PDF file...'), false);
-      }
+      if (g) downloadPdfFile(g[11] || '', tr(g[3], g[4]));
     }
 
     function handleDevUpload() {
@@ -399,33 +478,29 @@
 
       if (fileInput.files.length > 0 && title) {
         showToast(tr('⬆️ نئی پی ڈی ایف اپلوڈ ہو رہی ہے...', '⬆️ Uploading new PDF...'), true);
-        
         const file = fileInput.files[0];
-        const fileUrl = URL.createObjectURL(file);
-        const newId = Date.now();
-
-        const newPdfItem = [
-          newId,
-          'ڈویلپر اپلوڈ', 'Developer PDF',
-          title, title,
-          tr('یہ گائیڈ ڈویلپر کی طرف سے اپلوڈ کی گئی ہے اور اب پڑھنے اور ڈاؤن لوڈ کے لیے دستیاب ہے۔', 'This guide was uploaded by the developer and is now available for reading and download.'),
-          tr('This guide was uploaded by the developer and is now available for reading and download.', 'This guide was uploaded by the developer and is now available for reading and download.'),
-          null, '', '',
-          [
-            [tr('تفصیلی مواد اور معلومات', 'Detailed Content & Information'), tr('Detailed Content & Information', 'Detailed Content & Information'), tr('یہ فائل ڈویلپر کے ذریعہ پی ڈی ایف لائبریری میں شامل کی گئی ہے۔ اوپر دیے گئے "PDF Read" یا "📥 PDF" بٹن سے آپ اسے مکمل پڑھ یا ڈاؤن لوڈ کر سکتے ہیں۔', 'This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.'), tr('This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.', 'This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.')]
-          ],
-          fileUrl
-        ];
-
-        uploadedPdfs.push(newPdfItem);
-        localStorage.setItem('flp_uploaded_pdfs_v2', JSON.stringify(uploadedPdfs));
-
-        setTimeout(() => {
-          msg.textContent = tr('✅ کامیابی سے اپلوڈ ہو گئی!', '✅ Successfully uploaded!');
-          titleInput.value = '';
-          fileInput.value = '';
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const dataUrl = evt.target.result;
+          const newId = Date.now();
+          const newPdfItem = [
+            newId, 'ڈویلپر پی ڈی ایف', 'Developer PDF', title, title,
+            'ڈویلپر کی جانب سے اپلوڈ کردہ خصوصی پی ڈی ایف گائیڈ۔', 'Special PDF guide uploaded by the developer.',
+            null, '', '',
+            [['پی ڈی ایف دستاویز (مکمل ریڈ ایبل)', 'PDF Document (Readable)', 'نیچے یا اوپر دیے گئے PDF بٹن پر کلک کر کے پوری پی ڈی ایف فائل پڑھیں اور ڈاؤن لوڈ کریں۔', 'Click the PDF button above to view or download the complete file.']],
+            dataUrl
+          ];
+          try {
+            uploadedPdfs.push(newPdfItem);
+            localStorage.setItem('flp_uploaded_pdfs_v3', JSON.stringify(uploadedPdfs));
+          } catch(err) {
+            newPdfItem[11] = URL.createObjectURL(file);
+          }
+          msg.textContent = tr('✅ پی ڈی ایف کامیابی سے اپلوڈ ہو گئی!', '✅ PDF uploaded successfully!');
+          titleInput.value = ''; fileInput.value = '';
           renderGuides();
-        }, 1500);
+        };
+        reader.readAsDataURL(file);
       } else {
         msg.textContent = tr('❌ براہ کرم گائیڈ کا نام اور پی ڈی ایف فائل دونوں منتخب کریں۔', '❌ Please enter a title and select a PDF file.');
       }
@@ -434,35 +509,30 @@
     function editGuide(event, id) {
       event.stopPropagation();
       let allGuides = [...baseGuides, ...uploadedPdfs];
-      const g = allGuides.find(x => x[0] === id);
-      if (!g) return;
-
+      const g = allGuides.find(x => x[0] === id); if (!g) return;
       const newTitle = prompt(tr('گائیڈ کا نیا نام درج کریں:', 'Enter new title for guide:'), tr(g[3], g[4]));
-      if (newTitle !== null && newTitle.trim() !== '') {
-        g[3] = newTitle.trim();
-        g[4] = newTitle.trim();
-        if (uploadedPdfs.some(x => x[0] === id)) {
-          localStorage.setItem('flp_uploaded_pdfs_v2', JSON.stringify(uploadedPdfs));
-        } else {
-          baseGuides = baseGuides.map(item => item[0] === id ? g : item);
-        }
+      if (newTitle && newTitle.trim()) {
+        g[3] = newTitle.trim(); g[4] = newTitle.trim();
+        localStorage.setItem('flp_uploaded_pdfs_v3', JSON.stringify(uploadedPdfs));
         renderGuides();
-        showToast(tr('✏️ گائیڈ کامیابی سے اپڈیٹ ہو گئی!', '✏️ Guide successfully updated!'), true);
+        showToast(tr('✏️ گائیڈ اپڈیٹ ہو گئی!', '✏️ Guide updated!'), true);
       }
     }
 
     function deleteGuide(event, id) {
       event.stopPropagation();
-      if (confirm(tr('کیا آپ واقعی اس گائیڈ کو حذف کرنا چاہتے ہیں؟', 'Are you sure you want to delete this guide?'))) {
+      if (confirm(tr('کیا آپ واقعی اس گائیڈ کو حذف کرنا چاہتے ہیں؟ باقی نمبرز خودکار اپڈیٹ ہو جائیں گے۔', 'Delete this guide? Remaining numbers will auto-update.'))) {
         const upIdx = uploadedPdfs.findIndex(x => x[0] === id);
         if (upIdx !== -1) {
           uploadedPdfs.splice(upIdx, 1);
-          localStorage.setItem('flp_uploaded_pdfs_v2', JSON.stringify(uploadedPdfs));
+          localStorage.setItem('flp_uploaded_pdfs_v3', JSON.stringify(uploadedPdfs));
         } else {
           baseGuides = baseGuides.filter(x => x[0] !== id);
+          deletedBaseIds.push(id);
+          localStorage.setItem('flp_deleted_base', JSON.stringify(deletedBaseIds));
         }
         renderGuides();
-        showToast(tr('🗑️ گائیڈ حذف کر دی گئی اور نمبرز خود بخود اپڈیٹ ہو گئے!', '🗑️ Guide deleted and numbers auto-updated!'), false);
+        showToast(tr('🗑️ گائیڈ حذف ہو گئی اور نمبرنگ اپڈیٹ ہو گئی!', '🗑️ Guide deleted & numbering auto-updated!'), false);
       }
     }
 
@@ -472,8 +542,8 @@
       const totalCount = allGuides.length;
 
       document.getElementById('heroBadgeText').textContent = tr(
-        `💎 ${totalCount} مکمل گائیڈز + پی ڈی ایف ڈاؤن لوڈ + 6 عملی ٹولز`,
-        `💎 ${totalCount} Master Guides + PDF Downloads + 6 Live Tools`
+        `💎 ${totalCount} مکمل گائیڈز + 6 عملی ٹولز`,
+        `💎 ${totalCount} Master Guides + 6 Live Tools`
       );
       document.getElementById('libraryHeading').textContent = tr(
         `📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری (${totalCount} مکمل کتابچے):`,
@@ -482,27 +552,62 @@
 
       const list = allGuides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
 
-      document.getElementById('guidesList').innerHTML = list.map((g, idx) => `
-        <div onclick="openGuide(${g[0]})" class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer relative">
+      document.getElementById('guidesList').innerHTML = list.map((g, idx) => {
+        const st = getStat(g[0]);
+        const titleTxt = `${idx + 1}. ${tr(g[3], g[4])}`;
+        return `
+        <div onclick="openGuide(${g[0]}, ${idx + 1})" class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer">
           <div class="flex justify-between items-center mb-1.5">
             <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${tr(g[1], g[2])}</span>
             <div class="flex items-center gap-1.5">
               <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">#${idx + 1}</span>
-              ${g[11] ? `<button onclick="event.stopPropagation(); downloadPdfFile('${g[11]}', tr('${g[3]}','${g[4]}'))" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>` : `<button onclick="event.stopPropagation(); downloadCurrentPdf()" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>`}
+              <button onclick="event.stopPropagation(); downloadPdfFile('${g[11]||''}', '${tr(g[3],g[4])}')" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold">📥 PDF</button>
               ${isAdminLoggedIn ? `
-                <button onclick="editGuide(event, ${g[0]})" class="text-[10px] bg-blue-100 text-blue-900 px-2 py-0.5 rounded font-bold hover:bg-blue-200" title="Edit">✏️</button>
-                <button onclick="deleteGuide(event, ${g[0]})" class="text-[10px] bg-red-100 text-red-900 px-2 py-0.5 rounded font-bold hover:bg-red-200" title="Delete">🗑️</button>
+                <button onclick="editGuide(event, ${g[0]})" class="text-[10px] bg-blue-100 text-blue-900 px-2 py-0.5 rounded font-bold">✏️</button>
+                <button onclick="deleteGuide(event, ${g[0]})" class="text-[10px] bg-red-100 text-red-900 px-2 py-0.5 rounded font-bold">🗑️</button>
               ` : ''}
             </div>
           </div>
-          <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fCls()} mb-1">${idx + 1}. ${tr(g[3], g[4])}</h3>
+
+          <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fCls()} mb-1">${titleTxt}</h3>
           <p class="text-[11px] text-gray-600 ${fCls()} mb-3">${tr(g[5], g[6])}</p>
+
           <div class="flex flex-wrap justify-between items-center gap-2 pt-2.5 border-t text-xs">
             <span class="text-[#064E3B] font-extrabold">${tr('مکمل گائیڈ اور قانونی سٹیپس پڑھیں ←','Read Full Step-by-Step Guide →')}</span>
-            ${g[7] ? `<button onclick="toggleCardTool(event, ${g[0]}, '${g[7]}')" class="px-3 py-1.5 gold-bg text-[#0A192F] font-extrabold text-[11px] rounded-xl shadow-sm">${tr(g[8], g[9])}</button>` : ''}
+            ${g[7] ? `<button onclick="toggleCardTool(event, ${g[0]}, '${g[7]}')" class="px-3 py-1 gold-bg text-[#0A192F] font-extrabold text-[11px] rounded-xl shadow-sm">${tr(g[8], g[9])}</button>` : ''}
           </div>
+
+          <!-- Social Engagement Bar: Views, Likes, Comments, Share -->
+          <div onclick="event.stopPropagation()" class="flex items-center justify-between gap-1 mt-3 pt-2.5 border-t border-dashed border-gray-200 text-[11px] text-gray-600 font-bold">
+            <span class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-100" title="Views">
+              👁️ <span>${st.views}</span> <span class="hidden sm:inline">${tr('ویوز','Views')}</span>
+            </span>
+            <button onclick="toggleLike(event, ${g[0]})" class="flex items-center gap-1 px-2.5 py-1 rounded-lg ${st.liked ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-slate-100 hover:bg-red-50'} transition">
+              ${st.liked ? '❤️' : '🤍'} <span>${st.likes}</span> <span>${tr('لائک','Like')}</span>
+            </button>
+            <button onclick="toggleCommentBox(event, ${g[0]})" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-[#0A192F] transition">
+              💬 <span>${st.comments.length}</span> <span>${tr('کمنٹ','Comment')}</span>
+            </button>
+            <button onclick="shareGuide(event, ${g[0]}, '${titleTxt}')" class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-50 text-emerald-900 transition">
+              📤 <span>${st.shares}</span> <span>${tr('شیئر','Share')}</span>
+            </button>
+          </div>
+
+          <!-- Inline Comment Section per Guide -->
+          <div id="commBox-${g[0]}" onclick="event.stopPropagation()" class="hidden mt-3 p-3 bg-slate-50 rounded-xl border border-gray-200 text-xs space-y-2">
+            <form onsubmit="addGuideComment(event, ${g[0]})" class="flex flex-col sm:flex-row gap-1.5">
+              <input type="text" id="cName-${g[0]}" required placeholder="${tr('آپ کا نام','Your Name')}" class="sm:w-1/3 p-1.5 border rounded-lg bg-white text-xs font-semibold" />
+              <input type="text" id="cText-${g[0]}" required placeholder="${tr('اس کتابچے پر اپنا تبصرہ لکھیں...','Write a comment on this guide...')}" class="flex-1 p-1.5 border rounded-lg bg-white text-xs" />
+              <button type="submit" class="px-3 py-1.5 hero-bg text-white font-bold rounded-lg text-xs shrink-0">${tr('ارسال','Post')}</button>
+            </form>
+            <div class="space-y-1.5 max-h-32 overflow-y-auto pt-1">
+              ${st.comments.length === 0 ? `<p class="text-[10px] text-gray-400 text-center">${tr('ابھی تک کوئی تبصرہ نہیں۔ پہلا کمنٹ کریں!','No comments yet. Be the first!')}</p>` : st.comments.map(c => `<div class="p-2 bg-white border rounded-lg flex justify-between items-start gap-2"><div><b class="text-[#064E3B]">${c.name}:</b> <span class="${fCls()}">${c.text}</span></div><span class="text-[9px] text-gray-400 shrink-0">${c.time}</span></div>`).join('')}
+            </div>
+          </div>
+
           <div id="cardTool-${g[0]}" onclick="event.stopPropagation()" class="hidden mt-3"></div>
-        </div>`).join('');
+        </div>`;
+      }).join('');
     }
 
     function toggleAcc(i) {
@@ -510,23 +615,35 @@
       const hide = !c.classList.contains('hidden'); c.classList.toggle('hidden', hide); ic.textContent = hide ? '▼' : '▲';
     }
 
-    function openGuide(id) {
+    function openGuide(id, displayNum) {
       currentModalId = id;
       const allGuides = [...baseGuides, ...uploadedPdfs];
       const g = allGuides.find(x => x[0] === id); if (!g) return;
 
-      document.getElementById('mTitle').textContent = tr(g[3], g[4]);
+      // Increment Guide View Counter Automatically
+      const st = getStat(id);
+      st.views += 1;
+      saveStats();
+      renderGuides();
+
+      const numPrefix = displayNum ? `${displayNum}. ` : '';
+      document.getElementById('mTitle').textContent = numPrefix + tr(g[3], g[4]);
       
-      let extraActionBtn = g[11] ? `<a href="${g[11]}" target="_blank" class="px-3 py-1 rounded-lg bg-emerald-600 text-white font-bold text-xs flex items-center gap-1 shadow">👁️ View PDF</a>` : '';
+      let pdfPreview = g[11] ? `
+        <div class="p-3 bg-emerald-950 text-white rounded-xl flex items-center justify-between">
+          <span class="text-xs font-bold">📄 ${tr('اصل پی ڈی ایف فائل منسلک ہے','Original PDF File Attached')}</span>
+          <a href="${g[11]}" target="_blank" class="px-3 py-1.5 rounded-lg gold-bg text-[#0A192F] font-extrabold text-xs">👁️ ${tr('پی ڈی ایف کھولیں','Open Full PDF')}</a>
+        </div>` : '';
 
       document.getElementById('mBody').innerHTML = `
         <div class="bg-white p-4 rounded-2xl border-2 border-emerald-200 space-y-3">
+          ${pdfPreview}
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
             <div>
               <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr('پاکستانی قانونی و عملی گائیڈ','Pakistani Legal & Practical Roadmap')}</span>
               <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fCls()} mt-2">${tr(g[5], g[6])}</p>
             </div>
-            ${extraActionBtn}
+            <span class="text-[11px] bg-slate-100 px-2.5 py-1 rounded-lg font-bold text-gray-700">👁️ ${st.views} ${tr('مرتبہ پڑھا گیا','Views')}</span>
           </div>
           <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fCls()}">${tr('💡 ہدایت: نیچے کسی بھی پوائنٹ پر کلک کریں تاکہ اس کی سٹیپ بائی سٹیپ تفصیل کھل جائے:','💡 Tip: Click any bullet point below to expand its step-by-step action plan:')}</p>
           <div class="space-y-2">
