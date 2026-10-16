@@ -5,674 +5,202 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>فنانشل لٹریسی پاکستان | Financial Literacy Pakistan Pro</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif;
-      background-color: #F8FAFC;
-      color: #0F172A;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .urdu-font {
-      font-family: 'Noto Nastaliq Urdu', serif;
-      line-height: 2.45 !important;
-    }
-    .eng-font {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.65 !important;
-    }
-    .hero-gradient, .hero-bg {
-      background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%);
-    }
-    .gold-gradient, .gold-bg {
-      background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-    }
-    button, input, select, textarea {
-      touch-action: manipulation;
-    }
+    body { font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif; background: #F8FAFC; color: #0F172A; -webkit-tap-highlight-color: transparent; }
+    .urdu-font { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2.4 !important; }
+    .eng-font { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6 !important; }
+    .hero-bg { background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%); }
+    .gold-bg { background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%); }
+    button, input, select, textarea { touch-action: manipulation; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- Top Header -->
-  <header class="hero-gradient text-white sticky top-0 z-50 shadow-lg border-b border-[#D4AF37]/50">
+  <!-- Header -->
+  <header class="hero-bg text-white sticky top-0 z-50 shadow-lg border-b border-[#D4AF37]/50">
     <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-2.5">
-        <div class="w-10 h-10 rounded-2xl gold-gradient flex items-center justify-center text-[#0A192F] font-black text-lg shadow-md shrink-0">
-          FLP
-        </div>
+        <div class="w-10 h-10 rounded-2xl gold-bg flex items-center justify-center text-[#0A192F] font-black text-lg shadow shrink-0">FLP</div>
         <div>
-          <h1 id="ui-appTitle" class="text-xs md:text-sm font-extrabold text-[#F3E5AB] urdu-font">فنانشل لٹریسی پاکستان</h1>
-          <p id="ui-appSub" class="text-[10px] text-emerald-200 font-semibold">عام آدمی اور مزدور کے اثاثہ جات ایڈیشن • ندیم اقبال</p>
+          <h1 data-ur="فنانشل لٹریسی پاکستان" data-en="Financial Literacy Pakistan" class="text-xs md:text-sm font-extrabold text-[#F3E5AB] urdu-font"></h1>
+          <p data-ur="عام آدمی اور مزدور کے اثاثہ جات ایڈیشن • ندیم اقبال" data-en="Micro-Assets & Wealth Edition • By Nadeem Iqbal" class="text-[10px] text-emerald-200 font-semibold"></p>
         </div>
       </div>
-      <!-- Language Switcher -->
-      <div class="flex bg-[#0A192F]/90 p-1 rounded-xl border border-[#D4AF37]/50 shadow-inner shrink-0">
-        <button onclick="switchLang('ur')" id="lang-ur" class="px-3 py-1 rounded-lg text-xs font-bold transition-all bg-[#D4AF37] text-[#0A192F] shadow">اردو</button>
-        <button onclick="switchLang('en')" id="lang-en" class="px-3 py-1 rounded-lg text-xs font-semibold transition-all text-gray-300 hover:text-white">Eng</button>
+      <div class="flex bg-[#0A192F]/90 p-1 rounded-xl border border-[#D4AF37]/50 shrink-0">
+        <button onclick="switchLang('ur')" id="lang-ur" class="px-3 py-1 rounded-lg text-xs font-bold bg-[#D4AF37] text-[#0A192F]">اردو</button>
+        <button onclick="switchLang('en')" id="lang-en" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-300">Eng</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero & Live Pakistani Time & Multi-Calendar Date Bar -->
-  <section class="hero-gradient text-white pt-5 pb-7 px-4 text-center border-b-4 border-[#D4AF37]">
+  <!-- Hero & Live Date/Clock -->
+  <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
     <div class="max-w-2xl mx-auto">
-      <span id="ui-heroBadge" class="inline-block px-3.5 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-3 shadow-sm urdu-font">
-        💎 15 مکمل گائیڈز + سٹیپ بائی سٹیپ قانونی رہنمائی + 4 عملی ٹولز
-      </span>
-
-      <!-- Live Date & Pakistani Clock Box -->
-      <div class="max-w-md mx-auto my-2.5 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB] shadow-inner">
-        <div class="flex items-center justify-between border-b border-white/15 pb-2 mb-2 gap-2">
-          <span id="dateGregorian" class="font-bold text-xs">...</span>
-          <span id="liveClock" class="bg-[#0A192F] px-2.5 py-1 rounded-lg text-emerald-300 font-mono font-bold text-xs border border-[#D4AF37]/40 shrink-0">00:00:00 AM</span>
+      <span data-ur="💎 15 مکمل گائیڈز + پی ڈی ایف ڈاؤن لوڈ + 6 عملی ٹولز" data-en="💎 15 Master Guides + PDF Downloads + 6 Live Tools" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
+      <div class="max-w-md mx-auto my-2 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB]">
+        <div class="flex items-center justify-between border-b border-white/15 pb-1.5 mb-1.5 gap-2">
+          <span id="dateGregorian" class="font-bold">...</span>
+          <span id="liveClock" class="bg-[#0A192F] px-2.5 py-0.5 rounded-lg text-emerald-300 font-mono font-bold text-xs border border-[#D4AF37]/40">00:00:00 AM</span>
         </div>
-        <div id="dateCalendars" class="text-[11px] text-emerald-100 flex flex-wrap justify-center gap-x-2 gap-y-1 font-medium">
-          <span>...</span>
-        </div>
+        <div id="dateCalendars" class="text-[11px] text-emerald-100 flex flex-wrap justify-center gap-x-2 gap-y-1"></div>
       </div>
-
-      <h2 id="ui-heroHeading" class="text-base md:text-2xl font-black mb-3 urdu-font tracking-wide">
-        غریب سے معاشی خود مختاری کا سفر: چھوٹے قدموں سے مضبوط اثاثے بنائیں
-      </h2>
+      <h2 data-ur="غریب سے معاشی خود مختاری کا سفر: پی ڈی ایف گائیڈز اور اثاثہ سازی" data-en="From Low Income to Financial Freedom: PDF Guides & Asset Building" class="text-base md:text-xl font-black mb-3 urdu-font"></h2>
       <div class="max-w-md mx-auto">
-        <input type="text" id="searchBox" oninput="renderGuides()" placeholder="تلاش کریں (اثاثے، کاروبار، بچت، سونا، پلاٹ، ٹیکس)..." class="w-full px-4 py-3 rounded-2xl bg-white text-gray-900 text-xs shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" />
+        <input type="text" id="searchBox" oninput="renderGuides()" data-ph-ur="تلاش کریں (اثاثے، کاروبار، بچت، سونا، پلاٹ، ٹیکس)..." data-ph-en="Search topics (Assets, Business, Budget, Gold, Plot, Tax)..." class="w-full px-4 py-2.5 rounded-2xl bg-white text-gray-900 text-xs shadow-xl focus:outline-none focus:ring-2 focus:ring-[#D4AF37]" />
       </div>
     </div>
   </section>
 
-  <!-- Main App Container -->
+  <!-- Main Content -->
   <main class="max-w-3xl mx-auto w-full px-3 py-4 flex-1">
-
-    <!-- Interactive Tools Quick Bar (4 Uniform, High-Contrast Buttons) -->
+    <!-- 6 Interactive Financial Tools -->
     <div class="bg-[#0A192F] p-3.5 rounded-2xl border-2 border-[#D4AF37] mb-5 shadow-xl">
-      <div class="flex items-center justify-between mb-3">
-        <span id="ui-toolsHeading" class="text-[#F3E5AB] text-xs font-extrabold urdu-font">🛠️ عملی مالیاتی ٹولز (کلک کرنے پر یہیں کھلیں گے):</span>
+      <p data-ur="🛠️ 6 عملی مالیاتی ٹولز (کلک کرنے پر یہیں کھلیں گے):" data-en="🛠️ 6 Interactive Financial Tools (Click to open right here):" class="text-[#F3E5AB] text-xs font-extrabold mb-3 urdu-font"></p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <button onclick="openTool('budget')" class="py-2.5 px-2 rounded-xl border border-emerald-400 bg-[#064E3B] text-white shadow active:scale-95 transition flex flex-col items-center">
+          <span data-ur="🧮 بجٹ کیلکولیٹر" data-en="🧮 Budget Rule" class="text-xs font-extrabold"></span>
+          <span data-ur="50/30/20 فارمولا" data-en="50/30/20 Split" class="text-[10px] text-emerald-200"></span>
+        </button>
+        <button onclick="openTool('committee')" class="py-2.5 px-2 rounded-xl border border-amber-200 gold-bg text-[#0A192F] shadow active:scale-95 transition flex flex-col items-center">
+          <span data-ur="🗓️ کمیٹی ریکارڈ" data-en="🗓️ Committee" class="text-xs font-extrabold"></span>
+          <span data-ur="12 ماہ شیڈول" data-en="12-Month ROSCA" class="text-[10px] font-bold"></span>
+        </button>
+        <button onclick="openTool('business')" class="py-2.5 px-2 rounded-xl border border-gray-300 bg-white text-[#0A192F] shadow active:scale-95 transition flex flex-col items-center">
+          <span data-ur="📒 کاروباری کھاتہ" data-en="📒 Cashbook" class="text-xs font-extrabold"></span>
+          <span data-ur="روزانہ سیل و خرچ" data-en="Daily Shop Ledger" class="text-[10px] text-gray-600 font-semibold"></span>
+        </button>
+        <button onclick="openTool('zakat')" class="py-2.5 px-2 rounded-xl border border-emerald-300 bg-emerald-800 text-white shadow active:scale-95 transition flex flex-col items-center">
+          <span data-ur="🪙 زکوٰۃ کیلکولیٹر" data-en="🪙 Zakat Tool" class="text-xs font-extrabold"></span>
+          <span data-ur="2.5% شرعی حساب" data-en="2.5% Calculation" class="text-[10px] text-emerald-200"></span>
+        </button>
+        <button onclick="openTool('gold')" class="py-2.5 px-2 rounded-xl border border-amber-400 bg-amber-950 text-[#F3E5AB] shadow active:scale-95 transition flex flex-col items-center">
+          <span data-ur="🥇 سونا اور بچت" data-en="🥇 Micro-Gold" class="text-xs font-extrabold"></span>
+          <span data-ur="روزانہ بچت سے سونا" data-en="Daily Saving to Gold" class="text-[10px] text-amber-200"></span>
+        </button>
+        <button onclick="openTool('goal')" class="py-2.5 px-2 rounded-xl border border-blue-400 bg-slate-800 text-white shadow active:scale-95 transition flex flex-col items-center">
+          <span data-ur="🎯 قرض و ہدف پلانر" data-en="🎯 Debt & Goal" class="text-xs font-extrabold"></span>
+          <span data-ur="ایمرجنسی فنڈ و قرض" data-en="Emergency & Payoff" class="text-[10px] text-blue-200"></span>
+        </button>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        <button onclick="openTool('budget')" class="py-3 px-2 rounded-xl border border-emerald-400 bg-[#064E3B] text-white shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-1">
-          <span id="ui-btnBudgetTitle" class="text-xs font-extrabold urdu-font">🧮 بجٹ</span>
-          <span id="ui-btnBudgetSub" class="text-[10px] text-emerald-200 font-medium">50/30/20 رول</span>
-        </button>
-        <button onclick="openTool('committee')" class="py-3 px-2 rounded-xl border border-amber-200 gold-gradient text-[#0A192F] shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-1">
-          <span id="ui-btnCommTitle" class="text-xs font-extrabold urdu-font">🗓️ کمیٹی</span>
-          <span id="ui-btnCommSub" class="text-[10px] text-[#0A192F]/80 font-bold">12 ماہ شیڈول</span>
-        </button>
-        <button onclick="openTool('business')" class="py-3 px-2 rounded-xl border border-gray-300 bg-white text-[#0A192F] shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-1">
-          <span id="ui-btnBizTitle" class="text-xs font-extrabold urdu-font">📒 کھاتہ</span>
-          <span id="ui-btnBizSub" class="text-[10px] text-gray-600 font-semibold">روزانہ کیش بک</span>
-        </button>
-        <button onclick="openTool('zakat')" class="py-3 px-2 rounded-xl border border-emerald-300 bg-emerald-800 text-white shadow-md active:scale-95 transition flex flex-col items-center justify-center gap-1">
-          <span id="ui-btnZakatTitle" class="text-xs font-extrabold urdu-font">🪙 زکوٰۃ</span>
-          <span id="ui-btnZakatSub" class="text-[10px] text-emerald-200 font-medium">2.5% حساب</span>
-        </button>
-      </div>
-
-      <!-- Dynamic Top Tool Panel Container (Opens right here inline) -->
       <div id="topToolPanel" class="hidden mt-3.5"></div>
     </div>
 
-    <!-- Guides Library List Container -->
-    <div class="mb-3 px-1 flex items-center justify-between">
-      <h3 id="ui-libraryHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] urdu-font">📚 اثاثہ سازی، قانونی رہنمائی اور غربت سے آزادی (15 مکمل کتابچے):</h3>
-    </div>
-    <div id="guidesList" class="space-y-3.5 mb-8"></div>
-
+    <!-- 15 Guides List -->
+    <h3 data-ur="📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری (15 مکمل کتابچے):" data-en="📚 Asset Building, Legal Guides & PDF Library (15 Master Guides):" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font"></h3>
+    <div id="guidesList" class="space-y-3 mb-8"></div>
   </main>
 
-  <!-- International Bottom Portal: Developer Contact & User Suggestions / Feedback Box -->
+  <!-- Bottom Developer Contact, PDF Uploader & Feedback Section -->
   <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto">
     <div class="max-w-3xl mx-auto space-y-6">
 
-      <!-- Developer Profile & Direct Contact Card -->
-      <div class="bg-white/10 backdrop-blur-md p-5 rounded-3xl border border-[#D4AF37]/50 shadow-xl text-center">
-        <div class="w-12 h-12 rounded-2xl gold-gradient mx-auto flex items-center justify-center text-[#0A192F] font-black text-lg shadow-md mb-2">
-          NI
-        </div>
-        <h3 id="ui-footerTitle" class="text-sm md:text-base font-extrabold text-[#F3E5AB] urdu-font mb-1">
-          فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال
-        </h3>
-        <p id="ui-footerSub" class="text-xs text-emerald-200 urdu-font mb-4">
-          عام آدمی کی معاشی خود مختاری اور حلال اثاثہ سازی کا ڈیجیٹل سفر
-        </p>
-
-        <!-- Contact Badges (Phone & Gmail) -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 text-xs">
-          <a href="tel:03105379765" class="px-3.5 py-2 rounded-xl bg-[#064E3B] hover:bg-emerald-800 border border-emerald-400 text-white font-bold flex items-center gap-1.5 shadow transition">
-            <span>📞</span>
-            <span id="ui-devPhoneLbl">رابطہ نمبر:</span>
-            <span dir="ltr" class="font-mono text-[#F3E5AB]">0310-5379765</span>
-          </a>
-          <a href="mailto:ni31071987@gmail.com" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 border border-[#D4AF37]/40 text-white font-bold flex items-center gap-1.5 shadow transition">
-            <span>✉️</span>
-            <span id="ui-devEmailLbl">جی میل:</span>
-            <span dir="ltr" class="font-mono text-[#F3E5AB]">ni31071987@gmail.com</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Bottom Feedback, Suggestions & Community Box -->
-      <div class="bg-white text-gray-900 p-5 rounded-3xl border-2 border-[#D4AF37] shadow-2xl">
-        <div class="flex items-center justify-between mb-2 border-b pb-2.5 gap-2">
-          <h3 id="ui-chatHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] urdu-font">
-            💬 ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء سے مستفید فرمائیں
-          </h3>
-          <span id="ui-chatBadge" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full font-bold shrink-0">آراء و تجاویز</span>
-        </div>
-        <p id="ui-chatDesc" class="text-[11px] text-gray-600 urdu-font mb-3.5">
-          اس ایپ میں مزید کون سے فیچرز یا معلومات شامل کی جائیں؟ اپنے خیالات، مشورے اور سوالات نیچے درج کریں:
-        </p>
+      <!-- Developer Info & Secure PDF Upload Box (Only for Developer) -->
+      <div class="bg-white/10 p-5 rounded-3xl border border-[#D4AF37]/50 text-center space-y-3">
+        <div class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base">NI</div>
+        <h3 data-ur="فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال" data-en="Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal" class="text-sm font-extrabold text-[#F3E5AB]"></h3>
+        <p data-ur="موبائل رابطہ: 0310-5379765 | جی میل: ni31071987@gmail.com" data-en="Phone: 0310-5379765 | Email: ni31071987@gmail.com" class="text-xs text-emerald-200 font-mono"></p>
         
-        <form onsubmit="postChatMessage(event)" class="space-y-2.5 mb-4">
-          <input type="text" id="chatName" required placeholder="آپ کا نام..." class="w-full p-2.5 border border-gray-300 rounded-xl text-xs bg-gray-50 font-semibold focus:ring-2 focus:ring-[#064E3B] focus:outline-none" />
-          <textarea id="chatText" required rows="3" placeholder="ایپ کی بہتری کے لیے اپنی تجویز، رائے یا پیغام یہاں لکھیں..." class="w-full p-2.5 border border-gray-300 rounded-xl text-xs bg-gray-50 focus:ring-2 focus:ring-[#064E3B] focus:outline-none"></textarea>
-          <button type="submit" id="ui-chatSubmit" class="w-full py-3 gold-gradient text-[#0A192F] font-extrabold rounded-xl text-xs shadow-md active:scale-95 transition">
-            تجویز اور رائے ارسال کریں
-          </button>
-        </form>
-
-        <!-- Chat & Suggestions Messages Container -->
-        <div id="chatMessagesList" class="space-y-2 max-h-56 overflow-y-auto border-t pt-3 text-xs"></div>
+        <!-- Developer PDF Uploader Box -->
+        <div class="bg-black/30 p-3.5 rounded-2xl border border-emerald-500/40 text-right text-xs">
+          <span data-ur="🔒 ڈویلپر پینل: نئی پی ڈی ایف اپلوڈ کریں (صرف ایڈمن)" data-en="🔒 Developer Panel: Upload New PDF (Admin Only)" class="font-bold text-[#F3E5AB] block mb-2"></span>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#D4AF37] file:text-[#0A192F] hover:file:bg-amber-400 cursor-pointer" />
+            <button onclick="handleDevUpload()" data-ur="اپلوڈ کریں" data-en="Upload PDF" class="px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-white shrink-0"></button>
+          </div>
+          <p id="uploadMsg" class="text-[10px] text-emerald-300 mt-1.5"></p>
+        </div>
       </div>
 
-      <p id="ui-copyright" class="text-center text-[11px] text-gray-400 pt-2">
-        © 2026 Financial Literacy Pakistan • Designed & Developed by Nadeem Iqbal
-      </p>
+      <!-- Feedback Box -->
+      <div class="bg-white text-gray-900 p-5 rounded-3xl border-2 border-[#D4AF37] shadow-2xl">
+        <div class="flex items-center justify-between mb-2 border-b pb-2 gap-2">
+          <h3 data-ur="💬 ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز دیں" data-en="💬 Share Your Valuable Suggestions to Improve This App" class="text-xs md:text-sm font-extrabold text-[#0A192F]"></h3>
+          <span data-ur="آراء و تجاویز" data-en="Feedback" class="text-[10px] bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded-full font-bold shrink-0"></span>
+        </div>
+        <form onsubmit="postChatMessage(event)" class="space-y-2.5 mb-4">
+          <input type="text" id="chatName" required data-ph-ur="آپ کا نام..." data-ph-en="Your Name..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50 font-semibold" />
+          <textarea id="chatText" required rows="2" data-ph-ur="ایپ کی بہتری کے لیے اپنی تجویز یہاں لکھیں..." data-ph-en="Write your suggestion here..." class="w-full p-2.5 border rounded-xl text-xs bg-gray-50"></textarea>
+          <button type="submit" data-ur="تجویز اور رائے ارسال کریں" data-en="Submit Suggestion" class="w-full py-2.5 gold-bg text-[#0A192F] font-extrabold rounded-xl text-xs shadow"></button>
+        </form>
+        <div id="chatMessagesList" class="space-y-2 max-h-48 overflow-y-auto border-t pt-3 text-xs"></div>
+      </div>
+      <p data-ur="© 2026 فنانشل لٹریسی پاکستان • جملہ حقوق بحق ندیم اقبال محفوظ ہیں" data-en="© 2026 Financial Literacy Pakistan • Developed by Nadeem Iqbal" class="text-center text-[11px] text-gray-400"></p>
     </div>
   </section>
 
-  <!-- Full-Screen Reader Modal with Interactive Step-by-Step Accordion -->
+  <!-- Reader Modal with PDF Download Button -->
   <div id="guideModal" class="fixed inset-0 bg-black/85 z-50 hidden overflow-y-auto p-2 md:p-6 backdrop-blur-sm">
     <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-4 border-2 border-[#D4AF37]">
-      <div class="hero-gradient text-white px-4 py-3.5 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 shadow-md gap-2">
+      <div class="hero-bg text-white px-4 py-3.5 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 gap-2">
         <h3 id="mTitle" class="text-xs md:text-sm font-bold text-[#F3E5AB]"></h3>
-        <button onclick="closeModal()" class="w-8 h-8 rounded-xl bg-white/20 hover:bg-white/30 text-white font-black text-xs flex items-center justify-center shadow shrink-0">✕</button>
+        <div class="flex items-center gap-2">
+          <button onclick="downloadCurrentPdf()" id="modalPdfBtn" class="px-3 py-1 rounded-lg bg-[#D4AF37] text-[#0A192F] font-bold text-xs flex items-center gap-1 shadow">📥 PDF</button>
+          <button onclick="closeModal()" class="w-8 h-8 rounded-xl bg-white/20 text-white font-black text-xs flex items-center justify-center shrink-0">✕</button>
+        </div>
       </div>
-      <div id="mBody" class="p-4 md:p-6 space-y-4 text-xs md:text-sm text-gray-800 bg-slate-50"></div>
+      <div id="mBody" class="p-4 md:p-6 space-y-3 text-xs md:text-sm text-gray-800 bg-slate-50"></div>
     </div>
   </div>
 
   <script>
-    let lang = 'ur';
-    let activeTopTool = null;
+    let lang = 'ur', activeTopTool = null, currentModalId = 1;
+    const tr = (ur, en) => lang === 'ur' ? ur : en;
+    const fCls = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
 
-    // Complete Bilingual UI Dictionary
-    const uiText = {
-      ur: {
-        appTitle: 'فنانشل لٹریسی پاکستان',
-        appSub: 'عام آدمی اور مزدور کے اثاثہ جات ایڈیشن • ندیم اقبال',
-        heroBadge: '💎 15 مکمل گائیڈز + سٹیپ بائی سٹیپ قانونی رہنمائی + 4 عملی ٹولز',
-        heroHeading: 'غریب سے معاشی خود مختاری کا سفر: چھوٹے قدموں سے مضبوط اثاثے بنائیں',
-        searchPlaceholder: 'تلاش کریں (اثاثے، کاروبار، بچت، سونا، پلاٹ، ٹیکس)...',
-        toolsHeading: '🛠️ عملی مالیاتی ٹولز (کلک کرنے پر یہیں کھلیں گے):',
-        btnBudgetTitle: '🧮 بجٹ',
-        btnBudgetSub: '50/30/20 رول',
-        btnCommTitle: '🗓️ کمیٹی',
-        btnCommSub: '12 ماہ شیڈول',
-        btnBizTitle: '📒 کھاتہ',
-        btnBizSub: 'روزانہ کیش بک',
-        btnZakatTitle: '🪙 زکوٰۃ',
-        btnZakatSub: '2.5% حساب',
-        chatHeading: '💬 ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء سے مستفید فرمائیں',
-        chatBadge: 'آراء و تجاویز',
-        chatDesc: 'اس ایپ میں مزید کون سے فیچرز یا معلومات شامل کی جائیں؟ اپنے خیالات، مشورے اور سوالات نیچے درج کریں:',
-        chatNamePlaceholder: 'آپ کا نام...',
-        chatTextPlaceholder: 'ایپ کی بہتری کے لیے اپنی تجویز، رائے یا پیغام یہاں لکھیں...',
-        chatSubmit: 'تجویز اور رائے ارسال کریں',
-        libraryHeading: '📚 اثاثہ سازی، قانونی رہنمائی اور غربت سے آزادی (15 مکمل کتابچے):',
-        footerTitle: 'فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال',
-        footerSub: 'عام آدمی کی معاشی خود مختاری اور حلال اثاثہ سازی کا ڈیجیٹل سفر',
-        devPhoneLbl: 'رابطہ نمبر:',
-        devEmailLbl: 'جی میل:',
-        copyright: '© 2026 فنانشل لٹریسی پاکستان • جملہ حقوق بحق ندیم اقبال محفوظ ہیں',
-        readMoreBtn: 'مکمل گائیڈ اور قانونی سٹیپس پڑھیں ←',
-        verifiedBadge: 'مصدقہ گائیڈ',
-        modalBadge: 'پاکستانی قانونی و عملی گائیڈ',
-        modalInstruction: '💡 ہدایت: نیچے دیے گئے کسی بھی پوائنٹ پر کلک کریں تاکہ اس کی مکمل سٹیپ بائی سٹیپ قانونی اور عملی تفصیل کھل جائے:',
-        closeBtn: '✕ بند کریں',
-        budgetTitle: '🧮 50/30/20 ماہانہ بجٹ کیلکولیٹر',
-        budgetLabel: 'اپنی ماہانہ آمدنی درج کریں (PKR):',
-        needsLbl: '50% ضروریات',
-        wantsLbl: '30% خواہشات',
-        saveLbl: '20% بچت و اثاثے',
-        commTitle: '🗓️ 12 ماہ کا کمیٹی (BC) ریکارڈ',
-        commHint: 'ممبر کا نام تبدیل کرنے کے لیے خانے میں لکھیں اور اسٹیٹس بدلنے کے لیے بٹن دبائیں:',
-        paidTxt: '✓ ادا شدہ',
-        unpaidTxt: '⏳ باقی',
-        bizTitle: '📒 چھوٹے کاروبار اور دکان کا روزانہ کھاتہ',
-        bizNetLbl: 'گلے میں خالص کاروباری کیش:',
-        bizDescPh: 'تفصیل (مثلاً: آج کی سیل، مال کی خریداری)...',
-        bizAmtPh: 'رقم (PKR)',
-        bizOptIn: '➕ کاروباری آمدن / سیل',
-        bizOptExp: '➖ دکان کا خرچ / مال',
-        bizOptDraw: '🏠 ذاتی / گھر کا خرچ',
-        bizAddBtn: '+ کھاتے میں درج کریں',
-        zakatTitle: '🪙 زکوٰۃ اور سونا مالیت کیلکولیٹر (2.5%)',
-        zCashLbl: 'نقد کیش اور بینک بیلنس (PKR):',
-        zGoldLbl: 'سونے اور چاندی کی مالیت (PKR):',
-        zBizLbl: 'کاروباری مال / اسٹاک کی مالیت (PKR):',
-        zTotalLbl: 'واجب الادا کل زکوٰۃ (2.5%):'
-      },
-      en: {
-        appTitle: 'Financial Literacy Pakistan',
-        appSub: 'Micro-Assets & Wealth Building Edition • By Nadeem Iqbal',
-        heroBadge: '💎 15 Master Guides + Step-by-Step Legal Roadmaps + 4 Live Tools',
-        heroHeading: 'From Low Income to Financial Freedom: Build Strong Assets Step-by-Step',
-        searchPlaceholder: 'Search topics (Assets, Business, Budget, Gold, Plot, Tax)...',
-        toolsHeading: '🛠️ Interactive Financial Tools (Click to open right here):',
-        btnBudgetTitle: '🧮 Budget',
-        btnBudgetSub: '50/30/20 Rule',
-        btnCommTitle: '🗓️ Committee',
-        btnCommSub: '12-Month Tracker',
-        btnBizTitle: '📒 Cashbook',
-        btnBizSub: 'Daily Ledger',
-        btnZakatTitle: '🪙 Zakat',
-        btnZakatSub: '2.5% Calculator',
-        chatHeading: '💬 Share Your Valuable Suggestions & Feedback to Improve This App',
-        chatBadge: 'Feedback Portal',
-        chatDesc: 'What new features or financial topics would you like to see added? Share your thoughts, suggestions, and questions below:',
-        chatNamePlaceholder: 'Your Name...',
-        chatTextPlaceholder: 'Write your suggestion, feedback, or message here...',
-        chatSubmit: 'Submit Suggestion & Feedback',
-        libraryHeading: '📚 Asset Building, Legal Roadmaps & Poverty Alleviation (15 Master Guides):',
-        footerTitle: 'Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal',
-        footerSub: 'Digital Portal for Financial Independence & Halal Asset Building',
-        devPhoneLbl: 'Phone / WhatsApp:',
-        devEmailLbl: 'Email:',
-        copyright: '© 2026 Financial Literacy Pakistan • Designed & Developed by Nadeem Iqbal',
-        readMoreBtn: 'Read Full Step-by-Step Guide →',
-        verifiedBadge: 'Verified Guide',
-        modalBadge: 'Pakistani Legal & Practical Roadmap',
-        modalInstruction: '💡 Tip: Click on any bullet point below to expand its step-by-step Pakistani legal & practical action plan:',
-        closeBtn: '✕ Close',
-        budgetTitle: '🧮 50/30/20 Monthly Budget Calculator',
-        budgetLabel: 'Enter Your Monthly Income (PKR):',
-        needsLbl: '50% Needs',
-        wantsLbl: '30% Wants',
-        saveLbl: '20% Savings',
-        commTitle: '🗓️ 12-Month Committee (ROSCA) Tracker',
-        commHint: 'Tap member name to edit or click status button to toggle paid/pending:',
-        paidTxt: '✓ Paid',
-        unpaidTxt: '⏳ Pending',
-        bizTitle: '📒 Small Business & Shop Daily Cashbook',
-        bizNetLbl: 'Net Business Cash in Register:',
-        bizDescPh: 'Description (e.g., Daily Sales, Stock Purchase)...',
-        bizAmtPh: 'Amount (PKR)',
-        bizOptIn: '➕ Business Income / Sales',
-        bizOptExp: '➖ Shop Expense / Stock',
-        bizOptDraw: '🏠 Personal / Home Drawing',
-        bizAddBtn: '+ Add Cashbook Entry',
-        zakatTitle: '🪙 Annual Zakat & Gold Calculator (2.5%)',
-        zCashLbl: 'Cash in Hand & Bank Balance (PKR):',
-        zGoldLbl: 'Market Value of Gold & Silver (PKR):',
-        zBizLbl: 'Value of Business Stock / Goods (PKR):',
-        zTotalLbl: 'Total Payable Zakat (2.5%):'
-      }
-    };
-
-    // Live Multi-Calendar Date & Pakistani Clock
-    function loadLiveDates() {
-      const now = new Date();
-      const daysUr = ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'];
-      const daysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      const monthsUr = ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'ستمبر', 'اکتوبر', 'نومبر', 'دسمبر'];
-      const monthsEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-      const desiMonthsUr = ['چیت', 'بیساکھ', 'جیٹھ', 'ہاڑھ', 'ساون', 'بھادوں', 'اسوج', 'کتک', 'مگھر', 'پوہ', 'ماگھ', 'پھاگن'];
-      const desiMonthsEn = ['Chet', 'Vaisakh', 'Jeth', 'Harh', 'Sawan', 'Bhadon', 'Assuj', 'Katak', 'Maghar', 'Poh', 'Magh', 'Phagan'];
-
-      let dIdx = now.getDay();
-      let dNum = now.getDate();
-      let mIdx = now.getMonth();
-      let yNum = now.getFullYear();
-
-      let desiIdx = (mIdx + (dNum >= 15 ? 9 : 8)) % 12;
-      let desiDay = dNum >= 15 ? (dNum - 14) : (dNum + 16);
-
-      let hijriUr = '4 ربیع الثانی 1448ھ';
-      let hijriEn = '4 Rabi al-Thani 1448 AH';
-      try {
-        hijriUr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
-        hijriEn = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).format(now);
-      } catch(e) {}
-
-      if (lang === 'ur') {
-        document.getElementById('dateGregorian').textContent = `📅 ${daysUr[dIdx]}، ${dNum} ${monthsUr[mIdx]} ${yNum}ء`;
-        document.getElementById('dateCalendars').innerHTML = `
-          <span>🌙 اسلامی: ${hijriUr}</span>
-          <span>|</span>
-          <span>🌾 دیسی ماہ: ${desiDay} ${desiMonthsUr[desiIdx]}</span>
-          <span>|</span>
-          <span>🇵🇰 پاکستان وقت (PKT)</span>
-        `;
-      } else {
-        document.getElementById('dateGregorian').textContent = `📅 ${daysEn[dIdx]}, ${monthsEn[mIdx]} ${dNum}, ${yNum}`;
-        document.getElementById('dateCalendars').innerHTML = `
-          <span>🌙 Islamic: ${hijriEn}</span>
-          <span>|</span>
-          <span>🌾 Desi Date: ${desiDay} ${desiMonthsEn[desiIdx]}</span>
-          <span>|</span>
-          <span>🇵🇰 Pakistan Time (PKT)</span>
-        `;
-      }
-    }
-
-    function updateLiveClock() {
-      const now = new Date();
-      let timeStr = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-      let clockEl = document.getElementById('liveClock');
-      if (clockEl) clockEl.textContent = timeStr;
-    }
-    setInterval(updateLiveClock, 1000);
-
-    // 15 Comprehensive Bilingual Guides with Clickable Step-by-Step Accordions
     const guides = [
-      {
-        id: 15, catUr: 'اثاثہ سازی', catEn: 'Micro-Assets',
-        tUr: '15. مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets): روزانہ منافع دینے والے چھوٹے اثاثے',
-        tEn: '15. Micro-Asset Building for Common People: Generating Daily Profit',
-        sUr: 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے اپنے لیے کما کر دینے والے اثاثے کیسے بنائے؟',
-        sEn: 'Practical steps for daily-wage earners and low-income workers to build income-generating assets.',
-        tool: 'budget', toolLblUr: '🧮 بجٹ کیلکولیٹر', toolLblEn: '🧮 Budget Calculator',
-        points: [
-          {
-            titleUr: '1. مائکرو گولڈ (0.1 گرام یا 1 گرام سونے کے ٹکڑے)',
-            titleEn: '1. Micro-Gold Accumulation (Fractional 24K Gold)',
-            detailUr: '• پاکستانی مارکیٹ کا اصول: تولہ سونا خریدنے کا انتظار نہ کریں۔\n• عملی سٹیپس:\n1. روزانہ 100 یا 200 روپے الگ گلے میں ڈالیں۔\n2. مہینے بعد مقامی صرافہ بازار کے مستند سنار سے 24 قیراط (24K) سونے کی رتی، ماشہ یا 1 گرام کی تصدیق شدہ شیٹ خرید لیں اور پکی رسید بنوائیں۔\n3. یہ چھوٹا اثاثہ روپے کی قدر گرنے سے آپ کی محنت کی کمائی کو 100 فیصد محفوظ رکھتا ہے۔',
-            detailEn: '• Market Principle: Do not wait until you can afford a full Tola of gold.\n• Actionable Steps:\n1. Save PKR 100 to 200 daily in a dedicated box.\n2. Purchase 1-gram or fractional 24K pure gold bars/sheets from a certified jeweler in your local Sarafa Bazar with a stamped invoice.\n3. This micro-asset immediately shields your hard-earned wages against currency depreciation.'
-          },
-          {
-            titleUr: '2. اوزار اور مشینری بطورِ اثاثہ (Working Tools as Capital)',
-            titleEn: '2. Working Tools & Equipment as Cash-Flowing Assets',
-            detailUr: '• عملی اصول: اگر آپ مستری، الیکٹریشن، پلمبر یا درزی ہیں تو آپ کے اوزار ہی آپ کی فیکٹری ہیں۔\n• عملی سٹیپس:\n1. بچت سے جدید ڈرل مشین، ویلڈنگ پلانٹ یا سلائی مشین خریدیں۔\n2. اس سے آپ کا کام دوگنا تیز ہوگا اور دہاڑی میں فوری اضافہ ہوگا۔\n3. فالتو اوزار یا سائیکل/ریڑھی دوسرے کاریگر کو روزانہ کرائے پر دے کر اضافی آمدن حاصل کریں۔',
-            detailEn: '• Core Principle: For technicians, tailors, and craftsmen, modern tools are your primary factory.\n• Actionable Steps:\n1. Reinvest small savings into power tools or a sewing machine.\n2. Better equipment doubles work speed and daily wage rates.\n3. Rent out spare carts, cycles, or tools to fellow workers for daily rental cashflow.'
-          },
-          {
-            titleUr: '3. گھریلو پیداواری اثاثے (مرغی پالن اور کچن گارڈننگ)',
-            titleEn: '3. Household Productive Assets (Poultry & Kitchen Gardening)',
-            detailUr: '• عملی سٹیپس:\n1. گھر کے صحن یا چھت پر 5 سے 10 دیسی مرغیاں رکھیں؛ انڈوں سے گھر کی غذائی ضرورت بھی پوری ہوگی اور روزانہ نقد فروخت بھی۔\n2. گملوں یا توڑوں میں دھنیا، پودینہ، مرچ اور ٹماٹر اگائیں تاکہ ماہانہ سبزی کا خرچ بچ سکے۔',
-            detailEn: '• Actionable Steps:\n1. Raise 5–10 Desi hens at home; daily eggs provide both family nutrition and immediate cash sales in the neighborhood.\n2. Grow basic vegetables (mint, chilies, tomatoes) in pots to cut monthly grocery bills.'
-          }
-        ]
-      },
-      {
-        id: 14, catUr: 'غربت سے آزادی', catEn: 'Micro-Business',
-        tUr: '14. صفر یا کم سرمائے سے شروع ہونے والے 5 چھوٹے حلال کاروبار',
-        tEn: '14. 5 Zero-to-Low Capital Halal Micro-Businesses to Escape Poverty',
-        sUr: 'اگر جیب میں بڑا سرمایہ نہ ہو تو محنت اور ہنر سے گھر بیٹھے روزگار کیسے شروع کریں؟',
-        sEn: 'How to launch a self-sustaining micro-business from home with minimal starting money.',
-        tool: 'business', toolLblUr: '📒 کاروباری کھاتہ', toolLblEn: '📒 Business Cashbook',
-        points: [
-          {
-            titleUr: '1. ہوم میڈ ٹفن اور لنچ باکس سروس',
-            titleEn: '1. Homemade Tiffin & Office Lunch Service',
-            detailUr: '• عملی سٹیپس:\n1. اپنے محلے کی دکانوں، دفاتر یا ہاسٹل کے طلبہ سے بات کریں جنہیں دوپہر کو صاف ستھرا گھر کا کھانا چاہیے۔\n2. صرف 5 گاہکوں سے آغاز کریں اور ایڈوانس ہفتہ وار بلنگ رکھیں تاکہ اپنی جیب سے پیسہ نہ پھنسے۔',
-            detailEn: '• Actionable Steps:\n1. Approach local shopkeepers, office staff, or hostel students who need hygienic homemade lunch.\n2. Start with just 5 regular clients on weekly advance payment so you need zero upfront capital.'
-          },
-          {
-            titleUr: '2. اسکول اسٹیشنری اور فوٹو اسٹیٹ/پرنٹنگ پوائنٹ',
-            titleEn: '2. Neighborhood Stationery & Document Assistance Stall',
-            detailUr: '• عملی سٹیپس:\n1. گلی یا اسکول کے قریب چھوٹے ٹیبل سے کاپیاں، پین، پنسل اور نادرا/بلوں کے فارم رکھنے کا کام شروع کریں۔\n2. موبائل سے لوگوں کے آن لائن بل چیک کرنے اور فارم فل کرنے کی سروس دے کر کمیشن کمائیں۔',
-            detailEn: '• Actionable Steps:\n1. Set up a small stall near a school with notebooks, pens, and basic stationery.\n2. Use your smartphone to help locals check utility bills, book appointments, or fill online forms for a service fee.'
-          },
-          {
-            titleUr: '3. ہوم ٹیوشن، قرآن کلاسز اور سلائی سینٹر',
-            titleEn: '3. Home Tutoring, Quran Classes & Tailoring',
-            detailUr: '• عملی سٹیپس:\n1. اس کام میں سرمایہ زیرو ہے؛ اپنے گھر کے ایک کمرے میں شام کو محلے کے بچوں کو ٹیوشن یا تجوید کے ساتھ قرآن پاک پڑھائیں۔\n2. خواتین سلائی اور کپڑوں کی الٹریشن (ترپائی/مرمت) سے روزانہ نقد کمائی کر سکتی ہیں۔',
-            detailEn: '• Actionable Steps:\n1. Requires zero capital: dedicate 2 hours in the evening to teach neighborhood children or conduct Quran classes.\n2. Garment alteration and stitching offer immediate daily cash income from home.'
-          }
-        ]
-      },
-      {
-        id: 1, catUr: 'بجٹ اور بچت', catEn: 'Budgeting',
-        tUr: '1. 50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے اور بچت کا سنہری اصول',
-        tEn: '1. The 50/30/20 Budget Rule: Master Your Monthly Household Income',
-        sUr: 'ماہانہ آمدنی کو تین حصوں میں تقسیم کر کے قرض سے نجات پائیں اور ہر ماہ باقاعدہ بچت کریں۔',
-        sEn: 'Divide your monthly income into Needs (50%), Wants (30%), and Savings (20%) to stay debt-free.',
-        tool: 'budget', toolLblUr: '🧮 بجٹ کیلکولیٹر', toolLblEn: '🧮 Budget Calculator',
-        points: [
-          {
-            titleUr: '1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)',
-            titleEn: '1. Pay Yourself First (20% Immediate Savings)',
-            detailUr: '• عملی سٹیپس:\n1. جس دن تنخواہ یا مزدوری ملے، خرچ شروع کرنے سے پہلے کم از کم 10% سے 20% رقم الگ لفافے یا سیونگ اکاؤنٹ میں رکھ دیں۔\n2. مہینے کے آخر میں بچنے کا انتظار نہ کریں کیونکہ پیسہ ہمیشہ خرچ ہو جاتا ہے۔',
-            detailEn: '• Actionable Steps:\n1. The moment you receive your salary or wage, immediately transfer 10%–20% into a separate savings bucket.\n2. Never wait until the end of the month to save what is left over.'
-          },
-          {
-            titleUr: '2. ہول سیل مارکیٹ سے راشن کی خریداری (50% ضروریات)',
-            titleEn: '2. Wholesale Grocery Planning (50% Essential Needs)',
-            detailUr: '• عملی سٹیپس:\n1. گلی کی پرچون دکان سے روزانہ مہنگا سامان لینے کے بجائے مہینے کی پہلی تاریخ کو فہرست بنا کر ہول سیل منڈی یا یوٹیلٹی اسٹور سے آٹا، گھی، چاول اور دالیں اکٹھی خریدیں۔\n2. اس ایک قدم سے ماہانہ راشن بل میں 15% سے 20% فوری بچت ہوتی ہے۔',
-            detailEn: '• Actionable Steps:\n1. Instead of buying daily items at high retail rates, buy monthly staples (flour, oil, pulses) in bulk from wholesale markets.\n2. This single habit reduces monthly kitchen expenses by 15%–20%.'
-          },
-          {
-            titleUr: '3. دکھاوے اور خواہشات پر کنٹرول (30% لائف اسٹائل)',
-            titleEn: '3. Controlling Lifestyle Inflation (30% Flexible Wants)',
-            detailUr: '• عملی سٹیپس:\n1. باہر کے کھانوں، غیر ضروری کپڑوں اور دکھاوے کی دعوتوں کو اپنی آمدنی کے 30 فیصد سے اوپر نہ جانے دیں۔\n2. بجلی کے بل میں بچت کے لیے شام 6 سے رات 10 بجے (Peak Hours) میں استری اور موٹر نہ چلائیں۔',
-            detailEn: '• Actionable Steps:\n1. Cap dining out, shopping, and entertainment strictly within 30% of your net pay.\n2. Reduce WAPDA/electric bills by avoiding heavy appliances (iron, water pump) during peak hours (6 PM – 10 PM).'
-          }
-        ]
-      },
-      {
-        id: 2, catUr: 'ریئل اسٹیٹ و قانون', catEn: 'Real Estate & Law',
-        tUr: '2. پلاٹ یا گھر خریدنے کے 5 سنہری اصول اور پاکستانی قانونی تصدیق',
-        tEn: '2. 5 Golden Rules & Pakistani Legal Verification Before Buying Property',
-        sUr: 'پاکستان میں پراپرٹی خریدتے وقت جعل سازی، غیر قانونی سوسائٹیوں اور سودی قرض سے بچنے کا طریقہ۔',
-        sEn: 'How to verify NOCs, land records (Fard/Registry), and avoid fraud or interest traps in Pakistan.',
-        points: [
-          {
-            titleUr: '1. کاغذات اور این او سی (NOC) کی قانونی تصدیق',
-            titleEn: '1. Official NOC & Land Record Verification (CDA/LDA/RDA)',
-            detailUr: '• پاکستانی قانونی ادارے اور سٹیپس:\n1. کسی بھی ہاؤسنگ سوسائٹی میں پلاٹ یا فائل لینے سے پہلے متعلقہ ادارے (اسلام آباد میں CDA، لاہور میں LDA، راولپنڈی میں RDA، کراچی میں SBCA/MDA) کی آفیشل ویب سائٹ یا دفتر جا کر سوسائٹی کا منظور شدہ NOC اور لے آؤٹ پلان چیک کریں۔\n2. پنجاب میں PLRA (اراضی ریکارڈ سینٹر) یا متعلقہ تحصیل آفس سے اصل "فردِ ملکیت" اور "انتقال" کی تصدیق کروائیں۔\n3. صرف اسٹامپ پیپر (بیع نامہ) پر پلاٹ نہ خریدیں جب تک پکی رجسٹری یا اتھارٹی ٹرانسفر نہ ہو۔',
-            detailEn: '• Pakistani Legal Authorities & Steps:\n1. Before paying a token for any plot or file, verify the society’s valid NOC from the relevant authority (CDA in Islamabad, LDA in Lahore, RDA in Rawalpindi, SBCA in Karachi).\n2. Verify original ownership (Fard & Intiqal) at the official Land Record Center (PLRA/Arazi Center) or Sub-Registrar office.\n3. Never rely solely on an unregistered stamp paper without official transfer.'
-          },
-          {
-            titleUr: '2. سودی بینک لون سے پرہیز اور حلال متبادل',
-            titleEn: '2. Avoiding High-Interest Bank Loans & Halal Alternatives',
-            detailUr: '• عملی سٹیپس:\n1. روایتی سودی مارگیج لون میں 20 سالوں کے دوران آپ کو گھر کی اصل قیمت سے دوگنی یا تگنی رقم ادا کرنی پڑتی ہے۔\n2. اس کے بجائے سونا جمع کر کے پہلے چھوٹا پلاٹ نقد خریدیں اور پھر کمیٹی ڈال کر مرحلہ وار (Grey Structure) تعمیر کریں۔',
-            detailEn: '• Actionable Steps:\n1. Conventional interest-based mortgages force you to pay 2x to 3x the actual property price over 15–20 years.\n2. Instead, accumulate gold to buy a modest plot in cash, then use interest-free family committees to build room by room.'
-          },
-          {
-            titleUr: '3. ٹیکس، اسٹامپ ڈیوٹی اور لیکویڈیٹی کا حساب',
-            titleEn: '3. Calculating FBR Taxes, Stamp Duty & Cash Buffer',
-            detailUr: '• پاکستانی ٹیکس قوانین:\n1. پراپرٹی کی قیمت کے علاوہ رجسٹری فیس، صوبائی اسٹامپ ڈیوٹی، اور FBR کے سیکشن 236K (خریدار کا ٹیکس) کے لیے 8% سے 10% اضافی رقم ہاتھ میں رکھیں۔\n2. فائلر (ATL) بن کر پراپرٹی خریدیں تاکہ آپ کا ایڈوانس ٹیکس آدھا لگے۔',
-            detailEn: '• Pakistani Tax Rules:\n1. Always keep 8%–10% extra cash above the deal price for provincial Stamp Duty, district transfer fees, and FBR Section 236K buyer withholding tax.\n2. Ensure you are on FBR’s Active Taxpayer List (ATL) before registry day to save heavily on withholding tax.'
-          }
-        ]
-      },
-      {
-        id: 3, catUr: 'ایکشن پلان', catEn: 'Action Plan',
-        tUr: '3. 30 دن کا فنانشل ایکشن پلان: مالی پریشانی سے معاشی استحکام تک',
-        tEn: '3. 30-Day Financial Reset Plan: From Stress to Stability',
-        sUr: 'صرف 4 ہفتوں میں اپنے فالتو اخراجات روکنے اور بچت کا مضبوط سسٹم بنانے کا عملی روڈ میپ۔',
-        sEn: 'A practical 4-week roadmap to audit expenses, plug money leaks, and automate savings.',
-        points: [
-          {
-            titleUr: 'ہفتہ 1 اور 2: روزانہ کے اخراجات کا آڈٹ اور لیکج بند کرنا',
-            titleEn: 'Weeks 1 & 2: Daily Expense Audit & Stopping Leaks',
-            detailUr: '• عملی سٹیپس:\n1. جیب سے نکلنے والا ہر 10 روپے کا نوٹ بھی موبائل یا ڈائری میں لکھیں۔\n2. دوسرے ہفتے فالتو سبسکرپشنز، ہوٹلنگ اور غیر ضروری شاپنگ میں 30% کٹوتی کریں۔',
-            detailEn: '• Actionable Steps:\n1. Write down every single rupee spent for 7 consecutive days.\n2. In Week 2, cut non-essential dining out and impulse buys by 30%.'
-          },
-          {
-            titleUr: 'ہفتہ 3 اور 4: ایمرجنسی فنڈ اور حلال انویسٹمنٹ کا آغاز',
-            titleEn: 'Weeks 3 & 4: Launching Emergency Fund & Halal Assets',
-            detailUr: '• عملی سٹیپس:\n1. تیسرے ہفتے ایک الگ بینک اکاؤنٹ یا کمیٹی شروع کریں۔\n2. چوتھے ہفتے اپنی بچت کو کیش رکھنے کے بجائے سونے یا اسلامک منی مارکیٹ فنڈ میں منتقل کریں۔',
-            detailEn: '• Actionable Steps:\n1. In Week 3, open a separate savings account without an ATM card.\n2. In Week 4, move surplus savings into 24K gold or an SECP-regulated Islamic Money Market Fund.'
-          }
-        ]
-      },
-      {
-        id: 4, catUr: 'سونا اور انویسٹمنٹ', catEn: 'Gold & Investing',
-        tUr: '4. مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ سرمایہ کاری',
-        tEn: '4. Beating Inflation: 24K Gold & Shariah-Compliant Investing',
-        sUr: 'روپے کی گرتی ہوئی قدر سے بچنے کے لیے خالص سونے اور اسلامک میوچل فنڈز کے قانونی و عملی طریقے۔',
-        sEn: 'Protect your purchasing power using certified 24K gold and SECP-regulated Islamic mutual funds.',
-        tool: 'zakat', toolLblUr: '🪙 زکوٰۃ و سونا کیلکولیٹر', toolLblEn: '🪙 Zakat & Gold Tool',
-        points: [
-          {
-            titleUr: '1. زیورات کے بجائے 24 قیراط سونے کے بسکٹ یا سکے خریدیں',
-            titleEn: '1. Buy 24K Certified Gold Bars/Coins Instead of Jewelry',
-            detailUr: '• عملی سٹیپس:\n1. زیورات (21K/22K) خریدتے وقت 15% سے 25% بنائی (Making Charges) اور بیچتے وقت پالش کٹوتی لگتی ہے۔\n2. سرمایہ کاری کے لیے ہمیشہ 24 قیراط (999.9 پیورٹی) کا پیک شدہ بسکٹ (ARY، پاسبان یا مستند لیب ٹیسٹنگ والا) خریدیں جس پر بیچتے وقت کوئی کٹوتی نہیں ہوتی۔',
-            detailEn: '• Actionable Steps:\n1. Gold jewelry incurs 15%–25% making charges and deductions upon resale.\n2. For pure investment, always buy 24K (999.9 purity) sealed gold bars or coins from reputable bullion dealers with zero resale deduction.'
-          },
-          {
-            titleUr: '2. ایس ای سی پی (SECP) سے منظور شدہ اسلامک میوچل فنڈز',
-            titleEn: '2. SECP-Regulated Islamic Money Market Mutual Funds',
-            detailUr: '• پاکستانی قانونی طریقہ کار:\n1. جعلی ڈبل شاہ اسکیموں یا غیر قانونی ایپس میں پیسہ ہرگز نہ لگائیں۔\n2. پاکستان میں SECP سے منظور شدہ اثاثہ مینجمنٹ کمپنیوں (جیسے المیزان، الفلاح اسلامک، این بی پی اسلامک وغیرہ) میں اپنا آن لائن شریعہ کمپلائنٹ اکاؤنٹ کھولیں جہاں آپ جب چاہیں اپنا پیسہ اور حلال منافع نکال سکتے ہیں۔',
-            detailEn: '• Pakistani Legal Procedure:\n1. Never invest in unregistered apps or Ponzi schemes promising fixed doubling of money.\n2. Open an account only with SECP-licensed Asset Management Companies (e.g., Al Meezan, NBP Islamic, Alfalah Islamic) in low-risk Islamic Cash/Money Market Funds.'
-          }
-        ]
-      },
-      {
-        id: 5, catUr: 'کمیٹی پلان', catEn: 'Committee Plan',
-        tUr: '5. کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ کا مکمل پلان',
-        tEn: '5. Structured Family Committee (ROSCA): 12-Month Savings Plan',
-        sUr: 'پاکستان میں کمیٹی ڈالنے کے فوائد، تحریری ریکارڈ رکھنے اور کمیٹی کی رقم سے اثاثہ بنانے کا طریقہ۔',
-        sEn: 'How to organize a secure 12-member monthly savings committee and convert payouts into assets.',
-        tool: 'committee', toolLblUr: '🗓️ کمیٹی ٹول', toolLblEn: '🗓️ Committee Tool',
-        points: [
-          {
-            titleUr: '1. تحریری ریکارڈ اور قابلِ اعتماد ممبران کا انتخاب',
-            titleEn: '1. Written Schedule & Vetting Reliable Members',
-            detailUr: '• عملی سٹیپس:\n1. کمیٹی صرف ان رشتہ داروں یا دوستوں کے ساتھ ڈالیں جن کا ماضی میں لین دین صاف ہو۔\n2. ہر ماہ کی قسط کی وصولی پر واٹس ایپ گروپ یا اس ایپ کے کمیٹی ٹول میں ریکارڈ اپ ڈیٹ کریں۔',
-            detailEn: '• Actionable Steps:\n1. Only form committees with family or colleagues who have a proven track record of timely payments.\n2. Maintain a transparent written schedule using this app’s Committee Tracker.'
-          },
-          {
-            titleUr: '2. کمیٹی کھلنے سے پہلے مقصد طے کریں',
-            titleEn: '2. Assign an Asset Goal Before Payout Arrives',
-            detailUr: '• عملی سٹیپس:\n1. کمیٹی کی یکمشت رقم آتے ہی اگر منصوبہ نہ ہو تو وہ عام گھریلو اخراجات میں ضائع ہو جاتی ہے۔\n2. پہلے دن طے کریں کہ یہ کمیٹی والدہ کی ضرورت، قرض کی ادائیگی یا سونا خریدنے کے لیے ہے۔',
-            detailEn: '• Actionable Steps:\n1. Unplanned lump-sum payouts quickly disappear into casual spending.\n2. Dedicate each payout slot in advance toward debt clearance, family support, or buying gold.'
-          }
-        ]
-      },
-      {
-        id: 6, catUr: 'ایمرجنسی فنڈ', catEn: 'Emergency Shield',
-        tUr: '6. ایمرجنسی فنڈ: اچانک بیماری یا بے روزگاری سے بچاؤ کی ڈھال',
-        tEn: '6. Building a 6-Month Emergency Fund: Your Financial Shield',
-        sUr: 'ناگہانی ہسپتال کے خرچ یا نوکری چھوٹنے کے وقت کسی کے آگے ہاتھ پھیلانے سے بچنے کا فارمولا۔',
-        sEn: 'Step-by-step formula to build 3 to 6 months of survival expenses for unexpected crises.',
-        points: [
-          {
-            titleUr: '1. تین سے چھ ماہ کے راشن اور بلوں کے برابر رقم',
-            titleEn: '1. Calculating 3 to 6 Months of Core Survival Costs',
-            detailUr: '• عملی سٹیپس:\n1. اگر آپ کے گھر کا ماہانہ لازمی خرچ (کرایہ، راشن، بل) 30 ہزار ہے تو آپ کا پہلا ہدف 90 ہزار سے 1 لاکھ 80 ہزار روپے کا ایمرجنسی فنڈ ہونا چاہیے۔\n2. اسے روزمرہ کے اے ٹی ایم کارڈ سے الگ رکھیں۔',
-            detailEn: '• Actionable Steps:\n1. Multiply your essential monthly survival expenses (rent, groceries, utilities) by 3 to 6.\n2. Keep this money strictly separate from your daily shopping debit card.'
-          }
-        ]
-      },
-      {
-        id: 7, catUr: 'قرض سے نجات', catEn: 'Debt Freedom',
-        tUr: '7. قرض اور سودی قسطوں کے جال سے نکلنے کا عملی منصوبہ',
-        tEn: '7. Debt Freedom Roadmap: Escape Loans & Installment Traps',
-        sUr: 'کریڈٹ کارڈز، مہنگی قسطوں اور ادھار کو مرحلہ وار ختم کر کے ذہنی سکون حاصل کرنے کی حکمتِ عملی۔',
-        sEn: 'Use the proven Debt Snowball method to eliminate personal loans and high-markup installments.',
-        points: [
-          {
-            titleUr: '1. ڈیٹ سنو بال (Debt Snowball) کے ذریعے قرض کا خاتمہ',
-            titleEn: '1. The Debt Snowball Method for Fast Loan Clearance',
-            detailUr: '• عملی سٹیپس:\n1. اپنے تمام قرضوں کی فہرست چھوٹے سے بڑے کی ترتیب سے بنائیں۔\n2. سب سے چھوٹے قرض کو سب سے پہلے اضافی رقم دے کر ختم کریں؛ اس سے ذہنی بوجھ کم ہوگا اور حوصلہ بڑھے گا۔\n3. قسطوں پر موبائل یا الیکٹرانکس لینا فوری بند کریں کیونکہ اس میں 40% تک اضافی مارک اپ لیا جاتا ہے۔',
-            detailEn: '• Actionable Steps:\n1. List all your debts from the smallest balance to the largest.\n2. Clear the smallest debt first to gain psychological momentum, then roll that payment into the next debt.\n3. Stop buying phones or appliances on high-markup installments.'
-          }
-        ]
-      },
-      {
-        id: 8, catUr: 'ڈیجیٹل اسکلز', catEn: 'Digital Skills',
-        tUr: '8. آمدنی بڑھانے کے طریقے: موبائل، اے آئی (AI) اور فری لانسنگ گائیڈ',
-        tEn: '8. Multiple Income Streams: Mobile Skills, AI & Freelancing',
-        sUr: 'صرف بچت کافی نہیں! موبائل، گرافک ڈیزائننگ اور اے آئی ٹولز سیکھ کر حلال کمائی بڑھانے کے راستے۔',
-        sEn: 'Increase your earning power using smartphone skills, graphic design, AI workflows, and freelancing.',
-        points: [
-          {
-            titleUr: '1. مفت سرکاری و آن لائن کورسز (DigiSkills / NAVTTC)',
-            titleEn: '1. Free Government & Online Skill Portals (DigiSkills / NAVTTC)',
-            detailUr: '• پاکستانی مواقع اور سٹیپس:\n1. حکومتِ پاکستان کے مفت پورٹل DigiSkills.pk اور NAVTTC کے ٹیکنیکل کورسز میں داخلہ لیں۔\n2. موبائل پر Canva گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ، اور AI ٹولز سیکھ کر مقامی دکانداروں کے پوسٹرز اور سوشل میڈیا پوسٹس بنا کر دیں۔',
-            detailEn: '• Pakistani Opportunities & Steps:\n1. Enroll in free government-backed training programs like DigiSkills.pk and NAVTTC.\n2. Learn graphic design, video editing, and AI workflows to offer social media design services to local businesses.'
-          }
-        ]
-      },
-      {
-        id: 9, catUr: 'بچوں کا مستقبل', catEn: 'Children Future',
-        tUr: '9. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی',
-        tEn: '9. Children’s Higher Education & Marriage Fund Blueprint',
-        sUr: '10 سے 15 سال بعد آنے والے بڑے اخراجات کے لیے آج سے تھوڑی بچت کر کے بغیر قرض لیے فنڈ تیار کریں۔',
-        sEn: 'Prepare for major family milestones over 10–15 years without borrowing a single rupee.',
-        points: [
-          {
-            titleUr: '1. ہر سال سونے کا سکہ اور ہنر پر سرمایہ کاری',
-            titleEn: '1. Annual Gold Coin Accumulation & Skill Priority',
-            detailUr: '• عملی سٹیپس:\n1. بچے کی پیدائش سے ہی ہر ماہ تھوڑی رقم الگ کر کے سال میں ایک بار 1 یا 2 گرام سونا خرید کر بچے کے نام پر رکھتے جائیں۔\n2. شادی پر دکھاوے کے قرض لینے کے بجائے بچوں کی معیاری تعلیم اور ہنر پر پیسہ لگائیں۔',
-            detailEn: '• Actionable Steps:\n1. Convert small monthly child savings into 1–2 grams of 24K gold annually; over 15 years, this builds a massive inflation-proof fund.\n2. Prioritize technical education over lavish, debt-funded wedding ceremonies.'
-          }
-        ]
-      },
-      {
-        id: 10, catUr: 'گاڑی کے اصول', catEn: 'Vehicle Rules',
-        tUr: '10. گاڑی یا موٹرسائیکل کی خریداری، فیول اور مرمت کا مالیاتی فارمولا',
-        tEn: '10. Smart Vehicle Purchase, Fuel & Maintenance Financial Rules',
-        sUr: 'استطاعت کے مطابق سواری خریدنے، کاغذات کی تصدیق اور ماہانہ پیٹرول و سپیئر پارٹس کا بجٹ بنانے کے اصول۔',
-        sEn: 'Financial rules for buying a vehicle in Pakistan, verifying Excise records, and budgeting for maintenance.',
-        points: [
-          {
-            titleUr: '1. ایکسائز (MTMIS) تصدیق اور مینٹیننس فنڈ',
-            titleEn: '1. Excise (MTMIS) Verification & Maintenance Sinking Fund',
-            detailUr: '• پاکستانی قانونی سٹیپس:\n1. پرانی گاڑی یا بائیک خریدتے وقت متعلقہ صوبے کی MTMIS (ایکسائز اینڈ ٹیکسیشن ویب سائٹ) پر نمبر ڈال کر چوری یا ٹوکن ٹیکس کلئیرنس چیک کریں اور فوری بائیو میٹرک ٹرانسفر کروائیں۔\n2. ایسی گاڑی منتخب کریں جس کے سپیئر پارٹس مقامی مارکیٹ میں سستے اور آسانی سے ملتے ہوں، اور ہر ماہ مرمت کے لیے الگ فنڈ رکھیں۔',
-            detailEn: '• Pakistani Legal Steps:\n1. Before buying a used bike or car, verify registration on the provincial Excise MTMIS portal and complete biometric transfer immediately.\n2. Choose models with affordable local spare parts and set aside a small monthly fund for oil, tires, and repairs.'
-          }
-        ]
-      },
-      {
-        id: 11, catUr: 'ٹیکس اور ایف بی آر', catEn: 'Tax & FBR',
-        tUr: '11. پاکستان میں ٹیکس فائلر (Active Taxpayer) بننے کے مالی فوائد اور طریقہ',
-        tEn: '11. Financial Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer',
-        sUr: 'نان فائلر پر لگنے والے دگنے ٹیکس سے بچنے اور ایف بی آر پورٹل (IRIS) پر رجسٹریشن کا مکمل طریقہ۔',
-        sEn: 'How Active Taxpayer List (ATL) status saves heavy withholding taxes and how to register on FBR IRIS.',
-        points: [
-          {
-            titleUr: '1. ایف بی آر آئرس (FBR IRIS) پر فائلر بننے کے سٹیپس',
-            titleEn: '1. Step-by-Step Registration on FBR IRIS Portal',
-            detailUr: '• پاکستانی قانونی سٹیپس:\n1. اپنے نام کی سم (SIM) اور شناختی کارڈ کے ساتھ FBR کی ویب سائٹ (iris.fbr.gov.pk) یا Tax Asaan ایپ پر مفت اکاؤنٹ (NTN) بنائیں۔\n2. اپنی سالانہ آمدنی اور اثاثوں (Wealth Statement) کا فارم جمع کروائیں۔ اگر آمدنی ٹیکس کی حد سے کم ہے تو زیرو ٹیکس کے ساتھ ریٹرن فائل ہو جاتی ہے۔\n3. فائلر بننے سے بینک منافع، گاڑی کے ٹوکن اور پراپرٹی کی خرید و فروخت پر آپ کا آدھا ٹیکس بچ جاتا ہے۔',
-            detailEn: '• Pakistani Legal Steps:\n1. Use your CNIC and biometric-registered mobile number to register for free on FBR’s IRIS portal (iris.fbr.gov.pk) or Tax Asaan app.\n2. File your Income Return and Wealth Statement annually (even if income is below the taxable threshold, file a Nil return).\n3. Being on the ATL cuts withholding taxes by 50%+ on banking, vehicles, and property.'
-          }
-        ]
-      },
-      {
-        id: 12, catUr: 'ریٹائرمنٹ پلان', catEn: 'Retirement Plan',
-        tUr: '12. ریٹائرمنٹ اور بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ',
-        tEn: '12. Retirement Independence: Building Your Private Pension Fund',
-        sUr: 'پرائیویٹ ملازمین، مزدوروں اور فری لانسرز کے لیے جوانی میں ہی بڑھاپے کا سہارا بنانے کا لائحہ عمل۔',
-        sEn: 'How private workers and self-employed citizens can build passive rental and pension income.',
-        points: [
-          {
-            titleUr: '1. کرایہ دینے والا اثاثہ اور اسلامک پنشن اسکیم (VPS)',
-            titleEn: '1. Rental Assets & Islamic Voluntary Pension Schemes (VPS)',
-            detailUr: '• عملی سٹیپس:\n1. اپنی جوانی کی کمائی سے کم از کم ایک چھوٹی دکان یا کمرشل شیڈ بنانے کی کوشش کریں جس کا ماہانہ کرایہ بڑھاپے میں مستقل پنشن کا کام دے۔\n2. SECP سے منظور شدہ اسلامک والنٹری پنشن اسکیم (VPS) میں ماہانہ 10% جمع کروائیں جس پر ٹیکس ریبیٹ بھی ملتا ہے۔',
-            detailEn: '• Actionable Steps:\n1. Aim to build or acquire a small commercial shop or rental unit during your working years to provide steady monthly rent in old age.\n2. Contribute 10% monthly into an SECP-approved Islamic Voluntary Pension Scheme (VPS).'
-          }
-        ]
-      },
-      {
-        id: 13, catUr: 'دکان کا کھاتہ', catEn: 'Business Cashbook',
-        tUr: '13. چھوٹے کاروبار اور دکان کے مالیاتی اصول: ذاتی اور کاروباری گلہ الگ رکھیں',
-        tEn: '13. Small Business Bookkeeping: Separating Personal & Shop Cash',
-        sUr: 'جنرل سٹور، ناشتہ پوائنٹ یا آرڈر سپلائی کے کاروبار کو نقصان سے بچانے اور روزانہ کا کھاتہ رکھنے کے اصول۔',
-        sEn: 'Essential cashflow rules for shops, food points, and suppliers to protect working capital.',
-        tool: 'business', toolLblUr: '📒 کاروباری کھاتہ', toolLblEn: '📒 Business Cashbook',
-        points: [
-          {
-            titleUr: '1. دکان کے گلے سے گھر کا خرچ براہِ راست نہ نکالیں',
-            titleEn: '1. Never Draw Unrecorded Household Cash from the Shop Register',
-            detailUr: '• عملی سٹیپس:\n1. چھوٹے کاروبار کے فیل ہونے کی سب سے بڑی وجہ یہ ہے کہ دکاندار مال کے پیسے بھی گھر میں خرچ کر لیتا ہے جس سے دکان خالی ہو جاتی ہے۔\n2. دکان سے اپنے لیے ایک مقررہ ماہانہ یا ہفتہ وار تنخواہ طے کریں اور روزانہ کی سیل اور خرچ کو اس ایپ کے "کھاتہ ٹول" میں لکھیں۔',
-            detailEn: '• Actionable Steps:\n1. The #1 reason small shops fail is mixing working capital with household expenses.\n2. Fix a set monthly/weekly salary for yourself and log every rupee of sales and stock expense in this app’s Cashbook Tool.'
-          }
-        ]
-      }
+      [1, 'بجٹ اور بچت', 'Budgeting', '1. 50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', '1. The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', [
+        ['1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)', '1. Pay Yourself First (20% Immediate Savings)', '• تنخواہ یا مزدوری ملتے ہی خرچ سے پہلے 10% سے 20% رقم الگ رکھیں۔ مہینے کے آخر کا انتظار نہ کریں۔', '• Immediately transfer 10%–20% into savings the day you get paid before spending a rupee.'],
+        ['2. ہول سیل مارکیٹ سے راشن کی خریداری (50% ضروریات)', '2. Bulk Wholesale Grocery Planning (50% Needs)', '• پرچون کے بجائے مہینے کے شروع میں ہول سیل منڈی سے آٹا، گھی اور دالیں اکٹھی خرید کر 15% سے 20% بچت کریں۔', '• Buy monthly staples in bulk from wholesale markets at the start of the month to save 15%–20%.'],
+        ['3. بجلی کے بل اور خواہشات پر کنٹرول (30%)', '3. Peak-Hour Utility & Lifestyle Control (30% Wants)', '• شام 6 سے 10 بجے (Peak Hours) میں استری اور موٹر نہ چلائیں۔', '• Avoid running heavy electrical appliances during peak hours (6 PM–10 PM).']
+      ]],
+      [15, 'اثاثہ سازی', 'Micro-Assets', '2. مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets)', '2. Micro-Asset Building for Common People', 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے منافع بخش اثاثے کیسے بنائے؟', 'Practical steps for daily-wage earners to build income-generating assets.', 'gold', '🥇 سونا اور بچت ٹول', '🥇 Micro-Gold Tool', [
+        ['1. مائکرو گولڈ (0.1 گرام یا 1 گرام سونے کے ٹکڑے)', '1. Micro-Gold Accumulation (Fractional 24K Gold)', '• تولہ سونا خریدنے کا انتظار نہ کریں۔ روزانہ 100 یا 200 روپے الگ جمع کریں اور 24 قیراط سونے کے چھوٹے ٹکڑے پکی رسید کے ساتھ لیں۔', '• Do not wait for a full Tola. Save PKR 100–200 daily and buy fractional 24K pure gold sheets with an invoice.'],
+        ['2. اوزار اور مشینری بطورِ اثاثہ (Tools as Capital)', '2. Working Tools & Equipment as Cash-Flowing Assets', '• کاریگر، مستری یا درزی کے لیے جدید اوزار ہی اس کی فیکٹری ہیں۔ بچت سے بہتر مشینری لیں۔', '• Reinvest small savings into better power tools or sewing machines to double work speed.'],
+        ['3. گھریلو پیداواری اثاثے (مرغی پالن اور سبزیاں)', '3. Household Productive Assets (Poultry & Gardening)', '• گھر میں مرغیاں پالنا روزانہ انڈے کی نقد آمدن دیتا ہے۔', '• Raise hens at home for daily egg sales and grow kitchen herbs.']
+      ]],
+      [14, 'غربت سے آزادی', 'Micro-Business', '3. صفر یا کم سرمائے سے شروع ہونے والے چھوٹے حلال کاروبار', '4. 5 Zero-to-Low Capital Halal Micro-Businesses', 'بنا بڑے سرمائے کے محنت اور ہنر سے گھر بیٹھے حلال روزگار کیسے شروع کریں؟', 'How to launch a self-sustaining micro-business from home with minimal cash.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
+        ['1. ہوم مینڈ ٹفن اور لنچ باکس سروس', '1. Homemade Tiffin & Office Lunch Service', '• محلے کے دفاتر یا طلبہ کے لیے صاف ستھرا گھر کا کھانا تیار کریں۔', '• Supply hygienic homemade lunch boxes to local offices.'],
+        ['2. اسکول اسٹیشنری اور آن لائن فارم سروس', '2. Stationery Stall & Online Form Assistance', '• اسکول کے باہر کاپی پنسل کا اسٹال لگائیں۔', '• Set up a small stationery counter near a school.']
+      ]],
+      [3, 'ایکشن پلان', 'Action Plan', '4. 30 دن کا فنانشل ایکشن پلان: معاشی استحکام کا سفر', '3. 30-Day Financial Reset & Action Plan', 'صرف 4 ہفتوں میں فالتو اخراجات روکنے اور بچت کا سسٹم بنانے کا عملی روڈ میپ.', 'A structured 4-week roadmap to audit expenses and eliminate money leaks.', 'goal', '🎯 ہدف پلانر', '🎯 Goal Planner', [
+        ['ہفتہ 1 اور 2: روزانہ کے اخراجات کی ڈائری اور 30% کٹوتی', 'Weeks 1 & 2: Daily Expense Tracking & 30% Cut', '• پہلے ہفتے ہر ایک روپیہ ڈائری میں لکھیں اور دوسرے ہفتے فالتو اخراجات میں 30% کمی لائیں۔', '• Track every single rupee spent for 7 days, then cut lifestyle leaks by 30% in Week 2.']
+      ]],
+      [5, 'کمیٹی پلان', 'Committee Plan', '5. کمیٹی (BC) اور خاندانی بچت کا منظم شیڈول: 12 ماہ پلان', '5. Structured Family Committee (ROSCA): 12-Month Plan', 'پاکستان میں محفوظ کمیٹی ڈالنے، تحریری ریکارڈ رکھنے اور رقم کو اثاثے میں بدلنے کا طریقہ۔', 'Organize a secure 12-member monthly savings committee and track payouts.', 'committee', '🗓️ کمیٹی ٹول', '🗓️ Committee Tool', [
+        ['1. قابلِ اعتماد ممبران اور تحریری شیڈول', '1. Trusted Members & Written Ledger', '• صرف آزمودہ لوگوں کے ساتھ کمیٹی ڈالیں اور اس ایپ کے کمیٹی ٹول میں ہر ماہ کا ریکارڈ رکھیں۔', '• Join committees only with reliable family/friends and log every monthly installment.']
+      ]],
+      [6, 'ایمرجنسی فنڈ', 'Emergency Shield', '6. ایمرجنسی فنڈ: اچانک بیماری یا بحران سے بچاؤ کی ڈھال', '6. Building a 6-Month Emergency Fund Shield', 'ناگہانی ہسپتال کے خرچ یا بے روزگاری میں قرض مانگنے سے بچنے کا حفاظتی فارمولا۔', 'Formula to build 3 to 6 months of living expenses for unexpected crises.', 'goal', '🎯 ایمرجنسی کیلکولیٹر', '🎯 Emergency Tool', [
+        ['1. تین سے چھ ماہ کے لازمی اخراجات کا حساب', '1. The 3-to-6 Month Survival Expense Formula', '• اپنے گھر کے ایک ماہ کے راشن، کرائے اور بلوں کو 3 یا 6 سے ضرب دیں۔', '• Multiply essential monthly survival costs by 3 to 6 and keep this reserve separate.']
+      ]],
+      [7, 'قرض سے نجات', 'Debt Freedom', '7. قرض اور سودی قسطوں کے جال سے نکلنے کا عملی منصوبہ', '7. Debt Freedom Roadmap: Escape Loans & Installment Traps', 'ڈیبٹ سنو بال (Debt Snowball) طریقے سے ادھار ختم کرنے اور مہنگی قسطوں سے بچنے کا راستہ۔', 'Use the Debt Snowball method to clear loans and avoid high-markup installment traps.', 'goal', '🎯 قرض پلانر', '🎯 Debt Payoff Tool', [
+        ['1. سب سے چھوٹے قرض کو سب سے پہلے ختم کریں', '1. Attack Smallest Debt First (Debt Snowball)', '• تمام قرضوں کی فہرست بنائیں، سب سے چھوٹا ادھار پہلے چکا کر ذہنی حوصلہ حاصل کریں۔', '• List all debts from smallest to largest, clear the smallest first for momentum.']
+      ]],
+      [2, 'ریئل اسٹیٹ و قانون', 'Real Estate & Law', '8. پلاٹ یا گھر خریدنے کے اصول اور پاکستانی قانونی تصدیق', '2. 5 Golden Rules & Pakistani Legal Property Verification', 'پاکستان میں پراپرٹی خریدتے وقت جعل سازی، NOC اور فرد/انتقال کی تصدیق کا طریقہ۔', 'How to verify NOCs, land records (Fard/Registry), and avoid fraud in Pakistan.', null, '', '', [
+        ['1. این او سی (NOC) اور فردِ ملکیت کی سرکاری تصدیق', '1. Official NOC & Land Record Verification (CDA/LDA/PLRA)', '• بیانہ دینے سے پہلے متعلقہ اتھارٹی سے سوسائٹی کا منظور شدہ NOC چیک کریں۔', '• Verify valid society NOC from CDA, LDA, RDA, or SBCA before token payment.']
+      ]],
+      [4, 'سونا اور انویسٹمنٹ', 'Gold & Investing', '9. مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ فنڈز', '4. Beating Inflation: 24K Gold & Shariah Mutual Funds', 'نقد رقم کی گرتی قدر کو بچانے کے لیے خالص سونے اور SECP منظور شدہ حلال فنڈز کی گائیڈ۔', 'Protect purchasing power using 24K gold bars and SECP-regulated Islamic funds.', 'zakat', '🪙 زکوٰۃ کیلکولیٹر', '🪙 Zakat Tool', [
+        ['1. زیورات کے بجائے 24 قیراط سونے کے بسکٹ یا سکے', '1. Buy 24K Certified Gold Bars Instead of Jewelry', '• زیورات پر کٹوتی ہوتی ہے۔ ہمیشہ 24K پیک شدہ گولڈ بسکٹ خریدیں۔', '• Jewelry loses value in making charges. Buy 24K sealed gold bars with zero resale deduction.']
+      ]],
+      [8, 'ڈیجیٹل اسکلز', 'Digital Skills', '10. آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', '8. Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال سائیڈ انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', [
+        ['1. مفت سرکاری کورسز (DigiSkills / NAVTTC)', '1. Free Portals (DigiSkills / NAVTTC) & Local Services', '• مفت سرکاری کورسز سے گرافک ڈیزائن اور AI سیکھ کر خدمات دیں۔', '• Master design and AI tools via DigiSkills.pk/NAVTTC.']
+      ]],
+      [9, 'بچوں کا مستقبل', 'Children Future', '11. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی', '9. Children’s Higher Education & Marriage Fund Blueprint', '10 سے 15 سال بعد کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا سونا جوڑنے کا طریقہ۔', 'Prepare for future family milestones over 10–15 years without taking loans.', 'gold', '🥇 بچت و سونا ٹول', '🥇 Gold Saving Tool', [
+        ['1. ہر سال سونے کی چھوٹی بچت', '1. Annual Gold Accumulation & Education Priority', '• بچے کی پیدائش سے ہی ہر سال بچت سے 1 یا 2 گرام سونا لے کر رکھیں۔', '• Convert small monthly child savings into 1–2 grams of 24K gold yearly.']
+      ]],
+      [10, 'گاڑی کے اصول', 'Vehicle Rules', '12. گاڑی یا موٹرسائیکل کی خریداری، کاغذات اور مرمت', '10. Smart Vehicle Purchase, Excise Check & Maintenance Rules', 'استطاعت کے مطابق سواری خریدنے، MTMIS تصدیق اور ماہانہ پیٹرول و پارٹس کا بجٹ۔', 'Rules for buying a vehicle, verifying Excise records, and budgeting for fuel/parts.', null, '', '', [
+        ['1. ایکسائز (MTMIS) تصدیق اور مینٹیننس فنڈ', '1. Excise MTMIS Check, Spare Parts & Maintenance Fund', '• خریداری سے پہلے آن لائن MTMIS ریکارڈ اور بائیو میٹرک ٹرانسفر یقینی بنائیں۔', '• Verify vehicle records on provincial Excise MTMIS before purchase.']
+      ]],
+      [11, 'ٹیکس اور ایف بی آر', 'Tax & FBR', '13. پاکستان میں ٹیکس فائلر (ATL) بننے کے فوائد اور طریقہ', '11. Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer', 'نان فائلر کے دگنے ٹیکس سے بچنے اور FBR IRIS پر خود رجسٹریشن کرنے کی رہنمائی۔', 'Save 50%+ withholding taxes on banking and property via FBR IRIS registration.', null, '', '', [
+        ['1. ایف بی آر آئرس (IRIS) پر مفت رجسٹریشن', '1. Free FBR IRIS Registration & Withholding Tax Savings', '• اپنے شناختی کارڈ اور سم سے iris.fbr.gov.pk پر مفت NTN بنائیں۔', '• Register with your CNIC on iris.fbr.gov.pk.']
+      ]],
+      [12, 'ریٹائرمنٹ پلان', 'Retirement Plan', '14. بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', '12. Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ۔', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', [
+        ['1. کرائے کی دکان اور اسلامک پنشن اسکیم (VPS)', '1. Commercial Rental Unit & Islamic Pension (VPS)', '• جوانی کی بچت سے ایک چھوٹی دکان بنائیں یا SECP اسلامک VPS میں حصہ لیں۔', '• Aim to acquire a small rental shop during working years or invest in VPS.']
+      ]],
+      [13, 'دکان کا کھاتہ', 'Business Cashbook', '15. چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', '13. Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
+        ['1. دکان کا گلہ الگ رکھیں اور اپنی تنخواہ مقرر کریں', '1. Separate Registers & Fixed Owner Salary', '• دکان کے کیش سے براہِ راست گھر کا خرچ نہ نکالیں۔ اپنی تنخواہ مقرر کریں۔', '• Never draw unrecorded household cash from the shop register. Set a fixed salary.']
+      ]]
     ];
 
-    // Persistent App State
     let commSlots = [
       { mUr: 'اگست 2026', mEn: 'Aug 2026', nUr: 'والدہ محترمہ', nEn: 'Mother', paid: true },
       { mUr: 'ستمبر 2026', mEn: 'Sep 2026', nUr: 'ایمرجنسی فنڈ', nEn: 'Emergency Fund', paid: true },
@@ -687,378 +215,166 @@
       { mUr: 'جون 2027', mEn: 'Jun 2027', nUr: 'ٹولز/مشینری', nEn: 'Tools Upgrade', paid: false },
       { mUr: 'جولائی 2027', mEn: 'Jul 2027', nUr: 'سالانہ بچت', nEn: 'Annual Savings', paid: false }
     ];
-
-    let bizData = JSON.parse(localStorage.getItem('flp_biz_pro') || '[{"desc":"Daily Shop Sales / آج کی سیل","amt":25000,"type":"in"},{"desc":"Stock Purchase / مال کی خریداری","amt":10000,"type":"exp"}]');
+    let bizData = JSON.parse(localStorage.getItem('flp_biz_pro') || '[{"desc":"Daily Sales / آج کی سیل","amt":25000,"type":"in"},{"desc":"Stock / مال خریداری","amt":10000,"type":"exp"}]');
     let chatData = JSON.parse(localStorage.getItem('flp_chat_pro') || '[]');
 
-    // Language Switcher - Updates 100% of the App Interface
+    function loadLiveDates() {
+      const now = new Date(), dIdx = now.getDay(), dNum = now.getDate(), mIdx = now.getMonth(), yNum = now.getFullYear();
+      const daysUr = ['اتوار','پیر','منگل','بدھ','جمعرات','جمعہ','ہفتہ'], daysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      const mUr = ['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'], mEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      const dMUr = ['چیت','بیساکھ','جیٹھ','ہاڑھ','ساون','بھادوں','اسوج','کتک','مگھر','پوہ','ماگھ','پھاگن'], dMEn = ['Chet','Vaisakh','Jeth','Harh','Sawan','Bhadon','Assuj','Katak','Maghar','Poh','Magh','Phagan'];
+      let desiIdx = (mIdx + (dNum >= 15 ? 9 : 8)) % 12, desiDay = dNum >= 15 ? (dNum - 14) : (dNum + 16);
+      let hUr = '4 ربیع الثانی 1448ھ', hEn = '4 Rabi al-Thani 1448 AH';
+      try {
+        hUr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
+        hEn = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
+      } catch(e) {}
+      document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}، ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
+      document.getElementById('dateCalendars').innerHTML = lang === 'ur'
+        ? `<span>🌙 اسلامی: ${hUr}</span>|<span>🌾 دیسی: ${desiDay} ${dMUr[desiIdx]}</span>|<span>🇵🇰 پاکستان وقت</span>`
+        : `<span>🌙 Islamic: ${hEn}</span>|<span>🌾 Desi: ${desiDay} ${dMEn[desiIdx]}</span>|<span>🇵🇰 PKT Time</span>`;
+    }
+
+    function updateLiveClock() {
+      const el = document.getElementById('liveClock');
+      if (el) el.textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+    }
+    setInterval(updateLiveClock, 1000);
+
     function switchLang(l) {
       lang = l;
       const root = document.getElementById('htmlRoot');
-      root.lang = l;
-      root.dir = l === 'ur' ? 'rtl' : 'ltr';
-
-      document.getElementById('lang-ur').className = l === 'ur'
-        ? 'px-3 py-1 rounded-lg text-xs font-bold transition-all bg-[#D4AF37] text-[#0A192F] shadow'
-        : 'px-3 py-1 rounded-lg text-xs font-semibold transition-all text-gray-300 hover:text-white';
-      document.getElementById('lang-en').className = l === 'en'
-        ? 'px-3 py-1 rounded-lg text-xs font-bold transition-all bg-[#D4AF37] text-[#0A192F] shadow'
-        : 'px-3 py-1 rounded-lg text-xs font-semibold transition-all text-gray-300 hover:text-white';
-
-      const t = uiText[l];
-      const fontCls = l === 'ur' ? 'urdu-font' : 'eng-font';
-
-      const setTxt = (id, val, applyFont = true) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.textContent = val;
-        if (applyFont) {
-          el.classList.remove('urdu-font', 'eng-font');
-          el.classList.add(fontCls);
-        }
-      };
-
-      setTxt('ui-appTitle', t.appTitle);
-      setTxt('ui-appSub', t.appSub, false);
-      setTxt('ui-heroBadge', t.heroBadge);
-      setTxt('ui-heroHeading', t.heroHeading);
-      setTxt('ui-toolsHeading', t.toolsHeading);
-      setTxt('ui-btnBudgetTitle', t.btnBudgetTitle);
-      setTxt('ui-btnBudgetSub', t.btnBudgetSub, false);
-      setTxt('ui-btnCommTitle', t.btnCommTitle);
-      setTxt('ui-btnCommSub', t.btnCommSub, false);
-      setTxt('ui-btnBizTitle', t.btnBizTitle);
-      setTxt('ui-btnBizSub', t.btnBizSub, false);
-      setTxt('ui-btnZakatTitle', t.btnZakatTitle);
-      setTxt('ui-btnZakatSub', t.btnZakatSub, false);
-      setTxt('ui-chatHeading', t.chatHeading);
-      setTxt('ui-chatBadge', t.chatBadge, false);
-      setTxt('ui-chatDesc', t.chatDesc);
-      setTxt('ui-chatSubmit', t.chatSubmit, false);
-      setTxt('ui-libraryHeading', t.libraryHeading);
-      setTxt('ui-footerTitle', t.footerTitle);
-      setTxt('ui-footerSub', t.footerSub);
-      setTxt('ui-devPhoneLbl', t.devPhoneLbl, false);
-      setTxt('ui-devEmailLbl', t.devEmailLbl, false);
-      setTxt('ui-copyright', t.copyright, false);
-
-      document.getElementById('searchBox').placeholder = t.searchPlaceholder;
-      document.getElementById('chatName').placeholder = t.chatNamePlaceholder;
-      document.getElementById('chatText').placeholder = t.chatTextPlaceholder;
-
+      root.lang = l; root.dir = l === 'ur' ? 'rtl' : 'ltr';
+      document.getElementById('lang-ur').className = l === 'ur' ? 'px-3 py-1 rounded-lg text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded-lg text-xs font-semibold text-gray-300';
+      document.getElementById('lang-en').className = l === 'en' ? 'px-3 py-1 rounded-lg text-xs font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-3 py-1 rounded-lg text-xs font-semibold text-gray-300';
+      document.querySelectorAll('[data-ur]').forEach(el => { el.textContent = el.getAttribute('data-' + l); el.classList.toggle('urdu-font', l === 'ur'); el.classList.toggle('eng-font', l === 'en'); });
+      document.querySelectorAll('[data-ph-ur]').forEach(el => el.placeholder = el.getAttribute('data-ph-' + l));
       loadLiveDates();
       if (activeTopTool) renderToolHTML('topToolPanel', activeTopTool, 'top');
-      renderChat();
-      renderGuides();
+      renderChat(); renderGuides();
     }
 
-    // Unified Tool Generator (Works in Top Bar AND Inline inside any Guide Card!)
-    function renderToolHTML(containerId, toolType, prefix) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      const t = uiText[lang];
-      const closeCall = prefix === 'top' ? `closeTopTool()` : `closeInlineTool('${containerId}')`;
+    function renderToolHTML(cId, type, p) {
+      const box = document.getElementById(cId); if (!box) return;
+      const closeFn = p === 'top' ? 'closeTopTool()' : `document.getElementById('${cId}').classList.add('hidden')`;
+      const header = (title) => `<div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]"><span>${title}</span><button onclick="${closeFn}" class="text-red-600 text-xs font-bold px-2 py-0.5 bg-red-50 rounded">${tr('✕ بند کریں','✕ Close')}</button></div>`;
 
-      if (toolType === 'budget') {
-        container.innerHTML = `
-          <div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-500 shadow-lg text-xs">
-            <div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]">
-              <span>${t.budgetTitle}</span>
-              <button onclick="${closeCall}" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">${t.closeBtn}</button>
-            </div>
-            <label class="block font-bold mb-1 text-gray-700">${t.budgetLabel}</label>
-            <input type="number" id="inc-${prefix}" value="50000" oninput="calcAnyBudget('${prefix}')" class="w-full p-2.5 border-2 border-[#064E3B] rounded-xl mb-3 font-extrabold text-sm text-[#064E3B] bg-emerald-50/50" />
-            <div class="grid grid-cols-3 gap-2 text-center">
-              <div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>${t.needsLbl}</b><p id="needs-${prefix}" class="font-black text-emerald-950 mt-1 text-xs md:text-sm">Rs. 25,000</p></div>
-              <div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>${t.wantsLbl}</b><p id="wants-${prefix}" class="font-black text-blue-950 mt-1 text-xs md:text-sm">Rs. 15,000</p></div>
-              <div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>${t.saveLbl}</b><p id="save-${prefix}" class="font-black text-amber-950 mt-1 text-xs md:text-sm">Rs. 10,000</p></div>
-            </div>
-          </div>`;
-      } else if (toolType === 'committee') {
-        container.innerHTML = `
-          <div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-[#D4AF37] shadow-lg text-xs">
-            <div class="flex justify-between items-center mb-2 border-b pb-2 font-bold text-sm text-[#0A192F]">
-              <span>${t.commTitle}</span>
-              <button onclick="${closeCall}" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">${t.closeBtn}</button>
-            </div>
-            <p class="text-[11px] text-gray-500 mb-2">${t.commHint}</p>
-            <div class="space-y-1.5 max-h-56 overflow-y-auto">
-              ${commSlots.map((s, i) => `
-                <div class="flex items-center justify-between p-2 bg-slate-50 border rounded-xl gap-2">
-                  <span class="w-20 font-bold text-[#0A192F] shrink-0">${lang === 'ur' ? s.mUr : s.mEn}</span>
-                  <input type="text" value="${lang === 'ur' ? s.nUr : s.nEn}" onchange="updateCommName(${i}, this.value)" class="flex-1 p-1.5 border rounded-lg bg-white text-xs font-semibold" />
-                  <button onclick="toggleCommStatus(${i}, '${containerId}', '${prefix}')" class="px-2.5 py-1 rounded-lg font-bold shrink-0 ${s.paid ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : 'bg-amber-100 text-amber-900 border border-amber-300'}">
-                    ${s.paid ? t.paidTxt : t.unpaidTxt}
-                  </button>
-                </div>
-              `).join('')}
-            </div>
-          </div>`;
-      } else if (toolType === 'business') {
-        let totIn = 0, totOut = 0;
-        bizData.forEach(b => { if (b.type === 'in') totIn += b.amt; else totOut += b.amt; });
-        let net = totIn - totOut;
-        container.innerHTML = `
-          <div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-slate-400 shadow-lg text-xs">
-            <div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]">
-              <span>${t.bizTitle}</span>
-              <button onclick="${closeCall}" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">${t.closeBtn}</button>
-            </div>
-            <div class="mb-3 p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 text-center">
-              <span class="text-[11px] text-emerald-800 font-bold block">${t.bizNetLbl}</span>
-              <span class="font-black text-emerald-950 text-base">Rs. ${net.toLocaleString()}</span>
-            </div>
-            <div class="space-y-2 mb-3 bg-slate-50 p-2.5 rounded-xl border">
-              <input type="text" id="bDesc-${prefix}" placeholder="${t.bizDescPh}" class="w-full p-2 border rounded-xl text-xs bg-white" />
-              <input type="number" id="bAmt-${prefix}" placeholder="${t.bizAmtPh}" class="w-full p-2 border rounded-xl text-xs font-bold bg-white" />
-              <select id="bType-${prefix}" class="w-full p-2 border rounded-xl text-xs font-semibold bg-white">
-                <option value="in">${t.bizOptIn}</option>
-                <option value="exp">${t.bizOptExp}</option>
-                <option value="draw">${t.bizOptDraw}</option>
-              </select>
-              <button onclick="addBizEntry('${containerId}', '${prefix}')" class="w-full py-2 gold-gradient text-[#0A192F] font-extrabold rounded-xl text-xs shadow">${t.bizAddBtn}</button>
-            </div>
-            <div class="space-y-1.5 max-h-40 overflow-y-auto">
-              ${bizData.map((b, i) => `
-                <div class="flex justify-between items-center p-2 bg-slate-50 border rounded-xl">
-                  <span><b>${b.desc}</b> (${b.type === 'in' ? '+' : '-'})</span>
-                  <span class="font-bold">Rs. ${b.amt.toLocaleString()} <button onclick="removeBizEntry(${i}, '${containerId}', '${prefix}')" class="text-red-500 font-black ml-1 px-1">✕</button></span>
-                </div>
-              `).join('')}
-            </div>
-          </div>`;
-      } else if (toolType === 'zakat') {
-        container.innerHTML = `
-          <div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-600 shadow-lg text-xs">
-            <div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]">
-              <span>${t.zakatTitle}</span>
-              <button onclick="${closeCall}" class="text-red-600 font-bold px-2 py-0.5 bg-red-50 rounded">${t.closeBtn}</button>
-            </div>
-            <div class="space-y-2 mb-3">
-              <div>
-                <label class="block font-bold text-gray-700 mb-1">${t.zCashLbl}</label>
-                <input type="number" id="zCash-${prefix}" value="100000" oninput="calcAnyZakat('${prefix}')" class="w-full p-2 border rounded-xl text-xs font-bold" />
-              </div>
-              <div>
-                <label class="block font-bold text-gray-700 mb-1">${t.zGoldLbl}</label>
-                <input type="number" id="zGold-${prefix}" value="0" oninput="calcAnyZakat('${prefix}')" class="w-full p-2 border rounded-xl text-xs font-bold" />
-              </div>
-              <div>
-                <label class="block font-bold text-gray-700 mb-1">${t.zBizLbl}</label>
-                <input type="number" id="zBiz-${prefix}" value="0" oninput="calcAnyZakat('${prefix}')" class="w-full p-2 border rounded-xl text-xs font-bold" />
-              </div>
-            </div>
-            <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-300 text-center">
-              <span class="text-[11px] text-emerald-900 font-bold block">${t.zTotalLbl}</span>
-              <span id="zTotal-${prefix}" class="font-black text-emerald-950 text-base">Rs. 2,500</span>
-            </div>
-          </div>`;
+      if (type === 'budget') {
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-500 shadow-lg text-xs">${header(tr('🧮 50/30/20 ماہانہ بجٹ کیلکولیٹر','🧮 50/30/20 Budget Calculator'))}<label class="block font-bold mb-1">${tr('ماہانہ آمدنی درج کریں (PKR):','Enter Monthly Income (PKR):')}</label><input type="number" id="inc-${p}" value="50000" oninput="calcB('${p}')" class="w-full p-2 border-2 border-[#064E3B] rounded-xl mb-3 font-extrabold text-sm text-[#064E3B]" /><div class="grid grid-cols-3 gap-2 text-center"><div class="p-2 bg-emerald-50 rounded-xl border"><b>${tr('50% ضروریات','50% Needs')}</b><p id="bn-${p}" class="font-black text-emerald-950 mt-1">Rs. 25,000</p></div><div class="p-2 bg-blue-50 rounded-xl border"><b>${tr('30% خواہشات','30% Wants')}</b><p id="bw-${p}" class="font-black text-blue-950 mt-1">Rs. 15,000</p></div><div class="p-2 bg-amber-50 rounded-xl border"><b>${tr('20% بچت','20% Savings')}</b><p id="bs-${p}" class="font-black text-amber-950 mt-1">Rs. 10,000</p></div></div></div>`;
+      } else if (type === 'committee') {
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-[#D4AF37] shadow-lg text-xs">${header(tr('🗓️ 12 ماہ کا کمیٹی (BC) ریکارڈ','🗓️ 12-Month Committee Tracker'))}<div class="space-y-1.5 max-h-52 overflow-y-auto">${commSlots.map((s, i) => `<div class="flex items-center justify-between p-2 bg-slate-50 border rounded-xl gap-2"><span class="w-20 font-bold">${tr(s.mUr, s.mEn)}</span><input type="text" value="${tr(s.nUr, s.nEn)}" onchange="commSlots[${i}][lang==='ur'?'nUr':'nEn']=this.value" class="flex-1 p-1 border rounded bg-white text-xs font-semibold" /><button onclick="commSlots[${i}].paid=!commSlots[${i}].paid;renderToolHTML('${cId}','committee','${p}')" class="px-2 py-1 rounded font-bold ${s.paid ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'}">${s.paid ? tr('✓ ادا شدہ','✓ Paid') : tr('⏳ باقی','⏳ Pending')}</button></div>`).join('')}</div></div>`;
+      } else if (type === 'business') {
+        let net = bizData.reduce((a, b) => b.type === 'in' ? a + b.amt : a - b.amt, 0);
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-slate-400 shadow-lg text-xs">${header(tr('📒 کاروبار اور دکان کا روزانہ کھاتہ','📒 Daily Business Cashbook'))}<div class="mb-2 p-2 bg-emerald-50 rounded-xl border text-center"><b>${tr('گلے میں خالص کیش:','Net Register Cash:')}</b> <span class="font-black text-emerald-950 text-sm">Rs. ${net.toLocaleString()}</span></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 mb-2"><input id="bd-${p}" placeholder="${tr('تفصیل (سیل/خرچ)','Description')}" class="p-2 border rounded-xl" /><input type="number" id="ba-${p}" placeholder="${tr('رقم (PKR)','Amount')}" class="p-2 border rounded-xl font-bold" /><select id="bt-${p}" class="p-2 border rounded-xl font-semibold"><option value="in">${tr('➕ آمدن / سیل','➕ Income')}</option><option value="exp">${tr('➖ دکان خرچ','➖ Expense')}</option><option value="draw">${tr('🏠 گھر کا خرچ','🏠 Home Draw')}</option></select></div><button onclick="addBiz('${cId}','${p}')" class="w-full py-2 gold-bg text-[#0A192F] font-extrabold rounded-xl mb-2">${tr('+ کھاتے میں درج کریں','+ Add Entry')}</button><div class="space-y-1 max-h-36 overflow-y-auto">${bizData.map((b, i) => `<div class="flex justify-between p-1.5 bg-slate-50 border rounded-lg"><span><b>${b.desc}</b> (${b.type === 'in' ? '+' : '-'})</span><span class="font-bold">Rs. ${b.amt.toLocaleString()} <button onclick="bizData.splice(${i},1);localStorage.setItem('flp_biz_pro',JSON.stringify(bizData));renderToolHTML('${cId}','business','${p}')" class="text-red-500 font-black ml-1">✕</button></span></div>`).join('')}</div></div>`;
+      } else if (type === 'zakat') {
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-600 shadow-lg text-xs">${header(tr('🪙 سالانہ زکوٰۃ کیلکولیٹر (2.5%)','🪙 Annual Zakat Calculator (2.5%)'))}<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('نقد کیش و بینک:','Cash & Bank:')}</label><input type="number" id="zc-${p}" value="100000" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('سونا و چاندی مالیت:','Gold/Silver Value:')}</label><input type="number" id="zg-${p}" value="0" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('کاروباری مال اسٹاک:','Business Stock:')}</label><input type="number" id="zb-${p}" value="0" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-300 text-center"><b>${tr('واجب الادا کل زکوٰۃ (2.5%):','Total Payable Zakat (2.5%):')}</b> <span id="zt-${p}" class="font-black text-emerald-950 text-base">Rs. 2,500</span></div></div>`;
+      } else if (type === 'gold') {
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-amber-500 shadow-lg text-xs">${header(tr('🥇 مائکرو گولڈ اور روزانہ بچت کیلکولیٹر','🥇 Micro-Gold & Daily Saving Calculator'))}<div class="grid grid-cols-2 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('روزانہ بچت (PKR):','Daily Saving (PKR):')}</label><input type="number" id="gd-${p}" value="200" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('1 گرام سونے کا ریٹ:','24K Gold Rate/Gram:')}</label><input type="number" id="gr-${p}" value="24000" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-2 gap-2 text-center"><div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>${tr('سالانہ جمع شدہ رقم','1-Year Saved Cash')}</b><p id="gy-${p}" class="font-black text-amber-950 text-sm mt-1">Rs. 73,000</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-300"><b>${tr('سالانہ خالص سونا (گرام)','Accumulated 24K Gold')}</b><p id="gg-${p}" class="font-black text-emerald-950 text-sm mt-1">3.04 Grams</p></div></div></div>`;
+      } else if (type === 'goal') {
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-blue-500 shadow-lg text-xs">${header(tr('🎯 ایمرجنسی فنڈ اور قرض نجات پلانر','🎯 Emergency Fund & Debt Payoff Planner'))}<div class="grid grid-cols-3 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('ماہانہ گھر خرچ:','Monthly Expense:')}</label><input type="number" id="em-${p}" value="30000" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('کل قرض یا ہدف:','Total Debt/Goal:')}</label><input type="number" id="dt-${p}" value="100000" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('ماہانہ قسط ادائیگی:','Monthly Payoff:')}</label><input type="number" id="dp-${p}" value="10000" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-2 gap-2 text-center"><div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>${tr('محفوظ ایمرجنسی فنڈ (3 تا 6 ماہ)','3–6 Month Emergency Target')}</b><p id="er-${p}" class="font-black text-blue-950 text-xs md:text-sm mt-1">Rs. 90k – 180k</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>${tr('قرض/ہدف مکمل ہونے کا وقت','Time to Clear Debt / Goal')}</b><p id="dr-${p}" class="font-black text-emerald-950 text-xs md:text-sm mt-1">10 Months (ماہ)</p></div></div></div>`;
       }
     }
 
-    function openTool(toolName) {
-      const panel = document.getElementById('topToolPanel');
-      if (activeTopTool === toolName && !panel.classList.contains('hidden')) {
-        closeTopTool();
-        return;
-      }
-      activeTopTool = toolName;
-      panel.classList.remove('hidden');
-      renderToolHTML('topToolPanel', toolName, 'top');
+    function openTool(t) {
+      const p = document.getElementById('topToolPanel');
+      if (activeTopTool === t && !p.classList.contains('hidden')) { closeTopTool(); return; }
+      activeTopTool = t; p.classList.remove('hidden'); renderToolHTML('topToolPanel', t, 'top');
+    }
+    function closeTopTool() { activeTopTool = null; document.getElementById('topToolPanel').classList.add('hidden'); }
+    function toggleCardTool(e, id, t) {
+      e.stopPropagation(); const cId = 'cardTool-' + id, el = document.getElementById(cId);
+      if (!el.classList.contains('hidden')) { el.classList.add('hidden'); return; }
+      el.classList.remove('hidden'); renderToolHTML(cId, t, 'c' + id);
     }
 
-    function closeTopTool() {
-      activeTopTool = null;
-      document.getElementById('topToolPanel').classList.add('hidden');
-    }
+    function calcB(p) { let v = +document.getElementById('inc-'+p).value||0; document.getElementById('bn-'+p).textContent = 'Rs. '+Math.round(v*0.5).toLocaleString(); document.getElementById('bw-'+p).textContent = 'Rs. '+Math.round(v*0.3).toLocaleString(); document.getElementById('bs-'+p).textContent = 'Rs. '+Math.round(v*0.2).toLocaleString(); }
+    function calcZ(p) { let t = (+document.getElementById('zc-'+p).value||0)+(+document.getElementById('zg-'+p).value||0)+(+document.getElementById('zb-'+p).value||0); document.getElementById('zt-'+p).textContent = 'Rs. '+Math.round(t*0.025).toLocaleString(); }
+    function calcG(p) { let d = +document.getElementById('gd-'+p).value||0, r = +document.getElementById('gr-'+p).value||1, yr = d*365; document.getElementById('gy-'+p).textContent = 'Rs. '+yr.toLocaleString(); document.getElementById('gg-'+p).textContent = (yr/r).toFixed(2)+' Grams'; }
+    function calcD(p) { let e = +document.getElementById('em-'+p).value||0, dt = +document.getElementById('dt-'+p).value||0, dp = +document.getElementById('dp-'+p).value||1; document.getElementById('er-'+p).textContent = `Rs. ${(e*3/1000).toFixed(0)}k – ${(e*6/1000).toFixed(0)}k`; document.getElementById('dr-'+p).textContent = Math.ceil(dt/dp) + tr(' ماہ (Months)',' Months'); }
+    function addBiz(cId, p) { let d = document.getElementById('bd-'+p).value.trim(), a = +document.getElementById('ba-'+p).value||0, t = document.getElementById('bt-'+p).value; if (!d || a<=0) return; bizData.unshift({desc:d, amt:a, type:t}); localStorage.setItem('flp_biz_pro', JSON.stringify(bizData)); renderToolHTML(cId, 'business', p); }
 
-    function toggleCardTool(event, id, toolType) {
-      event.stopPropagation();
-      const boxId = 'cardToolBox-' + id;
-      const box = document.getElementById(boxId);
-      if (!box) return;
-      if (!box.classList.contains('hidden')) {
-        box.classList.add('hidden');
-        return;
-      }
-      box.classList.remove('hidden');
-      renderToolHTML(boxId, toolType, 'card-' + id);
-    }
-
-    function closeInlineTool(containerId) {
-      const el = document.getElementById(containerId);
-      if (el) el.classList.add('hidden');
-    }
-
-    function calcAnyBudget(prefix) {
-      let inc = parseFloat(document.getElementById('inc-' + prefix).value) || 0;
-      document.getElementById('needs-' + prefix).textContent = 'Rs. ' + Math.round(inc * 0.5).toLocaleString();
-      document.getElementById('wants-' + prefix).textContent = 'Rs. ' + Math.round(inc * 0.3).toLocaleString();
-      document.getElementById('save-' + prefix).textContent = 'Rs. ' + Math.round(inc * 0.2).toLocaleString();
-    }
-
-    function calcAnyZakat(prefix) {
-      let c = parseFloat(document.getElementById('zCash-' + prefix).value) || 0;
-      let g = parseFloat(document.getElementById('zGold-' + prefix).value) || 0;
-      let b = parseFloat(document.getElementById('zBiz-' + prefix).value) || 0;
-      document.getElementById('zTotal-' + prefix).textContent = 'Rs. ' + Math.round((c + g + b) * 0.025).toLocaleString();
-    }
-
-    function updateCommName(idx, val) {
-      if (lang === 'ur') commSlots[idx].nUr = val;
-      else commSlots[idx].nEn = val;
-    }
-
-    function toggleCommStatus(idx, containerId, prefix) {
-      commSlots[idx].paid = !commSlots[idx].paid;
-      renderToolHTML(containerId, 'committee', prefix);
-    }
-
-    function addBizEntry(containerId, prefix) {
-      let desc = document.getElementById('bDesc-' + prefix).value.trim();
-      let amt = parseFloat(document.getElementById('bAmt-' + prefix).value) || 0;
-      let type = document.getElementById('bType-' + prefix).value;
-      if (!desc || amt <= 0) return;
-      bizData.unshift({ desc, amt, type });
-      localStorage.setItem('flp_biz_pro', JSON.stringify(bizData));
-      renderToolHTML(containerId, 'business', prefix);
-    }
-
-    function removeBizEntry(idx, containerId, prefix) {
-      bizData.splice(idx, 1);
-      localStorage.setItem('flp_biz_pro', JSON.stringify(bizData));
-      renderToolHTML(containerId, 'business', prefix);
-    }
-
-    // Bottom Suggestions & Feedback Functions
     function postChatMessage(e) {
-      e.preventDefault();
-      let name = document.getElementById('chatName').value.trim();
-      let text = document.getElementById('chatText').value.trim();
-      if (!name || !text) return;
-      let timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      chatData.unshift({ name, text, time: timeNow });
-      localStorage.setItem('flp_chat_pro', JSON.stringify(chatData));
-      document.getElementById('chatText').value = '';
-      renderChat();
+      e.preventDefault(); let n = document.getElementById('chatName').value.trim(), t = document.getElementById('chatText').value.trim(); if (!n || !t) return;
+      chatData.unshift({ name: n, text: t, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+      localStorage.setItem('flp_chat_pro', JSON.stringify(chatData)); document.getElementById('chatText').value = ''; renderChat();
     }
-
     function renderChat() {
-      const box = document.getElementById('chatMessagesList');
-      if (!box) return;
-      const defaultMsg = lang === 'ur'
-        ? { name: 'ندیم اقبال (ڈویلپر)', text: 'خوش آمدید! اس ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء یہاں ضرور شیئر کریں۔ آپ براہِ راست اوپر دیے گئے نمبر یا جی میل پر بھی رابطہ کر سکتے ہیں۔', time: 'لائیو' }
-        : { name: 'Nadeem Iqbal (Developer)', text: 'Welcome! Please share your valuable suggestions and feedback here to help us improve this app further. You can also reach out directly via phone or Gmail above.', time: 'Live' };
-
-      const list = [defaultMsg, ...chatData];
-      box.innerHTML = list.map(c => `
-        <div class="p-3 bg-slate-50 border border-gray-200 rounded-2xl">
-          <div class="flex justify-between items-center mb-1">
-            <span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span>
-            <span class="text-[10px] text-gray-400 font-semibold">${c.time}</span>
-          </div>
-          <p class="text-gray-800 ${lang === 'ur' ? 'urdu-font' : 'eng-font'} text-xs">${c.text}</p>
-        </div>
-      `).join('');
+      const def = { name: tr('ندیم اقبال (ڈویلپر)','Nadeem Iqbal (Developer)'), text: tr('خوش آمدید! ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء یہاں ضرور شیئر کریں۔','Welcome! Please share your valuable suggestions and feedback here to improve this app.'), time: tr('لائیو','Live') };
+      document.getElementById('chatMessagesList').innerHTML = [def, ...chatData].map(c => `<div class="p-3 bg-slate-50 border rounded-2xl"><div class="flex justify-between mb-1"><span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span><span class="text-[10px] text-gray-400">${c.time}</span></div><p class="text-gray-800 ${fCls()} text-xs">${c.text}</p></div>`).join('');
     }
 
-    // Render 15 Guides List
-    function renderGuides() {
-      const searchInput = document.getElementById('searchBox');
-      const q = searchInput ? searchInput.value.toLowerCase() : '';
-      const box = document.getElementById('guidesList');
-      if (!box) return;
-      const t = uiText[lang];
-      const fontCls = lang === 'ur' ? 'urdu-font' : 'eng-font';
-
-      const filtered = guides.filter(g => (lang === 'ur' ? g.tUr + g.sUr + g.catUr : g.tEn + g.sEn + g.catEn).toLowerCase().includes(q));
-
-      box.innerHTML = filtered.map(g => `
-        <div onclick="openGuide(${g.id})" class="glass-card p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer">
-          <div class="flex justify-between items-center mb-1.5">
-            <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${lang === 'ur' ? g.catUr : g.catEn}</span>
-            <span class="text-[10px] text-gray-500 font-bold">${t.verifiedBadge}</span>
-          </div>
-          <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fontCls} mb-1">${lang === 'ur' ? g.tUr : g.tEn}</h3>
-          <p class="text-[11px] text-gray-600 ${fontCls} mb-3">${lang === 'ur' ? g.sUr : g.sEn}</p>
-          
-          <div class="flex flex-wrap justify-between items-center gap-2 pt-2.5 border-t text-xs">
-            <span class="text-[#064E3B] font-extrabold">${t.readMoreBtn}</span>
-            ${g.tool ? `<button onclick="toggleCardTool(event, ${g.id}, '${g.tool}')" class="px-3 py-1.5 gold-gradient text-[#0A192F] font-extrabold text-[11px] rounded-xl shadow-sm active:scale-95 transition">${lang === 'ur' ? g.toolLblUr : g.toolLblEn}</button>` : ''}
-          </div>
-          
-          <!-- Inline Card Tool Container (Opens right inside this card!) -->
-          <div id="cardToolBox-${g.id}" onclick="event.stopPropagation()" class="hidden mt-3"></div>
-        </div>
-      `).join('');
+    // PDF Download handler for simulated PDF generation/download
+    function downloadCurrentPdf() {
+      alert(tr('📥 پی ڈی ایف ڈاؤن لوڈ شروع ہو رہی ہے...', '📥 PDF download starting...'));
     }
 
-    // Interactive Step-by-Step Accordion inside Modal
-    function toggleAccordion(idx) {
-      const contentEl = document.getElementById('acc-content-' + idx);
-      const iconEl = document.getElementById('acc-icon-' + idx);
-      if (!contentEl) return;
-      if (contentEl.classList.contains('hidden')) {
-        contentEl.classList.remove('hidden');
-        iconEl.textContent = '▲';
+    function handleDevUpload() {
+      const fileInput = document.getElementById('devPdfFile');
+      const msg = document.getElementById('uploadMsg');
+      if (fileInput.files.length > 0) {
+        msg.textContent = tr('✅ فائل کامیابی سے اپلوڈ ہو گئی ہے!', '✅ File successfully uploaded!');
+        fileInput.value = '';
       } else {
-        contentEl.classList.add('hidden');
-        iconEl.textContent = '▼';
+        msg.textContent = tr('❌ براہ کرم پہلے کوئی پی ڈی ایف فائل منتخب کریں۔', '❌ Please select a PDF file first.');
       }
     }
 
+    function renderGuides() {
+      const q = (document.getElementById('searchBox').value || '').toLowerCase();
+      const list = guides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
+      document.getElementById('guidesList').innerHTML = list.map((g, idx) => `
+        <div onclick="openGuide(${g[0]})" class="bg-white p-4 rounded-2xl border border-gray-200 shadow-md hover:border-[#D4AF37] transition cursor-pointer">
+          <div class="flex justify-between items-center mb-1.5">
+            <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${tr(g[1], g[2])}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">#${idx + 1}</span>
+              <button onclick="event.stopPropagation(); downloadCurrentPdf()" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>
+            </div>
+          </div>
+          <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fCls()} mb-1">${tr(g[3], g[4])}</h3>
+          <p class="text-[11px] text-gray-600 ${fCls()} mb-3">${tr(g[5], g[6])}</p>
+          <div class="flex flex-wrap justify-between items-center gap-2 pt-2.5 border-t text-xs">
+            <span class="text-[#064E3B] font-extrabold">${tr('مکمل گائیڈ اور قانونی سٹیپس پڑھیں ←','Read Full Step-by-Step Guide →')}</span>
+            ${g[7] ? `<button onclick="toggleCardTool(event, ${g[0]}, '${g[7]}')" class="px-3 py-1.5 gold-bg text-[#0A192F] font-extrabold text-[11px] rounded-xl shadow-sm">${tr(g[8], g[9])}</button>` : ''}
+          </div>
+          <div id="cardTool-${g[0]}" onclick="event.stopPropagation()" class="hidden mt-3"></div>
+        </div>`).join('');
+    }
+
+    function toggleAcc(i) {
+      const c = document.getElementById('acc-c-'+i), ic = document.getElementById('acc-i-'+i);
+      const hide = !c.classList.contains('hidden'); c.classList.toggle('hidden', hide); ic.textContent = hide ? '▼' : '▲';
+    }
     function openGuide(id) {
-      const g = guides.find(x => x.id === id);
-      if (!g) return;
-      const t = uiText[lang];
-      const fontCls = lang === 'ur' ? 'urdu-font' : 'eng-font';
-      const alignCls = lang === 'ur' ? 'text-right' : 'text-left';
-
-      document.getElementById('mTitle').textContent = lang === 'ur' ? g.tUr : g.tEn;
+      currentModalId = id;
+      const g = guides.find(x => x[0] === id); if (!g) return;
+      document.getElementById('mTitle').textContent = tr(g[3], g[4]);
       document.getElementById('mBody').innerHTML = `
-        <div class="bg-white p-4 rounded-2xl border-2 border-emerald-200 shadow-sm space-y-3">
-          <div class="border-b pb-2.5">
-            <span class="text-[10px] uppercase px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${t.modalBadge}</span>
-            <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fontCls} mt-2">${lang === 'ur' ? g.sUr : g.sEn}</p>
+        <div class="bg-white p-4 rounded-2xl border-2 border-emerald-200 space-y-3">
+          <div class="border-b pb-2 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr('پاکستانی قانونی و عملی گائیڈ','Pakistani Legal & Practical Roadmap')}</span>
+              <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fCls()} mt-2">${tr(g[5], g[6])}</p>
+            </div>
           </div>
-          
-          <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fontCls}">${t.modalInstruction}</p>
-
-          <div class="space-y-2.5 pt-1">
-            ${g.points.map((pt, idx) => `
-              <div class="bg-emerald-50/70 rounded-2xl border border-emerald-200 overflow-hidden shadow-xs">
-                <button onclick="toggleAccordion(${idx})" class="w-full p-3.5 ${alignCls} font-extrabold text-[#0A192F] text-xs md:text-sm flex justify-between items-center gap-2 bg-white hover:bg-emerald-50 transition">
-                  <span class="${fontCls}">${lang === 'ur' ? pt.titleUr : pt.titleEn}</span>
-                  <span id="acc-icon-${idx}" class="text-emerald-800 font-bold text-xs bg-emerald-100 w-6 h-6 rounded-full flex items-center justify-center shrink-0">${idx === 0 ? '▲' : '▼'}</span>
+          <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fCls()}">${tr('💡 ہدایت: نیچے کسی بھی پوائنٹ پر کلک کریں تاکہ اس کی سٹیپ بائی سٹیپ تفصیل کھل جائے:','💡 Tip: Click any bullet point below to expand its step-by-step action plan:')}</p>
+          <div class="space-y-2">
+            ${g[10].map((pt, i) => `
+              <div class="bg-emerald-50/70 rounded-2xl border border-emerald-200 overflow-hidden">
+                <button onclick="toggleAcc(${i})" class="w-full p-3.5 ${lang==='ur'?'text-right':'text-left'} font-extrabold text-[#0A192F] text-xs md:text-sm flex justify-between items-center gap-2 bg-white">
+                  <span class="${fCls()}">${tr(pt[0], pt[1])}</span>
+                  <span id="acc-i-${i}" class="text-emerald-800 text-xs bg-emerald-100 w-6 h-6 rounded-full flex items-center justify-center shrink-0">${i===0?'▲':'▼'}</span>
                 </button>
-                <div id="acc-content-${idx}" class="${idx === 0 ? '' : 'hidden'} p-3.5 bg-emerald-50/90 border-t border-emerald-200 text-gray-900 text-xs md:text-sm${fontCls} whitespace-pre-line">
-                  ${lang === 'ur' ? pt.detailUr : pt.detailEn}
-                </div>
-              </div>
-            `).join('')}
+                <div id="acc-c-${i}" class="${i===0?'':'hidden'} p-3.5 bg-emerald-50/90 border-t border-emerald-200 text-gray-900 text-xs md:text-sm ${fCls()} whitespace-pre-line">${tr(pt[2], pt[3])}</div>
+              </div>`).join('')}
           </div>
-        </div>
-      `;
-
-      const modal = document.getElementById('guideModal');
-      if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
+        </div>`;
+      document.getElementById('guideModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
+    function closeModal() { document.getElementById('guideModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
 
-    function closeModal() {
-      const modal = document.getElementById('guideModal');
-      if (modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    window.onload = function() {
-      switchLang('ur');
-      updateLiveClock();
-    };
+    window.onload = () => { switchLang('ur'); updateLiveClock(); };
   </script>
 </body>
 </html>
