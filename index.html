@@ -13,17 +13,19 @@
     .hero-bg { background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%); }
     .gold-bg { background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%); }
     button, input, select, textarea { touch-action: manipulation; }
-    @keyframes bounceDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-    @keyframes bounceUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-    .animate-down { animation: bounceDown 0.8s infinite; }
-    .animate-up { animation: bounceUp 0.8s infinite; }
+    @keyframes moveDown { 0% { transform: translateY(-10px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(15px); opacity: 0; } }
+    @keyframes moveUp { 0% { transform: translateY(15px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-10px); opacity: 0; } }
+    .arrow-down { animation: moveDown 1.2s infinite ease-in-out; }
+    .arrow-up { animation: moveUp 1.2s infinite ease-in-out; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- Visual Progress Arrow Toast (Top Screen) -->
-  <div id="progressToast" class="fixed top-2 left-1/2 -translate-x-1/2 z-50 hidden bg-[#0A192F] text-white px-4 py-2 rounded-2xl border border-[#D4AF37] shadow-2xl flex items-center gap-2 text-xs font-bold">
-    <span id="toastIcon" class="text-base">⬇️</span>
+  <!-- Top Screen Live Animated Progress Toast -->
+  <div id="progressToast" class="fixed top-3 left-1/2 -translate-x-1/2 z-50 hidden bg-[#0A192F] text-white px-5 py-2.5 rounded-2xl border-2 border-[#D4AF37] shadow-2xl flex items-center gap-3 text-xs font-bold">
+    <div class="relative w-6 h-6 flex items-center justify-center overflow-hidden">
+      <span id="toastArrow" class="text-lg text-[#F3E5AB] arrow-down">⬇️</span>
+    </div>
     <span id="toastText">فائل ڈاؤن لوڈ ہو رہی ہے...</span>
   </div>
 
@@ -47,7 +49,7 @@
   <!-- Hero & Live Date/Clock -->
   <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
     <div class="max-w-2xl mx-auto">
-      <span data-ur="💎 15 گائیڈز + آٹو اپڈیٹڈ پی ڈی ایف لائبریری + 6 عملی ٹولز" data-en="💎 15 Guides + Auto-Updated PDF Library + 6 Live Tools" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
+      <span data-ur="💎 15 گائیڈز + لائیو پی ڈی ایف ویور اور ڈاؤن لوڈ + 6 عملی ٹولز" data-en="💎 15 Guides + Live PDF Viewer & Downloads + 6 Live Tools" class="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold mb-2.5"></span>
       <div class="max-w-md mx-auto my-2 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB]">
         <div class="flex items-center justify-between border-b border-white/15 pb-1.5 mb-1.5 gap-2">
           <span id="dateGregorian" class="font-bold">...</span>
@@ -96,7 +98,7 @@
       <div id="topToolPanel" class="hidden mt-3.5"></div>
     </div>
 
-    <!-- Guides List (Auto-Numbered with Uploaded PDFs at the End) -->
+    <!-- Guides List -->
     <h3 data-ur="📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری:" data-en="📚 Asset Building, Legal Guides & PDF Library:" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font"></h3>
     <div id="guidesList" class="space-y-3 mb-8"></div>
   </main>
@@ -142,13 +144,13 @@
     </div>
   </section>
 
-  <!-- Reader Modal -->
+  <!-- Reader Modal with PDF Download & Open Buttons -->
   <div id="guideModal" class="fixed inset-0 bg-black/85 z-50 hidden overflow-y-auto p-2 md:p-6 backdrop-blur-sm">
     <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-4 border-2 border-[#D4AF37]">
       <div class="hero-bg text-white px-4 py-3.5 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 gap-2">
         <h3 id="mTitle" class="text-xs md:text-sm font-bold text-[#F3E5AB]"></h3>
         <div class="flex items-center gap-2">
-          <button onclick="downloadCurrentPdf()" id="modalPdfBtn" class="px-3 py-1 rounded-lg bg-[#D4AF37] text-[#0A192F] font-bold text-xs flex items-center gap-1 shadow">📥 PDF</button>
+          <button onclick="downloadCurrentPdf()" id="modalPdfBtn" class="px-3 py-1 rounded-lg bg-[#D4AF37] text-[#0A192F] font-bold text-xs flex items-center gap-1 shadow">📥 PDF Read</button>
           <button onclick="closeModal()" class="w-8 h-8 rounded-xl bg-white/20 text-white font-black text-xs flex items-center justify-center shrink-0">✕</button>
         </div>
       </div>
@@ -157,11 +159,10 @@
   </div>
 
   <script>
-    let lang = 'ur', activeTopTool = null, currentModalId = 1;
+    let lang = 'ur', activeTopTool = null, currentModalId = 1, currentPdfUrl = '';
     const tr = (ur, en) => lang === 'ur' ? ur : en;
     const fCls = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
 
-    // Base Guides (Properly Sorted 1 to 15)
     const baseGuides = [
       [1, 'بجٹ اور بچت', 'Budgeting', '1. 50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', '1. The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', [
         ['1. تنخواہ ملتے ہی سب سے پہلے خود کو ادائیگی (20% بچت)', '1. Pay Yourself First (20% Immediate Savings)', '• تنخواہ یا مزدوری ملتے ہی خرچ سے پہلے 10% سے 20% رقم الگ رکھیں۔ مہینے کے آخر کا انتظار نہ کریں۔', '• Immediately transfer 10%–20% into savings the day you get paid before spending a rupee.'],
@@ -191,7 +192,7 @@
       [9, 'سونا اور انویسٹمنٹ', 'Gold & Investing', '9. مہنگائی کا توڑ: سونا (24K) اور شریعہ کمپلائنٹ فنڈز', '9. Beating Inflation: 24K Gold & Shariah Mutual Funds', 'نقد رقم کی گرتی قدر کو بچانے کے لیے خالص سونے اور SECP منظور شدہ حلال فنڈز کی گائیڈ۔', 'Protect purchasing power using 24K gold bars and SECP-regulated Islamic funds.', 'zakat', '🪙 زکوٰۃ کیلکولیٹر', '🪙 Zakat Tool', [
         ['1. زیورات کے بجائے 24 قیراط سونے کے بسکٹ یا سکے', '1. Buy 24K Certified Gold Bars Instead of Jewelry', '• زیورات پر کٹوتی ہوتی ہے۔ ہمیشہ 24K پیک شدہ گولڈ بسکٹ خریدیں۔', '• Jewelry loses value in making charges. Buy 24K sealed gold bars with zero resale deduction.']
       ]],
-      [10, 'ڈیجیٹل اسکلز', 'Digital Skills', '10. آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', '10. Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال ساید انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', [
+      [10, 'ڈیجیٹل اسکلز', 'Digital Skills', '10. آمدنی بڑھانے کے طریقے: موبائل، اے آئی اور ڈیجیٹل ہنر', '10. Multiple Income Streams: Mobile Skills, AI & Side Hustles', 'موبایل، گرافک ڈیزائننگ، ویڈیو ایڈیٹنگ اور AI ٹولز سے حلال سائیڈ انکم کمانے کے راستے۔', 'Increase earning power using smartphone skills, graphic design, and AI tools.', null, '', '', [
         ['1. مفت سرکاری کورسز (DigiSkills / NAVTTC)', '1. Free Portals (DigiSkills / NAVTTC) & Local Services', '• مفت سرکاری کورسز سے گرافک ڈیزائن اور AI سیکھ کر خدمات دیں۔', '• Master design and AI tools via DigiSkills.pk/NAVTTC.']
       ]],
       [11, 'بچوں کا مستقبل', 'Children Future', '11. بچوں کی اعلیٰ تعلیم اور شادی فنڈ کی طویل مدتی منصوبہ بندی', '11. Children’s Higher Education & Marriage Fund Blueprint', '10 سے 15 سال بعد کے بڑے اخراجات کے لیے آج سے تھوڑا تھوڑا سونا جوڑنے کا طریقہ۔', 'Prepare for future family milestones over 10–15 years without taking loans.', 'gold', '🥇 بچت و سونا ٹول', '🥇 Gold Saving Tool', [
@@ -203,7 +204,7 @@
       [13, 'ٹیکس اور ایف بی آر', 'Tax & FBR', '13. پاکستان میں ٹیکس فائلر (ATL) بننے کے فوائد اور طریقہ', '13. Benefits & Step-by-Step Guide to Becoming an FBR Tax Filer', 'نان فائلر کے دگنے ٹیکس سے بچنے اور FBR IRIS پر خود رجسٹریشن کرنے کی رہنمائی۔', 'Save 50%+ withholding taxes on banking and property via FBR IRIS registration.', null, '', '', [
         ['1. ایف بی آر آئرس (IRIS) پر مفت رجسٹریشن', '1. Free FBR IRIS Registration & Withholding Tax Savings', '• اپنے شناختی کارڈ اور سم سے iris.fbr.gov.pk پر مفت NTN بنائیں۔', '• Register with your CNIC on iris.fbr.gov.pk.']
       ]],
-      [14, 'ریٹائرمنٹ پلان', 'Retirement Plan', '14. بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', '14. Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ.', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', [
+      [14, 'ریٹائرمنٹ پلان', 'Retirement Plan', '14. بڑھاپے کی معاشی خود مختاری: ذاتی پنشن فنڈ اور کرایہ', '14. Retirement Independence: Private Pension & Rental Plan', 'پرائیویٹ ملازمین اور محنت کشوں کے لیے بڑھاپے کا ذاتی پنشن فنڈ اور کرائے کا اثاثہ۔', 'How private workers can build passive rental cashflow and halal retirement funds.', null, '', '', [
         ['1. کرائے کی دکان اور اسلامک پنشن اسکیم (VPS)', '1. Commercial Rental Unit & Islamic Pension (VPS)', '• جوانی کی بچت سے ایک چھوٹی دکان بنائیں یا SECP اسلامک VPS میں حصہ لیں۔', '• Aim to acquire a small rental shop during working years or invest in VPS.']
       ]],
       [15, 'دکان کا کھاتہ', 'Business Cashbook', '15. چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', '15. Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', [
@@ -211,7 +212,6 @@
       ]]
     ];
 
-    // Load uploaded dynamic guides from localStorage (Auto-numbered 16, 17...)
     let uploadedPdfs = JSON.parse(localStorage.getItem('flp_uploaded_pdfs') || '[]');
 
     let commSlots = [
@@ -313,17 +313,39 @@
     // Visual Toast with Up/Down Arrow Animation for Upload/Download
     function showToast(text, isUpload) {
       const toast = document.getElementById('progressToast');
-      const icon = document.getElementById('toastIcon');
+      const arrow = document.getElementById('toastArrow');
       const msg = document.getElementById('toastText');
-      icon.textContent = isUpload ? '⬆️' : '⬇️';
-      icon.className = isUpload ? 'text-base animate-up' : 'text-base animate-down';
+      arrow.textContent = isUpload ? '⬆️' : '⬇️';
+      arrow.className = isUpload ? 'text-lg text-[#F3E5AB] arrow-up' : 'text-lg text-[#F3E5AB] arrow-down';
       msg.textContent = text;
       toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 3000);
+      setTimeout(() => toast.classList.add('hidden'), 3500);
+    }
+
+    function downloadPdfFile(pdfUrl, title) {
+      showToast(tr(`📥 "${title}" ڈاؤن لوڈ ہو رہی ہے...`, `📥 Downloading "${title}"...`), false);
+      setTimeout(() => {
+        if (pdfUrl && pdfUrl.startsWith('blob:')) {
+          const a = document.createElement('a');
+          a.href = pdfUrl;
+          a.download = title + '.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        } else {
+          alert(tr('📥 پی ڈی ایف ڈاؤن لوڈ شروع ہو گئی!', '📥 PDF download initiated!'));
+        }
+      }, 1000);
     }
 
     function downloadCurrentPdf() {
-      showToast(tr('📥 پی ڈی ایف ڈاؤن لوڈ ہو رہی ہے...', '📥 Downloading PDF...'), false);
+      const allGuides = [...baseGuides, ...uploadedPdfs];
+      const g = allGuides.find(x => x[0] === currentModalId);
+      if (g && g[11]) {
+        downloadPdfFile(g[11], tr(g[3], g[4]));
+      } else {
+        showToast(tr('📥 پی ڈی ایف فائل ڈاؤن لوڈ ہو رہی ہے...', '📥 Downloading PDF file...'), false);
+      }
     }
 
     function handleDevUpload() {
@@ -335,18 +357,21 @@
       if (fileInput.files.length > 0 && title) {
         showToast(tr('⬆️ نئی پی ڈی ایف اپلوڈ ہو رہی ہے...', '⬆️ Uploading new PDF...'), true);
         
-        // Auto-Numbering calculation (Base 15 + uploaded count + 1)
+        const file = fileInput.files[0];
+        const fileUrl = URL.createObjectURL(file);
         const newId = 16 + uploadedPdfs.length;
+
         const newPdfItem = [
           newId,
           'ڈویلپر اپلوڈ', 'Developer PDF',
           `${newId}. ${title}`, `${newId}. ${title}`,
-          tr('یہ گائیڈ ڈویلپر کی طرف سے اپلوڈ کی گئی ہے۔', 'This guide was uploaded by the developer.'),
-          tr('This guide was uploaded by the developer.', 'This guide was uploaded by the developer.'),
+          tr('یہ گائیڈ ڈویلپر کی طرف سے اپلوڈ کی گئی ہے اور اب پڑھنے اور ڈاؤن لوڈ کے لیے دستیاب ہے۔', 'This guide was uploaded by the developer and is now available for reading and download.'),
+          tr('This guide was uploaded by the developer and is now available for reading and download.', 'This guide was uploaded by the developer and is now available for reading and download.'),
           null, '', '',
           [
-            [tr('تفصیلی مواد اور معلومات', 'Detailed Content & Information'), tr('Detailed Content & Information', 'Detailed Content & Information'), tr('یہ فائل ڈویلپر کے ذریعہ پی ڈی ایف لائبریری میں شامل کی گئی ہے۔', 'This file was added to the PDF library by the developer.'), tr('This file was added to the PDF library by the developer.', 'This file was added to the PDF library by the developer.')]
-          ]
+            [tr('تفصیلی مواد اور معلومات', 'Detailed Content & Information'), tr('Detailed Content & Information', 'Detailed Content & Information'), tr('یہ فائل ڈویلپر کے ذریعہ پی ڈی ایف لائبریری میں شامل کی گئی ہے۔ اوپر دیے گئے "PDF Read" یا "📥 PDF" بٹن سے آپ اسے مکمل پڑھ یا ڈاؤن لوڈ کر سکتے ہیں۔', 'This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.'), tr('This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.', 'This file was added to the PDF library by the developer. Use the "PDF Read" or "📥 PDF" button above to read or download it.')]
+          ],
+          fileUrl // Index 11 holds the live blob URL for download/viewing
         ];
 
         uploadedPdfs.push(newPdfItem);
@@ -365,7 +390,6 @@
 
     function renderGuides() {
       const q = (document.getElementById('searchBox').value || '').toLowerCase();
-      // Combine base guides (1 to 15) with auto-numbered uploaded pdfs (16, 17...)
       const allGuides = [...baseGuides, ...uploadedPdfs];
       const list = allGuides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
 
@@ -375,7 +399,7 @@
             <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${tr(g[1], g[2])}</span>
             <div class="flex items-center gap-2">
               <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">#${idx + 1}</span>
-              <button onclick="event.stopPropagation(); downloadCurrentPdf()" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>
+              <button onclick="event.stopPropagation(); g[11] ? downloadPdfFile(g[11], tr(g[3],g[4])) : downloadCurrentPdf()" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold hover:bg-emerald-200">📥 PDF</button>
             </div>
           </div>
           <h3 class="text-xs md:text-sm font-bold text-[#0A192F] ${fCls()} mb-1">${tr(g[3], g[4])}</h3>
@@ -392,16 +416,24 @@
       const c = document.getElementById('acc-c-'+i), ic = document.getElementById('acc-i-'+i);
       const hide = !c.classList.contains('hidden'); c.classList.toggle('hidden', hide); ic.textContent = hide ? '▼' : '▲';
     }
+
     function openGuide(id) {
       currentModalId = id;
       const allGuides = [...baseGuides, ...uploadedPdfs];
       const g = allGuides.find(x => x[0] === id); if (!g) return;
+
       document.getElementById('mTitle').textContent = tr(g[3], g[4]);
+      
+      let extraActionBtn = g[11] ? `<a href="${g[11]}" target="_blank" class="px-3 py-1 rounded-lg bg-emerald-600 text-white font-bold text-xs flex items-center gap-1 shadow">👁️ View PDF</a>` : '';
+
       document.getElementById('mBody').innerHTML = `
         <div class="bg-white p-4 rounded-2xl border-2 border-emerald-200 space-y-3">
-          <div class="border-b pb-2">
-            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr('پاکستانی قانونی و عملی گائیڈ','Pakistani Legal & Practical Roadmap')}</span>
-            <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fCls()} mt-2">${tr(g[5], g[6])}</p>
+          <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
+            <div>
+              <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr('پاکستانی قانونی و عملی گائیڈ','Pakistani Legal & Practical Roadmap')}</span>
+              <p class="font-extrabold text-[#0A192F] text-xs md:text-sm ${fCls()} mt-2">${tr(g[5], g[6])}</p>
+            </div>
+            ${extraActionBtn}
           </div>
           <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fCls()}">${tr('💡 ہدایت: نیچے کسی بھی پوائنٹ پر کلک کریں تاکہ اس کی سٹیپ بائی سٹیپ تفصیل کھل جائے:','💡 Tip: Click any bullet point below to expand its step-by-step action plan:')}</p>
           <div class="space-y-2">
@@ -418,6 +450,7 @@
       document.getElementById('guideModal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
     }
+
     function closeModal() { document.getElementById('guideModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
 
     window.onload = () => { switchLang('ur'); updateLiveClock(); };
