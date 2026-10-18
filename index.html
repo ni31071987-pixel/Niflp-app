@@ -3,33 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>فنانشل لٹریسی پاکستان</title>
+  <title>فنانشل لٹریسی پاکستان — ندیم اقبال | Financial Literacy Pakistan</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif; background: #F8FAFC; color: #0F172A; -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif; background: #F8FAFC; color: #0F172A; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
     .urdu-font { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2.4 !important; }
-    .eng-font { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.6 !important; }
+    .eng-font { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.65 !important; }
     .hero-bg { background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%); }
     .gold-bg { background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%); }
     button, input, select, textarea { touch-action: manipulation; }
-    @keyframes moveDown { 0% { transform: translateY(-8px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
-    @keyframes moveUp { 0% { transform: translateY(10px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-8px); opacity: 0; } }
+    @keyframes moveDown { 0% { transform: translateY(-6px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(8px); opacity: 0; } }
     .arrow-down { display: inline-block; animation: moveDown 1s infinite ease-in-out; }
-    .arrow-up { display: inline-block; animation: moveUp 1s infinite ease-in-out; }
+    @media print { .no-print { display: none !important; } }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- Top Toast -->
-  <div id="progressToast" class="fixed top-3 left-1/2 -translate-x-1/2 z-50 hidden bg-[#0A192F] text-white px-5 py-2.5 rounded-2xl border-2 border-[#D4AF37] shadow-2xl flex items-center gap-3 text-xs font-bold">
-    <span id="toastArrow" class="text-lg text-[#F3E5AB] arrow-down">⬇️</span>
+  <!-- Top Notification Toast -->
+  <div id="progressToast" class="fixed top-3 left-1/2 -translate-x-1/2 z-50 hidden bg-[#0A192F] text-white px-5 py-2.5 rounded-2xl border-2 border-[#D4AF37] shadow-2xl flex items-center gap-3 text-xs font-bold no-print">
+    <span id="toastArrow" class="text-lg text-[#F3E5AB] arrow-down">✅</span>
     <span id="toastText">...</span>
   </div>
 
-  <!-- Header -->
-  <header class="hero-bg text-white sticky top-0 z-40 shadow-lg border-b border-[#D4AF37]/50">
-    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+  <!-- Sticky Header & Quick Navigation -->
+  <header class="hero-bg text-white sticky top-0 z-40 shadow-lg border-b border-[#D4AF37]/50 no-print">
+    <div class="max-w-3xl mx-auto px-4 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-2.5">
         <div class="w-10 h-10 rounded-2xl gold-bg flex items-center justify-center text-[#0A192F] font-black text-lg shadow shrink-0">FLP</div>
         <div>
@@ -42,26 +41,37 @@
         <button type="button" onclick="switchLang('en')" id="lang-en" class="px-3 py-1 rounded-lg text-xs font-semibold text-gray-300">Eng</button>
       </div>
     </div>
+    <!-- Quick Navigation Bar -->
+    <nav class="bg-[#0A192F]/80 border-t border-white/10 px-2 py-1.5">
+      <div class="max-w-3xl mx-auto flex items-center justify-around text-[11px] font-bold text-emerald-100">
+        <a href="#toolsSection" data-ur="🛠️ 6 کیلکولیٹرز" data-en="🛠️ 6 Calculators" class="hover:text-[#F3E5AB] px-2 py-0.5">🛠️ 6 کیلکولیٹرز</a>
+        <a href="#guidesSection" data-ur="📚 15 کتابچے" data-en="📚 15 Guides" class="hover:text-[#F3E5AB] px-2 py-0.5">📚 15 کتابچے</a>
+        <a href="#servicesSection" data-ur="💼 ڈیجیٹل سروسز" data-en="💼 Our Services" class="hover:text-[#F3E5AB] px-2 py-0.5">💼 ڈیجیٹل سروسز</a>
+        <a href="#infoSection" data-ur="⚖️ پالیسی و رابطہ" data-en="⚖️ Legal & Info" class="hover:text-[#F3E5AB] px-2 py-0.5">⚖️ پالیسی و رابطہ</a>
+      </div>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37]">
+  <!-- Hero Section with Verified Clock & Date -->
+  <section class="hero-bg text-white pt-4 pb-6 px-4 text-center border-b-4 border-[#D4AF37] no-print">
     <div class="max-w-2xl mx-auto">
       <div class="flex flex-wrap items-center justify-center gap-2 mb-2.5">
         <span id="heroBadgeText" class="px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3E5AB] text-[11px] font-bold">💎 15 مکمل گائیڈز + 6 عملی ٹولز</span>
-        <button type="button" onclick="showVisitorInfo()" class="px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center gap-1.5 shadow">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span data-ur="حقیقی وزٹرز:" data-en="Real Visitors:">حقیقی وزٹرز:</span>
+        <span id="visitorBadge" class="px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center gap-1.5 shadow">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span data-ur="آپ کے وزٹس:" data-en="Your Visits:">آپ کے وزٹس:</span>
           <span id="totalVisitorsCount" class="font-mono font-extrabold text-[#F3E5AB]">1</span>
-        </button>
+        </span>
       </div>
 
-      <div class="max-w-md mx-auto my-2 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB]">
+      <!-- Fault-Tolerant Date & Clock Box -->
+      <div id="dateTimeContainer" class="max-w-md mx-auto my-2 p-3 bg-white/10 backdrop-blur-md border border-[#D4AF37]/40 rounded-2xl text-xs text-[#F3E5AB]">
         <div class="flex items-center justify-between border-b border-white/15 pb-1.5 mb-1.5 gap-2">
-          <span id="dateGregorian" class="font-bold">...</span>
-          <span id="liveClock" class="bg-[#0A192F] px-2.5 py-0.5 rounded-lg text-emerald-300 font-mono font-bold text-xs border border-[#D4AF37]/40">00:00:00 AM</span>
+          <span id="dateGregorian" class="font-bold text-[11px] sm:text-xs">...</span>
+          <span id="liveClock" dir="ltr" class="bg-[#0A192F] px-2.5 py-0.5 rounded-lg text-emerald-300 font-mono font-bold text-xs border border-[#D4AF37]/40 shrink-0">--:--:--</span>
         </div>
         <div id="dateCalendars" class="text-[11px] text-emerald-100 flex flex-wrap justify-center gap-x-2 gap-y-1"></div>
+        <p data-ur="* نوٹ: اسلامی تاریخ کا حتمی انحصار مقامی رویتِ ہلال پر ہے۔" data-en="* Note: Exact Islamic date depends on local moon sighting." class="text-[9px] text-emerald-200/80 mt-1"></p>
       </div>
 
       <h2 data-ur="غریب سے معاشی خود مختاری کا سفر: ہر گائیڈ میں 10 منفرد اور عملی اصول" data-en="From Low Income to Financial Freedom: 10 Unique Principles per Guide" class="text-base md:text-xl font-black mb-3 urdu-font">غریب سے معاشی خود مختاری کا سفر: ہر گائیڈ میں 10 منفرد اور عملی اصول</h2>
@@ -73,9 +83,10 @@
 
   <!-- Main Content -->
   <main class="max-w-3xl mx-auto w-full px-3 py-4 flex-1">
-    <!-- 6 Interactive Financial Tools -->
-    <div class="bg-[#0A192F] p-3.5 rounded-2xl border-2 border-[#D4AF37] mb-5 shadow-xl">
-      <p data-ur="🛠️ 6 عملی مالیاتی ٹولز (کلک کرنے پر یہیں کھلیں گے):" data-en="🛠️ 6 Interactive Financial Tools (Click to open right here):" class="text-[#F3E5AB] text-xs font-extrabold mb-3 urdu-font">🛠️ 6 عملی مالیاتی ٹولز (کلک کرنے پر یہیں کھلیں گے):</p>
+
+    <!-- 6 Validated Interactive Financial Tools -->
+    <div id="toolsSection" class="bg-[#0A192F] p-3.5 rounded-2xl border-2 border-[#D4AF37] mb-6 shadow-xl no-print">
+      <p data-ur="🛠️ 6 عملی مالیاتی ٹولز (کلک کرنے پر یہیں کھلیں گے — ڈیٹا آپ کے موبائل میں محفوظ رہتا ہے):" data-en="🛠️ 6 Interactive Financial Tools (Opens inline — Data saves privately on your device):" class="text-[#F3E5AB] text-xs font-extrabold mb-3 urdu-font">🛠️ 6 عملی مالیاتی ٹولز (کلک کرنے پر یہیں کھلیں گے — ڈیٹا آپ کے موبائل میں محفوظ رہتا ہے):</p>
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
         <button type="button" onclick="openTool('budget')" class="py-2.5 px-2 rounded-xl border border-emerald-400 bg-[#064E3B] text-white shadow active:scale-95 transition flex flex-col items-center">
           <span data-ur="🧮 بجٹ کیلکولیٹر" data-en="🧮 Budget Rule" class="text-xs font-extrabold">🧮 بجٹ کیلکولیٹر</span>
@@ -83,7 +94,7 @@
         </button>
         <button type="button" onclick="openTool('committee')" class="py-2.5 px-2 rounded-xl border border-amber-200 gold-bg text-[#0A192F] shadow active:scale-95 transition flex flex-col items-center">
           <span data-ur="🗓️ کمیٹی ریکارڈ" data-en="🗓️ Committee" class="text-xs font-extrabold">🗓️ کمیٹی ریکارڈ</span>
-          <span data-ur="12 ماہ شیڈول" data-en="12-Month ROSCA" class="text-[10px] font-bold">12 ماہ شیڈول</span>
+          <span data-ur="12 ماہ شیڈول و حساب" data-en="12-Month ROSCA" class="text-[10px] font-bold">12 ماہ شیڈول و حساب</span>
         </button>
         <button type="button" onclick="openTool('business')" class="py-2.5 px-2 rounded-xl border border-gray-300 bg-white text-[#0A192F] shadow active:scale-95 transition flex flex-col items-center">
           <span data-ur="📒 کاروباری کھاتہ" data-en="📒 Cashbook" class="text-xs font-extrabold">📒 کاروباری کھاتہ</span>
@@ -91,11 +102,11 @@
         </button>
         <button type="button" onclick="openTool('zakat')" class="py-2.5 px-2 rounded-xl border border-emerald-300 bg-emerald-800 text-white shadow active:scale-95 transition flex flex-col items-center">
           <span data-ur="🪙 زکوٰۃ کیلکولیٹر" data-en="🪙 Zakat Tool" class="text-xs font-extrabold">🪙 زکوٰۃ کیلکولیٹر</span>
-          <span data-ur="2.5% شرعی حساب" data-en="2.5% Calculation" class="text-[10px] text-emerald-200">2.5% شرعی حساب</span>
+          <span data-ur="نصاب و 2.5% شرعی حساب" data-en="Nisab & 2.5% Calc" class="text-[10px] text-emerald-200">نصاب و 2.5% شرعی حساب</span>
         </button>
         <button type="button" onclick="openTool('gold')" class="py-2.5 px-2 rounded-xl border border-amber-400 bg-amber-950 text-[#F3E5AB] shadow active:scale-95 transition flex flex-col items-center">
           <span data-ur="🥇 سونا اور بچت" data-en="🥇 Micro-Gold" class="text-xs font-extrabold">🥇 سونا اور بچت</span>
-          <span data-ur="روزانہ بچت سے سونا" data-en="Daily Saving to Gold" class="text-[10px] text-amber-200">روزانہ بچت سے سونا</span>
+          <span data-ur="گرام اور تولہ حساب" data-en="Grams & Tola Calc" class="text-[10px] text-amber-200">گرام اور تولہ حساب</span>
         </button>
         <button type="button" onclick="openTool('goal')" class="py-2.5 px-2 rounded-xl border border-blue-400 bg-slate-800 text-white shadow active:scale-95 transition flex flex-col items-center">
           <span data-ur="🎯 قرض و ہدف پلانر" data-en="🎯 Debt & Goal" class="text-xs font-extrabold">🎯 قرض و ہدف پلانر</span>
@@ -105,42 +116,75 @@
       <div id="topToolPanel" class="hidden mt-3.5"></div>
     </div>
 
-    <!-- Guides List -->
-    <h3 id="libraryHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font">📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری (15 مکمل کتابچے):</h3>
-    <div id="guidesList" class="space-y-3.5 mb-8"></div>
+    <!-- 15 Guides List -->
+    <div id="guidesSection">
+      <h3 id="libraryHeading" class="text-xs md:text-sm font-extrabold text-[#0A192F] mb-3 px-1 urdu-font">📚 اثاثہ سازی، قانونی رہنمائی اور غربت سے آزادی (15 مکمل کتابچے):</h3>
+      <div id="guidesList" class="space-y-3.5 mb-8"></div>
+    </div>
+
+    <!-- Business Services, Portfolio & WhatsApp Lead Section -->
+    <section id="servicesSection" class="bg-gradient-to-br from-[#0A192F] to-[#064E3B] text-white p-5 rounded-3xl border-2 border-[#D4AF37] shadow-xl mb-8 no-print">
+      <div class="text-center mb-4">
+        <span data-ur="🚀 ڈیجیٹل سروسز اور کاروباری حل" data-en="🚀 Digital Services & Business Solutions" class="inline-block px-3 py-0.5 rounded-full bg-[#D4AF37] text-[#0A192F] text-[10px] font-black mb-2">🚀 ڈیجیٹل سروسز اور کاروباری حل</span>
+        <h3 data-ur="اپنے کاروبار، دکان یا ادارے کے لیے ویب ایپ اور پروفیشنل گرافکس بنوائیں" data-en="Get a Custom Web App & Professional Graphics for Your Business" class="text-sm md:text-lg font-extrabold text-[#F3E5AB] urdu-font">اپنے کاروبار، دکان یا ادارے کے لیے ویب ایپ اور پروفیشنل گرافکس بنوائیں</h3>
+        <p data-ur="ہم چھوٹے کاروباروں، تعلیمی اداروں اور دکانداروں کے لیے موبائل فرینڈلی ویب سائٹس اور برانڈنگ ڈیزائن تیار کرتے ہیں۔" data-en="We build mobile-friendly web tools, digital catalogs, and branding graphics for local businesses and educators." class="text-xs text-emerald-100 mt-1 urdu-font"></p>
+      </div>
+
+      <!-- 3 Service Packages -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs mb-4">
+        <div class="bg-white/10 p-3.5 rounded-2xl border border-[#D4AF37]/40">
+          <h4 data-ur="🌐 1. کاروباری ویب پیج و ٹولز" data-en="🌐 1. Business Web Page & Tools" class="font-extrabold text-[#F3E5AB] mb-1">🌐 1. کاروباری ویب پیج و ٹولز</h4>
+          <p data-ur="دکان، سپلائرز، لائبریری یا کلینک کے لیے آن لائن کیٹلاگ، کھاتہ سسٹم اور واٹس ایپ آرڈر پیج۔" data-en="Online catalog, custom calculators, and WhatsApp order page for shops, libraries, and service providers." class="text-emerald-100 text-[11px] mb-2"></p>
+          <span data-ur="💰 مناسب پیکیج (واٹس ایپ پر رابطہ کریں)" data-en="💰 Affordable Custom Quote" class="inline-block text-[10px] bg-emerald-900/80 px-2 py-0.5 rounded text-[#F3E5AB] font-bold"></span>
+        </div>
+        <div class="bg-white/10 p-3.5 rounded-2xl border border-[#D4AF37]/40">
+          <h4 data-ur="🎨 2. اردو/انگلش گرافک ڈیزائن" data-en="🎨 2. Urdu/English Graphic Design" class="font-extrabold text-[#F3E5AB] mb-1">🎨 2. اردو/انگلش گرافک ڈیزائن</h4>
+          <p data-ur="پروفیشنل لوگو، سوشل میڈیا پوسٹرز، 10 سلائیڈ کیروسل، اور کاروباری اشتہارات (1080×1350 فارمیٹ)۔" data-en="Professional logos, social media posters, educational carousels, and promotional banners." class="text-emerald-100 text-[11px] mb-2"></p>
+          <span data-ur="💰 تیز تر ڈلیوری اور معیاری ڈیزائن" data-en="💰 Fast Delivery & High Quality" class="inline-block text-[10px] bg-emerald-900/80 px-2 py-0.5 rounded text-[#F3E5AB] font-bold"></span>
+        </div>
+        <div class="bg-white/10 p-3.5 rounded-2xl border border-[#D4AF37]/40">
+          <h4 data-ur="📊 3. تعلیمی و معلوماتی پورٹل" data-en="📊 3. Educational Info Portals" class="font-extrabold text-[#F3E5AB] mb-1">📊 3. تعلیمی و معلوماتی پورٹل</h4>
+          <p data-ur="فنانشل لٹریسی پاکستان کی طرز پر دو لسانی (اردو/انگلش) تعلیمی ایپس اور انفوگرافکس سسٹم۔" data-en="Bilingual (Urdu/English) educational web apps and interactive guide libraries like FLP." class="text-emerald-100 text-[11px] mb-2"></p>
+          <span data-ur="💰 مکمل موبائل فرینڈلی ڈیزائن" data-en="💰 100% Mobile-Friendly Setup" class="inline-block text-[10px] bg-emerald-900/80 px-2 py-0.5 rounded text-[#F3E5AB] font-bold"></span>
+        </div>
+      </div>
+
+      <!-- Portfolio Samples & Direct WhatsApp CTA -->
+      <div class="bg-black/30 p-3.5 rounded-2xl border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="text-center sm:text-right">
+          <span data-ur="✨ ہمارے کام کے نمونے (Portfolio):" data-en="✨ Recent Portfolio Highlights:" class="text-xs font-extrabold text-[#F3E5AB] block">✨ ہمارے کام کے نمونے (Portfolio):</span>
+          <p data-ur="فنانشل لٹریسی پاکستان ایپ • سلیم ناشتہ پوائنٹ اینڈ جوس بار • ندیم جنرل سروسز اینڈ آرڈر سپلائرز • محمد مجاہد لائبریری" data-en="Financial Literacy Pakistan App • Local Food & Juice Branding • General Order Suppliers • Library Branding" class="text-[11px] text-gray-300 mt-0.5"></p>
+        </div>
+        <a href="https://wa.me/923105379765?text=%D8%A7%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%8C%DA%A9%D9%85%20%D9%86%D8%AF%DB%8C%D9%85%20%D8%A7%D9%82%D8%A8%D8%A7%D9%84%20%D8%B5%D8%A7%D8%AD%D8%A8!%20%D9%85%DB%8C%DA%BA%20%D9%86%DB%92%20%D9%81%D9%86%D8%A7%D9%86%D8%B4%D9%84%20%D9%84%D9%B9%D8%B1%DB%8C%D8%B3%DB%8C%20%D8%A7%DB%8C%D9%BE%20%D8%AF%DB%8C%DA%A9%DA%BE%DB%8C%20%DB%81%DB%92%D8%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D8%A7%D9%BE%D9%86%DB%92%20%DA%A9%D8%A7%D8%B1%D9%88%D8%A8%D8%A7%D8%B1%20%DA%A9%DB%92%20%D9%84%DB%8C%DB%92%20%D8%B3%D8%B1%D9%88%D8%B3%20%DA%A9%DB%8C%20%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%20%DA%86%D8%A7%DB%81%DB%8C%DB%92%DB%94" target="_blank" class="px-5 py-2.5 rounded-xl gold-bg text-[#0A192F] font-black text-xs shadow-lg hover:opacity-95 transition shrink-0 flex items-center gap-1.5">
+          <span>💬</span>
+          <span data-ur="واٹس ایپ پر رابطہ اور آرڈر کریں" data-en="Chat on WhatsApp for Quotes">واٹس ایپ پر رابطہ اور آرڈر کریں</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Legal, About, Privacy Policy & Disclaimer Tabs -->
+    <section id="infoSection" class="bg-white p-4 rounded-3xl border border-gray-200 shadow-md mb-6 no-print">
+      <div class="flex flex-wrap gap-1.5 border-b pb-2.5 mb-3 text-xs font-extrabold">
+        <button type="button" onclick="showInfoTab('about')" id="tabBtn-about" class="px-3 py-1.5 rounded-xl bg-[#0A192F] text-[#F3E5AB]" data-ur="ℹ️ ہمارے بارے میں" data-en="ℹ️ About Us">ℹ️ ہمارے بارے میں</button>
+        <button type="button" onclick="showInfoTab('privacy')" id="tabBtn-privacy" class="px-3 py-1.5 rounded-xl bg-slate-100 text-gray-700" data-ur="🔒 پرائیویسی پالیسی" data-en="🔒 Privacy Policy">🔒 پرائیویسی پالیسی</button>
+        <button type="button" onclick="showInfoTab('disclaimer')" id="tabBtn-disclaimer" class="px-3 py-1.5 rounded-xl bg-slate-100 text-gray-700" data-ur="⚖️ شرعی و قانونی وضاحت" data-en="⚖️ Disclaimer">⚖️ شرعی و قانونی وضاحت</button>
+      </div>
+      <div id="infoTabContent" class="text-xs text-gray-700 px-1 urdu-font"></div>
+    </section>
+
   </main>
 
-  <!-- Bottom Developer Contact & Feedback Section -->
-  <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto">
+  <!-- Footer: Developer Contact & Community Feedback Box -->
+  <section class="bg-[#0A192F] text-white pt-8 pb-12 px-4 border-t-4 border-[#D4AF37] mt-auto no-print">
     <div class="max-w-3xl mx-auto space-y-6">
       <div class="bg-white/10 p-5 rounded-3xl border border-[#D4AF37]/50 text-center space-y-3">
-        <!-- 5-Tap Secret Trigger on NI Logo -->
-        <div onclick="triggerAdminSecret()" class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base select-none shadow cursor-pointer">NI</div>
+        <div class="w-11 h-11 rounded-2xl gold-bg mx-auto flex items-center justify-center text-[#0A192F] font-black text-base select-none shadow">NI</div>
         <h3 data-ur="فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال" data-en="Financial Literacy Pakistan • Founder & Developer: Nadeem Iqbal" class="text-sm font-extrabold text-[#F3E5AB]">فنانشل لٹریسی پاکستان • ڈویلپر اور بانی: ندیم اقبال</h3>
+        <p data-ur="مقام: اسلام آباد، پاکستان • مقصد: غربت کا خاتمہ اور حلال اثاثہ سازی" data-en="Location: Islamabad, Pakistan • Mission: Poverty Alleviation & Halal Asset Building" class="text-[11px] text-emerald-200"></p>
         <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
-          <a href="tel:03105379765" class="px-3 py-1.5 rounded-xl bg-[#064E3B] border border-emerald-400 font-bold">📞 0310-5379765</a>
-          <a href="mailto:ni31071987@gmail.com" class="px-3 py-1.5 rounded-xl bg-white/15 border border-[#D4AF37]/40 font-bold">✉️ ni31071987@gmail.com</a>
-        </div>
-
-        <!-- Strictly Locked Admin Panel -->
-        <div id="adminPanel" style="display:none;" class="bg-black/40 p-4 rounded-2xl border-2 border-emerald-500 text-right text-xs space-y-3 mt-3">
-          <div class="flex flex-wrap justify-between items-center gap-2 border-b border-emerald-500/30 pb-2.5">
-            <span class="font-extrabold text-emerald-300">🔓 ڈویلپر ایڈمن موڈ (Admin Active)</span>
-            <div class="flex flex-wrap gap-1.5">
-              <button type="button" onclick="resetDefaultGuides()" class="text-blue-200 font-bold px-2.5 py-1 bg-blue-950/70 rounded-xl border border-blue-400/50">🔄 اوریجنل ڈیٹا بحال کریں</button>
-              <button type="button" onclick="changeAdminPassword()" class="text-amber-300 font-bold px-2.5 py-1 bg-amber-950/70 rounded-xl border border-amber-500/50">🔑 پاسورڈ تبدیل کریں</button>
-              <button type="button" onclick="adminLogout()" class="text-red-300 font-bold px-2.5 py-1 bg-red-950/70 rounded-xl border border-red-500/50">🔒 لاگ آؤٹ</button>
-            </div>
-          </div>
-          <div>
-            <span data-ur="🔒 نئی پی ڈی ایف یا گائیڈ اپلوڈ کر کے سیو کریں:" data-en="🔒 Upload & Save New PDF Guide:" class="font-bold text-[#F3E5AB] block mb-1.5">🔒 نئی پی ڈی ایف یا گائیڈ اپلوڈ کر کے سیو کریں:</span>
-            <input type="text" id="devPdfTitle" data-ph-ur="گائیڈ کا عنوان درج کریں..." data-ph-en="Enter Guide Title..." placeholder="گائیڈ کا عنوان درج کریں..." class="w-full p-2.5 border rounded-xl text-xs bg-white text-gray-900 font-semibold mb-2" />
-            <div class="flex flex-col sm:flex-row gap-2">
-              <input type="file" id="devPdfFile" accept="application/pdf" class="w-full text-xs text-gray-300 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#D4AF37] file:text-[#0A192F] cursor-pointer" />
-              <button type="button" onclick="handleDevUpload()" data-ur="💾 اپلوڈ اور سیو کریں" data-en="💾 Upload & Save" class="px-5 py-2 rounded-xl bg-emerald-600 font-bold text-white shrink-0">💾 اپلوڈ اور سیو کریں</button>
-            </div>
-            <p id="uploadMsg" class="text-[10px] text-emerald-300 mt-1.5"></p>
-          </div>
+          <a href="tel:03105379765" class="px-3.5 py-1.5 rounded-xl bg-[#064E3B] border border-emerald-400 font-bold">📞 0310-5379765</a>
+          <a href="https://wa.me/923105379765" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-emerald-700 border border-emerald-300 font-bold">💬 WhatsApp</a>
+          <a href="mailto:ni31071987@gmail.com" class="px-3.5 py-1.5 rounded-xl bg-white/15 border border-[#D4AF37]/40 font-bold">✉️ ni31071987@gmail.com</a>
         </div>
       </div>
 
@@ -161,13 +205,13 @@
     </div>
   </section>
 
-  <!-- Reader & Admin Editor Modal -->
+  <!-- Reader Modal -->
   <div id="guideModal" class="fixed inset-0 bg-black/85 z-50 hidden overflow-y-auto p-2 md:p-6 backdrop-blur-sm">
     <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden my-4 border-2 border-[#D4AF37]">
-      <div class="hero-bg text-white px-4 py-3.5 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 gap-2">
+      <div class="hero-bg text-white px-4 py-3.5 flex items-center justify-between sticky top-0 z-10 border-b border-[#D4AF37]/40 gap-2 no-print">
         <h3 id="mTitle" class="text-xs md:text-sm font-bold text-[#F3E5AB]"></h3>
         <div class="flex items-center gap-1.5 shrink-0">
-          <button type="button" onclick="downloadCurrentPdf()" class="px-2.5 py-1 rounded-lg bg-[#D4AF37] text-[#0A192F] font-bold text-xs flex items-center gap-1 shadow">📥 PDF</button>
+          <button type="button" onclick="window.print()" class="px-2.5 py-1 rounded-lg bg-[#D4AF37] text-[#0A192F] font-bold text-xs flex items-center gap-1 shadow">🖨️ Print / PDF</button>
           <button type="button" onclick="closeModal()" class="w-8 h-8 rounded-xl bg-white/20 text-white font-black text-xs flex items-center justify-center">✕</button>
         </div>
       </div>
@@ -176,7 +220,7 @@
   </div>
 
   <script>
-    let lang = 'ur', activeTopTool = null, currentModalId = 1, isAdminLoggedIn = false, secretTaps = 0, tapTimer = null;
+    let lang = 'ur', activeTopTool = null, currentModalId = 1, activeInfoTab = 'about';
     const tr = (ur, en) => lang === 'ur' ? ur : en;
     const fCls = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
     const shareSvgIcon = `<svg class="w-3.5 h-3.5 inline-block fill-current" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>`;
@@ -337,7 +381,7 @@
       13: [
         ['ایف بی آر پورٹل (iris.fbr.gov.pk) یا Tax Asaan ایپ پر مفت رجسٹریشن', 'Free Registration on FBR IRIS or Tax Asaan App', 'اپنے شناختی کارڈ اور اپنے نام کی سم سے مفت NTN اکاؤنٹ کھولیں۔', 'Create your free NTN profile using your CNIC and registered SIM.'],
         ['کم آمدنی ہونے پر بھی سالانہ زیرو (Nil) ٹیکس ریٹرن فائل کرنا', 'Filing Annual Nil Return Even with Low Income', 'اگر آمدن ٹیکس حد سے کم ہے تب بھی زیرو ریٹرن بھیج کر فائلر بنیں۔', 'File a Nil tax return annually to get on the Active Taxpayer List (ATL).'],
-        ['ویلنھ اسٹیٹمنٹ (Wealth Statement) میں اپنے سونے اور اثاثوں کا اندراج', 'Declaring Gold & Savings in Wealth Statement', 'اپنے پاس موجود سونا اور بچت ڈکلیئر رکھیں تاکہ کل پلاٹ لیتے وقت مسئلہ نہ ہو۔', 'Declare your gold and cash savings so future property purchases are legal.'],
+        ['ویلتھ اسٹیٹمنٹ (Wealth Statement) میں اپنے سونے اور اثاثوں کا اندراج', 'Declaring Gold & Savings in Wealth Statement', 'اپنے پاس موجود سونا اور بچت ڈکلیئر رکھیں تاکہ کل پلاٹ لیتے وقت مسئلہ نہ ہو۔', 'Declare your gold and cash savings so future property purchases are legal.'],
         ['فائلر بن کر بینک منافع اور کیش نکلوانے پر آدھا ٹیکس بچانا', 'Saving 50% Withholding Tax on Banking & Profits', 'نان فائلر کا ٹیکس دگنا کٹتا ہے، فائلر اسٹیٹس سے اپنی کمائی بچائیں۔', 'Active Filers pay half the withholding tax on halal bank returns.'],
         ['پلاٹ اور مکان کی رجسٹری پر سیکشن 236K کے لاکھوں روپے بچانا', 'Slashing Property Purchase Tax (Section 236K)', 'پراپرٹی خریدتے وقت فائلر ہونے سے آپ کو ٹیکس میں بھاری چھوٹ ملتی ہے۔', 'Save hundreds of thousands in FBR advance tax when registering property.'],
         ['گاڑی کی رجسٹریشن اور سالانہ ٹوکن ٹیکس میں فائلر ڈسکاؤنٹ', 'Filer Discount on Vehicle Token & Transfer', 'ایکسائز آفس میں فائلر کو ٹوکن ٹیکس اور ٹرانسفر پر کم فیس دینی پڑتی ہے۔', 'Pay significantly lower annual token taxes and transfer fees as a filer.'],
@@ -352,7 +396,7 @@
         ['50 سال کی عمر سے پہلے اپنا ذاتی قرض سے پاک سر چھپانے کا مکان', 'Securing a Debt-Free Home Before Age 50', 'ریٹائرمنٹ کے بعد کرائے کے مکان کی پریشانی نہیں ہونی چاہیے۔', 'Ensure you own a modest, debt-free house before retiring from active work.'],
         ['بڑھاپے کی دوائیوں اور علاج کے لیے الگ ہیلتھ گولڈ ریزرو', 'Dedicated Gold Reserve for Senior Healthcare', 'بڑھاپے کے علاج کے لیے کم از کم 1 سے 2 تولہ سونا الگ محفوظ رکھیں۔', 'Keep a separate gold reserve strictly for old-age medical care.'],
         ['اولاد کی شادی پر اپنی بڑھاپے کی جمع پونجی ہرگز ختم نہ کرنا', 'Never Emptying Retirement Savings for Weddings', 'اپنے ہاتھ میں ہمیشہ اپنا اثاثہ رکھیں تاکہ بڑھاپے میں کسی کے محتاج نہ ہوں۔', 'Never liquidate your old-age survival nest egg for lavish family events.'],
-        ['تجرے کی بنیاد پر ہلکا پھلکا مشاورتی یا نگرانی کا کام جاری رکھنا', 'Transitioning to Light Advisory or Supervision Work', 'ریٹائرمنٹ کے بعد مکمل فارغ بیٹھنے کے بجائے ہلکا پھلکا کام جاری رکھیں۔', 'Stay mentally and financially active with light part-time trade supervision.'],
+        ['تجربے کی بنیاد پر ہلکا پھلکا مشاورتی یا نگرانی کا کام جاری رکھنا', 'Transitioning to Light Advisory or Supervision Work', 'ریٹائرمنٹ کے بعد مکمل فارغ بیٹھنے کے بجائے ہلکا پھلکا کام جاری رکھیں۔', 'Stay mentally and financially active with light part-time trade supervision.'],
         ['یکمشت ملنے والی گریجویٹی کو سودی اسکیم کے بجائے حلال اثاثے میں لگانا', 'Investing Gratuity Lump-Sum in Halal Real Assets', 'ریٹائرمنٹ پر ملنے والا پیسہ کسی دھوکے باز یا سودی بینک کو نہ دیں۔', 'Protect retirement lump sums from scammers; buy rental assets or Islamic sukuk.'],
         ['زندگی میں ہی شرعی اصولوں کے مطابق تحریری وصیت اور شفاف تقسیم', 'Writing a Clear Shariah-Compliant Will (Wasiyyat)', 'اپنے اثاثوں کی تفصیل اور شرعی وراثت کی ہدایت تحریری طور پر رکھیں۔', 'Keep a written record of all assets and debts to prevent family disputes.'],
         ['سادہ طرزِ زندگی اور روزانہ چہل قدمی سے ہسپتال کے خرچ بچانا', 'Active Walking & Simple Diet to Cut Medical Costs', 'صحت سب سے بڑی دولت ہے، سادہ خوراک اور واک کو معمول بنائیں۔', 'Daily walking and simple home food save massive hospital bills in old age.'],
@@ -382,7 +426,7 @@
       ]);
     }
 
-    const defaultGuides = [
+    const allGuides = [
       [1, 'بجٹ اور بچت', 'Budgeting', '50/30/20 بجٹ گائیڈ: کم تنخواہ میں گھر چلانے کا اصول', 'The 50/30/20 Budget Rule: Master Monthly Income', 'آمدنی کو ضروریات (50%)، خواہشات (30%) اور بچت (20%) میں تقسیم کر کے قرض سے بچیں۔', 'Divide monthly income into Needs (50%), Wants (30%), and Savings (20%).', 'budget', '🧮 بجٹ کیلکولیٹر', '🧮 Budget Tool', getTenPoints(1)],
       [2, 'اثاثہ سازی', 'Micro-Assets', 'مزدور اور عام آدمی کے لیے اثاثہ سازی (Micro-Assets)', 'Micro-Asset Building for Common People', 'کم آمدنی والا مزدور یا دہاڑی دار شخص تھوڑے پیسوں سے منافع بخش اثاثے کیسے بنائے؟', 'Practical steps for daily-wage earners to build income-generating assets.', 'gold', '🥇 سونا اور بچت ٹول', '🥇 Micro-Gold Tool', getTenPoints(2)],
       [3, 'غربت سے آزادی', 'Micro-Business', 'صفر یا کم سرمائے سے شروع ہونے والے چھوٹے حلال کاروبار', '5 Zero-to-Low Capital Halal Micro-Businesses', 'بنا بڑے سرمائے کے محنت اور ہنر سے گھر بیٹھے حلال روزگار کیسے شروع کریں؟', 'How to launch a self-sustaining micro-business from home with minimal cash.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', getTenPoints(3)],
@@ -400,23 +444,6 @@
       [15, 'دکان کا کھاتہ', 'Business Cashbook', 'چھوٹے کاروبار اور دکان کے مالیاتی اصول: کھاتہ سسٹم', 'Small Shop Bookkeeping: Separating Personal & Business Cash', 'دکان کے گلے اور گھر کے خرچ کو الگ رکھنے اور کاروبار کو نقصان سے بچانے کے اصول۔', 'Essential daily cashbook rules for shopkeepers to protect working capital.', 'business', '📒 کاروباری کھاتہ', '📒 Business Cashbook', getTenPoints(15)]
     ];
 
-    // Master Persistent Guides List (All edits & deletions permanently saved!)
-    let allGuides = safeJSON('flp_all_guides_saved_v1', null);
-    if (!allGuides || !Array.isArray(allGuides) || allGuides.length === 0) {
-      allGuides = JSON.parse(JSON.stringify(defaultGuides));
-    }
-    function saveAllGuides() { saveJSON('flp_all_guides_saved_v1', allGuides); }
-
-    function resetDefaultGuides() {
-      if (!isAdminLoggedIn) return;
-      if (confirm(tr('کیا آپ تمام گائیڈز کو اوریجنل حالت میں بحال کرنا چاہتے ہیں؟', 'Restore all 15 guides to original default state?'))) {
-        allGuides = JSON.parse(JSON.stringify(defaultGuides));
-        saveAllGuides();
-        renderGuides();
-        showToast(tr('🔄 اوریجنل 15 گائیڈز بحال اور سیو ہو گئیں!', '🔄 Original 15 guides restored & saved!'), true);
-      }
-    }
-
     let totalVisitors = (parseInt(localStorage.getItem('flp_real_visitors') || '0', 10) || 0) + 1;
     try { localStorage.setItem('flp_real_visitors', totalVisitors); } catch(e) {}
 
@@ -427,7 +454,6 @@
     }
     function saveStats() { saveJSON('flp_real_stats_v1', socialStats); }
 
-    // Persistent Committee Slots & Calculator Inputs
     const defaultComm = [
       { mUr: 'اگست 2026', mEn: 'Aug 2026', nUr: 'والدہ محترمہ', nEn: 'Mother', paid: true },
       { mUr: 'ستمبر 2026', mEn: 'Sep 2026', nUr: 'ایمرجنسی فنڈ', nEn: 'Emergency Fund', paid: true },
@@ -443,37 +469,68 @@
       { mUr: 'جولائی 2027', mEn: 'Jul 2027', nUr: 'سالانہ بچت', nEn: 'Annual Savings', paid: false }
     ];
     let commSlots = safeJSON('flp_comm_saved_v1', defaultComm);
-    let toolVals = safeJSON('flp_tool_vals_v1', { inc: 50000, zc: 100000, zg: 0, zb: 0, gd: 200, gr: 24000, em: 30000, dt: 100000, dp: 10000 });
-    let bizData = safeJSON('flp_biz_pro', [{"desc":"Daily Sales / آج کی سیل","amt":25000,"type":"in"},{"desc":"Stock / مال خریداری","amt":10000,"type":"exp"}]);
+    let toolVals = safeJSON('flp_tool_vals_v2', { inc: 50000, commAmt: 5000, zc: 100000, zg: 0, zb: 0, zd: 0, zn: 165000, gd: 200, gr: 24000, em: 30000, dt: 100000, dp: 10000 });
+    let bizData = safeJSON('flp_biz_pro', [{"desc":"Daily Sales / آج کی سیل","amt":25000,"type":"in","date":"2026-10-18"},{"desc":"Stock / مال خریداری","amt":10000,"type":"exp","date":"2026-10-18"}]);
     let chatData = safeJSON('flp_chat_pro', []);
 
-    function showVisitorInfo() {
-      showToast(tr(`👁️ حقیقی وزٹس کی تعداد: ${totalVisitors.toLocaleString()}`, `👁️ Real Visits Count: ${totalVisitors.toLocaleString()}`), true);
-    }
-
+    // Fault-Tolerant Live Date & Clock
     function loadLiveDates() {
-      const now = new Date(), dIdx = now.getDay(), dNum = now.getDate(), mIdx = now.getMonth(), yNum = now.getFullYear();
-      const daysUr = ['اتوار','پیر','منگل','بدھ','جمعرات','جمعہ','ہفتہ'], daysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-      const mUr = ['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'], mEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      const dMUr = ['چیت','بیساکھ','جیٹھ','ہاڑھ','ساون','بھادوں','اسوج','کتک','مگھر','پوہ','ماگھ','پھاگن'], dMEn = ['Chet','Vaisakh','Jeth','Harh','Sawan','Bhadon','Assuj','Katak','Maghar','Poh','Magh','Phagan'];
-      let desiIdx = (mIdx + (dNum >= 15 ? 9 : 8)) % 12, desiDay = dNum >= 15 ? (dNum - 14) : (dNum + 16);
-      let hUr = '5 ربیع الثانی 1448ھ', hEn = '5 Rabi al-Thani 1448 AH';
       try {
-        hUr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
-        hEn = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
-      } catch(e) {}
-      document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}، ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
-      document.getElementById('dateCalendars').innerHTML = lang === 'ur'
-        ? `<span>🌙 اسلامی: ${hUr}</span><span>|</span><span>🌾 دیسی: ${desiDay} ${dMUr[desiIdx]}</span><span>|</span><span>🇵🇰 پاکستان وقت</span>`
-        : `<span>🌙 Islamic: ${hEn}</span><span>|</span><span>🌾 Desi: ${desiDay} ${dMEn[desiIdx]}</span><span>|</span><span>🇵🇰 PKT Time</span>`;
-      document.getElementById('totalVisitorsCount').textContent = totalVisitors.toLocaleString();
+        const now = new Date(), dIdx = now.getDay(), dNum = now.getDate(), mIdx = now.getMonth(), yNum = now.getFullYear();
+        const daysUr = ['اتوار','پیر','منگل','بدھ','جمعرات','جمعہ','ہفتہ'], daysEn = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        const mUr = ['جنوری','فروری','مارچ','اپریل','مئی','جون','جولائی','اگست','ستمبر','اکتوبر','نومبر','دسمبر'], mEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        const dMUr = ['چیت','بیساکھ','جیٹھ','ہاڑھ','ساون','بھادوں','اسوج','کتک','مگھر','پوہ','ماگھ','پھاگن'], dMEn = ['Chet','Vaisakh','Jeth','Harh','Sawan','Bhadon','Assuj','Katak','Maghar','Poh','Magh','Phagan'];
+        let desiIdx = (mIdx + (dNum >= 15 ? 9 : 8)) % 12, desiDay = dNum >= 15 ? (dNum - 14) : (dNum + 16);
+        let hUr = '', hEn = '';
+        try {
+          hUr = new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
+          hEn = new Intl.DateTimeFormat('en-TN-u-ca-islamic-umalqura', { day:'numeric', month:'long', year:'numeric' }).format(now);
+        } catch(e) { hUr = '1448ھ'; hEn = '1448 AH'; }
+        document.getElementById('dateGregorian').textContent = lang === 'ur' ? `📅 ${daysUr[dIdx]}، ${dNum} ${mUr[mIdx]} ${yNum}ء` : `📅 ${daysEn[dIdx]}, ${mEn[mIdx]} ${dNum}, ${yNum}`;
+        document.getElementById('dateCalendars').innerHTML = lang === 'ur'
+          ? `<span>🌙 اسلامی: ${hUr}</span><span>|</span><span>🌾 دیسی: ${desiDay} ${dMUr[desiIdx]}</span><span>|</span><span>🇵🇰 پاکستان وقت</span>`
+          : `<span>🌙 Islamic: ${hEn}</span><span>|</span><span>🌾 Desi: ${desiDay} ${dMEn[desiIdx]}</span><span>|</span><span>🇵🇰 PKT Time</span>`;
+        document.getElementById('totalVisitorsCount').textContent = totalVisitors.toLocaleString();
+      } catch(err) {
+        document.getElementById('dateTimeContainer').classList.add('hidden');
+      }
     }
 
     function updateLiveClock() {
-      const el = document.getElementById('liveClock');
-      if (el) el.textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+      try {
+        const el = document.getElementById('liveClock');
+        if (el) el.textContent = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+      } catch(e) {}
     }
     setInterval(updateLiveClock, 1000);
+
+    // Legal, About & Privacy Policy Tabs Content
+    function showInfoTab(tab) {
+      activeInfoTab = tab;
+      ['about', 'privacy', 'disclaimer'].forEach(t => {
+        const btn = document.getElementById('tabBtn-' + t);
+        if (btn) btn.className = t === tab ? 'px-3 py-1.5 rounded-xl bg-[#0A192F] text-[#F3E5AB]' : 'px-3 py-1.5 rounded-xl bg-slate-100 text-gray-700';
+      });
+      const box = document.getElementById('infoTabContent');
+      if (!box) return;
+      box.className = `text-xs text-gray-700 px-1 ${fCls()}`;
+      if (tab === 'about') {
+        box.innerHTML = tr(
+          `<b>فنانشل لٹریسی پاکستان (Financial Literacy Pakistan)</b> عام پاکستانی شہریوں، تنخواہ دار طبقے، مزدوروں اور چھوٹے دکانداروں کے لیے ایک مفت تعلیمی و عملی ویب ایپ ہے۔ اس کے بانی اور ڈویلپر <b>ندیم اقبال</b> (اسلام آباد) ہیں جن کے یوٹیوب اور سوشل میڈیا پلیٹ فارمز پر ہزاروں افراد مالیاتی شعور حاصل کر رہے ہیں۔ ہمارا مقصد ہر گھر کو سودی قرضوں سے بچانا، حلال بچت سکھانا اور چھوٹے اثاثے بنانے کے قابل بنانا ہے۔`,
+          `<b>Financial Literacy Pakistan</b> is a free educational web app built for everyday citizens, wage earners, and small shopkeepers. Founded and developed by <b>Nadeem Iqbal</b> (Islamabad), our mission is to eliminate poverty through practical budgeting, debt-free living, and halal micro-asset building.`
+        );
+      } else if (tab === 'privacy') {
+        box.innerHTML = tr(
+          `<b>100% رازداری اور ڈیٹا کی حفاظت (Privacy Policy):</b> آپ اس ایپ کے کیلکولیٹرز (بجٹ، کمیٹی، کاروباری کھاتہ یا زکوٰۃ) میں جو بھی اعداد و شمار یا نام درج کرتے ہیں، وہ <b>صرف اور صرف آپ کے اپنے موبائل براؤزر (LocalStorage)</b> میں محفوظ رہتے ہیں۔ ہم آپ کا ذاتی مالیاتی ڈیٹا کسی سرور پر جمع یا فروخت نہیں کرتے۔`,
+          `<b>100% Data Privacy Policy:</b> Any financial numbers, committee names, or cashbook entries you save inside this app are stored <b>exclusively on your own mobile browser (LocalStorage)</b>. We do not collect, transmit, or sell your personal financial data on any external server.`
+        );
+      } else {
+        box.innerHTML = tr(
+          `<b>شرعی، قانونی و مالیاتی وضاحت (Disclaimer):</b> اس ایپ میں دیے گئے تمام کتابچے اور کیلکولیٹرز عمومی تعلیم اور آگاہی کے لیے ہیں۔ زکوٰۃ کے پیچیدہ مسائل کے لیے کسی مستند دارالافتاء سے، اور پراپرٹی/ٹیکس کے قانونی معاملات کے لیے متعلقہ سرکاری اداروں (FBR, CDA, LDA, SECP) یا مستند وکیل سے ضرور رجوع کریں۔`,
+          `<b>Financial & Shariah Disclaimer:</b> All guides and calculators in this app are provided for general educational purposes. For complex Zakat rulings, consult a qualified Mufti/Darul-Ifta, and for property or tax transactions, verify directly with official authorities (FBR, CDA, LDA, SECP).`
+        );
+      }
+    }
 
     function switchLang(l) {
       lang = l;
@@ -485,51 +542,144 @@
       document.querySelectorAll('[data-ph-ur]').forEach(el => el.placeholder = el.getAttribute('data-ph-' + l));
       loadLiveDates();
       updateLiveClock();
+      showInfoTab(activeInfoTab);
       if (activeTopTool) renderToolHTML('topToolPanel', activeTopTool, 'top');
       renderChat();
       renderGuides();
     }
 
-    function triggerAdminSecret() {
-      if (isAdminLoggedIn) return;
-      secretTaps++;
-      clearTimeout(tapTimer);
-      tapTimer = setTimeout(() => { secretTaps = 0; }, 2200);
-      if (secretTaps < 5) return;
-      secretTaps = 0;
+    // All 6 Validated Calculators with Error Checking & Clear Formulas
+    function renderToolHTML(cId, type, p) {
+      const box = document.getElementById(cId); if (!box) return;
+      const closeFn = p === 'top' ? 'closeTopTool()' : `document.getElementById('${cId}').classList.add('hidden')`;
+      const header = (title) => `<div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]"><span>${title}</span><button type="button" onclick="${closeFn}" class="text-red-600 text-xs font-bold px-2.5 py-1 bg-red-50 border border-red-200 rounded-lg">${tr('✕ بند کریں','✕ Close')}</button></div>`;
+      const saveBar = (saveCall) => `<div class="mt-3 pt-2.5 border-t flex gap-2"><button type="button" onclick="${saveCall}" class="flex-1 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold text-xs shadow">💾 ${tr('سیو کریں (Save)','Save Data')}</button></div>`;
 
-      const masterPwd = localStorage.getItem('flp_master_admin_pwd') || 'Nadeem@786';
-      const pwd = prompt(tr('🔐 ڈویلپر ماسٹر پاسورڈ درج کریں (صرف ندیم اقبال کے لیے):', '🔐 Enter Developer Master Password:'));
-      if (pwd === masterPwd) {
-        isAdminLoggedIn = true;
-        document.getElementById('adminPanel').style.display = 'block';
-        renderGuides();
-        showToast(tr('🔓 ڈویلپر ایڈمن موڈ آن ہو گیا', '🔓 Developer Admin Mode Activated'), true);
-      } else if (pwd !== null) {
-        alert(tr('❌ غلط پاسورڈ!', '❌ Access Denied!'));
+      if (type === 'budget') {
+        const v = Math.max(0, toolVals.inc || 50000);
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-500 shadow-lg text-xs">${header(tr('🧮 50/30/20 ماہانہ بجٹ کیلکولیٹر','🧮 50/30/20 Budget Calculator'))}<label class="block font-bold mb-1">${tr('ماہانہ خالص آمدنی درج کریں (PKR):','Enter Monthly Net Income (PKR):')}</label><input type="number" min="0" id="inc-${p}" value="${v}" oninput="calcB('${p}')" class="w-full p-2 border-2 border-[#064E3B] rounded-xl mb-2 font-extrabold text-sm text-[#064E3B]" /><p id="err-b-${p}" class="text-red-600 font-bold text-[11px] hidden mb-2"></p><div class="grid grid-cols-3 gap-2 text-center"><div class="p-2 bg-emerald-50 rounded-xl border"><b>${tr('50% ضروریات','50% Needs')}</b><p id="bn-${p}" class="font-black text-emerald-950 mt-1">Rs. ${Math.round(v*0.5).toLocaleString()}</p></div><div class="p-2 bg-blue-50 rounded-xl border"><b>${tr('30% خواہشات','30% Wants')}</b><p id="bw-${p}" class="font-black text-blue-950 mt-1">Rs. ${Math.round(v*0.3).toLocaleString()}</p></div><div class="p-2 bg-amber-50 rounded-xl border"><b>${tr('20% بچت و اثاثے','20% Savings')}</b><p id="bs-${p}" class="font-black text-amber-950 mt-1">Rs. ${Math.round(v*0.2).toLocaleString()}</p></div></div><p class="text-[10px] text-gray-500 mt-2">${tr('💡 نوٹ: اگر آمدنی کم ہے تو آپ 70% ضروریات، 20% قرض/ایمرجنسی اور 10% بچت کا فارمولا بھی اپنا سکتے ہیں۔','💡 Tip: Low-income households can adjust to 70% Needs, 20% Emergency/Debt, and 10% Savings.')}</p>${saveBar(`saveToolVals()`)}</div>`;
+      } else if (type === 'committee') {
+        const cAmt = Math.max(0, toolVals.commAmt || 5000);
+        const totalMembers = commSlots.length;
+        const paidCount = commSlots.filter(s => s.paid).length;
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-[#D4AF37] shadow-lg text-xs">${header(tr('🗓️ کمیٹی (BC) شیڈول اور حساب','🗓️ Committee (ROSCA) Schedule & Calculator'))}<div class="mb-3"><label class="block font-bold mb-1">${tr('فی ممبر ماہانہ قسط (PKR):','Monthly Installment per Member (PKR):')}</label><input type="number" min="0" value="${cAmt}" onchange="toolVals.commAmt=Math.max(0,+this.value||0);saveComm('${cId}','${p}',false)" class="w-full p-2 border rounded-xl font-extrabold text-[#064E3B]" /></div><div class="grid grid-cols-2 gap-2 mb-3 text-center"><div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>${tr(`کل کمیٹی (${totalMembers} ممبران)`,`Total Pot (${totalMembers} Members)`)}</b><p class="font-black text-amber-950 text-sm">Rs. ${(cAmt * totalMembers).toLocaleString()}</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-300"><b>${tr(`جمع شدہ (${paidCount} ادا شدہ)`,`Collected (${paidCount} Paid)`)}</b><p class="font-black text-emerald-950 text-sm">Rs. ${(cAmt * paidCount).toLocaleString()}</p></div></div><div class="space-y-1.5 max-h-56 overflow-y-auto pr-1">${commSlots.map((s, i) => `<div class="flex items-center justify-between p-2 bg-slate-50 border rounded-xl gap-1.5"><input type="text" value="${tr(s.mUr, s.mEn)}" oninput="commSlots[${i}][lang==='ur'?'mUr':'mEn']=this.value" class="w-20 p-1 border rounded bg-white text-[11px] font-bold text-[#0A192F]" /><input type="text" value="${tr(s.nUr, s.nEn)}" oninput="commSlots[${i}][lang==='ur'?'nUr':'nEn']=this.value" class="flex-1 p-1.5 border rounded-lg bg-white text-xs font-semibold" /><button type="button" onclick="commSlots[${i}].paid=!commSlots[${i}].paid;saveComm('${cId}','${p}',false)" class="px-2 py-1 rounded-lg font-bold shrink-0 ${s.paid ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : 'bg-amber-100 text-amber-900 border border-amber-300'}">${s.paid ? tr('✓ ادا شدہ','✓ Paid') : tr('⏳ باقی','⏳ Pending')}</button><button type="button" onclick="deleteCommRow(${i},'${cId}','${p}')" class="px-2 py-1 rounded-lg bg-red-100 text-red-700 font-bold shrink-0">🗑️</button></div>`).join('')}</div><div class="mt-3 pt-2.5 border-t flex flex-wrap gap-2"><button type="button" onclick="addCommRow('${cId}','${p}')" class="flex-1 py-2 rounded-xl bg-slate-200 text-[#0A192F] font-extrabold text-xs">+ ${tr('ممبر شامل کریں','Add Member')}</button><button type="button" onclick="saveComm('${cId}','${p}',true)" class="flex-1 py-2 rounded-xl bg-emerald-700 text-white font-extrabold text-xs shadow">💾 ${tr('کمیٹی سیو کریں','Save Committee')}</button></div></div>`;
+      } else if (type === 'business') {
+        let totIn = 0, totExp = 0, totDraw = 0;
+        bizData.forEach(b => { if (b.type === 'in') totIn += b.amt; else if (b.type === 'draw') totDraw += b.amt; else totExp += b.amt; });
+        let net = totIn - totExp - totDraw;
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-slate-400 shadow-lg text-xs">${header(tr('📒 کاروبار اور دکان کا روزانہ کھاتہ','📒 Daily Business Cashbook'))}<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mb-3 text-center"><div class="p-2 bg-emerald-50 rounded-xl border"><b>${tr('کل سیل/آمدن','Total Sales')}</b><p class="font-extrabold text-emerald-800">Rs. ${totIn.toLocaleString()}</p></div><div class="p-2 bg-red-50 rounded-xl border"><b>${tr('دکان خرچ','Shop Exp.')}</b><p class="font-extrabold text-red-700">Rs. ${totExp.toLocaleString()}</p></div><div class="p-2 bg-amber-50 rounded-xl border"><b>${tr('گھر کا خرچ','Home Draw')}</b><p class="font-extrabold text-amber-800">Rs. ${totDraw.toLocaleString()}</p></div><div class="p-2 bg-slate-900 text-white rounded-xl"><b>${tr('گلے میں خالص کیش','Net Cash')}</b><p class="font-black text-[#F3E5AB]">Rs. ${net.toLocaleString()}</p></div></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 mb-2"><input id="bd-${p}" placeholder="${tr('تفصیل (سیل/خرچ)','Description')}" class="p-2 border rounded-xl" /><input type="number" min="1" id="ba-${p}" placeholder="${tr('مثبت رقم (PKR)','Amount (PKR)')}" class="p-2 border rounded-xl font-bold" /><select id="bt-${p}" class="p-2 border rounded-xl font-semibold"><option value="in">${tr('➕ آمدن / سیل','➕ Income / Sales')}</option><option value="exp">${tr('➖ دکان کا خرچ','➖ Shop Expense')}</option><option value="draw">${tr('🏠 گھر کا ذاتی خرچ','🏠 Home Drawing')}</option></select></div><button type="button" onclick="addBiz('${cId}','${p}')" class="w-full py-2 bg-emerald-700 text-white font-extrabold rounded-xl mb-2 shadow">💾 ${tr('+ کھاتے میں درج اور سیو کریں','+ Add & Save Entry')}</button><div class="space-y-1 max-h-40 overflow-y-auto">${bizData.map((b, i) => `<div class="flex justify-between items-center p-2 bg-slate-50 border rounded-lg gap-2"><span class="text-[10px] text-gray-400 shrink-0">${b.date||''}</span><input type="text" value="${b.desc}" onchange="bizData[${i}].desc=this.value;saveJSON('flp_biz_pro',bizData)" class="flex-1 p-1 border rounded bg-white font-bold text-xs" /><span class="font-bold shrink-0 ${b.type==='in'?'text-emerald-700':'text-red-700'}">(${b.type === 'in' ? '+' : '-'}) Rs. ${b.amt.toLocaleString()}</span><button type="button" onclick="bizData.splice(${i},1);saveJSON('flp_biz_pro',bizData);renderToolHTML('${cId}','business','${p}')" class="px-2 py-0.5 bg-red-100 text-red-700 rounded font-black">🗑️</button></div>`).join('')}</div></div>`;
+      } else if (type === 'zakat') {
+        const zc = Math.max(0, toolVals.zc||0), zg = Math.max(0, toolVals.zg||0), zb = Math.max(0, toolVals.zb||0), zd = Math.max(0, toolVals.zd||0), zn = Math.max(1, toolVals.zn||165000);
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-600 shadow-lg text-xs">${header(tr('🪙 شرعی زکوٰۃ کیلکولیٹر (مع نصاب و قرض منہائی)','🪙 Shariah Zakat Calculator (With Nisab & Debt)'))}<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('1. نقد کیش و بینک بیلنس:','1. Cash & Bank Balance:')}</label><input type="number" min="0" id="zc-${p}" value="${zc}" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('2. سونا و چاندی کی موجودہ مالیت:','2. Gold & Silver Market Value:')}</label><input type="number" min="0" id="zg-${p}" value="${zg}" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('3. کاروباری مالِ تجارت (اسٹاک):','3. Business Trade Stock:')}</label><input type="number" min="0" id="zb-${p}" value="${zb}" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1 text-red-700">${tr('4. منہا: فوری واجب الادا قرض/بل:','4. Less: Immediate Due Debts:')}</label><input type="number" min="0" id="zd-${p}" value="${zd}" oninput="calcZ('${p}')" class="w-full p-2 border border-red-300 rounded-xl font-bold text-red-700" /></div><div class="sm:col-span-2"><label class="block font-bold mb-1 text-emerald-900">${tr('موجودہ نصاب کی حد (52.5 تولہ چاندی کی مالیت PKR):','Current Nisab Threshold (52.5 Tola Silver Value PKR):')}</label><input type="number" min="1" id="zn-${p}" value="${zn}" oninput="calcZ('${p}')" class="w-full p-2 border border-emerald-400 rounded-xl font-bold bg-emerald-50/40" /></div></div><div id="zResBox-${p}" class="p-3 bg-emerald-50 rounded-xl border border-emerald-300 text-center"></div><p class="text-[10px] text-gray-500 mt-2">${tr('* شرعی اصول: اگر قرض نکالنے کے بعد خالص قابلِ زکوٰۃ مال نصاب کے برابر یا زیادہ ہو اور اس پر قمری سال گزر جائے تو کل خالص مالیت کا 2.5% زکوٰۃ فرض ہے۔','* Shariah Rule: If net zakatable wealth equals or exceeds Nisab for one lunar year, 2.5% Zakat is obligatory.')}</p>${saveBar(`saveToolVals()`)}</div>`;
+        calcZ(p);
+      } else if (type === 'gold') {
+        const gd = Math.max(0, toolVals.gd||200), gr = Math.max(1, toolVals.gr||24000), yr = gd*365;
+        const grams = yr / gr, tolas = grams / 11.664;
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-amber-500 shadow-lg text-xs">${header(tr('🥇 مائکرو گولڈ اور روزانہ بچت کیلکولیٹر','🥇 Micro-Gold & Daily Saving Calculator'))}<div class="grid grid-cols-2 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('روزانہ بچت (PKR):','Daily Saving (PKR):')}</label><input type="number" min="0" id="gd-${p}" value="${gd}" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('1 گرام 24K سونے کا ریٹ:','24K Gold Rate/Gram:')}</label><input type="number" min="1" id="gr-${p}" value="${gr}" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-3 gap-2 text-center"><div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>${tr('سالانہ کیش بچت','1-Year Cash')}</b><p id="gy-${p}" class="font-black text-amber-950 text-xs sm:text-sm mt-1">Rs. ${yr.toLocaleString()}</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-300"><b>${tr('سونا (گرام)','Gold (Grams)')}</b><p id="gg-${p}" class="font-black text-emerald-950 text-xs sm:text-sm mt-1">${grams.toFixed(2)} g</p></div><div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>${tr('سونا (تولہ)','Gold (Tola)')}</b><p id="gt-${p}" class="font-black text-blue-950 text-xs sm:text-sm mt-1">${tolas.toFixed(2)} Tola</p></div></div>${saveBar(`saveToolVals()`)}</div>`;
+      } else if (type === 'goal') {
+        const em = Math.max(0, toolVals.em||30000), dt = Math.max(0, toolVals.dt||100000), dp = Math.max(0, toolVals.dp||10000);
+        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-blue-500 shadow-lg text-xs">${header(tr('🎯 ایمرجنسی فنڈ اور قرض نجات پلانر','🎯 Emergency Fund & Debt Payoff Planner'))}<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('ماہانہ لازمی گھر خرچ:','Monthly Core Expense:')}</label><input type="number" min="0" id="em-${p}" value="${em}" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('کل واجب الادا قرض:','Total Debt Amount:')}</label><input type="number" min="0" id="dt-${p}" value="${dt}" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('ماہانہ قسط ادائیگی:','Monthly Payoff:')}</label><input type="number" min="0" id="dp-${p}" value="${dp}" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-2 gap-2 text-center"><div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>${tr('محفوظ ایمرجنسی فنڈ (3 تا 6 ماہ)','3–6 Month Emergency Target')}</b><p id="er-${p}" class="font-black text-blue-950 text-xs md:text-sm mt-1"></p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>${tr('قرض ختم ہونے کی مدت','Time to Clear Debt')}</b><p id="dr-${p}" class="font-black text-emerald-950 text-xs md:text-sm mt-1"></p></div></div>${saveBar(`saveToolVals()`)}</div>`;
+        calcD(p);
       }
     }
 
-    function changeAdminPassword() {
-      if (!isAdminLoggedIn) return;
-      const currentPwd = localStorage.getItem('flp_master_admin_pwd') || 'Nadeem@786';
-      const oldInput = prompt(tr('موجودہ ماسٹر پاسورڈ درج کریں:', 'Enter current Master Password:'));
-      if (oldInput === currentPwd) {
-        const newInput = prompt(tr('اپنا نیا ڈویلپر پاسورڈ درج کریں (کم از کم 4 حروف):', 'Enter new Developer Password (min 4 chars):'));
-        if (newInput && newInput.trim().length >= 4) {
-          localStorage.setItem('flp_master_admin_pwd', newInput.trim());
-          alert(tr('✅ آپ کا نیا ڈویلپر پاسورڈ محفوظ ہو گیا ہے!', '✅ Your new Developer Password is saved!'));
-        }
-      } else if (oldInput !== null) {
-        alert(tr('❌ موجودہ پاسورڈ غلط ہے!', '❌ Incorrect current password!'));
+    function calcB(p) {
+      let raw = +document.getElementById('inc-'+p).value;
+      const errEl = document.getElementById('err-b-'+p);
+      if (raw < 0) {
+        errEl.textContent = tr('⚠️ آمدنی منفی نہیں ہو سکتی!', '⚠️ Income cannot be negative!');
+        errEl.classList.remove('hidden'); raw = 0;
+      } else { errEl.classList.add('hidden'); }
+      let v = Math.max(0, raw || 0);
+      toolVals.inc = v; saveJSON('flp_tool_vals_v2', toolVals);
+      document.getElementById('bn-'+p).textContent = 'Rs. '+Math.round(v*0.5).toLocaleString();
+      document.getElementById('bw-'+p).textContent = 'Rs. '+Math.round(v*0.3).toLocaleString();
+      document.getElementById('bs-'+p).textContent = 'Rs. '+Math.round(v*0.2).toLocaleString();
+    }
+
+    function calcZ(p) {
+      let c = Math.max(0, +document.getElementById('zc-'+p).value||0);
+      let g = Math.max(0, +document.getElementById('zg-'+p).value||0);
+      let b = Math.max(0, +document.getElementById('zb-'+p).value||0);
+      let d = Math.max(0, +document.getElementById('zd-'+p).value||0);
+      let n = Math.max(1, +document.getElementById('zn-'+p).value||165000);
+      toolVals.zc=c; toolVals.zg=g; toolVals.zb=b; toolVals.zd=d; toolVals.zn=n;
+      saveJSON('flp_tool_vals_v2', toolVals);
+      let net = Math.max(0, (c + g + b) - d);
+      const resBox = document.getElementById('zResBox-'+p);
+      if (!resBox) return;
+      if (net < n) {
+        resBox.innerHTML = `<span class="text-xs font-bold text-gray-700 block">${tr(`خالص مالیت: Rs. ${net.toLocaleString()} (نصاب سے کم ہے)`,`Net Wealth: Rs. ${net.toLocaleString()} (Below Nisab)`)}</span><span class="font-extrabold text-emerald-900 text-sm">${tr('آپ پر اس وقت زکوٰۃ فرض نہیں ہے۔','Zakat is not obligatory below Nisab.')}</span>`;
+      } else {
+        let zakat = Math.round(net * 0.025);
+        resBox.innerHTML = `<span class="text-xs font-bold text-emerald-800 block">${tr(`خالص قابلِ زکوٰۃ مالیت: Rs. ${net.toLocaleString()}`,`Net Zakatable Wealth: Rs. ${net.toLocaleString()}`)}</span><span class="font-black text-emerald-950 text-base">${tr('واجب الادا زکوٰۃ (2.5%):','Payable Zakat (2.5%):')} Rs. ${zakat.toLocaleString()}</span>`;
       }
     }
 
-    function adminLogout() {
-      isAdminLoggedIn = false;
-      document.getElementById('adminPanel').style.display = 'none';
-      renderGuides();
-      showToast(tr('🔒 ایڈمن موڈ بند ہو گیا', '🔒 Admin Mode Locked'), false);
+    function calcG(p) {
+      let d = Math.max(0, +document.getElementById('gd-'+p).value||0);
+      let r = Math.max(1, +document.getElementById('gr-'+p).value||24000);
+      let yr = d * 365, grams = yr / r, tolas = grams / 11.664;
+      toolVals.gd=d; toolVals.gr=r; saveJSON('flp_tool_vals_v2', toolVals);
+      document.getElementById('gy-'+p).textContent = 'Rs. '+yr.toLocaleString();
+      document.getElementById('gg-'+p).textContent = grams.toFixed(2)+' g';
+      document.getElementById('gt-'+p).textContent = tolas.toFixed(2)+' Tola';
+    }
+
+    function calcD(p) {
+      let e = Math.max(0, +document.getElementById('em-'+p).value||0);
+      let dt = Math.max(0, +document.getElementById('dt-'+p).value||0);
+      let dp = Math.max(0, +document.getElementById('dp-'+p).value||0);
+      toolVals.em=e; toolVals.dt=dt; toolVals.dp=dp; saveJSON('flp_tool_vals_v2', toolVals);
+      document.getElementById('er-'+p).textContent = `Rs. ${(e*3).toLocaleString()} – ${(e*6).toLocaleString()}`;
+      if (dt === 0) {
+        document.getElementById('dr-'+p).textContent = tr('الحمدللہ! کوئی قرض نہیں','Debt-Free!');
+      } else if (dp <= 0) {
+        document.getElementById('dr-'+p).textContent = tr('ماہانہ قسط درج کریں','Enter Monthly Payoff');
+      } else {
+        document.getElementById('dr-'+p).textContent = Math.ceil(dt/dp) + tr(' ماہ (Months)',' Months');
+      }
+    }
+
+    function saveComm(cId, p, notify) {
+      saveJSON('flp_comm_saved_v1', commSlots);
+      saveJSON('flp_tool_vals_v2', toolVals);
+      renderToolHTML(cId, 'committee', p);
+      if (notify) showToast(tr('💾 کمیٹی ریکارڈ کامیابی سے سیو ہو گیا!', '💾 Committee record saved!'));
+    }
+    function addCommRow(cId, p) {
+      commSlots.push({ mUr: 'نیا مہینہ', mEn: 'New Month', nUr: 'ممبر کا نام', nEn: 'Member Name', paid: false });
+      saveComm(cId, p, false);
+    }
+    function deleteCommRow(idx, cId, p) {
+      commSlots.splice(idx, 1);
+      saveComm(cId, p, false);
+      showToast(tr('🗑️ کمیٹی ممبر ڈیلیٹ کر دیا گیا', '🗑️ Committee row deleted'));
+    }
+    function saveToolVals() {
+      saveJSON('flp_tool_vals_v2', toolVals);
+      showToast(tr('💾 آپ کا حساب کتاب مستقل سیو ہو گیا!', '💾 Calculation saved on your device!'));
+    }
+
+    function openTool(t) {
+      const p = document.getElementById('topToolPanel');
+      if (activeTopTool === t && !p.classList.contains('hidden')) { closeTopTool(); return; }
+      activeTopTool = t; p.classList.remove('hidden'); renderToolHTML('topToolPanel', t, 'top');
+    }
+    function closeTopTool() { activeTopTool = null; document.getElementById('topToolPanel').classList.add('hidden'); }
+    function toggleCardTool(e, id, t) {
+      e.stopPropagation(); const cId = 'cardTool-' + id, el = document.getElementById(cId);
+      if (!el.classList.contains('hidden')) { el.classList.add('hidden'); return; }
+      el.classList.remove('hidden'); renderToolHTML(cId, t, 'c' + id);
+    }
+
+    function addBiz(cId, p) {
+      let d = document.getElementById('bd-'+p).value.trim(), a = +document.getElementById('ba-'+p).value||0, t = document.getElementById('bt-'+p).value;
+      if (!d || a <= 0) { showToast(tr('⚠️ براہ کرم تفصیل اور مثبت رقم لکھیں!','⚠️ Enter description and positive amount!')); return; }
+      const today = new Date().toISOString().slice(0,10);
+      bizData.unshift({desc:d, amt:a, type:t, date:today});
+      saveJSON('flp_biz_pro', bizData); renderToolHTML(cId, 'business', p);
+      showToast(tr('💾 کھاتے میں انٹری سیو ہو گئی!','💾 Cashbook entry saved!'));
     }
 
     function toggleLike(e, id) {
@@ -574,275 +724,29 @@
       setTimeout(() => { const box = document.getElementById('commBox-' + id); if (box) box.classList.remove('hidden'); }, 50);
     }
 
-    function deleteComment(e, guideId, cIdx) {
-      e.stopPropagation();
-      const st = getStat(guideId);
-      st.comments.splice(cIdx, 1);
-      saveStats(); renderGuides();
-      setTimeout(() => { const box = document.getElementById('commBox-' + guideId); if (box) box.classList.remove('hidden'); }, 50);
-    }
-
-    // All 6 Tools with Explicit Save & Delete Buttons + Permanent LocalStorage Persistence
-    function renderToolHTML(cId, type, p) {
-      const box = document.getElementById(cId); if (!box) return;
-      const closeFn = p === 'top' ? 'closeTopTool()' : `document.getElementById('${cId}').classList.add('hidden')`;
-      const header = (title) => `<div class="flex justify-between items-center mb-3 border-b pb-2 font-bold text-sm text-[#0A192F]"><span>${title}</span><button type="button" onclick="${closeFn}" class="text-red-600 text-xs font-bold px-2.5 py-1 bg-red-50 border border-red-200 rounded-lg">${tr('✕ بند کریں','✕ Close')}</button></div>`;
-      const saveBar = (saveCall) => `<div class="mt-3 pt-2.5 border-t flex justify-end gap-2"><button type="button" onclick="${saveCall}" class="w-full py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold text-xs shadow flex items-center justify-center gap-1.5">💾 ${tr('تبدیلیاں سیو کریں (Save)','Save Changes')}</button></div>`;
-
-      if (type === 'budget') {
-        const v = toolVals.inc || 50000;
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-500 shadow-lg text-xs">${header(tr('🧮 50/30/20 ماہانہ بجٹ کیلکولیٹر','🧮 50/30/20 Budget Calculator'))}<label class="block font-bold mb-1">${tr('ماہانہ آمدنی درج کریں (PKR):','Enter Monthly Income (PKR):')}</label><input type="number" id="inc-${p}" value="${v}" oninput="calcB('${p}')" class="w-full p-2 border-2 border-[#064E3B] rounded-xl mb-3 font-extrabold text-sm text-[#064E3B]" /><div class="grid grid-cols-3 gap-2 text-center"><div class="p-2 bg-emerald-50 rounded-xl border"><b>${tr('50% ضروریات','50% Needs')}</b><p id="bn-${p}" class="font-black text-emerald-950 mt-1">Rs. ${Math.round(v*0.5).toLocaleString()}</p></div><div class="p-2 bg-blue-50 rounded-xl border"><b>${tr('30% خواہشات','30% Wants')}</b><p id="bw-${p}" class="font-black text-blue-950 mt-1">Rs. ${Math.round(v*0.3).toLocaleString()}</p></div><div class="p-2 bg-amber-50 rounded-xl border"><b>${tr('20% بچت','20% Savings')}</b><p id="bs-${p}" class="font-black text-amber-950 mt-1">Rs. ${Math.round(v*0.2).toLocaleString()}</p></div></div>${saveBar(`saveToolVals('${p}')`)}</div>`;
-      } else if (type === 'committee') {
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-[#D4AF37] shadow-lg text-xs">${header(tr('🗓️ 12 ماہ کا کمیٹی (BC) ریکارڈ','🗓️ 12-Month Committee Tracker'))}<div class="space-y-1.5 max-h-60 overflow-y-auto pr-1">${commSlots.map((s, i) => `<div class="flex items-center justify-between p-2 bg-slate-50 border rounded-xl gap-1.5"><input type="text" value="${tr(s.mUr, s.mEn)}" oninput="commSlots[${i}][lang==='ur'?'mUr':'mEn']=this.value" class="w-20 p-1 border rounded bg-white text-[11px] font-bold text-[#0A192F]" /><input type="text" value="${tr(s.nUr, s.nEn)}" oninput="commSlots[${i}][lang==='ur'?'nUr':'nEn']=this.value" class="flex-1 p-1.5 border rounded-lg bg-white text-xs font-semibold" /><button type="button" onclick="commSlots[${i}].paid=!commSlots[${i}].paid;saveComm('${cId}','${p}',false)" class="px-2 py-1 rounded-lg font-bold shrink-0 ${s.paid ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : 'bg-amber-100 text-amber-900 border border-amber-300'}">${s.paid ? tr('✓ ادا شدہ','✓ Paid') : tr('⏳ باقی','⏳ Pending')}</button><button type="button" onclick="deleteCommRow(${i},'${cId}','${p}')" class="px-2 py-1 rounded-lg bg-red-100 text-red-700 font-bold shrink-0" title="Delete">🗑️</button></div>`).join('')}</div><div class="mt-3 pt-2.5 border-t flex flex-wrap gap-2"><button type="button" onclick="addCommRow('${cId}','${p}')" class="flex-1 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-[#0A192F] font-extrabold text-xs">+ ${tr('نیا ممبر شامل کریں','Add Member')}</button><button type="button" onclick="saveComm('${cId}','${p}',true)" class="flex-1 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold text-xs shadow">💾 ${tr('کمیٹی سیو کریں (Save)','Save Committee')}</button></div></div>`;
-      } else if (type === 'business') {
-        let net = bizData.reduce((a, b) => b.type === 'in' ? a + b.amt : a - b.amt, 0);
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-slate-400 shadow-lg text-xs">${header(tr('📒 کاروبار اور دکان کا روزانہ کھاتہ','📒 Daily Business Cashbook'))}<div class="mb-2 p-2 bg-emerald-50 rounded-xl border text-center"><b>${tr('گلے میں خالص کیش:','Net Register Cash:')}</b> <span class="font-black text-emerald-950 text-sm">Rs. ${net.toLocaleString()}</span></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 mb-2"><input id="bd-${p}" placeholder="${tr('تفصیل (سیل/خرچ)','Description')}" class="p-2 border rounded-xl" /><input type="number" id="ba-${p}" placeholder="${tr('رقم (PKR)','Amount')}" class="p-2 border rounded-xl font-bold" /><select id="bt-${p}" class="p-2 border rounded-xl font-semibold"><option value="in">${tr('➕ آمدن / سیل','➕ Income')}</option><option value="exp">${tr('➖ دکان خرچ','➖ Expense')}</option><option value="draw">${tr('🏠 گھر کا خرچ','🏠 Home Draw')}</option></select></div><button type="button" onclick="addBiz('${cId}','${p}')" class="w-full py-2 bg-emerald-700 text-white font-extrabold rounded-xl mb-2 shadow">💾 ${tr('+ کھاتے میں درج اور سیو کریں','+ Add & Save Entry')}</button><div class="space-y-1 max-h-40 overflow-y-auto">${bizData.map((b, i) => `<div class="flex justify-between items-center p-2 bg-slate-50 border rounded-lg gap-2"><input type="text" value="${b.desc}" onchange="bizData[${i}].desc=this.value;saveJSON('flp_biz_pro',bizData)" class="flex-1 p-1 border rounded bg-white font-bold text-xs" /><span class="font-bold shrink-0">(${b.type === 'in' ? '+' : '-'}) Rs. ${b.amt.toLocaleString()}</span><button type="button" onclick="bizData.splice(${i},1);saveJSON('flp_biz_pro',bizData);renderToolHTML('${cId}','business','${p}');showToast(tr('🗑️ انٹری ڈیلیٹ ہو گئی','🗑️ Entry deleted'),false)" class="px-2 py-0.5 bg-red-100 text-red-700 rounded font-black">🗑️</button></div>`).join('')}</div></div>`;
-      } else if (type === 'zakat') {
-        const zc = toolVals.zc||0, zg = toolVals.zg||0, zb = toolVals.zb||0, zt = Math.round((zc+zg+zb)*0.025);
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-emerald-600 shadow-lg text-xs">${header(tr('🪙 سالانہ زکوٰۃ کیلکولیٹر (2.5%)','🪙 Annual Zakat Calculator (2.5%)'))}<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('نقد کیش و بینک:','Cash & Bank:')}</label><input type="number" id="zc-${p}" value="${zc}" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('سونا و چاندی مالیت:','Gold/Silver Value:')}</label><input type="number" id="zg-${p}" value="${zg}" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('کاروباری مال اسٹاک:','Business Stock:')}</label><input type="number" id="zb-${p}" value="${zb}" oninput="calcZ('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-300 text-center"><b>${tr('واجب الادا کل زکوٰۃ (2.5%):','Total Payable Zakat (2.5%):')}</b> <span id="zt-${p}" class="font-black text-emerald-950 text-base">Rs. ${zt.toLocaleString()}</span></div>${saveBar(`saveToolVals('${p}')`)}</div>`;
-      } else if (type === 'gold') {
-        const gd = toolVals.gd||200, gr = toolVals.gr||24000, yr = gd*365;
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-amber-500 shadow-lg text-xs">${header(tr('🥇 مائکرو گولڈ اور روزانہ بچت کیلکولیٹر','🥇 Micro-Gold & Daily Saving Calculator'))}<div class="grid grid-cols-2 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('روزانہ بچت (PKR):','Daily Saving (PKR):')}</label><input type="number" id="gd-${p}" value="${gd}" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('1 گرام سونے کا ریٹ:','24K Gold Rate/Gram:')}</label><input type="number" id="gr-${p}" value="${gr}" oninput="calcG('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-2 gap-2 text-center"><div class="p-2 bg-amber-50 rounded-xl border border-amber-300"><b>${tr('سالانہ جمع شدہ رقم','1-Year Saved Cash')}</b><p id="gy-${p}" class="font-black text-amber-950 text-sm mt-1">Rs. ${yr.toLocaleString()}</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-300"><b>${tr('سالانہ خالص سونا (گرام)','Accumulated 24K Gold')}</b><p id="gg-${p}" class="font-black text-emerald-950 text-sm mt-1">${(yr/gr).toFixed(2)} Grams</p></div></div>${saveBar(`saveToolVals('${p}')`)}</div>`;
-      } else if (type === 'goal') {
-        const em = toolVals.em||30000, dt = toolVals.dt||100000, dp = toolVals.dp||10000;
-        box.innerHTML = `<div class="bg-white text-gray-900 rounded-2xl p-4 border-2 border-blue-500 shadow-lg text-xs">${header(tr('🎯 ایمرجنسی فنڈ اور قرض نجات پلانر','🎯 Emergency Fund & Debt Payoff Planner'))}<div class="grid grid-cols-3 gap-2 mb-3"><div><label class="block font-bold mb-1">${tr('ماہانہ گھر خرچ:','Monthly Expense:')}</label><input type="number" id="em-${p}" value="${em}" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('کل قرض یا ہدف:','Total Debt/Goal:')}</label><input type="number" id="dt-${p}" value="${dt}" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div><div><label class="block font-bold mb-1">${tr('ماہانہ قسط ادائیگی:','Monthly Payoff:')}</label><input type="number" id="dp-${p}" value="${dp}" oninput="calcD('${p}')" class="w-full p-2 border rounded-xl font-bold" /></div></div><div class="grid grid-cols-2 gap-2 text-center"><div class="p-2 bg-blue-50 rounded-xl border border-blue-200"><b>${tr('محفوظ ایمرجنسی فنڈ (3 تا 6 ماہ)','3–6 Month Emergency Target')}</b><p id="er-${p}" class="font-black text-blue-950 text-xs md:text-sm mt-1">Rs. ${(em*3/1000).toFixed(0)}k – ${(em*6/1000).toFixed(0)}k</p></div><div class="p-2 bg-emerald-50 rounded-xl border border-emerald-200"><b>${tr('قرض/ہدف مکمل ہونے کا وقت','Time to Clear Debt / Goal')}</b><p id="dr-${p}" class="font-black text-emerald-950 text-xs md:text-sm mt-1">${Math.ceil(dt/dp)} ${tr('ماہ (Months)','Months')}</p></div></div>${saveBar(`saveToolVals('${p}')`)}</div>`;
-      }
-    }
-
-    function saveComm(cId, p, notify) {
-      saveJSON('flp_comm_saved_v1', commSlots);
-      renderToolHTML(cId, 'committee', p);
-      if (notify) showToast(tr('💾 کمیٹی ریکارڈ کامیابی سے سیو ہو گیا!', '💾 Committee record saved permanently!'), true);
-    }
-    function addCommRow(cId, p) {
-      commSlots.push({ mUr: 'نیا مہینہ', mEn: 'New Month', nUr: 'ممبر کا نام', nEn: 'Member Name', paid: false });
-      saveComm(cId, p, false);
-    }
-    function deleteCommRow(idx, cId, p) {
-      commSlots.splice(idx, 1);
-      saveComm(cId, p, false);
-      showToast(tr('🗑️ کمیٹی ممبر ڈیلیٹ کر دیا گیا', '🗑️ Committee row deleted'), false);
-    }
-    function saveToolVals(p) {
-      saveJSON('flp_tool_vals_v1', toolVals);
-      showToast(tr('💾 آپ کا حساب کتاب مستقل سیو ہو گیا!', '💾 Your calculation has been saved!'), true);
-    }
-
-    function openTool(t) {
-      const p = document.getElementById('topToolPanel');
-      if (activeTopTool === t && !p.classList.contains('hidden')) { closeTopTool(); return; }
-      activeTopTool = t; p.classList.remove('hidden'); renderToolHTML('topToolPanel', t, 'top');
-    }
-    function closeTopTool() { activeTopTool = null; document.getElementById('topToolPanel').classList.add('hidden'); }
-    function toggleCardTool(e, id, t) {
-      e.stopPropagation(); const cId = 'cardTool-' + id, el = document.getElementById(cId);
-      if (!el.classList.contains('hidden')) { el.classList.add('hidden'); return; }
-      el.classList.remove('hidden'); renderToolHTML(cId, t, 'c' + id);
-    }
-
-    function calcB(p) { let v = +document.getElementById('inc-'+p).value||0; toolVals.inc = v; saveJSON('flp_tool_vals_v1', toolVals); document.getElementById('bn-'+p).textContent = 'Rs. '+Math.round(v*0.5).toLocaleString(); document.getElementById('bw-'+p).textContent = 'Rs. '+Math.round(v*0.3).toLocaleString(); document.getElementById('bs-'+p).textContent = 'Rs. '+Math.round(v*0.2).toLocaleString(); }
-    function calcZ(p) { let c = +document.getElementById('zc-'+p).value||0, g = +document.getElementById('zg-'+p).value||0, b = +document.getElementById('zb-'+p).value||0; toolVals.zc=c; toolVals.zg=g; toolVals.zb=b; saveJSON('flp_tool_vals_v1', toolVals); document.getElementById('zt-'+p).textContent = 'Rs. '+Math.round((c+g+b)*0.025).toLocaleString(); }
-    function calcG(p) { let d = +document.getElementById('gd-'+p).value||0, r = +document.getElementById('gr-'+p).value||1, yr = d*365; toolVals.gd=d; toolVals.gr=r; saveJSON('flp_tool_vals_v1', toolVals); document.getElementById('gy-'+p).textContent = 'Rs. '+yr.toLocaleString(); document.getElementById('gg-'+p).textContent = (yr/r).toFixed(2)+' Grams'; }
-    function calcD(p) { let e = +document.getElementById('em-'+p).value||0, dt = +document.getElementById('dt-'+p).value||0, dp = +document.getElementById('dp-'+p).value||1; toolVals.em=e; toolVals.dt=dt; toolVals.dp=dp; saveJSON('flp_tool_vals_v1', toolVals); document.getElementById('er-'+p).textContent = `Rs. ${(e*3/1000).toFixed(0)}k – ${(e*6/1000).toFixed(0)}k`; document.getElementById('dr-'+p).textContent = Math.ceil(dt/dp) + tr(' ماہ (Months)',' Months'); }
-    function addBiz(cId, p) { let d = document.getElementById('bd-'+p).value.trim(), a = +document.getElementById('ba-'+p).value||0, t = document.getElementById('bt-'+p).value; if (!d || a<=0) return; bizData.unshift({desc:d, amt:a, type:t}); saveJSON('flp_biz_pro', bizData); renderToolHTML(cId, 'business', p); showToast(tr('💾 کھاتے میں انٹری سیو ہو گئی!','💾 Cashbook entry saved!'), true); }
-
     function postChatMessage(e) {
       e.preventDefault(); let n = document.getElementById('chatName').value.trim(), t = document.getElementById('chatText').value.trim(); if (!n || !t) return;
       chatData.unshift({ name: n, text: t, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
       saveJSON('flp_chat_pro', chatData); document.getElementById('chatText').value = ''; renderChat();
-      showToast(tr('💾 آپ کی رائے سیو ہو گئی!','💾 Your feedback has been saved!'), true);
-    }
-    function deleteChatMsg(idx) {
-      if (!isAdminLoggedIn) return;
-      chatData.splice(idx, 1); saveJSON('flp_chat_pro', chatData); renderChat();
+      showToast(tr('💾 آپ کی رائے سیو ہو گئی!','💾 Your feedback has been saved!'));
     }
     function renderChat() {
-      const def = { name: tr('ندیم اقبال (ڈویلپر)','Nadeem Iqbal (Developer)'), text: tr('خوش آمدید! ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء یہاں ضرور شیئر کریں۔','Welcome! Please share your valuable suggestions and feedback here to improve this app.'), time: tr('لائیو','Live'), isDef: true };
-      document.getElementById('chatMessagesList').innerHTML = [def, ...chatData].map((c, i) => `<div class="p-3 bg-slate-50 border rounded-2xl"><div class="flex justify-between items-center mb-1"><span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span><div class="flex items-center gap-2"><span class="text-[10px] text-gray-400">${c.time}</span>${(!c.isDef && isAdminLoggedIn) ? `<button type="button" onclick="deleteChatMsg(${i-1})" class="text-red-600 font-bold text-xs">🗑️</button>` : ''}</div></div><p class="text-gray-800 ${fCls()} text-xs">${c.text}</p></div>`).join('');
+      const def = { name: tr('ندیم اقبال (ڈویلپر)','Nadeem Iqbal (Developer)'), text: tr('خوش آمدید! ایپ کو مزید بہتر بنانے کے لیے اپنی قیمتی تجاویز اور آراء یہاں ضرور شیئر کریں۔','Welcome! Please share your valuable suggestions and feedback here to improve this app.'), time: tr('لائیو','Live') };
+      document.getElementById('chatMessagesList').innerHTML = [def, ...chatData].map(c => `<div class="p-3 bg-slate-50 border rounded-2xl"><div class="flex justify-between items-center mb-1"><span class="font-extrabold text-[#064E3B] text-xs">${c.name}</span><span class="text-[10px] text-gray-400">${c.time}</span></div><p class="text-gray-800 ${fCls()} text-xs">${c.text}</p></div>`).join('');
     }
 
-    function showToast(text, isUpload) {
+    function showToast(text) {
       const toast = document.getElementById('progressToast');
-      const arrow = document.getElementById('toastArrow');
       const msg = document.getElementById('toastText');
-      arrow.textContent = isUpload ? '⬆️' : '⬇️';
-      arrow.className = isUpload ? 'text-lg text-[#F3E5AB] arrow-up' : 'text-lg text-[#F3E5AB] arrow-down';
       msg.textContent = text;
       toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 3200);
+      setTimeout(() => toast.classList.add('hidden'), 3000);
     }
 
-    function downloadGuideById(e, id) {
+    function printGuideById(e, id, num) {
       if (e) e.stopPropagation();
-      const g = allGuides.find(x => x[0] === id);
-      if (!g) return;
-      const title = tr(g[3], g[4]);
-      const pdfUrl = g[11] || '';
-      showToast(tr(`📥 "${title}" ڈاؤن لوڈ ہو رہی ہے...`, `📥 Downloading "${title}"...`), false);
-      setTimeout(() => {
-        if (pdfUrl && (pdfUrl.startsWith('data:') || pdfUrl.startsWith('blob:'))) {
-          const a = document.createElement('a');
-          a.href = pdfUrl; a.download = title + '.pdf';
-          document.body.appendChild(a); a.click(); document.body.removeChild(a);
-        } else {
-          openGuide(id);
-          setTimeout(() => window.print(), 500);
-        }
-      }, 900);
-    }
-
-    function downloadCurrentPdf() {
-      downloadGuideById(null, currentModalId);
-    }
-
-    function handleDevUpload() {
-      if (!isAdminLoggedIn) return;
-      const titleInput = document.getElementById('devPdfTitle');
-      const fileInput = document.getElementById('devPdfFile');
-      const msg = document.getElementById('uploadMsg');
-      const title = titleInput.value.trim();
-
-      if (!title) {
-        msg.textContent = tr('❌ براہ کرم پہلے گائیڈ کا عنوان لکھیں۔', '❌ Please enter a guide title first.');
-        return;
-      }
-
-      showToast(tr('⬆️ نئی گائیڈ سیو اور اپلوڈ ہو رہی ہے...', '⬆️ Uploading & saving new guide...'), true);
-      const newId = Date.now();
-      const saveNewItem = (dataUrl) => {
-        const newPdfItem = [
-          newId, 'ڈویلپر پی ڈی ایف', 'Developer PDF', title, title,
-          'ڈویلپر کی جانب سے اپلوڈ کردہ خصوصی گائیڈ۔', 'Special guide uploaded by the developer.',
-          null, '', '',
-          getTenPoints(1),
-          dataUrl || ''
-        ];
-        allGuides.push(newPdfItem);
-        saveAllGuides();
-        msg.textContent = tr('✅ گائیڈ کامیابی سے اپلوڈ اور مستقل سیو ہو گئی!', '✅ Guide uploaded and permanently saved!');
-        titleInput.value = ''; fileInput.value = '';
-        renderGuides();
-      };
-
-      if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        const reader = new FileReader();
-        reader.onload = (evt) => saveNewItem(evt.target.result);
-        reader.readAsDataURL(file);
-      } else {
-        saveNewItem('');
-      }
-    }
-
-    // Full Admin Inline Editor with Save & Delete for Guide & Bullet Points
-    function openAdminEditor(event, id) {
-      if (event) event.stopPropagation();
-      if (!isAdminLoggedIn) return;
-      currentModalId = id;
-      const g = allGuides.find(x => x[0] === id); if (!g) return;
-
-      document.getElementById('mTitle').textContent = tr('✏️ ایڈمن ایڈیٹر: ترمیم، سیو اور ڈیلیٹ', '✏️ Admin Editor: Edit, Save & Delete');
-      renderAdminEditorBody(g);
-      document.getElementById('guideModal').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function renderAdminEditorBody(g) {
-      const id = g[0];
-      document.getElementById('mBody').innerHTML = `
-        <div class="bg-white p-4 rounded-2xl border-2 border-blue-400 space-y-3 text-xs">
-          <div class="flex justify-between items-center border-b pb-2">
-            <span class="font-extrabold text-blue-900 text-sm">${tr('📝 کتابچے کی مکمل ترمیم (ترمیم کے بعد نیچے سیو دبائیں)','📝 Edit Guide & Bullet Points')}</span>
-            <button type="button" onclick="deleteGuide(event, ${id}); closeModal();" class="px-3 py-1 bg-red-600 text-white font-bold rounded-xl shadow">🗑️ ${tr('مکمل گائیڈ ڈیلیٹ کریں','Delete Guide')}</button>
-          </div>
-          <div>
-            <label class="font-bold block mb-1">${tr('کیٹیگری کا نام:','Category:')}</label>
-            <input type="text" id="ed-cat-${id}" value="${tr(g[1], g[2])}" class="w-full p-2 border rounded-xl font-bold bg-slate-50" />
-          </div>
-          <div>
-            <label class="font-bold block mb-1">${tr('گائیڈ کا عنوان (Title):','Guide Title:')}</label>
-            <input type="text" id="ed-title-${id}" value="${tr(g[3], g[4])}" class="w-full p-2 border rounded-xl font-bold bg-slate-50" />
-          </div>
-          <div>
-            <label class="font-bold block mb-1">${tr('مختصر خلاصہ (Summary):','Short Summary:')}</label>
-            <textarea id="ed-sum-${id}" rows="2" class="w-full p-2 border rounded-xl bg-slate-50">${tr(g[5], g[6])}</textarea>
-          </div>
-
-          <div class="border-t pt-3">
-            <div class="flex justify-between items-center mb-2">
-              <span class="font-extrabold text-[#064E3B]">${tr('📌 بلٹ پوائنٹس (ترمیم یا ڈیلیٹ کریں):','📌 Bullet Points (Edit or Delete):')}</span>
-              <button type="button" onclick="addBulletPoint(${id})" class="px-2.5 py-1 bg-emerald-100 text-emerald-900 font-bold rounded-lg border border-emerald-300">+ ${tr('نیا پوائنٹ شامل کریں','Add Point')}</button>
-            </div>
-            <div class="space-y-2.5 max-h-64 overflow-y-auto pr-1">
-              ${g[10].map((pt, idx) => `
-                <div class="p-2.5 bg-slate-50 border rounded-xl space-y-1.5">
-                  <div class="flex justify-between items-center gap-2">
-                    <span class="font-bold text-emerald-900">#${idx + 1}</span>
-                    <input type="text" id="ed-pt-t-${idx}" value="${tr(pt[0], pt[1])}" class="flex-1 p-1.5 border rounded-lg bg-white font-bold" />
-                    <button type="button" onclick="deleteBulletPoint(${id},${idx})" class="px-2 py-1 bg-red-100 text-red-700 font-bold rounded-lg">🗑️</button>
-                  </div>
-                  <textarea id="ed-pt-d-${idx}" rows="2" class="w-full p-1.5 border rounded-lg bg-white text-[11px]">${tr(pt[2], pt[3])}</textarea>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-
-          <div class="pt-3 border-t flex gap-2">
-            <button type="button" onclick="saveGuideChanges(${id})" class="flex-1 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold text-sm shadow-lg">💾 ${tr('تمام تبدیلیاں مستقل سیو کریں (Save)','Save All Changes')}</button>
-            <button type="button" onclick="closeModal()" class="px-4 py-3 rounded-xl bg-gray-200 text-gray-800 font-bold">${tr('بند کریں','Cancel')}</button>
-          </div>
-        </div>`;
-    }
-
-    function syncEditorInputsToMemory(g) {
-      const id = g[0];
-      const catEl = document.getElementById('ed-cat-' + id);
-      const tEl = document.getElementById('ed-title-' + id);
-      const sEl = document.getElementById('ed-sum-' + id);
-      if (catEl) { if (lang === 'ur') g[1] = catEl.value.trim(); else g[2] = catEl.value.trim(); }
-      if (tEl) { g[3] = tEl.value.trim(); g[4] = tEl.value.trim(); }
-      if (sEl) { if (lang === 'ur') g[5] = sEl.value.trim(); else g[6] = sEl.value.trim(); }
-      g[10].forEach((pt, idx) => {
-        const ptT = document.getElementById('ed-pt-t-' + idx);
-        const ptD = document.getElementById('ed-pt-d-' + idx);
-        if (ptT) { pt[0] = ptT.value.trim(); pt[1] = ptT.value.trim(); }
-        if (ptD) { pt[2] = ptD.value.trim(); pt[3] = ptD.value.trim(); }
-      });
-    }
-
-    function addBulletPoint(id) {
-      const g = allGuides.find(x => x[0] === id); if (!g) return;
-      syncEditorInputsToMemory(g);
-      const n = g[10].length + 1;
-      g[10].push([`${n}. نیا عملی پوائنٹ`, `${n}. New Actionable Step`, '• عملی اصول اور تفصیل یہاں درج کریں۔', '• Enter step-by-step details here.']);
-      renderAdminEditorBody(g);
-    }
-
-    function deleteBulletPoint(id, ptIdx) {
-      const g = allGuides.find(x => x[0] === id); if (!g) return;
-      syncEditorInputsToMemory(g);
-      g[10].splice(ptIdx, 1);
-      renderAdminEditorBody(g);
-    }
-
-    function saveGuideChanges(id) {
-      const g = allGuides.find(x => x[0] === id); if (!g) return;
-      syncEditorInputsToMemory(g);
-      saveAllGuides();
-      renderGuides();
-      closeModal();
-      showToast(tr('💾 آپ کی تمام امینڈمنٹس مستقل طور پر سیو ہو گئیں!', '💾 All amendments have been permanently saved!'), true);
-    }
-
-    function deleteGuide(event, id) {
-      if (event) event.stopPropagation();
-      if (!isAdminLoggedIn) return;
-      if (confirm(tr('کیا آپ واقعی اس گائیڈ کو مستقل حذف (Delete) کرنا چاہتے ہیں؟', 'Permanently delete this guide?'))) {
-        allGuides = allGuides.filter(x => x[0] !== id);
-        saveAllGuides();
-        renderGuides();
-        showToast(tr('🗑️ گائیڈ مستقل طور پر حذف اور سیو ہو گئی!', '🗑️ Guide deleted & saved permanently!'), false);
-      }
+      openGuide(id, num);
+      setTimeout(() => window.print(), 400);
     }
 
     function renderGuides() {
@@ -855,8 +759,8 @@
         `💎 ${totalCount} Master Guides + 6 Live Tools`
       );
       document.getElementById('libraryHeading').textContent = tr(
-        `📚 اثاثہ سازی، قانونی رہنمائی اور پی ڈی ایف لائبریری (${totalCount} مکمل کتابچے):`,
-        `📚 Asset Building, Legal Guides & PDF Library (${totalCount} Master Guides):`
+        `📚 اثاثہ سازی، قانونی رہنمائی اور غربت سے آزادی (${totalCount} مکمل کتابچے):`,
+        `📚 Asset Building, Legal Guides & Poverty Alleviation (${totalCount} Master Guides):`
       );
 
       const list = allGuides.filter(g => (lang === 'ur' ? g[1]+g[3]+g[5] : g[2]+g[4]+g[6]).toLowerCase().includes(q));
@@ -871,11 +775,7 @@
             <span class="px-2.5 py-0.5 bg-emerald-900 text-emerald-100 text-[10px] font-bold rounded-full">${tr(g[1], g[2])}</span>
             <div class="flex items-center gap-1.5">
               <span class="text-[10px] bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold">#${num}</span>
-              <button type="button" onclick="downloadGuideById(event, ${g[0]})" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold">📥 PDF</button>
-              ${isAdminLoggedIn ? `
-                <button type="button" onclick="openAdminEditor(event, ${g[0]})" class="text-[10px] bg-blue-600 text-white px-2.5 py-0.5 rounded font-bold shadow">✏️ ${tr('ایڈٹ / سیو','Edit / Save')}</button>
-                <button type="button" onclick="deleteGuide(event, ${g[0]})" class="text-[10px] bg-red-600 text-white px-2.5 py-0.5 rounded font-bold shadow">🗑️ ${tr('ڈیلیٹ','Delete')}</button>
-              ` : ''}
+              <button type="button" onclick="printGuideById(event, ${g[0]}, ${num})" class="text-[10px] bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold">🖨️ PDF</button>
             </div>
           </div>
 
@@ -906,10 +806,10 @@
             <form onsubmit="addGuideComment(event, ${g[0]})" class="flex flex-col sm:flex-row gap-1.5">
               <input type="text" id="cName-${g[0]}" required placeholder="${tr('آپ کا نام','Your Name')}" class="sm:w-1/3 p-1.5 border rounded-lg bg-white text-xs font-semibold" />
               <input type="text" id="cText-${g[0]}" required placeholder="${tr('اس کتابچے پر اپنا تبصرہ لکھیں...','Write a comment on this guide...')}" class="flex-1 p-1.5 border rounded-lg bg-white text-xs" />
-              <button type="submit" class="px-3 py-1.5 hero-bg text-white font-bold rounded-lg text-xs shrink-0">💾 ${tr('سیو و ارسال','Save')}</button>
+              <button type="submit" class="px-3 py-1.5 hero-bg text-white font-bold rounded-lg text-xs shrink-0">💾 ${tr('سیو','Save')}</button>
             </form>
             <div class="space-y-1.5 max-h-32 overflow-y-auto pt-1">
-              ${st.comments.length === 0 ? `<p class="text-[10px] text-gray-400 text-center">${tr('ابھی تک کوئی تبصرہ نہیں۔ پہلا کمنٹ کریں!','No comments yet. Be the first!')}</p>` : st.comments.map((c, cIdx) => `<div class="p-2 bg-white border rounded-lg flex justify-between items-start gap-2"><div><b class="text-[#064E3B]">${c.name}:</b> <span class="${fCls()}">${c.text}</span></div><div class="flex items-center gap-1 shrink-0"><span class="text-[9px] text-gray-400">${c.time}</span>${isAdminLoggedIn ? `<button type="button" onclick="deleteComment(event, ${g[0]}, ${cIdx})" class="text-red-600 font-bold">🗑️</button>` : ''}</div></div>`).join('')}
+              ${st.comments.length === 0 ? `<p class="text-[10px] text-gray-400 text-center">${tr('ابھی تک کوئی تبصرہ نہیں۔ پہلا کمنٹ کریں!','No comments yet. Be the first!')}</p>` : st.comments.map(c => `<div class="p-2 bg-white border rounded-lg flex justify-between items-start gap-2"><div><b class="text-[#064E3B]">${c.name}:</b> <span class="${fCls()}">${c.text}</span></div><span class="text-[9px] text-gray-400 shrink-0">${c.time}</span></div>`).join('')}
             </div>
           </div>
 
@@ -934,26 +834,9 @@
 
       const numPrefix = displayNum ? `${displayNum}. ` : '';
       document.getElementById('mTitle').textContent = numPrefix + tr(g[3], g[4]);
-      
-      let pdfPreview = g[11] ? `
-        <div class="p-3 bg-emerald-950 text-white rounded-xl flex items-center justify-between">
-          <span class="text-xs font-bold">📄 ${tr('اصل پی ڈی ایف فائل منسلک ہے','Original PDF File Attached')}</span>
-          <a href="${g[11]}" target="_blank" class="px-3 py-1.5 rounded-lg gold-bg text-[#0A192F] font-extrabold text-xs">👁️ ${tr('پی ڈی ایف کھولیں','Open Full PDF')}</a>
-        </div>` : '';
-
-      let adminTopBar = isAdminLoggedIn ? `
-        <div class="p-2.5 bg-blue-50 border border-blue-300 rounded-xl flex justify-between items-center">
-          <span class="text-xs font-bold text-blue-950">🔓 ${tr('ایڈمن کنٹرول: اس کتابچے میں ترمیم یا ڈیلیٹ کریں','Admin Control: Edit or Delete this guide')}</span>
-          <div class="flex gap-1.5">
-            <button type="button" onclick="openAdminEditor(event, ${g[0]})" class="px-3 py-1 bg-blue-600 text-white font-bold rounded-lg text-xs">✏️ ${tr('ترمیم و سیو','Edit & Save')}</button>
-            <button type="button" onclick="deleteGuide(event, ${g[0]}); closeModal();" class="px-3 py-1 bg-red-600 text-white font-bold rounded-lg text-xs">🗑️ ${tr('ڈیلیٹ','Delete')}</button>
-          </div>
-        </div>` : '';
 
       document.getElementById('mBody').innerHTML = `
         <div class="bg-white p-4 rounded-2xl border-2 border-emerald-200 space-y-3">
-          ${adminTopBar}
-          ${pdfPreview}
           <div class="border-b pb-2 flex justify-between items-center flex-wrap gap-2">
             <div>
               <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-900 text-white font-bold">${tr(`پاکستانی قانونی و عملی گائیڈ (${g[10].length} منفرد پوائنٹس)`,`Pakistani Legal & Practical Guide (${g[10].length} Steps)`)}</span>
@@ -961,13 +844,13 @@
             </div>
             <span class="text-[11px] bg-slate-100 px-2.5 py-1 rounded-lg font-bold text-gray-700">👁️ ${st.views} ${tr('مرتبہ پڑھا گیا','Views')}</span>
           </div>
-          <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fCls()}">${tr('💡 ہدایت: نیچے دیے گئے کسی بھی عملی پوائنٹ پر کلک کریں تاکہ اس کی تفصیلی گائیڈ کھل جائے:','💡 Tip: Click any actionable step below to expand its detailed guidance:')}</p>
+          <p class="text-[11px] text-emerald-900 font-bold bg-amber-50 p-2.5 rounded-xl border border-amber-200 ${fCls()} no-print">${tr('💡 ہدایت: نیچے دیے گئے کسی بھی عملی پوائنٹ پر کلک کریں تاکہ اس کی تفصیلی گائیڈ کھل جائے:','💡 Tip: Click any actionable step below to expand its detailed guidance:')}</p>
           <div class="space-y-2">
             ${g[10].map((pt, i) => `
               <div class="bg-emerald-50/70 rounded-2xl border border-emerald-200 overflow-hidden">
                 <button type="button" onclick="toggleAcc(${i})" class="w-full p-3.5 ${lang==='ur'?'text-right':'text-left'} font-extrabold text-[#0A192F] text-xs md:text-sm flex justify-between items-center gap-2 bg-white">
                   <span class="${fCls()}">${tr(pt[0], pt[1])}</span>
-                  <span id="acc-i-${i}" class="text-emerald-800 text-xs bg-emerald-100 w-6 h-6 rounded-full flex items-center justify-center shrink-0">${i===0?'▲':'▼'}</span>
+                  <span id="acc-i-${i}" class="text-emerald-800 text-xs bg-emerald-100 w-6 h-6 rounded-full flex items-center justify-center shrink-0 no-print">${i===0?'▲':'▼'}</span>
                 </button>
                 <div id="acc-c-${i}" class="${i===0?'':'hidden'} p-3.5 bg-emerald-50/90 border-t border-emerald-200 text-gray-900 text-xs md:text-sm ${fCls()} whitespace-pre-line">${tr(pt[2], pt[3])}</div>
               </div>`).join('')}
@@ -979,6 +862,7 @@
 
     function closeModal() { document.getElementById('guideModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
 
+    // Safe Startup
     switchLang('ur');
   </script>
 </body>
