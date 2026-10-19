@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl" id="root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ڈیجیٹل آرڈرنگ ڈیمو — ندیم اقبال</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', 'Noto Nastaliq Urdu', sans-serif; background: #F8FAFC; color: #0F172A; -webkit-tap-highlight-color: transparent; }
+    .urdu-font { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2.3 !important; }
+    .eng-font { font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.5 !important; }
+    .hero-bg { background: linear-gradient(135deg, #0A192F 0%, #064E3B 100%); }
+    .gold-bg { background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col pb-24">
 
+  <!-- Header -->
+  <header class="hero-bg text-white sticky top-0 z-40 shadow-lg border-b border-[#D4AF37]/50">
+    <div class="max-w-xl mx-auto px-3 py-2.5 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-xl gold-bg flex items-center justify-center text-[#0A192F] font-black text-sm">NI</div>
+        <div>
+          <h1 id="shopTitle" class="text-xs sm:text-sm font-extrabold text-[#F3E5AB]"></h1>
+          <p id="shopSub" class="text-[10px] text-emerald-200"></p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <a href="index.html" id="backBtn" class="px-2 py-1 rounded-lg bg-white/15 border border-white/20 text-[10px] font-bold text-[#F3E5AB]"></a>
+        <div class="flex bg-[#0A192F] p-0.5 rounded-lg border border-[#D4AF37]/50">
+          <button onclick="setL('ur')" id="bUr" class="px-2 py-0.5 rounded text-[11px] font-bold">اردو</button>
+          <button onclick="setL('en')" id="bEn" class="px-2 py-0.5 rounded text-[11px] font-bold">Eng</button>
+        </div>
+      </div>
+    </div>
+    <!-- Demo Switcher Bar (For Sales Presentation) -->
+    <div class="bg-[#0A192F] px-3 py-2 border-t border-white/10">
+      <div class="max-w-xl mx-auto grid grid-cols-2 gap-2">
+        <button onclick="setShop('food')" id="tabFood" class="py-1.5 px-2 rounded-xl text-xs font-extrabold transition"></button>
+        <button onclick="setShop('sup')" id="tabSup" class="py-1.5 px-2 rounded-xl text-xs font-extrabold transition"></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-xl mx-auto w-full px-3 py-4 space-y-4 flex-1">
+    <!-- Demo Notice Banner -->
+    <div class="bg-amber-50 border-2 border-[#D4AF37] p-3 rounded-2xl text-center">
+      <p id="demoNote" class="text-xs font-bold text-[#0A192F]"></p>
+    </div>
+
+    <!-- Items Grid -->
+    <div id="itemsList" class="space-y-2.5"></div>
+
+    <!-- Customer Order Form -->
+    <div class="bg-white p-4 rounded-2xl border-2 border-[#064E3B] shadow-md space-y-2.5 text-xs">
+      <h3 id="formHead" class="font-extrabold text-sm text-[#0A192F] border-b pb-1.5"></h3>
+      <input id="cName" class="w-full p-2.5 border rounded-xl bg-slate-50 font-semibold" />
+      <input id="cPhone" type="tel" dir="ltr" class="w-full p-2.5 border rounded-xl bg-slate-50 font-mono" />
+      <input id="cAddr" class="w-full p-2.5 border rounded-xl bg-slate-50" />
+      <button onclick="clearCart()" id="clrBtn" class="text-red-600 font-bold text-[11px] underline"></button>
+    </div>
+
+    <!-- Developer Pitch Footer -->
+    <div class="hero-bg text-white p-4 rounded-3xl border-2 border-[#D4AF37] text-center space-y-2 text-xs">
+      <h4 id="devTitle" class="font-extrabold text-[#F3E5AB] text-sm"></h4>
+      <p id="devDesc" class="text-emerald-100 text-[11px]"></p>
+      <a href="https://wa.me/923105379765?text=%D8%A7%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%8C%DA%A9%D9%85%20%D9%86%D8%AF%DB%8C%D9%85%20%D8%B5%D8%A7%D8%AD%D8%A8!%20%D9%85%DB%8C%DA%BA%20%D9%86%DB%92%20%D8%A2%D9%BE%20%DA%A9%D8%A7%20%D8%A2%D9%86%20%D9%84%D8%A7%D8%A6%D9%86%20%D8%AF%DA%A9%D8%A7%D9%86%20%DA%88%DB%8C%D9%85%D9%88%20%D8%AF%DB%8C%DA%A9%DA%BE%D8%A7%20%DB%81%DB%92%D8%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D8%A7%D9%BE%D9%86%DB%92%20%DA%A9%D8%A7%D8%B1%D9%88%D8%A8%D8%A7%D8%B1%20%DA%A9%DB%92%20%D9%84%DB%8C%DB%92%20%D8%A7%DB%8C%D8%B3%DB%8C%20%D8%A7%DB%8C%D9%BE%20%D8%A8%D9%86%D9%88%D8%A7%D9%86%DB%8C%20%DB%81%DB%92%DB%94" target="_blank" class="inline-block px-5 py-2 rounded-xl gold-bg text-[#0A192F] font-black shadow-lg">📞 0310-5379765 (Nadeem Iqbal)</a>
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Live Bill & WhatsApp Order Button -->
+  <div class="fixed bottom-0 left-0 right-0 bg-[#0A192F] text-white p-3 border-t-2 border-[#D4AF37] shadow-2xl z-50">
+    <div class="max-w-xl mx-auto flex items-center justify-between gap-3">
+      <div>
+        <span id="totLbl" class="text-[10px] text-emerald-200 block"></span>
+        <span id="totVal" class="text-sm sm:text-base font-black text-[#F3E5AB]">Rs. 0</span>
+      </div>
+      <button onclick="sendOrder()" id="waOrderBtn" class="px-5 py-2.5 rounded-xl gold-bg text-[#0A192F] font-black text-xs sm:text-sm shadow-lg active:scale-95 transition"></button>
+    </div>
+  </div>
+
+  <script>
+    let lang = 'ur', shop = 'food', qty = {};
+    const tr = (u, e) => lang === 'ur' ? u : e;
+    const fC = () => lang === 'ur' ? 'urdu-font' : 'eng-font';
+
+    const catalogs = {
+      food: {
+        name: 'سلیم ناشتہ پوائنٹ اینڈ جوس بار|Saleem Nashta Point & Juice Bar',
+        sub: 'تازہ ناشتہ اور خالص جوس ہوم ڈلیوری • ڈیمو|Fresh Breakfast & Pure Juice Delivery • Demo',
+        items: [
+          ['f1', 'حلوہ پوری و چنے (مکمل پلیٹ)|Halwa Puri & Chana Platter', '2 پوریاں، چنے، حلوہ اور اچار|2 Puris, Chana, Halwa & Pickle', 250],
+          ['f2', 'اسپیشل بیف نہاری (سنگل)|Special Beef Nihari', 'گرما گرم دیسی گھی کا تڑکہ|Served hot with Desi Ghee garnish', 450],
+          ['f3', 'دیسی انڈہ پراٹھا|Desi Egg Paratha', 'خستہ لچھے دار پراٹھا اور فرائی انڈہ|Crispy layered paratha & fried egg', 180],
+          ['f4', 'اسپیشل کڑک دودھ پتی چائے|Special Karak Doodh Patti', 'خالص دودھ اور الائچی والی چائے|Pure milk cardamom tea', 100],
+          ['f5', 'فریش مینگو / مالٹا جوس (بڑا گلاس)|Fresh Mango / Orange Juice', '100% خالص اور تازہ پھلوں کا رس|100% pure fresh fruit juice', 220],
+          ['f6', 'پنجابی میٹھی مکھن لسی|Punjabi Sweet Butter Lassi', 'خالص دہی اور مکھن سے تیار کردہ|Made with pure yogurt & butter', 200]
+        ]
+      },
+      sup: {
+        name: 'ندیم جنرل سروسز اینڈ آرڈر سپلائرز|Nadeem General Services & Order Suppliers',
+        sub: 'ہول سیل ریٹ لسٹ اور آن لائن آرڈر بکنگ • ڈیمو|Wholesale Catalog & Order Booking • Demo',
+        items: [
+          ['s1', 'فائن آٹا تھیلا (20 کلو)|Fine Flour Bag (20 KG)', 'ہول سیل سپلائی ریٹ|Wholesale supply rate', 2150],
+          ['s2', 'کوکنگ آئل کارٹن (5 پیکٹ)|Cooking Oil Carton (5 Pouches)', 'درجہ اول کوکنگ آئل|Grade-A Cooking Oil Carton', 2650],
+          ['s3', 'چینی سفید (5 کلو پیکٹ)|Refined Sugar (5 KG Pack)', 'صاف ستھری پیکنگ|Hygienic wholesale pack', 720],
+          ['s4', 'اسپیشل باسمتی چاول (5 کلو)|Super Kernel Basmati Rice (5 KG)', 'پرانا خوشبودار چاول|Aged aromatic basmati rice', 1650],
+          ['s5', 'چائے کی پتی فیملی پیک (900 گرام)|Black Tea Family Pack (900g)', 'ہوٹل اور گھریلو استعمال کے لیے|Strong blend for home & cafes', 1480],
+          ['s6', 'نہانے اور برتن دھونے کا صابن (درجن)|Bath & Dish Soap Bundle (1 Dozen)', 'ہول سیل دکاندار پیکج|Wholesale shopkeeper bundle', 1150]
+        ]
+      }
+    };
+
+    function setL(l) {
+      lang = l;
+      const r = document.getElementById('root'); r.lang = l; r.dir = l === 'ur' ? 'rtl' : 'ltr';
+      document.getElementById('bUr').className = l === 'ur' ? 'px-2 py-0.5 rounded text-[11px] font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-2 py-0.5 rounded text-[11px] text-gray-300';
+      document.getElementById('bEn').className = l === 'en' ? 'px-2 py-0.5 rounded text-[11px] font-bold bg-[#D4AF37] text-[#0A192F]' : 'px-2 py-0.5 rounded text-[11px] text-gray-300';
+      renderAll();
+    }
+
+    function setShop(s) { shop = s; qty = {}; renderAll(); }
+    function clearCart() { qty = {}; renderAll(); }
+    function chgQ(id, d) { qty[id] = Math.max(0, (qty[id] || 0) + d); renderAll(); }
+
+    function renderAll() {
+      const cat = catalogs[shop];
+      document.getElementById('shopTitle').textContent = tr(...cat.name.split('|'));
+      document.getElementById('shopTitle').className = `text-xs sm:text-sm font-extrabold text-[#F3E5AB] ${fC()}`;
+      document.getElementById('shopSub').textContent = tr(...cat.sub.split('|'));
+      document.getElementById('backBtn').textContent = tr('← فنانشل ایپ', '← Main App');
+
+      document.getElementById('tabFood').className = `py-1.5 px-2 rounded-xl text-xs font-extrabold ${shop==='food'?'gold-bg text-[#0A192F] shadow':'bg-white/10 text-gray-300'}`;
+      document.getElementById('tabSup').className = `py-1.5 px-2 rounded-xl text-xs font-extrabold ${shop==='sup'?'gold-bg text-[#0A192F] shadow':'bg-white/10 text-gray-300'}`;
+      document.getElementById('tabFood').textContent = tr('🍽️ 1. ناشتہ پوائنٹ و جوس ڈیمو', '🍽️ 1. Food & Juice Demo');
+      document.getElementById('tabSup').textContent = tr('📦 2. آرڈر سپلائرز ہول سیل ڈیمو', '📦 2. Order Suppliers Demo');
+
+      document.getElementById('demoNote').className = `text-xs font-bold text-[#0A192F] ${fC()}`;
+      document.getElementById('demoNote').textContent = tr('💡 طریقہ: نیچے اشیاء کے آگے (+) دبائیں، بل خودکار بنے گا اور آخر میں واٹس ایپ آرڈر بٹن دبائیں!', '💡 How it works: Tap (+) on items below to calculate live bill & send order directly to WhatsApp!');
+
+      document.getElementById('formHead').textContent = tr('📋 گاہک اور ڈلیوری کی تفصیلات:', '📋 Customer & Delivery Details:');
+      document.getElementById('cName').placeholder = tr('آپ کا نام یا دکان کا نام...', 'Your Name or Shop Name...');
+      document.getElementById('cPhone').placeholder = tr('موبائل نمبر (0300-1234567)', 'Phone Number (0300-1234567)');
+      document.getElementById('cAddr').placeholder = tr('مکمل پتہ / لوکیشن...', 'Complete Delivery Address...');
+      document.getElementById('clrBtn').textContent = tr('🗑️ بل ری سیٹ کریں (Clear Cart)', '🗑️ Reset Bill');
+
+      document.getElementById('devTitle').textContent = tr('🚀 ایسی ہی آن لائن آرڈرنگ ایپ اپنی دکان یا کاروبار کے لیے بنوائیں!', '🚀 Get a Similar WhatsApp Ordering App for Your Business!');
+      document.getElementById('devDesc').textContent = tr('بغیر ماہانہ فیس کے اپنی دکان کا ڈیجیٹل مینو اور واٹس ایپ آرڈر سسٹم بنوانے کے لیے ندیم اقبال سے رابطہ کریں:', 'Contact Nadeem Iqbal to build your custom digital catalog & WhatsApp ordering system:');
+      document.getElementById('waOrderBtn').textContent = tr('💬 واٹس ایپ پر آرڈر بھیجیں', '💬 Send Order on WhatsApp');
+
+      let total = 0, count = 0;
+      document.getElementById('itemsList').innerHTML = cat.items.map(it => {
+        const id = it[0], q = qty[id] || 0, sub = q * it[3];
+        total += sub; count += q;
+        return `<div class="bg-white p-3 rounded-2xl border ${q>0?'border-2 border-[#064E3B] bg-emerald-50/30':'border-gray-200'} shadow-sm flex items-center justify-between gap-2">
+          <div class="flex-1">
+            <h4 class="font-extrabold text-xs sm:text-sm text-[#0A192F] ${fC()}">${tr(...it[1].split('|'))}</h4>
+            <p class="text-[11px] text-gray-500 ${fC()}">${tr(...it[2].split('|'))}</p>
+            <span class="inline-block mt-1 px-2 py-0.5 rounded bg-amber-100 text-amber-950 font-black text-xs">Rs. ${it[3].toLocaleString()}</span>
+            ${q > 0 ? `<span class="text-[11px] font-extrabold text-emerald-800 mx-2">= Rs. ${sub.toLocaleString()}</span>` : ''}
+          </div>
+          <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-xl border">
+            <button onclick="chgQ('${id}',-1)" class="w-8 h-8 rounded-lg bg-white border font-black text-sm text-red-600 shadow-sm">−</button>
+            <span class="w-6 text-center font-black text-sm">${q}</span>
+            <button onclick="chgQ('${id}',1)" class="w-8 h-8 rounded-lg bg-[#064E3B] text-white font-black text-sm shadow-sm">+</button>
+          </div>
+        </div>`;
+      }).join('');
+
+      document.getElementById('totLbl').textContent = tr(`کل منتخب اشیاء: ${count}`, `Selected Items: ${count}`);
+      document.getElementById('totVal').textContent = `Rs. ${total.toLocaleString()}`;
+    }
+
+    function sendOrder() {
+      const cat = catalogs[shop];
+      const chosen = cat.items.filter(it => (qty[it[0]] || 0) > 0);
+      if (chosen.length === 0) return alert(tr('⚠️ براہ کرم پہلے (+) دبا کر کم از کم ایک آئٹم منتخب کریں!', '⚠️ Please select at least one item using (+) first!'));
+      const name = document.getElementById('cName').value.trim() || tr('گاہک', 'Customer');
+      const phone = document.getElementById('cPhone').value.trim() || '-';
+      const addr = document.getElementById('cAddr').value.trim() || '-';
+
+      let total = 0;
+      let lines = chosen.map((it, idx) => {
+        const q = qty[it[0]], sub = q * it[3]; total += sub;
+        return `${idx+1}. ${tr(...it[1].split('|'))} (${q} × ${it[3]}) = Rs. ${sub.toLocaleString()}`;
+      }).join('\n');
+
+      const receipt = `*🛒 نیا آن لائن آرڈر (${tr(...cat.name.split('|'))})*\n` +
+        `--------------------------\n` +
+        `${lines}\n` +
+        `--------------------------\n` +
+        `*💰 کل بل (Total Bill): Rs. ${total.toLocaleString()}*\n\n` +
+        `👤 نام: ${name}\n` +
+        `📞 فون: ${phone}\n` +
+        `📍 پتہ: ${addr}`;
+
+      window.open(`https://wa.me/923105379765?text=${encodeURIComponent(receipt)}`, '_blank');
+    }
+
+    setL('ur');
+  </script>
+</body>
+</html>
