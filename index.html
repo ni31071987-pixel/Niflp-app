@@ -105,7 +105,7 @@
 
       <div class="bg-[#064E3B] text-white p-3 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
         <span id="d-pitch" class="font-bold text-center sm:text-right"></span>
-        <a href="https://wa.me/923105379765?text=%D8%A7%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%81%DA%A9%D9%85%20%D9%86%D8%AF%DB%81%D9%85%20%D8%B5%D8%A7%D8%AD%D8%A8!%20%D9%85%DB%8C%DA%BA%20%D9%86%DB%92%20%D8%A2%D9%BE%20%DA%A9%D8%A7%20%D8%AF%DA%A9%D8%A7%D9%86%20%DA%88%DB%81%D9%85%D9%88%20%D8%AF%DB%8C%DA%A9%DA%BE%D8%A7%20%DB%81%DB%92%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D8%A7%D9%BE%D9%86%DB%92%20%DA%A9%D8%A7%D8%B1%D9%88%D8%A8%D8%A7%D8%B1%20%DA%A9%DB%92%20%D9%84%DB%81%DB%92%20%D8%A7%DB%8C%DB%8C%20%D8%A7%DB%8C%D9%BE%20%D8%A8%D9%86%D9%88%D8%A7%D9%86%DB%92%20%DB%81%DB%92%DB%94" target="_blank" id="d-hireBtn" class="px-4 py-1.5 rounded-xl bg-white text-[#0A192F] font-black shrink-0"></a>
+        <a href="https://wa.me/923105379765?text=%D8%A7%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%81%DA%A9%D9%85%20%D9%86%D8%AF%DB%81%D9%85%20%D8%B5%D8%A7%D8%AD%D8%A5%20%D9%85%DB%8C%DA%BA%20%D9%86%DB%92%20%D8%A2%D9%BE%20%DA%A9%D8%A7%20%D8%AF%DA%A9%D8%A7%D9%86%20%DA%88%DB%81%D9%85%D9%88%20%D8%AF%DB%8C%DA%A9%DA%BE%D8%A7%20%DB%81%DB%92%8C%20%D9%85%D8%AC%DA%BE%DB%92%20%D8%A7%D9%BE%D9%86%DB%92%20%DA%A9%D8%A7%D8%B1%D9%88%D8%A8%D8%A7%D8%B1%20%DA%A9%DB%92%20%D9%84%DB%81%DB%92%20%D8%A7%DB%8C%DB%8C%20%D8%A7%DB%8C%D9%BE%20%D8%A8%D9%86%D9%88%D8%A7%D9%86%DB%92%20%DB%81%DB%92%DB%94" target="_blank" id="d-hireBtn" class="px-4 py-1.5 rounded-xl bg-white text-[#0A192F] font-black shrink-0"></a>
       </div>
     </section>
 
@@ -594,6 +594,7 @@
       } catch(e) {}
 
       updateClock(); renderDemo(); showTab(curTab);
+      if (curTool) renderTool();
       renderChat(); renderGuides();
     }
 
@@ -733,8 +734,7 @@
         p.innerHTML = `${head('🗓️ کمیٹی (BC) شیڈول اور حساب','🗓️ Committee Tracker')}<div class="flex justify-between items-center mb-1"><label class="font-bold">${esc(tr('فی ممبر ماہانہ قسط (PKR):','Monthly Installment (PKR):'))}</label><span id="commSaveStatus"></span></div><input id="c-amt" type="number" min="0" step="0.01" value="${a}" oninput="updCommAmt(this.value)" onchange="saveToolValsOnly()" class="w-full p-2 border rounded-xl mb-1 font-bold" /><p id="c-err" class="text-red-600 font-bold text-[11px] hidden mb-2"></p><div class="grid grid-cols-2 gap-2 mb-2 text-center"><div class="p-2 bg-amber-50 rounded-xl border"><b>${esc(tr(`کل ماہانہ کمیٹی (${tot} ممبران)`,`Monthly Pot (${tot} Members)`))}</b><p id="c-tot" class="font-black">Rs. ${fmtPKR(Number(monthlyPot.toFixed(2)))}</p></div><div class="p-2 bg-emerald-50 rounded-xl border"><b>${esc(tr(`کل جمع شدہ (${pd} ماہ)`,`Total Collected (${pd} Mos)`))}</b><p id="c-pd" class="font-black text-emerald-900">Rs. ${fmtPKR(Number(totalCollected.toFixed(2)))}</p></div></div><div id="commRowsBox" class="space-y-1.5 max-h-52 overflow-y-auto"></div><div class="flex gap-2 mt-2.5"><button type="button" onclick="addUniqueCommMember()" class="flex-1 py-2 bg-slate-200 rounded-xl font-bold">+ ${esc(tr('نیا ممبر / ماہ','Add Member/Month'))}</button><button type="button" onclick="saveCommitteeOnly()" class="flex-1 py-2 bg-emerald-700 text-white rounded-xl font-bold">💾 ${esc(tr('کمیٹی سیو کریں','Save'))}</button></div><button type="button" onclick="exportFlpJsonBackup()" class="w-full mt-2 py-2 rounded-xl bg-slate-800 text-[#F3E5AB] font-bold text-xs">📥 بیک اپ JSON ڈاؤن لوڈ کریں (Backup Export)</button>`;
         const cBox = document.getElementById('commRowsBox');
         
-        const isPh = v => !v || ['نیا ماہ','ماہ','Month','New Month','Member','ممبر','Member Name'].includes(v.trim());
-        const showBi = (a, b, f) => !isPh(a) ? a : !isPh(b) ? b : f;
+        const showBi = (u, e) => lang === 'ur' ? (u || e) : (e || u);
 
         comm.forEach((s, i) => {
           const row = document.createElement('div');
@@ -742,7 +742,7 @@
           
           const mInp = document.createElement('input');
           mInp.className = 'w-16 p-1 border rounded bg-white text-[11px] font-bold';
-          mInp.value = lang === 'ur' ? showBi(s.mU, s.mE, 'ماہ') : showBi(s.mE, s.mU, 'Month');
+          mInp.value = showBi(s.mU, s.mE);
           mInp.oninput = function() {
             const val = this.value;
             if (lang === 'ur') comm[i].mU = val; else comm[i].mE = val;
@@ -751,7 +751,7 @@
 
           const nInp = document.createElement('input');
           nInp.className = 'flex-1 p-1 border rounded bg-white font-semibold';
-          nInp.value = lang === 'ur' ? showBi(s.nU, s.nE, 'ممبر') : showBi(s.nE, s.nU, 'Member');
+          nInp.value = showBi(s.nU, s.nE);
           nInp.oninput = function() {
             const val = this.value;
             if (lang === 'ur') comm[i].nU = val; else comm[i].nE = val;
